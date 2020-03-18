@@ -22,6 +22,12 @@
     - pip3 install matplotlib
     - pip3 install scipy
     - pip3 install pandas
+    - pip3 install pyodbc
+    - install odbc driver for sql server
+        - brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
+        - brew update
+        - brew install msodbcsql mssql-tools
+        - (if installing msft tools doesn't work) brew install unixodbc
 
 ## VS Code
 - Pull git hub repository

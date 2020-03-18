@@ -23,5 +23,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
-    "editor.autoIndent": "keep"
+    "editor.autoIndent": "keep",
+    "workbench.sideBar.location": "left"
 }
