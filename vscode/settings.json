@@ -18,7 +18,7 @@
         }
     ],
     "explorer.confirmDragAndDrop": false,
-    "workbench.colorTheme": "Default High Contrast",
+    "workbench.colorTheme": "Default Light+",
     "csharp.suppressDotnetInstallWarning": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.autoClosingBrackets": "never",
