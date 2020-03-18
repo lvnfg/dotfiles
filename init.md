@@ -21,6 +21,7 @@
 - Install python dependency
     - pip3 install matplotlib
     - pip3 install scipy
+    - pip3 install pandas
 
 ## VS Code
 - Pull git hub repository

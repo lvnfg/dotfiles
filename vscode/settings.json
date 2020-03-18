@@ -22,5 +22,6 @@
     "csharp.suppressDotnetInstallWarning": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.autoClosingBrackets": "never",
-    "editor.autoClosingQuotes": "never"
+    "editor.autoClosingQuotes": "never",
+    "editor.autoIndent": "keep"
 }
