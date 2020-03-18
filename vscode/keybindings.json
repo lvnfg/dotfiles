@@ -3,9 +3,5 @@
     {
         "key": "cmd+t",
         "command": "workbench.action.terminal.toggleTerminal"
-    },
-    {
-        "key": "ctrl+`",
-        "command": "-workbench.action.terminal.toggleTerminal"
     }
 ]
