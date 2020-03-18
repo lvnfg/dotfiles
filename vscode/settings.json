@@ -1,0 +1,24 @@
+{
+    "telemetry.enableTelemetry": false,
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "mssql.connections": [
+        {
+            "server": "phuongphatgroup.database.windows.net",
+            "database": "dbMaster",
+            "authenticationType": "SqlLogin",
+            "user": "vanle",
+            "password": "",
+            "emptyPasswordInput": false,
+            "savePassword": true,
+            "profileName": "dbMaster"
+        }
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "Default Light+",
+    "csharp.suppressDotnetInstallWarning": true,
+    "workbench.startupEditor": "newUntitledFile"
+}
