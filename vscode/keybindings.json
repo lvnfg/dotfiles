@@ -4,4 +4,8 @@
         "key": "cmd+t",
         "command": "workbench.action.terminal.toggleTerminal"
     }
+    ,{
+        "key": "cmd+shift+a"
+        ,"command": "workbench.action.toggleActivityBarVisibility"
+    }
 ]

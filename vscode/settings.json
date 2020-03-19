@@ -10,7 +10,8 @@
     "git.enableSmartCommit": true,
     "explorer.confirmDelete": false,
     "git.autofetch": true,
-    "mssql.connections": [
+    "mssql.connections": 
+    [
         {
             "server": "phuongphatgroup.database.windows.net",
             "database": "dbMaster",
@@ -30,5 +31,9 @@
     "editor.autoClosingQuotes": "never",
     "editor.autoIndent": "keep",
     "workbench.sideBar.location": "left",
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.visible": false
 }
