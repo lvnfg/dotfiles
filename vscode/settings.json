@@ -1,4 +1,9 @@
 {
+    "workbench.colorCustomizations": 
+    {
+        "terminal.foreground" : "#ffffff",
+         "terminal.background" : "#000000",
+    },
     "telemetry.enableTelemetry": false,
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
@@ -24,5 +29,6 @@
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
     "editor.autoIndent": "keep",
-    "workbench.sideBar.location": "left"
+    "workbench.sideBar.location": "left",
+    "extensions.ignoreRecommendations": true
 }
