@@ -2,7 +2,7 @@
     "workbench.colorCustomizations": 
     {
         "terminal.foreground" : "#ffffff",
-         "terminal.background" : "#000000",
+         "terminal.background" : "#000000"
     },
     "telemetry.enableTelemetry": false,
     "workbench.iconTheme": "vscode-icons",
@@ -24,7 +24,6 @@
         }
     ],
     "explorer.confirmDragAndDrop": false,
-    "workbench.colorTheme": "Default Light+",
     "csharp.suppressDotnetInstallWarning": true,
     "workbench.startupEditor": "newUntitledFile",
     "editor.autoClosingBrackets": "never",
@@ -35,5 +34,6 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.visible": false
+    "workbench.activityBar.visible": false,
+    "workbench.colorTheme": "Dark+ (contrast)"
 }

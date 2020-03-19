@@ -5,3 +5,8 @@ ms-mssql.mssql
 ms-python.python
 ms-vscode.azure-account
 vscode-icons-team.vscode-icons
+goessner.mdmath
+ms-mssql.mssql
+ms-python.python
+ms-vscode.azure-account
+vscode-icons-team.vscode-icons
