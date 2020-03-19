@@ -3,8 +3,6 @@
     {
         "terminal.foreground" : "#ffffff",
          "terminal.background" : "#000000",
-         "panel.background": "#000000",
-         "panelTitle.activeForeground": "#ffffff"
     },
     "telemetry.enableTelemetry": false,
     "workbench.iconTheme": "vscode-icons",
