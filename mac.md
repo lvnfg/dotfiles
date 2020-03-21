@@ -52,6 +52,7 @@ cat ext.txt | xargs -n 1 code --install-extension
 # code --list-extensions >> ext.txt
 
 # Install Mac App Store apps without cask
+# 1Blocker
 # iStatsMenu
 # Amphetamine
 
@@ -61,6 +62,8 @@ brew cask install the-unarchiver
 
 ## Install XCode
 xcode-select --install
+
+# Install python virtualenv
 
 # Install python dependency
 pip3 install matplotlib
@@ -77,6 +80,10 @@ brew install msodbcsql mssql-tools
 # #####################################
 # REMEMBER TO DEFAULTS READ AND GO THROUGH THE SETTINGS TO CREATE MY OWN FILES
 # SOME SETTINGS DO NOT HAVE DEFAULT READS, REVIEW CAREFULLY
+# Write current defaults to disk using
+defaults read >> def.json
+# Then diff using vs code to find the changes
+code --diff def.json def2.json
 
 # ---------------------------------------
 # Close any open System Preferences panes, to prevent them from overriding
