@@ -4,6 +4,8 @@
 set -k							# ignore newline starting with #
 setopt interactivecomments 		# enable inline comment
 
+# Remember to set language mode to shell script in vscode
+
 # Enable trackpad's tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
