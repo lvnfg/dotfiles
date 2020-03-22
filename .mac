@@ -1,4 +1,4 @@
-# !/bin/zsh
+#!/bin/zsh
 
 # Enable bash commenting style for zsh
 set -k							# ignore newline starting with #
@@ -35,6 +35,19 @@ cd /Users/van/Documents/repo
 
 ## Install Python 3.x
 brew install python
+
+# Install pipenv
+pip3 install --user pipenv
+# This does a user installation to prevent breaking any system-wide packages
+# --> if pipenv isn't available in shell after installation, needs to add
+# to PATH by modifying ~/.profile. Instruction at:
+# https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix/14638025#14638025
+# To install package(s) only for a specific project
+# cd into project's dir and run pipenv, like this:
+cd projectFolder
+pipenv install request
+# Script managed this way can be run using
+pipenv run python3 main.py
 
 # Install VS Code
 brew cask install visual-studio-code
