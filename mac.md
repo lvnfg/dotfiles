@@ -1,12 +1,16 @@
 # !/bin/zsh
 
-# Tell zsh to ignore newline starting with #
-set -k
+# Enable bash commenting style for zsh
+set -k							# ignore newline starting with #
+setopt interactivecomments 		# enable inline comment
 
 # Enable trackpad's tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Remove Downloads folder in ~ and replace with iCloudDrive symlink
+sudo rm -r ~/Downloads; ln -s ~/Desktop/Archive/Downloads ~/
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -39,9 +43,9 @@ rm ~/Library/Application\ Support/Code/User/settings.json
 rm ~/Library/Application\ Support/Code/User/keybindings.json
 rm -r ~/Library/Application\ Support/Code/User/snippets/
 # Create symlinks to VS Code setting files in repos
-ln -s /Users/van/Desktop/repo/dot/code/settings.json /Users/van/Library/Application\ Support/Code/User/settings.json
-ln -s /Users/van/Desktop/repo/dot/code/keybindings.json /Users/van/Library/Application\ Support/Code/User/keybindings.json
-ln -s /Users/van/Desktop/repo/dot/code/snippets/ /Users/van/Library/Application\ Support/Code/User/snippets
+ln -s ~/Desktop/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/Desktop/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/Desktop/dot/code/snippets/ ~/Library/Application\ Support/Code/User/snippets
 # create PATH command for code:
 # Open the Command Palette via (⇧⌘P) and type shell command to find the Shell Command:
 # see if a terminal command can be found for this
@@ -84,6 +88,11 @@ brew install msodbcsql mssql-tools
 defaults read >> def.json
 # Then diff using vs code to find the changes
 code --diff def.json def2.json
+
+# Lengthen the delay needed to show the dock
+defaults write com.apple.Dock autohide-delay -float 10 && killall Dock
+# To restore default functionality
+# defaults delete com.apple.Dock autohide-delay
 
 # ---------------------------------------
 # Close any open System Preferences panes, to prevent them from overriding
@@ -143,7 +152,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	General -bool true \
 	OpenWith -bool true \
 	Privileges -bool true   
-# Set Desktop as the default location for new Finder windows
+# Set iCloudDrive as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
