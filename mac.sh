@@ -56,11 +56,11 @@ brew cask install visual-studio-code
 # Remove VS Code setting files and snippets
 rm ~/Library/Application\ Support/Code/User/settings.json
 rm ~/Library/Application\ Support/Code/User/keybindings.json
-rm -r ~/Library/Application\ Support/Code/User/snippets/
+rm -r ~/Library/Application\ Support/Code/User/snippets
 # Create symlinks to VS Code setting files in repos
 ln -s ~/Desktop/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ln -s ~/Desktop/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-ln -s ~/Desktop/dot/code/snippets/ ~/Library/Application\ Support/Code/User/snippets
+ln -s ~/Desktop/dot/code/snippets ~/Library/Application\ Support/Code/User/snippets
 # create PATH command for code:
 # Open the Command Palette via (⇧⌘P) and type shell command to find the Shell Command:
 # see if a terminal command can be found for this
@@ -154,16 +154,10 @@ defaults write NSGlobalDomain AppleTemperatureUnit -string "Celcius"
 
 # com.apple.finder
 # ---------------------------------------
-# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
-defaults write com.apple.finder QuitMenuItem -bool true
-# Finder: disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
+# defaults write com.apple.finder QuitMenuItem -bool true				# Allow quitting via ⌘ + Q; doing so will also hide desktop icons
+defaults write com.apple.finder DisableAllAnimations -bool true			# Disable window animations and Get Info animations
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"		# Use list view in all Finder windows by default. Others modes: `icnv`, `clmv`, `glyv`
+defaults write com.apple.finder FXInfoPanesExpanded -dict \				# Expand File Info panes:“General”, “Open with”, and “Sharing & Permissions”
 	General -bool true \
 	OpenWith -bool true \
 	Privileges -bool true   
