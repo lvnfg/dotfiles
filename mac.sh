@@ -4,8 +4,6 @@
 set -k							# ignore newline starting with #
 setopt interactivecomments 		# enable inline comment
 
-# Remember to set language mode to shell script in vscode
-
 # Enable trackpad's tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
@@ -14,44 +12,31 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Remove Downloads folder in ~ and replace with iCloudDrive symlink
 sudo rm -r ~/Downloads; ln -s ~/Desktop/Archive/Downloads ~/
 
-# Install Homebrew
+# TODO: Remap Capslock to Esc
+
+
+# ------------------------------------------
+# Install Homebrew, Git, Python, other apps
+# ------------------------------------------
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-# Run **brew doctor** to make sure that installation was successfull and that brew is working properly
-# Update to the latest version:
 brew update && brew upgrade
-
-# Install BetterTouchTool
 brew cask install bettertouchtool 
-# Import BetterTouchToolSetting
-# See if a terminal command can be found
-
-# Remap Capslock to Esc
-
-# Install Git
 brew install git
 git config --global user.name "Van"
 git config --global user.email van@fagaceae.com
-
-# Pull repos from git hub
-cd /Users/van/Documents/repo
-
-## Install Python 3.x
 brew install python
+# pip3 install --user pipenv	
+pip3 install matplotlib
+pip3 install scipy
+pip3 install pandas
+pip3 install pyodbc
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release	# odbc driver for sql server
+brew install msodbcsql mssql-tools		
 
-# Install pipenv
-pip3 install --user pipenv
-# This does a user installation to prevent breaking any system-wide packages
-# --> if pipenv isn't available in shell after installation, needs to add
-# to PATH by modifying ~/.profile. Instruction at:
-# https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix/14638025#14638025
-# To install package(s) only for a specific project
-# cd into project's dir and run pipenv, like this:
-cd projectFolder
-pipenv install request
-# Script managed this way can be run using
-pipenv run python3 main.py
 
+# ------------------------------------------
 # Install VS Code
+# ------------------------------------------
 brew cask install visual-studio-code
 # Remove VS Code setting files and snippets
 rm ~/Library/Application\ Support/Code/User/settings.json
@@ -81,18 +66,6 @@ brew cask install the-unarchiver
 
 ## Install XCode
 xcode-select --install
-
-# Install python virtualenv
-
-# Install python dependency
-pip3 install matplotlib
-pip3 install scipy
-pip3 install pandas
-pip3 install pyodbc
-
-#install odbc driver for sql server
-brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
-brew install msodbcsql mssql-tools
 
 
 # SET SYSTEM PREFERENCES
