@@ -7,5 +7,5 @@ sudo apt update && sudo apt upgrade
 # brew install git
 git config --global user.name "van"
 git config --global user.email van@fagaceae.com
-
+sudo apt install python3-pip
 
