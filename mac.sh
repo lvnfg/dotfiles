@@ -10,7 +10,7 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Remove Downloads folder in ~ and replace with iCloudDrive symlink
-sudo rm -r ~/Downloads; ln -s ~/Desktop/Archive/Downloads ~/
+sudo rm -r ~/Downloads; ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/
 
 # TODO: Remap Capslock to Esc
 
