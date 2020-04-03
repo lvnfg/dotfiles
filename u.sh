@@ -3,8 +3,10 @@
 # update ubuntu to the latest version
 sudo apt update && sudo apt upgrade
 
+# set vim as default editor
+sudo update-alternatives --config editor
+
 # setup git
-# brew install git
 git config --global credential.helper store
 git pull # run this after config to save credential
 git config --global user.name "van"
@@ -23,13 +25,6 @@ curl https://packages.microsoft.com/config/ubuntu/19.10/prod.list > /etc/apt/sou
 exit
 sudo apt-get update
 sudo ACCEPT_EULA=Y apt-get install msodbcsql17
-# optional: for bcp and sqlcmd
-sudo ACCEPT_EULA=Y apt-get install mssql-tools
-echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
-echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-source ~/.bashrc
-# optional: for unixODBC development headers
-sudo apt-get install unixodbc-dev
 
 # setup python
 sudo apt install python3-pip
