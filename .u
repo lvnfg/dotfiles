@@ -9,11 +9,10 @@ sudo update-alternatives --config editor
 # setup git
 git config --global credential.helper store
 git pull # run this after config to save credential
-git config --global user.name "van"
+git config --global user.name "van@[machine name]"
 git config --global user.email van@fagaceae.com
 
 # apply dotfiles settings
-git clone https://github.com/lvnfg/dot
 ln -s ~/dot/.vimrc ~/.vimrc
 
 # install odbc driver
