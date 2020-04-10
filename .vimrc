@@ -38,3 +38,6 @@ set shiftwidth=4 "when identing with >
 "netrw config
 let g:netrw_banner = 0 "remove help banner
 let g:netrw_liststyle = 3 "show tree view by default
+
+"always split below
+set splitbelow

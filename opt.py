@@ -16,11 +16,12 @@ while price <= strike * 1.1:
     if price <= strike:
         profit = (strike - price - fee) * quantity
         print (
-            "P = " + str(price)
-            + ", Q = " + str(quantity)
-            + ", S = " + str(strike)
-            + ", F = " + str(fee)
-            + ", change = " + str(round(((strike - price) / strike) * 100, 1)) + "%"
-            + ", Profit = " + str(profit)
+            "["
+            + "S = " + str(strike)
+            + ", F = " + str(fee) + " * " + str(quantity) + " = " + str(fee * quantity)
+            + "] "
+            + "Price = " + str(price)
+            + " (" + str(round(((price - strike) / strike) * 100, 1)) + "%)"
+            + " -> Profit = " + str(round(profit, 1)) + " (" + str(round(profit / (fee * quantity) * 100, 1)) + "%)"
         )
     price += step
