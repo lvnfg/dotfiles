@@ -1,10 +1,30 @@
-set nocompatible "disable vi compatibility and enable advanced vim features
-set number "show line numbers
-highlight LineNr ctermfg=grey "change line num color
-set ignorecase "do case insensitive matching (?)
-:let loaded_matchparen = 1 "disable show matching parentheses
-syntax on "enable syntax highlighting
-highlight EndOfBuffer ctermfg=black ctermbg=black "set tilde ~ character color to background's
+"disable vi compatibility and enable advanced vim features
+set nocompatible 
+
+"show line numbers
+set number 
+
+"change line num color
+highlight LineNr ctermfg=grey
+
+"do case insensitive matching
+set ignorecase 
+
+"disable matching parentheses
+":let loaded_matchparen = 1
+
+"enable syntax highlighting
+syntax on 
+
+"hide tilde (~) characters by changing color to black
+highlight EndOfBuffer ctermfg=black ctermbg=black
+
+"prevent the cursor from moving back one character when exiting insert mode
+"by overloading the Esc key in insert mode to additionall run then `^
+"command which moves the rcusor to the position where it had been the last time
+"insert mode was left
+"not recommended since the mess with the default cursor mechanics
+":inoremap <silent> <Esc> <Esc>`^
 
 "indenting
 set autoindent
