@@ -1,0 +1,7 @@
+goessner.mdmath
+ms-azuretools.vscode-azurefunctions
+ms-azuretools.vscode-logicapps
+ms-mssql.mssql
+ms-python.python
+ms-vscode.azure-account
+vscode-icons-team.vscode-icons
