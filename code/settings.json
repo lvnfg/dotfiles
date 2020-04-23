@@ -13,14 +13,14 @@
     "mssql.connections": 
     [
         {
-            "server": "phuongphatgroup.database.windows.net",
-            "database": "dbMaster",
+            "server": "lvf.database.windows.net",
+            "database": "dbDev",
             "authenticationType": "SqlLogin",
-            "user": "vanle",
+            "user": "van",
             "password": "",
             "emptyPasswordInput": false,
             "savePassword": true,
-            "profileName": "dbMaster"
+            "profileName": "dbDev"
         }
     ],
     "explorer.confirmDragAndDrop": false,
