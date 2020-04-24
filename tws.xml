@@ -1125,14 +1125,14 @@
 			</Layout>
 			<Layout useCombinedRows="false" fgTicker="-1" bgTicker="-16777216" fgOrder="-256" bgOrder="-16777216" fgTotalRow="-1" bgTotalRow="-13035473" fgUptick="-16715776" fgDowntick="-29389" dotUptick="-12093108" dotDowntick="-3336168" fgNoAutoEx="-16897" fgImpliedtick="-65281" fgPreOpen="-3872515" bgAuction="-10079488" fgImproved="-6684775" bgImproved="-10092289" bgAlarm="-14522302" bgDirty="-11131135" bgDirtySel="-11131135" colGrid="-16645630" bgConditional="-14135236" fgHeader="-1" bgHeader="-8355195" fgHeaderMouseOver="-16777216" bgHeaderMouseOver="-1874" frozenColumnId="-1" frozenColumnId2="-1" name="Option Series" deleteLayoutAfterLastContentClosed="false" level="2" version="27" removeAutoColumnResize="false" displayBySymbol="false" showTotalRow="false" displayAcctSelector="true" askMirrorsBid="false" callMirrorsPut="true" systemLayout="false" scaled="true" layoutOrientation="0" useSystemColors="false" manuallyResized="false" useCustomHeaderColors="false">
 				<TickerColumns varName="allTickerCols">
-					<DescriptionColumn colId="2" width="56" alignment="2" fg="-16777216" bg="-1052974" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
+					<DescriptionColumn colId="2" width="58" alignment="2" fg="-16777216" bg="-1052974" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
 					<LastPriceColumn colId="7" width="51" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
 					<BidPriceColumn colId="4" width="46" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<AskPriceColumn colId="5" width="45" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<BidSizeColumn colId="3" width="33" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<AskSizeColumn colId="6" width="33" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<OpenInterestColumn colId="23" width="73" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
-					<VolumeColumn colId="22" width="33" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
+					<AskPriceColumn colId="5" width="46" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<BidSizeColumn colId="3" width="34" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<AskSizeColumn colId="6" width="34" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<OpenInterestColumn colId="23" width="60" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
+					<VolumeColumn colId="22" width="42" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
 				</TickerColumns>
 				<OrderColumns varName="allOrderCols"/>
 				<OrderColumns varName="allBlotterTicketCols"/>
@@ -2036,15 +2036,15 @@
 			</Layout>
 			<Layout useCombinedRows="false" fgTicker="-1" bgTicker="-16777216" fgOrder="-256" bgOrder="-16777216" fgTotalRow="-1" bgTotalRow="-13035473" fgUptick="-16715776" fgDowntick="-29389" dotUptick="-12093108" dotDowntick="-3336168" fgNoAutoEx="-16897" fgImpliedtick="-65281" fgPreOpen="-3872515" bgAuction="-10079488" fgImproved="-6684775" bgImproved="-10092289" bgAlarm="-14522302" bgDirty="-11131135" bgDirtySel="-11131135" colGrid="-16645630" bgConditional="-14135236" fgHeader="-1" bgHeader="-8355195" fgHeaderMouseOver="-16777216" bgHeaderMouseOver="-1874" frozenColumnId="-1" frozenColumnId2="-1" name="Company Research Option Chain" deleteLayoutAfterLastContentClosed="false" level="2" version="27" removeAutoColumnResize="false" displayBySymbol="false" showTotalRow="false" displayAcctSelector="true" askMirrorsBid="false" callMirrorsPut="false" systemLayout="false" scaled="true" layoutOrientation="0" useSystemColors="false" manuallyResized="false" useCustomHeaderColors="false">
 				<TickerColumns varName="allTickerCols">
-					<DescriptionColumn colId="2" width="65" alignment="2" fg="-16777216" bg="-1052974" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
-					<BidPriceColumn colId="4" width="88" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<AskPriceColumn colId="5" width="65" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<LastPriceColumn colId="7" width="65" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<ChangeColumn colId="8" width="66" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" showPercent="false" prohibitDynamicColors="false"/>
-					<GreekDeltaColumn colId="38" width="57" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
-					<GreekNewGammaColumn colId="160" width="56" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
-					<GreekNewVegaColumn colId="161" width="54" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
-					<GreekNewThetaColumn colId="162" width="49" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
+					<DescriptionColumn colId="2" width="51" alignment="2" fg="-16777216" bg="-1052974" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
+					<BidPriceColumn colId="4" width="66" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<AskPriceColumn colId="5" width="23" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<LastPriceColumn colId="7" width="26" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<ChangeColumn colId="8" width="33" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" showPercent="false" prohibitDynamicColors="false"/>
+					<GreekDeltaColumn colId="38" width="28" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
+					<GreekNewGammaColumn colId="160" width="32" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
+					<GreekNewVegaColumn colId="161" width="33" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
+					<GreekNewThetaColumn colId="162" width="31" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" precisionLevel="#"/>
 				</TickerColumns>
 				<OrderColumns varName="allOrderCols"/>
 				<OrderColumns varName="allBlotterTicketCols"/>
@@ -5483,7 +5483,7 @@
 				<DeleteTimeout varName="deleteTimeout" seconds="15"/>
 			</AlertDefaults>
 		</AlertsConfig>
-		<ChartWindowConfig varName="chartConfig" pluginKey="Configuration	Charts" showMenu="true" showToolbar="true" version="39" redirectToolTip="false" enableToolTip="true" showBarDetailsInBarZone="true" useGlobalIndicatorColors="false" showVerticalScrollbar="false" showDashboard="true" completeTrendline="false" showMarketClock="false" showChartKey="false" popUpLegend="true" showQuoteLine="false" alignQuoteLineTop="false" alignChartTraderTop="false" alignPriceAxisRight="true" alignTimeAxisTop="false" highlightLast="true" highlightBid="false" highlightNavBid="false" highlightNavLast="false" highlightHigh="false" highlightMyTrades="false" highlightCursorPrice="true" alignTimeAxisTopOld="false" addSecondaryPriceAxis="false" addSecondaryTimeAxis="false" showPriceVolumeHistogram="false" showHorizontalCrosshairLine="true" maxChartLineDifference="#" maxChartBarDifference="#" maxChartLineDifferenceOld="#" maxChartBarDifferenceOld="#" upDownArrowAdjustOrderPrice="false" needsToSelectUpDownArrowAction="false" showSubChartPopup="true" keyboardSelectionMode="false" showSelectedTime="true" showDividend="true" showCashDividendIndicator="true" disableOrderLabel="false" shareTrendline="true" shareTrendlineSameBarSize="false" showConstantBar="false" numberOfConstantBar="18" subPlotHeight="3" showNews="false" tradingDayGap="0" useBgColorForBorder="true" fibonacciLabelAt="1" alertLabelPosition="2" showLiveChartOrders="true" showFilledChartOrders="false" showCancelledChartOrders="false" showLiveOrders="true" showFilledOrders="false" showCancelledOrders="false" hideGridline="false" showMarginArea="true" showVwapOnBar="false" horizontalLabelPosition="1" showPositionIndicator="true" showCandleOutline="false" positionIndicatorGradient="50" unlockMessageDismissed="false" lockIntroduced="false" showHotButtons="false" showQuoteZone="true" showPriorClose="true" tickLabelSize="11" quoteZoneFontSize="11" retainWhatToShow="false" showChartTraderTooltip="true" showDayIntersection="true" createChartFromDefaults="true" thumbnailConfig="false" showCombo="false" createSubchartAsTab="false" logPriceAxis="false" adjustForDividends="false" showCrosshair="false" allowExcessBars="true" dynamicTrendlinePct="true" showFutureRolloverAnnotation="false" useTopDataVolUpdates="false" defaultTimePeriod="-1" defaultDynamicChart="true" newPopupTimePeriodOpened="false" defaultWhatToShow="0" defaultWhatToShowUpgraded="0" defaultWhatToShowNavLastDefaulting="52" defaultShowMidpoint="false" defaultShowBidAsk="false" defaultShowTrades="false" defaultShowImbalance="false" defaultShowIndicativeAuction="false" defaultShowFeeRate="false" defaultShowRebateRate="false" defaultHowToShow="0" defaultShowAsCandlestick="true" defaultShowVolume="true" defaultShowHistoricalVolatility="false" defaultShowImpliedVolatility="false" defaultShowOptionOpenInterest="false" defaultShowOptionVolume="false" defaultUseRTH="true" defaultForceUserTimeZone="false" defaultShowTotalPutCallValue="false" defaultShowPutCallRatio="false" defaultShowArbitrageMeter="false" defaultAutoTimePeriod="false" defaultShowDailyPnl="false" showChartTrader="false" showChartValueLabel="false" addIndexToQuotePanel="false" verticalStripeHighlight="false" allowZeroFeeValue="true">
+		<ChartWindowConfig varName="chartConfig" pluginKey="Configuration	Charts" showMenu="true" showToolbar="true" version="39" redirectToolTip="false" enableToolTip="true" showBarDetailsInBarZone="true" useGlobalIndicatorColors="false" showVerticalScrollbar="false" showDashboard="true" completeTrendline="false" showMarketClock="false" showChartKey="false" popUpLegend="true" showQuoteLine="false" alignQuoteLineTop="false" alignChartTraderTop="false" alignPriceAxisRight="true" alignTimeAxisTop="false" highlightLast="true" highlightBid="false" highlightNavBid="false" highlightNavLast="false" highlightHigh="false" highlightMyTrades="false" highlightCursorPrice="false" alignTimeAxisTopOld="false" addSecondaryPriceAxis="false" addSecondaryTimeAxis="false" showPriceVolumeHistogram="false" showHorizontalCrosshairLine="true" maxChartLineDifference="#" maxChartBarDifference="#" maxChartLineDifferenceOld="#" maxChartBarDifferenceOld="#" upDownArrowAdjustOrderPrice="false" needsToSelectUpDownArrowAction="false" showSubChartPopup="true" keyboardSelectionMode="false" showSelectedTime="true" showDividend="true" showCashDividendIndicator="true" disableOrderLabel="false" shareTrendline="true" shareTrendlineSameBarSize="false" showConstantBar="false" numberOfConstantBar="18" subPlotHeight="3" showNews="false" tradingDayGap="0" useBgColorForBorder="true" fibonacciLabelAt="1" alertLabelPosition="2" showLiveChartOrders="true" showFilledChartOrders="false" showCancelledChartOrders="false" showLiveOrders="true" showFilledOrders="false" showCancelledOrders="false" hideGridline="false" showMarginArea="true" showVwapOnBar="false" horizontalLabelPosition="1" showPositionIndicator="true" showCandleOutline="false" positionIndicatorGradient="50" unlockMessageDismissed="false" lockIntroduced="false" showHotButtons="false" showQuoteZone="true" showPriorClose="true" tickLabelSize="11" quoteZoneFontSize="11" retainWhatToShow="false" showChartTraderTooltip="true" showDayIntersection="true" createChartFromDefaults="true" thumbnailConfig="false" showCombo="false" createSubchartAsTab="false" logPriceAxis="false" adjustForDividends="false" showCrosshair="false" allowExcessBars="true" dynamicTrendlinePct="true" showFutureRolloverAnnotation="false" useTopDataVolUpdates="false" defaultTimePeriod="-1" defaultDynamicChart="true" newPopupTimePeriodOpened="false" defaultWhatToShow="0" defaultWhatToShowUpgraded="0" defaultWhatToShowNavLastDefaulting="52" defaultShowMidpoint="false" defaultShowBidAsk="false" defaultShowTrades="false" defaultShowImbalance="false" defaultShowIndicativeAuction="false" defaultShowFeeRate="false" defaultShowRebateRate="false" defaultHowToShow="0" defaultShowAsCandlestick="true" defaultShowVolume="true" defaultShowHistoricalVolatility="false" defaultShowImpliedVolatility="false" defaultShowOptionOpenInterest="false" defaultShowOptionVolume="false" defaultUseRTH="false" defaultForceUserTimeZone="false" defaultShowTotalPutCallValue="false" defaultShowPutCallRatio="false" defaultShowArbitrageMeter="false" defaultAutoTimePeriod="false" defaultShowDailyPnl="false" showChartTrader="false" showChartValueLabel="false" addIndexToQuotePanel="false" verticalStripeHighlight="false" allowZeroFeeValue="true">
 			<BarInflateMap varName="barInflateMap"/>
 			<BarZoneFieldsSettings varName="barZoneFieldSpecificSettings">
 				<SortedSet varName="visibleBarZoneFields" type="jhmds.settings.BarZoneFieldsSettings$BarZoneFieldsSet">
@@ -6563,11 +6563,11 @@
 			</TimePeriodDataArray>
 			<RecentlyUsedTimePeriods varName="recentTimePeriods">
 				<ArString varName="list">
-					<String>Max</String>
 					<String>1 week</String>
+					<String>5 years</String>
+					<String>Max</String>
 					<String>1 year</String>
 					<String>1 month</String>
-					<String>5 years</String>
 					<String>3 days</String>
 					<String>2 days</String>
 					<String>3 years</String>
@@ -6914,6 +6914,9 @@
 					</ExecTableColumnCollection>
 				</ExecTableColumnMgr>
 				<ArQuoteElements varName="quoteArray">
+					<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="INDU" conid="1935181" exchange="CME" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="SPY" conid="416702839" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="DIS" conid="6459" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -6921,9 +6924,6 @@
 					<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="STAN" conid="909271" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="SQ" conid="212671971" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="MS" conid="2841574" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="JPM" conid="1520593" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="HSBC" conid="4875668" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				</ArQuoteElements>
 			</ChartTraderConfig>
 		</ChartWindowConfig>
@@ -12240,6 +12240,7 @@
 				</ExecTableColumnCollection>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="DIS" conid="6459" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -12249,7 +12250,6 @@
 				<QuoteElement symbol="SQ" conid="212671971" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="MS" conid="2841574" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="JPM" conid="1520593" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="HSBC" conid="4875668" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 			</ArQuoteElements>
 			<ChartWindowConfig varName="chartConfig" showMenu="true" showToolbar="true" version="39" redirectToolTip="false" enableToolTip="true" showBarDetailsInBarZone="true" useGlobalIndicatorColors="false" showVerticalScrollbar="false" showDashboard="false" completeTrendline="false" showMarketClock="false" showChartKey="false" popUpLegend="true" showQuoteLine="false" alignQuoteLineTop="false" alignChartTraderTop="false" alignPriceAxisRight="true" alignTimeAxisTop="false" highlightLast="true" highlightBid="false" highlightNavBid="false" highlightNavLast="false" highlightHigh="false" highlightMyTrades="false" highlightCursorPrice="false" alignTimeAxisTopOld="false" addSecondaryPriceAxis="false" addSecondaryTimeAxis="false" showPriceVolumeHistogram="false" showHorizontalCrosshairLine="true" maxChartLineDifference="#" maxChartBarDifference="#" maxChartLineDifferenceOld="#" maxChartBarDifferenceOld="#" upDownArrowAdjustOrderPrice="false" needsToSelectUpDownArrowAction="true" showSubChartPopup="true" keyboardSelectionMode="false" showSelectedTime="true" showDividend="true" showCashDividendIndicator="true" disableOrderLabel="false" shareTrendline="true" shareTrendlineSameBarSize="false" showConstantBar="false" numberOfConstantBar="18" subPlotHeight="3" showNews="false" tradingDayGap="0" useBgColorForBorder="true" fibonacciLabelAt="1" alertLabelPosition="2" showLiveChartOrders="true" showFilledChartOrders="false" showCancelledChartOrders="false" showLiveOrders="true" showFilledOrders="false" showCancelledOrders="false" hideGridline="false" showMarginArea="false" showVwapOnBar="false" horizontalLabelPosition="1" showPositionIndicator="true" showCandleOutline="false" positionIndicatorGradient="50" unlockMessageDismissed="false" lockIntroduced="false" showHotButtons="false" showQuoteZone="false" showPriorClose="false" tickLabelSize="11" quoteZoneFontSize="11" retainWhatToShow="false" showChartTraderTooltip="true" showDayIntersection="false" createChartFromDefaults="true" thumbnailConfig="false" showCombo="false" createSubchartAsTab="false" logPriceAxis="false" adjustForDividends="false" showCrosshair="false" allowExcessBars="false" dynamicTrendlinePct="true" showFutureRolloverAnnotation="false" useTopDataVolUpdates="false" defaultTimePeriod="-1" defaultDynamicChart="true" newPopupTimePeriodOpened="false" defaultWhatToShow="0" defaultWhatToShowUpgraded="-1" defaultWhatToShowNavLastDefaulting="52" defaultShowMidpoint="false" defaultShowBidAsk="false" defaultShowTrades="false" defaultShowImbalance="false" defaultShowIndicativeAuction="false" defaultShowFeeRate="false" defaultShowRebateRate="false" defaultHowToShow="0" defaultShowAsCandlestick="true" defaultShowVolume="false" defaultShowHistoricalVolatility="false" defaultShowImpliedVolatility="false" defaultShowOptionOpenInterest="false" defaultShowOptionVolume="false" defaultUseRTH="true" defaultForceUserTimeZone="false" defaultShowTotalPutCallValue="true" defaultShowPutCallRatio="true" defaultShowArbitrageMeter="true" defaultAutoTimePeriod="false" defaultShowDailyPnl="false" showChartTrader="false" showChartValueLabel="false" addIndexToQuotePanel="false" verticalStripeHighlight="false" allowZeroFeeValue="false">
 				<BarInflateMap varName="barInflateMap"/>
@@ -16687,6 +16687,9 @@
 				<ExecTableColumnCollection varName="columns" isExportTradeReport="false" scaled="false" scaledForTrackingModelTrades="false" execWindowDuplicatedColumnsAddressed="false"/>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="INDU" conid="1935181" exchange="CME" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="SPY" conid="416702839" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="DIS" conid="6459" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -16694,9 +16697,6 @@
 				<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="STAN" conid="909271" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="SQ" conid="212671971" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="MS" conid="2841574" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="JPM" conid="1520593" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="HSBC" conid="4875668" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 			</ArQuoteElements>
 			<derivativesColumnDisplay>UNDERLYING_PRICES</derivativesColumnDisplay>
 			<ArQDChartConfig varName="chartConfigs">
@@ -17281,6 +17281,9 @@
 				<ExecTableColumnCollection varName="columns" isExportTradeReport="false" scaled="false" scaledForTrackingModelTrades="false" execWindowDuplicatedColumnsAddressed="false"/>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="INDU" conid="1935181" exchange="CME" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="CRWS" conid="30209769" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="BAC" conid="10098" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="AAPL" conid="265598" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -17288,16 +17291,14 @@
 				<QuoteElement symbol="TVIX" conid="393728477" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="VXX" conid="303019419" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="VIX" conid="13455763" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="RTY" conid="357283352" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="ER2" conid="13486931" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="YM" conid="371749728" exchange="ECBOT" expiryType="0" validWithNullEc="false"/>
 			</ArQuoteElements>
 			<PredefinedChainConfig varName="predefinedChain" assumeSmartStk="false" useQuickStockExchange="false" strikesRange="7" expiryRange="3" useExpiryRange="true" autoResizeOnLoad="false"/>
 			<colorStrikeStdStep>ONE_STD</colorStrikeStdStep>
-			<colorStrikeScheme>BLUE</colorStrikeScheme>
+			<colorStrikeScheme>FALL</colorStrikeScheme>
 			<OptionSeriesViewStyleSpecificConfig varName="tabViewConfig" strikeActionType="ALL" strikeValue="All" fontSize="11">
 				<ColumnWidthsMap varName="customWidthMap">
-					<Entry key="23" val="87"/>
+					<Entry key="23" val="70"/>
+					<Entry key="22" val="51"/>
 				</ColumnWidthsMap>
 				<ColumnWidthsMap varName="lastWidthMap">
 					<Entry key="6" val="40"/>
@@ -17305,12 +17306,12 @@
 					<Entry key="4" val="40"/>
 					<Entry key="3" val="40"/>
 					<Entry key="2" val="65"/>
-					<Entry key="23" val="87"/>
-					<Entry key="22" val="40"/>
+					<Entry key="23" val="70"/>
+					<Entry key="22" val="51"/>
 					<Entry key="7" val="40"/>
 				</ColumnWidthsMap>
 			</OptionSeriesViewStyleSpecificConfig>
-			<OptionSeriesViewStyleSpecificConfig varName="listViewConfig" fontSize="0">
+			<OptionSeriesViewStyleSpecificConfig varName="listViewConfig" strikeActionType="ALL" strikeValue="All" fontSize="11">
 				<ColumnWidthsMap varName="customWidthMap"/>
 				<ColumnWidthsMap varName="lastWidthMap"/>
 			</OptionSeriesViewStyleSpecificConfig>
@@ -17348,6 +17349,11 @@
 						<viewStyle>TAB_VIEW_SYTLE</viewStyle>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
+					<Integer>208813720</Integer>
+					<OptionSeriesFilterSettings conid="208813720" exchange="SMART" tradingClass="GOOG" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200424" mutiplier="100" tradingClass="GOOG" exchange="SMART" isRegularExpiry="false"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
 					<Integer>105720006</Integer>
 					<OptionSeriesFilterSettings conid="105720006" exchange="SMART" tradingClass="FET" useContractThreshold="true" showNonRegularExpiries="true">
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200515" mutiplier="100" tradingClass="FET" exchange="SMART" isRegularExpiry="true"/>
@@ -17357,7 +17363,6 @@
 					<Integer>416904</Integer>
 					<OptionSeriesFilterSettings conid="416904" exchange="SMART" tradingClass="SPX" useContractThreshold="true" showNonRegularExpiries="true">
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200514" mutiplier="100" tradingClass="SPX" exchange="SMART" isRegularExpiry="true"/>
-						<viewStyle>LIST_VIEW_STYLE</viewStyle>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
 					<Integer>295297495</Integer>
@@ -17429,7 +17434,7 @@
 					</OptionSeriesFilterSettings>
 					<Integer>265598</Integer>
 					<OptionSeriesFilterSettings conid="265598" exchange="SMART" tradingClass="AAPL" useContractThreshold="true" showNonRegularExpiries="true">
-						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200424" mutiplier="100" tradingClass="AAPL" exchange="SMART" isRegularExpiry="false"/>
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="AAPL" exchange="SMART" isRegularExpiry="false"/>
 						<viewStyle>TAB_VIEW_SYTLE</viewStyle>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
@@ -17451,7 +17456,6 @@
 					</OptionSeriesFilterSettings>
 				</MapConidsToFilterSettings>
 				<LinkedListOfConids varName="listOfConids">
-					<Integer>416904</Integer>
 					<Integer>295297495</Integer>
 					<Integer>305095839</Integer>
 					<Integer>105720006</Integer>
@@ -17473,6 +17477,8 @@
 					<Integer>10098</Integer>
 					<Integer>30209769</Integer>
 					<Integer>756733</Integer>
+					<Integer>416904</Integer>
+					<Integer>208813720</Integer>
 					<Integer>265598</Integer>
 				</LinkedListOfConids>
 			</OptionSeriesFilterSettingsCache>
@@ -19379,7 +19385,7 @@
 	<WorkspaceCollection varName="workspaceCollection" currentWorkspaceKey="5817182751649278545">
 		<ListOfWorkspaces varName="workspaces">
 			<Workspace name="Mosaic" workspaceKey="5817182751649278545">
-				<WindowsSettings varName="windowsSettings" windowsZOrder="Tabbed Window|7,Simple Content Window|2,Quote Matrix Window|6,Option Chain|1,Option Chain|0,Tabbed Window|2,Simple Content Window|0,Simple Content Window|1,Quote Details Window|3,MainFrame|4,Quote Matrix Window|1,Container Desktop|1,JTS_FILE_CHOOSER|3" useIbisBAnchor="true" mainWinTabsEnabled="true">
+				<WindowsSettings varName="windowsSettings" windowsZOrder="Tabbed Window|7,Simple Content Window|2,Quote Matrix Window|6,Option Chain|1,Simple Content Window|1,Quote Details Window|3,Quote Matrix Window|1,Simple Content Window|0,Tabbed Window|2,Option Chain|0,MainFrame|4,Container Desktop|1,JTS_FILE_CHOOSER|9" useIbisBAnchor="true" mainWinTabsEnabled="true">
 					<WindowConfigurationMap varName="settingsMap">
 						<String>Search Results</String>
 						<WindowConfiguration namePrimary="Search Results" width="500" height="720" x="0" y="23" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
@@ -19394,7 +19400,7 @@
 								<String>LOCKED_MODE</String>
 								<CheckBoxConfiguration selected="true"/>
 								<String>MainFrame|4</String>
-								<InternalFrameConfiguration x="895" y="810" width="889" height="201" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="612" y="0" width="469" height="242" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>DESK_SELECTED_TAB</String>
 								<TabPaneConfiguration selectedTab="0" activeRowIndexFrom="0" activeRowIndexTo="0"/>
 								<String>Container Window</String>
@@ -19406,28 +19412,28 @@
 								<String>OffsetIbisX</String>
 								<AdjustIbisConfiguration adjust="true" adjustment="0"/>
 								<String>Tabbed Window|2</String>
-								<InternalFrameConfiguration x="702" y="0" width="1082" height="242" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="0" y="0" width="612" height="242" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>TEMPLATES_MAP</String>
 								<DesktopTabTemplatesConfiguration>
 									<MapOfStrings varName="templatesMap"/>
 								</DesktopTabTemplatesConfiguration>
 								<String>Simple Content Window|1</String>
-								<InternalFrameConfiguration x="702" y="520" width="1082" height="290" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
-								<String>Simple Content Window|0</String>
-								<InternalFrameConfiguration x="702" y="242" width="1082" height="278" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="0" y="644" width="870" height="366" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>Quote Matrix Window|1</String>
-								<InternalFrameConfiguration x="0" y="434" width="702" height="577" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="1081" y="484" width="702" height="526" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<String>Simple Content Window|0</String>
+								<InternalFrameConfiguration x="0" y="242" width="1081" height="402" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>Pages</String>
 								<TabPaneConfiguration selectedTab="-1" activeRowIndexFrom="0" activeRowIndexTo="0"/>
 								<String>Option Chain|0</String>
-								<InternalFrameConfiguration x="0" y="0" width="702" height="433" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="1081" y="0" width="702" height="484" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>PREMADE_AWARE</String>
 								<CheckBoxConfiguration selected="true"/>
 								<String>Quote Details Window|3</String>
-								<InternalFrameConfiguration x="702" y="810" width="193" height="201" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
+								<InternalFrameConfiguration x="870" y="644" width="211" height="366" maxWidth="0" maxHeight="0" maxY="0" maxX="0"/>
 								<String>CONTAINER_TABS_CONFIGURATION</String>
 								<ContainerTabsConfiguration>
-									<DesktopConfiguration varName="primaryDesktop" title="Overview" desktopWidth="1784" desktopHeight="1011" menubarType="3" toolbarType="3" desktopType="0" zOrder="Option Chain|0,Tabbed Window|2,Simple Content Window|0,Simple Content Window|1,Quote Details Window|3,MainFrame|4,Quote Matrix Window|1">
+									<DesktopConfiguration varName="primaryDesktop" title="Overview" desktopWidth="1784" desktopHeight="1011" menubarType="3" toolbarType="3" desktopType="0" zOrder="Simple Content Window|1,Quote Details Window|3,Quote Matrix Window|1,Simple Content Window|0,Tabbed Window|2,Option Chain|0,MainFrame|4">
 										<WindowGroup varName="group" id="4"/>
 									</DesktopConfiguration>
 									<DesktopConfigurationList varName="desktops"/>
@@ -19687,7 +19693,7 @@
 							<WindowGroup varName="group" id="0"/>
 						</WindowConfiguration>
 						<String>Quote Matrix Window|1</String>
-						<WindowConfiguration namePrimary="Quote Matrix Window" nameSecondary="1" width="702" height="577" x="4" y="520" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Quote Matrix Window" nameSecondary="1" width="702" height="526" x="1085" y="570" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<ActivityMonitorContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
@@ -19737,9 +19743,6 @@
 														<TickerEntry name="Watchlist-0" conid="268376" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-0" conid="292491487" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-0" conid="6459" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 													</ArTickerEntry>
 												</MetaColumnContent>
 												<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
@@ -19772,9 +19775,6 @@
 														<TickerEntry name="Watchlist-1" conid="15977601" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-1" conid="15399629" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-1" conid="30209769" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 													</ArTickerEntry>
 												</MetaColumnContent>
 												<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
@@ -19806,9 +19806,6 @@
 														<TickerEntry name="Watchlist-2" conid="2841574" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-2" conid="212671971" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="Watchlist-2" conid="909271" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 													</ArTickerEntry>
 												</MetaColumnContent>
@@ -19917,15 +19914,17 @@
 							<WindowGroup varName="group" id="4"/>
 						</WindowConfiguration>
 						<String>Simple Content Window|1</String>
-						<WindowConfiguration namePrimary="Simple Content Window" nameSecondary="1" width="1082" height="290" x="706" y="606" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Simple Content Window" nameSecondary="1" width="870" height="366" x="4" y="730" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<ChartWindowContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<ChartWindowSetting varName="chartWindowSetting" version="2" tileStyle="0" showToolbar="true" tabbed="false" selectedSubchart="0">
 										<hotButtonStatus>TOOLBAR</hotButtonStatus>
 										<ListOfTwsChartSetting varName="listOfSubCharts">
-											<TwsChartSettings title="AAPL@SMART" timePeriod="8" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="201" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="43993771" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="true" showDividend="true" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="true">
+											<TwsChartSettings title="AAPL@SMART" timePeriod="8" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="201" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="43993771" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="true" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="true">
 												<timePeriodName></timePeriodName>
+												<JtsCalendarWrapper varName="dateAndTimeFrom"/>
+												<JtsCalendarWrapper varName="dateAndTimeTo"/>
 												<SharedAnnotationMap varName="annotationsOfWindow"/>
 												<SharedMarkerMap varName="markersOfWindow"/>
 												<SharedTextAnnotationMap varName="textAnnotationsOfWindow">
@@ -19950,6 +19949,8 @@
 													<String>18342287</String>
 													<TwsListOfTextAnnotations/>
 													<String>1935181</String>
+													<TwsListOfTextAnnotations/>
+													<String>208813720</String>
 													<TwsListOfTextAnnotations/>
 													<String>212671971</String>
 													<TwsListOfTextAnnotations/>
@@ -20072,7 +20073,7 @@
 														</CompositeChartContractData>
 														<CustomSpreadChartContractData varName="customSpreadData" currentMinTickSize="NaN">
 															<ListOfChartContractData varName="components"/>
-															<CustomSpread varName="spread" id="1455">
+															<CustomSpread varName="spread" id="2137">
 																<Tokens varName="tokens"/>
 															</CustomSpread>
 														</CustomSpreadChartContractData>
@@ -20112,15 +20113,17 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Simple Content Window|0</String>
-						<WindowConfiguration namePrimary="Simple Content Window" nameSecondary="0" width="1082" height="278" x="706" y="328" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Simple Content Window" nameSecondary="0" width="1081" height="402" x="4" y="328" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<ChartWindowContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<ChartWindowSetting varName="chartWindowSetting" version="2" tileStyle="0" showToolbar="true" tabbed="false" selectedSubchart="0">
 										<hotButtonStatus>TOOLBAR</hotButtonStatus>
 										<ListOfTwsChartSetting varName="listOfSubCharts">
-											<TwsChartSettings title="AAPL@SMART" timePeriod="13" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="396389137" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="true" showDividend="true" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
+											<TwsChartSettings title="AAPL@SMART" timePeriod="12" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="396389137" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="true" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
 												<timePeriodName></timePeriodName>
+												<JtsCalendarWrapper varName="dateAndTimeFrom"/>
+												<JtsCalendarWrapper varName="dateAndTimeTo"/>
 												<SharedAnnotationMap varName="annotationsOfWindow"/>
 												<SharedMarkerMap varName="markersOfWindow"/>
 												<SharedTextAnnotationMap varName="textAnnotationsOfWindow">
@@ -20145,6 +20148,8 @@
 													<String>18342287</String>
 													<TwsListOfTextAnnotations/>
 													<String>1935181</String>
+													<TwsListOfTextAnnotations/>
+													<String>208813720</String>
 													<TwsListOfTextAnnotations/>
 													<String>212671971</String>
 													<TwsListOfTextAnnotations/>
@@ -20267,7 +20272,7 @@
 														</CompositeChartContractData>
 														<CustomSpreadChartContractData varName="customSpreadData" currentMinTickSize="NaN">
 															<ListOfChartContractData varName="components"/>
-															<CustomSpread varName="spread" id="1457">
+															<CustomSpread varName="spread" id="2139">
 																<Tokens varName="tokens"/>
 															</CustomSpread>
 														</CustomSpreadChartContractData>
@@ -20460,7 +20465,7 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Tabbed Window|2</String>
-						<WindowConfiguration namePrimary="Tabbed Window" nameSecondary="2" width="1082" height="242" x="706" y="86" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Tabbed Window" nameSecondary="2" width="612" height="242" x="4" y="86" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<FundamentalsContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration">
@@ -20558,16 +20563,16 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>MainFrame|4</String>
-						<WindowConfiguration namePrimary="MainFrame" nameSecondary="4" width="889" height="201" x="899" y="896" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="MainFrame" nameSecondary="4" width="469" height="242" x="616" y="86" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
-								<NewswirePageContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" modeType="0" broadTape="false" researchKey="-1" sessionId="#" nameToDisplay="News: SPY" portfolio="false" portfolioPlus="false" portfolioNonManaged="false" monitored="false" monitoredPlus="false" custom="false" customPlus="false">
+								<NewswirePageContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" modeType="0" broadTape="false" researchKey="-1" sessionId="#" nameToDisplay="News: AAPL" portfolio="false" portfolioPlus="false" portfolioNonManaged="false" monitored="false" monitoredPlus="false" custom="false" customPlus="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<mode>SINGLE</mode>
 									<ArString varName="sourceCapabilities">
 										<String>NEWS</String>
 									</ArString>
 									<ArConidExchangePair varName="pairs"/>
-									<conid-exchange type="jfix.ConidExchangePair" varName="contract" conid="756733" exchange="SMART" includePartialBonds="false" expiryType="-1" isContinuousFutures="false"/>
+									<conid-exchange type="jfix.ConidExchangePair" varName="contract" conid="265598" exchange="SMART" includePartialBonds="false" expiryType="-1" isContinuousFutures="false"/>
 									<WindowGroup varName="windowGroup" id="4"/>
 									<ArString varName="filters">
 										<String>DJNL</String>
@@ -20582,6 +20587,9 @@
 									</ArString>
 									<MapStringToConids varName="selectedNewsTopics"/>
 									<ArQuoteElements varName="quoteArray">
+										<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+										<QuoteElement symbol="INDU" conid="1935181" exchange="CME" expiryType="0" validWithNullEc="false"/>
+										<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 										<QuoteElement symbol="SPY" conid="416702839" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 										<QuoteElement symbol="DIS" conid="6459" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 										<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -20589,24 +20597,21 @@
 										<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 										<QuoteElement symbol="STAN" conid="909271" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 										<QuoteElement symbol="SQ" conid="212671971" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-										<QuoteElement symbol="MS" conid="2841574" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-										<QuoteElement symbol="JPM" conid="1520593" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-										<QuoteElement symbol="HSBC" conid="4875668" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 									</ArQuoteElements>
 								</NewswirePageContent>
 							</ListOfContents>
 							<ExtendedConfigurationMap varName="extendedConfiguration">
 								<String>BladeTabs2</String>
-								<BladeTabsConfiguration activeRowIndexFrom="0" activeRowIndexTo="2" selectedTabIndex="1" m_type="3">
+								<BladeTabsConfiguration activeRowIndexFrom="0" activeRowIndexTo="0" selectedTabIndex="0" m_type="3">
 									<ListOfContents varName="tabContents">
-										<NewswirePageContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" modeType="0" broadTape="false" researchKey="-1" sessionId="#" nameToDisplay="News: SPY" portfolio="false" portfolioPlus="false" portfolioNonManaged="false" monitored="false" monitoredPlus="false" custom="false" customPlus="false">
+										<NewswirePageContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" modeType="0" broadTape="false" researchKey="-1" sessionId="#" nameToDisplay="News: AAPL" portfolio="false" portfolioPlus="false" portfolioNonManaged="false" monitored="false" monitoredPlus="false" custom="false" customPlus="false">
 											<ExtendedConfigurationMap varName="extendedConfiguration"/>
 											<mode>SINGLE</mode>
 											<ArString varName="sourceCapabilities">
 												<String>NEWS</String>
 											</ArString>
 											<ArConidExchangePair varName="pairs"/>
-											<conid-exchange type="jfix.ConidExchangePair" varName="contract" conid="756733" exchange="SMART" includePartialBonds="false" expiryType="-1" isContinuousFutures="false"/>
+											<conid-exchange type="jfix.ConidExchangePair" varName="contract" conid="265598" exchange="SMART" includePartialBonds="false" expiryType="-1" isContinuousFutures="false"/>
 											<WindowGroup varName="windowGroup" id="4"/>
 											<ArString varName="filters">
 												<String>DJNL</String>
@@ -20621,6 +20626,9 @@
 											</ArString>
 											<MapStringToConids varName="selectedNewsTopics"/>
 											<ArQuoteElements varName="quoteArray">
+												<QuoteElement symbol="GOOG" conid="208813720" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+												<QuoteElement symbol="INDU" conid="1935181" exchange="CME" expiryType="0" validWithNullEc="false"/>
+												<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 												<QuoteElement symbol="SPY" conid="416702839" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 												<QuoteElement symbol="DIS" conid="6459" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 												<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -20628,9 +20636,6 @@
 												<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 												<QuoteElement symbol="STAN" conid="909271" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 												<QuoteElement symbol="SQ" conid="212671971" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-												<QuoteElement symbol="MS" conid="2841574" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-												<QuoteElement symbol="JPM" conid="1520593" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-												<QuoteElement symbol="HSBC" conid="4875668" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 											</ArQuoteElements>
 										</NewswirePageContent>
 										<NewswirePageContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" modeType="0" broadTape="false" researchKey="-1" sessionId="#" nameToDisplay="Newswire" portfolio="true" portfolioPlus="false" portfolioNonManaged="false" monitored="true" monitoredPlus="false" custom="false" customPlus="false">
@@ -21182,7 +21187,7 @@
 									</ListOfContents>
 								</BladeTabsConfiguration>
 								<String>Pages</String>
-								<TabPaneConfiguration selectedTab="1" activeRowIndexFrom="0" activeRowIndexTo="0"/>
+								<TabPaneConfiguration selectedTab="0" activeRowIndexFrom="0" activeRowIndexTo="0"/>
 								<String>CONTAINER_MARKER</String>
 								<JtsContainerWindowConfiguration title="m_1"/>
 							</ExtendedConfigurationMap>
@@ -21339,7 +21344,7 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Option Chain|0</String>
-						<WindowConfiguration namePrimary="Option Chain" nameSecondary="0" width="702" height="433" x="4" y="86" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Option Chain" nameSecondary="0" width="702" height="484" x="1085" y="86" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<OptionChainContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" showPricesInVolatility="false" tradingToolId="0" showAllAccounts="false" nullContractOkay="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
@@ -21347,7 +21352,7 @@
 										<conid-exchange type="jfix.ConidExchangePair" conid="265598" exchange="SMART" includePartialBonds="false" expiryType="0" isContinuousFutures="false"/>
 									</UnderlyingPairs>
 									<OptionSeriesFilterSettings varName="optSeriesFilterSettings" conid="265598" exchange="SMART" tradingClass="AAPL" useContractThreshold="true" showNonRegularExpiries="true">
-										<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200424" mutiplier="100" tradingClass="AAPL" exchange="SMART" isRegularExpiry="false"/>
+										<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="AAPL" exchange="SMART" isRegularExpiry="false"/>
 										<viewStyle>TAB_VIEW_SYTLE</viewStyle>
 										<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 									</OptionSeriesFilterSettings>
@@ -21377,7 +21382,7 @@
 							<WindowGroup varName="group" id="4"/>
 						</WindowConfiguration>
 						<String>Configuration</String>
-						<WindowConfiguration namePrimary="Configuration" width="1112" height="794" x="340" y="175" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Configuration" width="1112" height="794" x="574" y="108" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<DefaultContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration">
@@ -22342,11 +22347,11 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Newsread Window|0</String>
-						<WindowConfiguration namePrimary="Newsread Window" nameSecondary="0" width="1328" height="793" x="0" y="23" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Newsread Window" nameSecondary="0" width="613" height="600" x="0" y="23" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents"/>
 							<ExtendedConfigurationMap varName="extendedConfiguration">
 								<String>NewsContent</String>
-								<NewsreadContentHolder title="France-La restriction de l&amp;#39;activité d&amp;#39;Amazon confirmée en justice" eventId="REUTERS$0cc6025e" mgrCode="paid news" hot="false" allert="true" research="false" temprorary="false" isUtf8="true" publishDateTime="1587732857000" sentiment="#" confidence="#" score="-0.96" source="REUTERS" canHaveRelatedTopics="true"/>
+								<NewsreadContentHolder title="GRAPHIC-Tech &amp;amp; healthcare tighten grip on world stock markets" eventId="REUTERS$0cc620df" mgrCode="paid news" hot="true" allert="true" research="false" temprorary="false" isUtf8="false" publishDateTime="1587736883000" sentiment="#" confidence="#" score="1.00" source="REUTERS" canHaveRelatedTopics="true"/>
 							</ExtendedConfigurationMap>
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
@@ -22408,7 +22413,7 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Quote Details Window|3</String>
-						<WindowConfiguration namePrimary="Quote Details Window" nameSecondary="3" width="193" height="201" x="706" y="896" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Quote Details Window" nameSecondary="3" width="211" height="366" x="874" y="730" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<QuoteDetailsContent version="0" watermarkWhenEmpty="true" tabIndex="-1" restoredFromLayoutLibrary="false" hasReadOnlyLayout="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
@@ -22664,21 +22669,21 @@
 	<ArFeatureUsage varName="arLastUsedFeatures">
 		<FeatureUsage key="Basket Trader" lastUsedTime="1587485709777"/>
 		<FeatureUsage key="Greek Portfolio" lastUsedTime="1587485709777"/>
-		<FeatureUsage key="IntegratedTicket" lastUsedTime="1587734730617"/>
-		<FeatureUsage key="RFQ" lastUsedTime="1587734730617"/>
+		<FeatureUsage key="IntegratedTicket" lastUsedTime="1587744111629"/>
+		<FeatureUsage key="RFQ" lastUsedTime="1587744111629"/>
 		<FeatureUsage key="AUTOHIDE_IMPORT_EXPORT" lastUsedTime="1587485709767"/>
-		<FeatureUsage key="Arbitrage Meter" lastUsedTime="1587567203994"/>
+		<FeatureUsage key="Arbitrage Meter" lastUsedTime="1587744115505"/>
 		<FeatureUsage key="Alarms" lastUsedTime="1587485709777"/>
-		<FeatureUsage key="ArcaAuction" lastUsedTime="1587742386402"/>
+		<FeatureUsage key="ArcaAuction" lastUsedTime="1587744861612"/>
 		<FeatureUsage key="Market Scanner" lastUsedTime="1587731745894"/>
-		<FeatureUsage key="Average cost column" lastUsedTime="1587742386403"/>
-		<FeatureUsage key="Profit and Loss column" lastUsedTime="1587742386403"/>
+		<FeatureUsage key="Average cost column" lastUsedTime="1587744861612"/>
+		<FeatureUsage key="Profit and Loss column" lastUsedTime="1587744861612"/>
 		<FeatureUsage key="Market Depth Open Book Level II" lastUsedTime="1587540863634"/>
-		<FeatureUsage key="Greek any column" lastUsedTime="1587742386402"/>
+		<FeatureUsage key="Greek any column" lastUsedTime="1587744861612"/>
 		<FeatureUsage key="Volatility Trading" lastUsedTime="1587492574627"/>
-		<FeatureUsage key="Position Value column" lastUsedTime="1587742386402"/>
-		<FeatureUsage key="Fundamentals" lastUsedTime="1587742386403"/>
-		<FeatureUsage key="P L columns on account window" lastUsedTime="1587742386403"/>
+		<FeatureUsage key="Position Value column" lastUsedTime="1587744861612"/>
+		<FeatureUsage key="Fundamentals" lastUsedTime="1587744861612"/>
+		<FeatureUsage key="P L columns on account window" lastUsedTime="1587744861612"/>
 		<FeatureUsage key="AUTOHIDE_DELETE_ROW" lastUsedTime="1587741972876"/>
 		<FeatureUsage key="Real time Charts Show" lastUsedTime="1587732720394"/>
 		<FeatureUsage key="AUTOHIDE_SHOW_NEWS_INTERNALLY" lastUsedTime="1587733753569"/>
@@ -22698,7 +22703,7 @@
 		<FeatureUsage key="AUTOHIDE_HEADER_FORMAT_COLUMN" lastUsedTime="1587533201135"/>
 		<FeatureUsage key="AUTOHIDE_HEADER_HIGH_LOW" lastUsedTime="1587533106820"/>
 		<FeatureUsage key="AUTOHIDE_COMPANY_FUNDAMENTALS" lastUsedTime="1587568204130"/>
-		<FeatureUsage key="Unrealized pnl column" lastUsedTime="1587742386402"/>
+		<FeatureUsage key="Unrealized pnl column" lastUsedTime="1587744861612"/>
 		<FeatureUsage key="Bid Exchange column" lastUsedTime="1587655051824"/>
 		<FeatureUsage key="Ask Exchange column" lastUsedTime="1587655051824"/>
 		<FeatureUsage key="Last Exchange column" lastUsedTime="1587655051824"/>
