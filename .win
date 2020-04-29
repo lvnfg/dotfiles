@@ -1,0 +1,3 @@
+mklink "%APPDATA%\Code\User\settings.json" "C:\Users\van\Desktop\dot\code\settings.json"
+mklink "%APPDATA%\Code\User\keybindings.json" "C:\Users\van\Desktop\dot\code\keybindings.json"
+mklink "%APPDATA%\Code\User\snippets" "C:\Users\van\Desktop\dot\code\snippets"
