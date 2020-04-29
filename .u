@@ -8,24 +8,39 @@ sudo update-alternatives --config editor
 
 # setup git
 git config --global credential.helper store
-git pull # run this after config to save credential
-git config --global user.name "van@[machine name]"
-git config --global user.email van@fagaceae.com
+git config --global user.name "van@vmDev"
+git config --global user.email "-"
+git clone https://github.com/lvnfg/dot
 
 # apply dotfiles settings
-ln -s ~/dev/.vimrc ~/.vimrc
-ln -s ~/dev/.bashrc ~/.bashrc
+ln -s ~/dot/.vimrc ~/.vimrc
+rm ~/.bashrc
+ln -s ~/dot/.bashrc ~/.bashrc
 
-# install odbc driver
-sudo su
-curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-#Ubuntu 19.10 package
-curl https://packages.microsoft.com/config/ubuntu/19.10/prod.list > /etc/apt/sources.list.d/mssql-release.list;
-exit
-sudo apt-get update
-sudo ACCEPT_EULA=Y apt-get install msodbcsql17
+# install xrdp
+sudo apt install xrdp
+sudo systemctl enable xrdp
 
-# setup python
-sudo apt install python3-pip
-sudo apt install unixodbc-dev
-pip3 install --user pyodbc
+# install xfce
+sudo apt install --no-install-recommends xfce4
+echo "xfce4-session" > ~/.xsession
+D=/usr/share/xfce4:/usr/share/xubuntu:/usr/local/share
+D=${D}:/usr/share:/var/lib/snapd/desktop:/usr/share
+cat <<EOF > ~/.xsessionrc
+export XDG_SESSION_DESKTOP=xubuntu
+export XDG_DATA_DIRS=${D}
+export XDG_CONFIG_DIRS=/etc/xdg/xdg-xubuntu:/etc/xdg:/etc/xdg
+EOF
+sudo reboot
+
+# install vscode 
+# TODO
+# point vscode settings to do
+# Remove VS Code setting files and snippets
+rm ~/Library/Application\ Support/Code/User/settings.json
+rm ~/Library/Application\ Support/Code/User/keybindings.json
+rm -r ~/Library/Application\ Support/Code/User/snippets
+# Create symlinks to VS Code setting files in repos
+ln -s ~/Documents/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/Documents/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/Documents/dot/code/snippets ~/Library/Application\ Support/Code/User/snippets
