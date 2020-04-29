@@ -3,6 +3,7 @@
     {
         "terminal.foreground" : "#ffffff",
          "terminal.background" : "#000000"
+         ,"editor.background": "#000000"
     },
     "telemetry.enableTelemetry": false,
     "workbench.iconTheme": "vscode-icons",
@@ -34,6 +35,6 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Dark+ (contrast)"
 }
