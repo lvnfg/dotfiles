@@ -33,7 +33,7 @@
     "extensions.ignoreRecommendations": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
-    "workbench.statusBar.visible": true,
+    "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Dark+ (contrast)"
 }
