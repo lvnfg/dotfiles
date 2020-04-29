@@ -1,3 +1,9 @@
+"remap arrow key
+noremap j <Left>
+noremap k <Down>
+noremap i <Up>
+noremap h a
+
 "disable vi compatibility and enable advanced vim features
 set nocompatible 
 
