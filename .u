@@ -37,10 +37,11 @@ sudo reboot
 # TODO
 # point vscode settings to do
 # Remove VS Code setting files and snippets
-rm ~/Library/Application\ Support/Code/User/settings.json
-rm ~/Library/Application\ Support/Code/User/keybindings.json
-rm -r ~/Library/Application\ Support/Code/User/snippets
+rm ~/.config/Code/User/settings.json
+rm ~/.config/Code/User/keybindings.json
+rm -r ~/.config/Code/User/snippets
 # Create symlinks to VS Code setting files in repos
-ln -s ~/Documents/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
-ln -s ~/Documents/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-ln -s ~/Documents/dot/code/snippets ~/Library/Application\ Support/Code/User/snippets
+ln -s ~/dot/code/settings.json ~/.config/Code/User/settings.json
+ln -s ~/dot/code/keybindings.json ~/.config/Code/User/keybindings.json
+ln -s ~/dot/code/snippets ~/.config/Code/User/snippets
+# install vscode theme
