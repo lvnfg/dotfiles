@@ -1200,15 +1200,16 @@
 				<callMirrorsPutOption>ALL_COLUMNS_EXCEPT_BIDASK</callMirrorsPutOption>
 				<LayoutUpgrade varName="layoutUpgrade" introInjectedQuantityColumn="false" introManualOrderTimeColumn="false" introChameleonManualOrderTimeColumn="false" introManualRouteTimeColumn="false" introChameleonManualRouteTimeColumn="false" introBrokerNoteColumn="false" introTotalQuantityOnCreateTicket="false" introAutoAdjustLmtPriceColumn="false" classicPortfolioLayoutsNeedSynchronizing="false" classicPortfolioLayoutRebuilt="false"/>
 			</Layout>
-			<Layout useCombinedRows="false" fgTicker="-1" bgTicker="-16777216" fgOrder="-256" bgOrder="-16777216" fgTotalRow="-1" bgTotalRow="-13035473" fgUptick="-16715776" fgDowntick="-29389" dotUptick="-12093108" dotDowntick="-3336168" fgNoAutoEx="-16897" fgImpliedtick="-65281" fgPreOpen="-3872515" bgAuction="-10079488" fgImproved="-6684775" bgImproved="-10092289" bgAlarm="-14522302" bgDirty="-11131135" bgDirtySel="-11131135" colGrid="-16645630" bgConditional="-14135236" fgHeader="-1" bgHeader="-8355195" fgHeaderMouseOver="-16777216" bgHeaderMouseOver="-1874" frozenColumnId="-1" frozenColumnId2="-1" name="Option Series" deleteLayoutAfterLastContentClosed="false" level="2" version="27" removeAutoColumnResize="false" displayBySymbol="false" showTotalRow="false" displayAcctSelector="true" askMirrorsBid="false" callMirrorsPut="false" systemLayout="false" scaled="true" layoutOrientation="0" useSystemColors="false" manuallyResized="false" useCustomHeaderColors="false">
+			<Layout useCombinedRows="false" fgTicker="-1" bgTicker="-16777216" fgOrder="-256" bgOrder="-16777216" fgTotalRow="-1" bgTotalRow="-13035473" fgUptick="-16715776" fgDowntick="-29389" dotUptick="-12093108" dotDowntick="-3336168" fgNoAutoEx="-16897" fgImpliedtick="-65281" fgPreOpen="-3872515" bgAuction="-10079488" fgImproved="-6684775" bgImproved="-10092289" bgAlarm="-14522302" bgDirty="-11131135" bgDirtySel="-11131135" colGrid="-16645630" bgConditional="-14135236" fgHeader="-1" bgHeader="-8355195" fgHeaderMouseOver="-16777216" bgHeaderMouseOver="-1874" frozenColumnId="-1" frozenColumnId2="-1" name="Option Series" deleteLayoutAfterLastContentClosed="false" level="2" version="27" removeAutoColumnResize="false" displayBySymbol="false" showTotalRow="false" displayAcctSelector="true" askMirrorsBid="false" callMirrorsPut="true" systemLayout="false" scaled="true" layoutOrientation="0" useSystemColors="false" manuallyResized="false" useCustomHeaderColors="false">
 				<TickerColumns varName="allTickerCols">
 					<DescriptionColumn colId="2" width="113" alignment="2" fg="-16777216" bg="-1052974" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
-					<OpenInterestColumn colId="23" width="104" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
-					<VolumeColumn colId="22" width="104" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
-					<BidSizeColumn colId="3" width="104" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<BidPriceColumn colId="4" width="105" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<AskPriceColumn colId="5" width="105" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
-					<AskSizeColumn colId="6" width="103" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<LastPriceColumn colId="7" width="90" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<BidPriceColumn colId="4" width="90" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<AskPriceColumn colId="5" width="90" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<BidSizeColumn colId="3" width="89" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<AskSizeColumn colId="6" width="89" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false" prohibitDynamicColors="false"/>
+					<VolumeColumn colId="22" width="89" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
+					<OpenInterestColumn colId="23" width="88" alignment="4" uniqueId="0" maxSymbolWidth="0" overrideBg="false" overrideFg="false"/>
 				</TickerColumns>
 				<OrderColumns varName="allOrderCols"/>
 				<OrderColumns varName="allBlotterTicketCols"/>
@@ -6681,16 +6682,16 @@
 					</ExecTableColumnCollection>
 				</ExecTableColumnMgr>
 				<ArQuoteElements varName="quoteArray">
+					<QuoteElement symbol="VXX" conid="303019419" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="RTY" conid="357283352" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="IWM" conid="9579970" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="YM" conid="371749728" exchange="ECBOT" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="DIA" conid="73128548" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="NQ" conid="357283192" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+					<QuoteElement symbol="QQQ" conid="320227571" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
 					<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="GME" conid="36285627" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="AAPL" conid="265598" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="ES" conid="357283364" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="DAX" conid="384085713" exchange="DTB" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="T" conid="37018770" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-					<QuoteElement symbol="IBKR" conid="43645865" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				</ArQuoteElements>
 			</ChartTraderConfig>
 		</ChartWindowConfig>
@@ -12535,6 +12536,10 @@
 				</ExecTableColumnCollection>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="VXX" conid="303019419" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="IWM" conid="9579970" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="DIA" conid="73128548" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="QQQ" conid="320227571" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="GME" conid="36285627" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
@@ -17381,15 +17386,16 @@
 				<ExecTableColumnCollection varName="columns" isExportTradeReport="false" scaled="false" scaledForTrackingModelTrades="false" execWindowDuplicatedColumnsAddressed="false"/>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="VXX" conid="303019419" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="RTY" conid="357283352" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="IWM" conid="9579970" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="YM" conid="371749728" exchange="ECBOT" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="DIA" conid="73128548" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="NQ" conid="357283192" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="QQQ" conid="320227571" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="ES" conid="357283364" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="GME" conid="36285627" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="AAPL" conid="265598" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="T" conid="37018770" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="IBKR" conid="43645865" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 			</ArQuoteElements>
 			<derivativesColumnDisplay>UNDERLYING_PRICES</derivativesColumnDisplay>
 		</QuoteDetailsConfig>
@@ -18035,15 +18041,16 @@
 				<ExecTableColumnCollection varName="columns" isExportTradeReport="false" scaled="false" scaledForTrackingModelTrades="false" execWindowDuplicatedColumnsAddressed="false"/>
 			</ExecTableColumnMgr>
 			<ArQuoteElements varName="quoteArray">
+				<QuoteElement symbol="VXX" conid="303019419" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="RTY" conid="357283352" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="IWM" conid="9579970" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="YM" conid="371749728" exchange="ECBOT" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="DIA" conid="73128548" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="NQ" conid="357283192" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
+				<QuoteElement symbol="QQQ" conid="320227571" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="ES" conid="357283364" exchange="GLOBEX" expiryType="0" validWithNullEc="false"/>
 				<QuoteElement symbol="SPX" conid="416904" exchange="CBOE" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="GME" conid="36285627" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="DECK" conid="268376" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="AAPL" conid="265598" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="TPR" conid="292491487" exchange="SMART" expiryType="0" validWithNullEc="false"/>
-				<QuoteElement symbol="UKX" conid="38999754" exchange="ISE" expiryType="0" validWithNullEc="false"/>
 			</ArQuoteElements>
 			<PredefinedChainConfig varName="predefinedChain" assumeSmartStk="false" useQuickStockExchange="false" strikesRange="7" expiryRange="3" useExpiryRange="true" autoResizeOnLoad="false"/>
 			<colorStrikeStdStep>ONE_STD</colorStrikeStdStep>
@@ -18052,12 +18059,13 @@
 				<ColumnWidthsMap varName="customWidthMap"/>
 				<ColumnWidthsMap varName="lastWidthMap">
 					<Entry key="6" val="69"/>
-					<Entry key="5" val="70"/>
-					<Entry key="4" val="70"/>
+					<Entry key="5" val="69"/>
+					<Entry key="4" val="69"/>
 					<Entry key="3" val="69"/>
 					<Entry key="2" val="112"/>
 					<Entry key="23" val="69"/>
 					<Entry key="22" val="69"/>
+					<Entry key="7" val="69"/>
 				</ColumnWidthsMap>
 			</OptionSeriesViewStyleSpecificConfig>
 			<OptionSeriesViewStyleSpecificConfig varName="listViewConfig" fontSize="0">
@@ -18068,14 +18076,44 @@
 			<optionChainGridSettings></optionChainGridSettings>
 			<OptionSeriesFilterSettingsCache varName="filterSettings" limit="100">
 				<MapConidsToFilterSettings varName="mapConidsToFilterSettings">
+					<Integer>320227571</Integer>
+					<OptionSeriesFilterSettings conid="320227571" exchange="SMART" tradingClass="QQQ" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="QQQ" exchange="SMART" isRegularExpiry="false"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
+					<Integer>416904</Integer>
+					<OptionSeriesFilterSettings conid="416904" exchange="SMART" tradingClass="SPX" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200514" mutiplier="100" tradingClass="SPX" exchange="SMART" isRegularExpiry="true"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
+					<Integer>11004968</Integer>
+					<OptionSeriesFilterSettings conid="11004968" exchange="GLOBEX" tradingClass="ES" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200619" mutiplier="50" tradingClass="ES" exchange="GLOBEX" futUnderlyingContractMonth="20200619" isRegularExpiry="true"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
 					<Integer>292491487</Integer>
 					<OptionSeriesFilterSettings conid="292491487" exchange="SMART" tradingClass="TPR" useContractThreshold="true" showNonRegularExpiries="true">
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="TPR" exchange="SMART" isRegularExpiry="false"/>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
+					<Integer>9579970</Integer>
+					<OptionSeriesFilterSettings conid="9579970" exchange="SMART" tradingClass="IWM" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="IWM" exchange="SMART" isRegularExpiry="false"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
 					<Integer>36285627</Integer>
 					<OptionSeriesFilterSettings conid="36285627" exchange="SMART" tradingClass="GME" useContractThreshold="true" showNonRegularExpiries="true">
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="GME" exchange="SMART" isRegularExpiry="false"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
+					<Integer>24771018</Integer>
+					<OptionSeriesFilterSettings conid="24771018" exchange="GLOBEX" tradingClass="RTM" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200430" mutiplier="50" tradingClass="RTM" exchange="GLOBEX" futUnderlyingContractMonth="20200619" isRegularExpiry="true"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
+					<Integer>303019419</Integer>
+					<OptionSeriesFilterSettings conid="303019419" exchange="SMART" tradingClass="VXX" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="VXX" exchange="SMART" isRegularExpiry="false"/>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
 					<Integer>756733</Integer>
@@ -18090,6 +18128,11 @@
 						<viewStyle>TAB_VIEW_SYTLE</viewStyle>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
+					<Integer>11004958</Integer>
+					<OptionSeriesFilterSettings conid="11004958" exchange="GLOBEX" tradingClass="NQ" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200619" mutiplier="20" tradingClass="NQ" exchange="GLOBEX" futUnderlyingContractMonth="20200619" isRegularExpiry="true"/>
+						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
+					</OptionSeriesFilterSettings>
 					<Integer>265598</Integer>
 					<OptionSeriesFilterSettings conid="265598" exchange="SMART" tradingClass="AAPL" useContractThreshold="true" showNonRegularExpiries="true">
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="AAPL" exchange="SMART" isRegularExpiry="false"/>
@@ -18100,27 +18143,33 @@
 						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200515" mutiplier="100" tradingClass="DECK" exchange="SMART" isRegularExpiry="true"/>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
-					<Integer>416904</Integer>
-					<OptionSeriesFilterSettings conid="416904" exchange="SMART" tradingClass="SPX" useContractThreshold="true" showNonRegularExpiries="true">
-						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200514" mutiplier="100" tradingClass="SPX" exchange="SMART" isRegularExpiry="true"/>
+					<Integer>14721310</Integer>
+					<OptionSeriesFilterSettings conid="14721310" exchange="ECBOT" tradingClass="OYM" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200619" mutiplier="5" tradingClass="OYM" exchange="ECBOT" futUnderlyingContractMonth="20200619" isRegularExpiry="true"/>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
-					<Integer>11004968</Integer>
-					<OptionSeriesFilterSettings conid="11004968" exchange="GLOBEX" tradingClass="ES" useContractThreshold="true" showNonRegularExpiries="true">
-						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200619" mutiplier="50" tradingClass="ES" exchange="GLOBEX" futUnderlyingContractMonth="20200619" isRegularExpiry="true"/>
-						<viewStyle>TAB_VIEW_SYTLE</viewStyle>
+					<Integer>73128548</Integer>
+					<OptionSeriesFilterSettings conid="73128548" exchange="SMART" tradingClass="DIA" useContractThreshold="true" showNonRegularExpiries="true">
+						<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="DIA" exchange="SMART" isRegularExpiry="false"/>
 						<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 					</OptionSeriesFilterSettings>
 				</MapConidsToFilterSettings>
 				<LinkedListOfConids varName="listOfConids">
 					<Integer>292491487</Integer>
-					<Integer>756733</Integer>
 					<Integer>268376</Integer>
 					<Integer>36285627</Integer>
 					<Integer>416904</Integer>
-					<Integer>11004968</Integer>
 					<Integer>265598</Integer>
 					<Integer>272093</Integer>
+					<Integer>11004968</Integer>
+					<Integer>11004958</Integer>
+					<Integer>320227571</Integer>
+					<Integer>73128548</Integer>
+					<Integer>14721310</Integer>
+					<Integer>9579970</Integer>
+					<Integer>24771018</Integer>
+					<Integer>303019419</Integer>
+					<Integer>756733</Integer>
 				</LinkedListOfConids>
 			</OptionSeriesFilterSettingsCache>
 		</OptionSeriesConfig>
@@ -20207,7 +20256,7 @@
 	<WorkspaceCollection varName="workspaceCollection" currentWorkspaceKey="5104334428269663761">
 		<ListOfWorkspaces varName="workspaces">
 			<Workspace name="Mosaic" workspaceKey="5104334428269663761">
-				<WindowsSettings varName="windowsSettings" windowsZOrder="Quote Details Window|3,Activity Monitor|2,MainFrame|4,Quote Matrix Window|5,Simple Content Window|0,Persistent Order Ticket|0,MainFrame|1,Announcements|0,Row Description,Simple Content Window|1,Quote Details Window|9,Tabbed Window|10,Option Chain|0,Simple Content Window|2,Quote Matrix Window|7,Quote Matrix Window|6,Quote Matrix Window|8,Container Desktop|1,JTS_FILE_CHOOSER|3" useIbisBAnchor="true" mainWinTabsEnabled="true">
+				<WindowsSettings varName="windowsSettings" windowsZOrder="Quote Details Window|3,Activity Monitor|2,MainFrame|4,Quote Matrix Window|5,Simple Content Window|0,Persistent Order Ticket|0,MainFrame|1,Announcements|0,Row Description,Simple Content Window|1,Quote Details Window|9,Tabbed Window|10,Simple Content Window|2,Quote Matrix Window|6,Quote Matrix Window|8,Quote Matrix Window|7,Option Chain|0,Container Desktop|1,JTS_FILE_CHOOSER|4" useIbisBAnchor="true" mainWinTabsEnabled="true">
 					<WindowConfigurationMap varName="settingsMap">
 						<String>Anchor Window|1</String>
 						<WindowConfiguration namePrimary="Anchor Window" nameSecondary="1" width="2679" height="63" x="4" y="39" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="true" doContentScale="false" windowFontSize="0">
@@ -21221,16 +21270,16 @@
 						<String>Quote Matrix Window|7</String>
 						<WindowConfiguration namePrimary="Quote Matrix Window" nameSecondary="7" width="1330" height="248" x="1385" y="1101" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
-								<QuoteMatrixContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588172181755" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
+								<QuoteMatrixContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588173911036" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<ArMetaColumnContent varName="metaColumns">
 										<MetaColumnContent sortedColId="16" sortAscending="false" continuousMode="false" useAbsoluteValues="false">
 											<ArTickerEntry varName="entries">
-												<TickerEntry name="Watchlist-237" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-												<TickerEntry name="Watchlist-237" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-												<TickerEntry name="Watchlist-237" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-												<TickerEntry name="Watchlist-237" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-237" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-237" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-237" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-237" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-237" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 											</ArTickerEntry>
@@ -21248,11 +21297,11 @@
 										</MetaColumnContent>
 										<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
 											<ArTickerEntry varName="entries">
-												<TickerEntry name="Watchlist-239" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-												<TickerEntry name="Watchlist-239" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-												<TickerEntry name="Watchlist-239" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-												<TickerEntry name="Watchlist-239" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-												<TickerEntry name="Watchlist-239" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+												<TickerEntry name="Watchlist-239" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+												<TickerEntry name="Watchlist-239" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+												<TickerEntry name="Watchlist-239" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+												<TickerEntry name="Watchlist-239" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 												<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 											</ArTickerEntry>
@@ -21277,16 +21326,16 @@
 								<String>BladeTabs</String>
 								<BladeTabsConfiguration activeRowIndexFrom="0" activeRowIndexTo="1" selectedTabIndex="0" m_type="1">
 									<ListOfContents varName="tabContents">
-										<QuoteMatrixContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588172181755" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
+										<QuoteMatrixContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588173911036" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
 											<ExtendedConfigurationMap varName="extendedConfiguration"/>
 											<ArMetaColumnContent varName="metaColumns">
 												<MetaColumnContent sortedColId="16" sortAscending="false" continuousMode="false" useAbsoluteValues="false">
 													<ArTickerEntry varName="entries">
-														<TickerEntry name="Watchlist-237" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-														<TickerEntry name="Watchlist-237" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-														<TickerEntry name="Watchlist-237" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-														<TickerEntry name="Watchlist-237" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-237" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-237" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-237" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-237" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-237" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 													</ArTickerEntry>
@@ -21304,11 +21353,11 @@
 												</MetaColumnContent>
 												<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
 													<ArTickerEntry varName="entries">
-														<TickerEntry name="Watchlist-239" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="Watchlist-239" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="Watchlist-239" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="Watchlist-239" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-														<TickerEntry name="Watchlist-239" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+														<TickerEntry name="Watchlist-239" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+														<TickerEntry name="Watchlist-239" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+														<TickerEntry name="Watchlist-239" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+														<TickerEntry name="Watchlist-239" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 														<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 													</ArTickerEntry>
@@ -21953,7 +22002,7 @@
 									<ChartWindowSetting varName="chartWindowSetting" version="2" tileStyle="0" showToolbar="true" tabbed="false" selectedSubchart="0">
 										<hotButtonStatus>TOOLBAR</hotButtonStatus>
 										<ListOfTwsChartSetting varName="listOfSubCharts">
-											<TwsChartSettings title="MSFT@SMART" timePeriod="12" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="1151965196" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="false" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
+											<TwsChartSettings title="SPY@SMART" timePeriod="12" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="1151965196" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="false" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
 												<timePeriodName></timePeriodName>
 												<JtsCalendarWrapper varName="dateAndTimeFrom"/>
 												<JtsCalendarWrapper varName="dateAndTimeTo"/>
@@ -21964,13 +22013,27 @@
 													<TwsListOfTextAnnotations/>
 													<String>272093</String>
 													<TwsListOfTextAnnotations/>
+													<String>303019419</String>
+													<TwsListOfTextAnnotations/>
+													<String>320227571</String>
+													<TwsListOfTextAnnotations/>
+													<String>357283192</String>
+													<TwsListOfTextAnnotations/>
+													<String>357283352</String>
+													<TwsListOfTextAnnotations/>
 													<String>357283364</String>
 													<TwsListOfTextAnnotations/>
 													<String>36285627</String>
 													<TwsListOfTextAnnotations/>
+													<String>371749728</String>
+													<TwsListOfTextAnnotations/>
 													<String>416904</String>
 													<TwsListOfTextAnnotations/>
+													<String>73128548</String>
+													<TwsListOfTextAnnotations/>
 													<String>756733</String>
+													<TwsListOfTextAnnotations/>
+													<String>9579970</String>
 													<TwsListOfTextAnnotations/>
 												</SharedTextAnnotationMap>
 												<showTradesAsShapes>DASHES</showTradesAsShapes>
@@ -21978,8 +22041,8 @@
 												<eprStdDevCount>ONE</eprStdDevCount>
 												<flavor>REGULAR</flavor>
 												<TwsGraphSettingsMap varName="graphs">
-													<GraphKey name="MSFT@SMART" sourceId="0" sourceIdUpgraded="0" calculationInput="0"/>
-													<TwsGraphSettings graphName="MSFT@SMART" additional="false" template="false" symbol="MSFT" localSymbol="MSFT" exchange="SMART" exchangeGroup="USSTK" aggregateGroup="1" underlying="MSFT" tradingClass="NMS" listingExchange="NASDAQ" description="Stock (NASDAQ.NMS)" conid="272093" secType="STK" currency="USD" scaled="false" cash="0.0" profit="0.0" factor="1.0" underlyingSpxPrice="0.0" comboTypeId="0" whatToShow="0" whatToShowUpgraded="0" howToShow="0" showCandlesticks="true" barTypeId="0" showVolumes="true" showPriceHistogram="false" showTotalPutCallValue="false" showPutCallRatio="false" showArbitrageMeter="false" positionIndexInChart="0" setIgnoredInterval="false" ignoredIntervalStart="0" ignoredIntervalEnd="0" lotSize="100" scaleFactor="0.0" includePartialBonds="false" createdByIndexComparison="false" useGlobalColors="false" expiryType="0" primary="true" fromAPI="false" valueAxisWidth="0" thumbLeftInset="-1" thumbTopInset="-1" calculatedValue="false" calculationInput="0">
+													<GraphKey name="SPY@SMART" sourceId="0" sourceIdUpgraded="0" calculationInput="0"/>
+													<TwsGraphSettings graphName="SPY@SMART" additional="false" template="false" symbol="SPY" localSymbol="SPY" exchange="SMART" exchangeGroup="USSTK" aggregateGroup="1" underlying="SPY" tradingClass="SPY" listingExchange="ARCA" description="Stock (ARCA)" conid="756733" secType="STK" currency="USD" scaled="false" cash="0.0" profit="0.0" factor="1.0" underlyingSpxPrice="0.0" comboTypeId="0" whatToShow="0" whatToShowUpgraded="0" howToShow="0" showCandlesticks="true" barTypeId="0" showVolumes="true" showPriceHistogram="false" showTotalPutCallValue="false" showPutCallRatio="false" showArbitrageMeter="false" positionIndexInChart="0" setIgnoredInterval="false" ignoredIntervalStart="0" ignoredIntervalEnd="0" lotSize="100" scaleFactor="0.0" includePartialBonds="false" createdByIndexComparison="false" useGlobalColors="false" expiryType="0" primary="true" fromAPI="false" valueAxisWidth="0" thumbLeftInset="-1" thumbTopInset="-1" calculatedValue="false" calculationInput="0">
 														<customName></customName>
 														<comboKeyString></comboKeyString>
 														<TwsIndicatorGraphSettingsMap varName="indicatorGraphSettingsMap">
@@ -21993,7 +22056,7 @@
 														</CompositeChartContractData>
 														<CustomSpreadChartContractData varName="customSpreadData" currentMinTickSize="NaN">
 															<ListOfChartContractData varName="components"/>
-															<CustomSpread varName="spread" id="229">
+															<CustomSpread varName="spread" id="382">
 																<Tokens varName="tokens"/>
 															</CustomSpread>
 														</CustomSpreadChartContractData>
@@ -22071,7 +22134,7 @@
 								<CheckBoxConfiguration selected="true"/>
 								<String>CONTAINER_TABS_CONFIGURATION</String>
 								<ContainerTabsConfiguration>
-									<DesktopConfiguration varName="primaryDesktop" title="Overview" desktopWidth="2712" desktopHeight="1895" menubarType="3" toolbarType="3" desktopType="0" zOrder="Simple Content Window|1,Quote Details Window|9,Tabbed Window|10,Option Chain|0,Simple Content Window|2,Quote Matrix Window|7,Quote Matrix Window|6,Quote Matrix Window|8">
+									<DesktopConfiguration varName="primaryDesktop" title="Overview" desktopWidth="2712" desktopHeight="1895" menubarType="3" toolbarType="3" desktopType="0" zOrder="Simple Content Window|1,Quote Details Window|9,Tabbed Window|10,Simple Content Window|2,Quote Matrix Window|6,Quote Matrix Window|8,Quote Matrix Window|7,Option Chain|0">
 										<WindowGroup varName="group" id="4"/>
 									</DesktopConfiguration>
 									<DesktopConfigurationList varName="desktops"/>
@@ -22092,7 +22155,7 @@
 									<ChartWindowSetting varName="chartWindowSetting" version="2" tileStyle="0" showToolbar="true" tabbed="false" selectedSubchart="0">
 										<hotButtonStatus>TOOLBAR</hotButtonStatus>
 										<ListOfTwsChartSetting varName="listOfSubCharts">
-											<TwsChartSettings title="MSFT@SMART" timePeriod="7" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="497653569" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="false" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
+											<TwsChartSettings title="SPY@SMART" timePeriod="7" timePeriodCount="0" dynamicOrStatic="true" updateLine="true" forceUserTimeZone="false" alwaysOnTop="false" useRTH="false" timeSales="false" showCrosshair="false" showHotButtons="false" showButtonsPanel="false" showQuotePanel="false" logPriceAxis="false" autoTimePeriod="false" fitStudies="true" showVerticalScrollbar="false" adjustForDividends="false" useTopDataVolUpdates="false" savedDomainStackSize="0" rangeLowerBound="0.0" rangeUpperBound="0.0" subChartLocationX="#" subChartLocationY="#" subChartWidth="#" subChartHeight="#" subChartDivider="-1" subchartIcon="false" showConstantBar="false" numberOfConstantBar="18" showChartTrader="false" collapseQuotePanel="false" showTrades="false" showDailyPnL="false" id="497653569" rightMargin="0" showLegend="false" autoShowLegend="false" showNews="false" showPriorClose="true" showQuoteZone="true" showBarZone="true" showPositionIndicator="true" showVwapOnBar="false" highlightLast="true" highlightBidAsk="false" highlightNavLast="false" highlightNavBidAsk="false" highlightHighLow="false" highlightCursorPrice="false" showDividend="false" showCashDividendIndicator="true" enableOrderLabel="true" thumbChart="false" daylineup="false" showPriceChange="true" showEstimatedPriceRange="false" markTime="0" nearTime="0" meetingTime="0" barInflate="1" allowZeroFeeValue="false">
 												<timePeriodName></timePeriodName>
 												<SharedAnnotationMap varName="annotationsOfWindow">
 													<String>756733</String>
@@ -22107,13 +22170,27 @@
 													<TwsListOfTextAnnotations/>
 													<String>272093</String>
 													<TwsListOfTextAnnotations/>
+													<String>303019419</String>
+													<TwsListOfTextAnnotations/>
+													<String>320227571</String>
+													<TwsListOfTextAnnotations/>
+													<String>357283192</String>
+													<TwsListOfTextAnnotations/>
+													<String>357283352</String>
+													<TwsListOfTextAnnotations/>
 													<String>357283364</String>
 													<TwsListOfTextAnnotations/>
 													<String>36285627</String>
 													<TwsListOfTextAnnotations/>
+													<String>371749728</String>
+													<TwsListOfTextAnnotations/>
 													<String>416904</String>
 													<TwsListOfTextAnnotations/>
+													<String>73128548</String>
+													<TwsListOfTextAnnotations/>
 													<String>756733</String>
+													<TwsListOfTextAnnotations/>
+													<String>9579970</String>
 													<TwsListOfTextAnnotations/>
 												</SharedTextAnnotationMap>
 												<showTradesAsShapes>DASHES</showTradesAsShapes>
@@ -22121,8 +22198,8 @@
 												<eprStdDevCount>ONE</eprStdDevCount>
 												<flavor>REGULAR</flavor>
 												<TwsGraphSettingsMap varName="graphs">
-													<GraphKey name="MSFT@SMART" sourceId="0" sourceIdUpgraded="0" calculationInput="0"/>
-													<TwsGraphSettings graphName="MSFT@SMART" additional="false" template="false" symbol="MSFT" localSymbol="MSFT" exchange="SMART" exchangeGroup="USSTK" aggregateGroup="1" underlying="MSFT" tradingClass="NMS" listingExchange="NASDAQ" description="Stock (NASDAQ.NMS)" conid="272093" secType="STK" currency="USD" scaled="false" cash="0.0" profit="0.0" factor="1.0" underlyingSpxPrice="0.0" comboTypeId="0" whatToShow="0" whatToShowUpgraded="0" howToShow="7" showCandlesticks="true" barTypeId="1" showVolumes="true" showPriceHistogram="false" showTotalPutCallValue="false" showPutCallRatio="false" showArbitrageMeter="false" positionIndexInChart="0" setIgnoredInterval="false" ignoredIntervalStart="0" ignoredIntervalEnd="0" lotSize="100" scaleFactor="0.0" includePartialBonds="false" createdByIndexComparison="false" useGlobalColors="false" expiryType="0" primary="true" fromAPI="false" valueAxisWidth="0" thumbLeftInset="-1" thumbTopInset="-1" calculatedValue="false" calculationInput="0">
+													<GraphKey name="SPY@SMART" sourceId="0" sourceIdUpgraded="0" calculationInput="0"/>
+													<TwsGraphSettings graphName="SPY@SMART" additional="false" template="false" symbol="SPY" localSymbol="SPY" exchange="SMART" exchangeGroup="USSTK" aggregateGroup="1" underlying="SPY" tradingClass="SPY" listingExchange="ARCA" description="Stock (ARCA)" conid="756733" secType="STK" currency="USD" scaled="false" cash="0.0" profit="0.0" factor="1.0" underlyingSpxPrice="0.0" comboTypeId="0" whatToShow="0" whatToShowUpgraded="0" howToShow="7" showCandlesticks="true" barTypeId="1" showVolumes="true" showPriceHistogram="false" showTotalPutCallValue="false" showPutCallRatio="false" showArbitrageMeter="false" positionIndexInChart="0" setIgnoredInterval="false" ignoredIntervalStart="0" ignoredIntervalEnd="0" lotSize="100" scaleFactor="0.0" includePartialBonds="false" createdByIndexComparison="false" useGlobalColors="false" expiryType="0" primary="true" fromAPI="false" valueAxisWidth="0" thumbLeftInset="-1" thumbTopInset="-1" calculatedValue="false" calculationInput="0">
 														<customName></customName>
 														<comboKeyString></comboKeyString>
 														<CompositeChartContractData varName="compositeData" offset="0.0" applyMultiplier="false" autofit="false" drawAutofitAsOneLine="true">
@@ -22130,7 +22207,7 @@
 														</CompositeChartContractData>
 														<CustomSpreadChartContractData varName="customSpreadData" currentMinTickSize="NaN">
 															<ListOfChartContractData varName="components"/>
-															<CustomSpread varName="spread" id="231">
+															<CustomSpread varName="spread" id="384">
 																<Tokens varName="tokens"/>
 															</CustomSpread>
 														</CustomSpreadChartContractData>
@@ -22180,7 +22257,7 @@
 								<QuoteDetailsContent version="0" watermarkWhenEmpty="true" tabIndex="-1" restoredFromLayoutLibrary="false" hasReadOnlyLayout="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<ArQuoteElements varName="contract">
-										<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+										<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 									</ArQuoteElements>
 								</QuoteDetailsContent>
 							</ListOfContents>
@@ -22204,10 +22281,10 @@
 								<OptionChainContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" showPricesInVolatility="false" tradingToolId="0" showAllAccounts="false" nullContractOkay="false">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 									<UnderlyingPairs varName="underlyingPairs">
-										<conid-exchange type="jfix.ConidExchangePair" conid="272093" exchange="SMART" includePartialBonds="false" expiryType="0" isContinuousFutures="false"/>
+										<conid-exchange type="jfix.ConidExchangePair" conid="756733" exchange="SMART" includePartialBonds="false" expiryType="0" isContinuousFutures="false"/>
 									</UnderlyingPairs>
-									<OptionSeriesFilterSettings varName="optSeriesFilterSettings" conid="272093" exchange="SMART" tradingClass="MSFT" useContractThreshold="true" showNonRegularExpiries="true">
-										<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200501" mutiplier="100" tradingClass="MSFT" exchange="SMART" isRegularExpiry="false"/>
+									<OptionSeriesFilterSettings varName="optSeriesFilterSettings" conid="756733" exchange="SMART" tradingClass="SPY" useContractThreshold="true" showNonRegularExpiries="true">
+										<OptionSeriesSingleExpiry varName="tabViewCurrentExpiry" expiry="20200429" mutiplier="100" tradingClass="SPY" exchange="SMART" isRegularExpiry="false"/>
 										<viewStyle>TAB_VIEW_SYTLE</viewStyle>
 										<timePeriod>TIME_PERIOD_3_MONTH</timePeriod>
 									</OptionSeriesFilterSettings>
@@ -22231,14 +22308,14 @@
 							<WindowGroup varName="group" id="-1"/>
 						</WindowConfiguration>
 						<String>Row Description</String>
-						<WindowConfiguration namePrimary="Row Description" width="1749" height="1519" x="0" y="0" restoreWindow="true" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
+						<WindowConfiguration namePrimary="Row Description" width="1739" height="1519" x="0" y="0" restoreWindow="false" maximized="false" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" windowFontSize="0">
 							<ListOfContents varName="contents">
 								<DescriptionWindowContent version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" resizeToFit="true" conid="272093" exchange="SMART">
 									<ExtendedConfigurationMap varName="extendedConfiguration"/>
 								</DescriptionWindowContent>
 							</ListOfContents>
 							<ExtendedConfigurationMap varName="extendedConfiguration"/>
-							<WindowGroup varName="group" id="4"/>
+							<WindowGroup varName="group" id="0"/>
 						</WindowConfiguration>
 						<String>Main Window|0</String>
 						<WindowConfiguration namePrimary="Main Window" nameSecondary="0" width="2736" height="2038" x="0" y="0" restoreWindow="true" maximized="true" onTop="false" minimized="false" groupMinimized="false" restoreIfEmpty="false" groupSnapped="false" doContentScale="false" copyReference="MainFrame|1" windowFontSize="0">
@@ -22417,7 +22494,7 @@
 											<ColumnOrdinalsMap varName="columnOrdinals"/>
 										</TableConfiguration>
 									</ExtendedConfigurationMap>
-									<conid-exchange type="jfix.ConidExchangePair" varName="conidExch" conid="272093" includePartialBonds="false" expiryType="-1" isContinuousFutures="false">
+									<conid-exchange type="jfix.ConidExchangePair" varName="conidExch" conid="756733" includePartialBonds="false" expiryType="-1" isContinuousFutures="false">
 										<exchange></exchange>
 									</conid-exchange>
 								</FundamentalsContent>
@@ -22464,7 +22541,7 @@
 				<GroupMgrSettings varName="groupMgrSettings">
 					<GroupMap varName="groupMap">
 						<WindowGroup id="4"/>
-						<QuoteElement symbol="MSFT" conid="272093" exchange="SMART" expiryType="0" validWithNullEc="false"/>
+						<QuoteElement symbol="SPY" conid="756733" exchange="SMART" expiryType="0" validWithNullEc="false"/>
 					</GroupMap>
 				</GroupMgrSettings>
 			</Workspace>
@@ -22702,14 +22779,14 @@
 		<FeatureUsage key="AUTOHIDE_IMPORT_EXPORT" lastUsedTime="1588170485317"/>
 		<FeatureUsage key="Arbitrage Meter" lastUsedTime="1588172182378"/>
 		<FeatureUsage key="Alarms" lastUsedTime="1588170485335"/>
-		<FeatureUsage key="ArcaAuction" lastUsedTime="1588173621028"/>
+		<FeatureUsage key="ArcaAuction" lastUsedTime="1588174447612"/>
 		<FeatureUsage key="Market Scanner" lastUsedTime="1588171062479"/>
-		<FeatureUsage key="Average cost column" lastUsedTime="1588173621028"/>
-		<FeatureUsage key="Profit and Loss column" lastUsedTime="1588173621028"/>
-		<FeatureUsage key="Greek any column" lastUsedTime="1588173621028"/>
-		<FeatureUsage key="Position Value column" lastUsedTime="1588173621028"/>
-		<FeatureUsage key="Fundamentals" lastUsedTime="1588173621028"/>
-		<FeatureUsage key="P L columns on account window" lastUsedTime="1588173621028"/>
+		<FeatureUsage key="Average cost column" lastUsedTime="1588174447612"/>
+		<FeatureUsage key="Profit and Loss column" lastUsedTime="1588174447612"/>
+		<FeatureUsage key="Greek any column" lastUsedTime="1588174447612"/>
+		<FeatureUsage key="Position Value column" lastUsedTime="1588174447612"/>
+		<FeatureUsage key="Fundamentals" lastUsedTime="1588174447612"/>
+		<FeatureUsage key="P L columns on account window" lastUsedTime="1588174447612"/>
 		<FeatureUsage key="Real time Charts Show" lastUsedTime="1588172813196"/>
 		<FeatureUsage key="AUTOHIDE_HEADER_ENABLE_SORTING" lastUsedTime="1588173192628"/>
 		<FeatureUsage key="AUTOHIDE_DELETE_ROW" lastUsedTime="1588173357614"/>
@@ -24571,15 +24648,17 @@
 	</LanguageSettings>
 	<WatchlistList varName="watchlistList">
 		<Watchlist id="3">
-			<QuoteMatrixContent varName="quoteMatrixContent" version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588172181755" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
+			<QuoteMatrixContent varName="quoteMatrixContent" version="0" watermarkWhenEmpty="false" tabIndex="-1" restoredFromLayoutLibrary="false" newsPanelVisible="false" hasEcEntered="true" sortingColId="-1" sortAscending="false" continuousMode="false" ccpId="102" ccpHash="1588173911036" name="US Markets" layout="US Markets" metaColumnsNum="4" embedded="false" watchlistId="3">
 				<ExtendedConfigurationMap varName="extendedConfiguration"/>
 				<ArMetaColumnContent varName="metaColumns">
 					<MetaColumnContent sortedColId="16" sortAscending="false" continuousMode="false" useAbsoluteValues="false">
 						<ArTickerEntry varName="entries">
-							<TickerEntry name="Watchlist-237" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-							<TickerEntry name="Watchlist-237" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-							<TickerEntry name="Watchlist-237" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
-							<TickerEntry name="Watchlist-237" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+							<TickerEntry name="Watchlist-237" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="Watchlist-237" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="Watchlist-237" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="Watchlist-237" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="Watchlist-237" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 						</ArTickerEntry>
 					</MetaColumnContent>
@@ -24590,15 +24669,19 @@
 							<TickerEntry name="Watchlist-238" conid="1935181" m_type="0" exchange="CME" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="Watchlist-238" conid="416888" m_type="0" exchange="RUSSELL" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="Watchlist-238" conid="105068053" m_type="0" exchange="CBOE" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 						</ArTickerEntry>
 					</MetaColumnContent>
 					<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
 						<ArTickerEntry varName="entries">
-							<TickerEntry name="Watchlist-239" conid="756733" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-							<TickerEntry name="Watchlist-239" conid="320227571" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-							<TickerEntry name="Watchlist-239" conid="73128548" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-							<TickerEntry name="Watchlist-239" conid="9579970" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
-							<TickerEntry name="Watchlist-239" conid="303019419" m_type="0" exchange="SMART" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="Watchlist-239" conid="357283364" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+							<TickerEntry name="Watchlist-239" conid="357283192" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+							<TickerEntry name="Watchlist-239" conid="371749728" m_type="0" exchange="ECBOT" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+							<TickerEntry name="Watchlist-239" conid="357283352" m_type="0" exchange="GLOBEX" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="0"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 						</ArTickerEntry>
 					</MetaColumnContent>
 					<MetaColumnContent sortedColId="-1" sortAscending="true" continuousMode="false" useAbsoluteValues="false">
@@ -24608,6 +24691,7 @@
 							<TickerEntry name="Watchlist-240" conid="825711" m_type="0" exchange="DTB" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="Watchlist-240" conid="1328298" m_type="0" exchange="HKFE" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="Watchlist-240" conid="14087999" m_type="0" exchange="OSE.JPN" comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
+							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 							<TickerEntry name="." conid="0" m_type="0" exchange="." comboTypeId="-1" scaled="false" cash="0.0" profit="0.0" underlyingSpxPrice="0.0" includePartialBonds="false" factor="0.0" expiryType="-1"/>
 						</ArTickerEntry>
 					</MetaColumnContent>
