@@ -17,22 +17,6 @@ ln -s ~/dot/.vimrc ~/.vimrc
 rm ~/.bashrc
 ln -s ~/dot/.bashrc ~/.bashrc
 
-# install xrdp
-sudo apt install xrdp
-sudo systemctl enable xrdp
-
-# install xfce
-sudo apt install --no-install-recommends xfce4
-echo "xfce4-session" > ~/.xsession
-D=/usr/share/xfce4:/usr/share/xubuntu:/usr/local/share
-D=${D}:/usr/share:/var/lib/snapd/desktop:/usr/share
-cat <<EOF > ~/.xsessionrc
-export XDG_SESSION_DESKTOP=xubuntu
-export XDG_DATA_DIRS=${D}
-export XDG_CONFIG_DIRS=/etc/xdg/xdg-xubuntu:/etc/xdg:/etc/xdg
-EOF
-sudo reboot
-
 # install vscode 
 # TODO
 # point vscode settings to do
