@@ -1,18 +1,18 @@
 "remap arrow key
-"noremap j <Left>
-"noremap k <Down>
-"noremap i <Up>
-"noremap h i
+noremap j <Left>
+noremap k <Down>
+noremap i <Up>
+noremap h i
 
 "remap i key in netrw (:Explore command)
-"augroup netrw_mapping
-"    autocmd!
-"    autocmd filetype netrw call NetrwMapping()
-"augroup END
-"function! NetrwMapping()
-"    noremap <buffer> i <Up>
-"    noremap <buffer> h i
-"endfunction
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+function! NetrwMapping()
+    noremap <buffer> i <Up>
+    noremap <buffer> h i
+endfunction
 
 "disable vi compatibility and enable advanced vim features
 set nocompatible 
