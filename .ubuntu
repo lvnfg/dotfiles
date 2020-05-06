@@ -18,6 +18,7 @@ ln -s ~/dot/.vimrc ~/.vimrc
 rm ~/.bashrc
 ln -s ~/dot/.bashrc ~/.bashrc
 
+-------------------------------------------
 # install vscode 
 # TODO
 # point vscode settings to do
