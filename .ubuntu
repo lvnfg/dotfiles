@@ -8,6 +8,7 @@ sudo update-alternatives --config editor
 
 # setup git
 git config --global credential.helper store
+git config --global core.editor "vim"
 git config --global user.name "van@vmDev"
 git config --global user.email "-"
 git clone https://github.com/lvnfg/dot
