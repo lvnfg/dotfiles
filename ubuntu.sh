@@ -31,10 +31,3 @@ ln -s ~/dot/code/settings.json ~/.config/Code/User/settings.json
 ln -s ~/dot/code/keybindings.json ~/.config/Code/User/keybindings.json
 ln -s ~/dot/code/snippets ~/.config/Code/User/snippets
 # install vscode theme
-
-# intall azure cli
-sudo apt install azure-cli
-sudo apt install python3-pip
-sudo pip3 install antlr4-python3-runtime
-
-
