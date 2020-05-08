@@ -18,6 +18,13 @@ ln -s ~/dot/.vimrc ~/.vimrc
 rm ~/.bashrc
 ln -s ~/dot/.bashrc ~/.bashrc
 
+# install vs codespace
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install vso
+vso start
+# start interactive
+
 -------------------------------------------
 # install vscode 
 # TODO
