@@ -38,5 +38,6 @@
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Dark+ (contrast)"
+    "workbench.colorTheme": "Dark+ (contrast)",
+    "terminal.integrated.shell.osx": "/bin/zsh"
 }
