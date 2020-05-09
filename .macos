@@ -4,6 +4,8 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew update && brew upgrade
 brew install git
+sudo rm -rf ~/Downloads
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads 
 # ubuntu
 # sudo apt update && sudo apt upgrade
 # sudo update-alternatives -config editor # 3
