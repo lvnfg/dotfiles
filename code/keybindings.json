@@ -8,4 +8,8 @@
         "key": "cmd+shift+a"
         ,"command": "workbench.action.toggleActivityBarVisibility"
     }
+    ,{
+        "key": "cmd+shift+\\"
+        ,"command": "workbench.action.editorLayoutTwoColumns"
+    }
 ]
