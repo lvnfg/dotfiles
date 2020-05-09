@@ -1,17 +1,14 @@
+# VMs
+az vm start/stop/deallocate -g rgLVF -n vmDev
 # get machine's ip address
 ip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
-
-# deallocate vm
-az vm start/stop/deallocate -g rgLVF -n vmDev
-
 # update nsg rule
 az network nsg rule update -g rgLVF --nsg-name vmDev-nsg -n cloudshell --access Allow/Deny --source-address-prefixes $ip
-
 # create os disk from snapshot
 az disk create -n vmDev-os --source vmDev-os-snapshot --sku Premium_LRS --size-gb 32 -g rgLVF
 
+# Virtual Networks
 # create a network watcher (to avoid default resource group NetworkWatcherRG being automaticallly created)
 az network watcher configure --resource-group van --locations southeastasia --enabled
-
 # virtual network (vnet)
 az network vnet create --name vnVan --resource-group van --subnet-name default

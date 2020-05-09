@@ -37,7 +37,7 @@
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Dark+ (contrast)",
     "terminal.integrated.shell.osx": "/bin/zsh"
 }
