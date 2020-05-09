@@ -9,3 +9,9 @@ az network nsg rule update -g rgLVF --nsg-name vmDev-nsg -n cloudshell --access 
 
 # create os disk from snapshot
 az disk create -n vmDev-os --source vmDev-os-snapshot --sku Premium_LRS --size-gb 32 -g rgLVF
+
+# create a network watcher (to avoid default resource group NetworkWatcherRG being automaticallly created)
+az network watcher configure --resource-group van --locations southeastasia --enabled
+
+# virtual network (vnet)
+az network vnet create --name vnVan --resource-group van --subnet-name default
