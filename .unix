@@ -27,20 +27,28 @@ eval "$(ssh-agent -s)"  # start ssh-agent in background
         UseKeychain yes
         IdentityFile ~/.ssh/id_rsa
         ssh-add -K ~/.ssh/id_rsa
-# copy public key to clipboard
+# copy local public key to clipboard
     # ---linux---
         xclip -sel clip < ~/.ssh/id_rsa.pub
         # sudo apt install xclip if command doesn't exist
     # ---macos---
         pbcopy < ~/.ssh/id_rsa.pub
-# add authorized keys using ssh-copy-id
-ssh-copy-id user@ip.address.x.x     # i.e van@138.91.32.89
-# add authorized keys manually
-vim ~/.ssh/authorized_keys
-# copy key from remote ssh session
-ssh [remote-machine] "cat ~/.ssh/id_rsa.pub" | pbcopy -selection c
+# add authorized keys 
+    # from local to local
+        vim ~/.ssh/authorized_keys
+    # from local to remote
+        ssh-copy-id van@138.91.32.89
+# get remote's public key from local
+    # ---linux---
+        ssh van@138.91.32.89 "cat ~/.ssh/id_rsa.pub" | xclip -selection c
+    # ---macos---
+        ssh van@138.91.32.89 "cat ~/.ssh/id_rsa.pub" | pbcopy
 
 # config git
+# test connection to git using ssh key
+ssh -T git@github.com
+# clone git with ssh: git@github.com:lvnfg/dot.git
+# clone with https: https://github.com/lvnfg/dot.git
 git conifg --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
