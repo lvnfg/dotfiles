@@ -59,6 +59,8 @@ ln -s ~/desktop/dot/.vimrc ~/.vimrc
 ln -s ~/desktop/dot/.bashrc ~/.bashrc
 ln -s ~/desktop/dot/.zshrc ~/.zshrc
 
+# -----------FRESH SNAPSHOT END------------------
+
 # vs code
     # ---linux---
         # ubuntu = ~/.config/Code/
@@ -76,7 +78,8 @@ sudo apt-get update
 sudo apt-get install vso
 vso start
 
-# azure cli
+# AZURE CLI
+# --------------------------------------------------
     # ---linux---
         sudo apt-get update
         sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
@@ -90,4 +93,5 @@ vso start
         sudo apt-get install azure-cli
     # ---macos---
         brew install azure-cli
-
+# configure default output
+az configure 
