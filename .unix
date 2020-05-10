@@ -16,17 +16,18 @@
 ls -al ~/.ssh   # check if a key pair already exists
 ssh-keygen -t rsa -b 4096 -C "van@fagaceae.com"
 eval "$(ssh-agent -s)"  # start ssh-agent in background
+# add key to ssh agent
     # ---linux---
-        ssh-add ~/.ssh/id_rsa   # add key to ssh agent
+        ssh-add ~/.ssh/id_rsa
     # ---macos---
         open ~/.ssh/config          # check if file exists
         touch touch ~/.ssh/config   # create if not exists
         # add the following to config to store the ssh key in os keychain:
-        Host *
-        AddKeysToAgent yes
-        UseKeychain yes
-        IdentityFile ~/.ssh/id_rsa
-        ssh-add -K ~/.ssh/id_rsa
+            Host *
+            AddKeysToAgent yes
+            UseKeychain yes
+            IdentityFile ~/.ssh/id_rsa
+            ssh-add -K ~/.ssh/id_rsa
 # copy local public key to clipboard
     # ---linux---
         xclip -sel clip < ~/.ssh/id_rsa.pub
@@ -60,6 +61,9 @@ ln -s ~/desktop/dot/.bashrc ~/.bashrc
 ln -s ~/desktop/dot/.zshrc ~/.zshrc
 
 # -----------FRESH SNAPSHOT END------------------
+
+# add remote host to use name instead of ip when ssh
+echo '104.215.158.213 vmDev' | sudo tee -a /etc/hosts
 
 # vs code
     # ---linux---
