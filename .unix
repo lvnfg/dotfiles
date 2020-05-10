@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# ubuntu
+sudo apt update && sudo apt upgrade
+sudo update-alternatives --config editor # 3
+# macos
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+brew update && brew upgrade
+brew install git
+sudo rm -rf ~/Downloads
+ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads 
+
+# ssh keys
+ls -al ~/.ssh   # check if a key pair already exists
+ssh-keygen -t rsa -b 4096 -C "van@fagaceae.com"
+eval "$(ssh-agent -s)"  # start ssh-agent in background
+ssh-add ~/.ssh/id_rsa   # add key to ssh agent
+# then add machine's public key to whatever device
+
+# config git
+git conifg --global core.editor "vim"
+git config --global user.name "van"
+git config --global user.email "-"
+git clone https://github.com/lvnfg/dot ~/desktop/dot
+
+# link dotfiles
+ln -s ~/desktop/dot/.vimrc ~/.vimrc
+rm ~/.bashrc && ln -s ~/desktop/dot/.bashrc ~/.bashrc
+
+# vs code
+# ubuntu = ~/.config/Code/
+# macos = ~/Library/Applicate\ Support/Code
+rm ~/Library/Application\ Support/Code/User/settings.json
+rm ~/Library/Application\ Support/Code/User/keybindings.json
+rm -r ~/Library/Application\ Support/Code/User/snippets
+# Create symlinks to VS Code setting files in repos
+ln -s ~/Desktop/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -s ~/Desktop/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -s ~/Desktop/dot/code/snippets ~/Library/Application\ Support/Code/User/snippets
+# install vs codespace
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install vso
+vso start
+
+# azure cli
+# macos
+brew install azure-cli
+# ubuntu
+sudo apt-get update
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-get update
+sudo apt-get install azure-cli
