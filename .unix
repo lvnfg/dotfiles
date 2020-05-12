@@ -1,101 +1,73 @@
 #!/bin/bash
 
 # starting up
-    # ---linux---
-        sudo apt update && sudo apt upgrade
-        sudo update-alternatives --config editor # 3
-    # ---macos---
-        # install homebrew
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-        brew update && brew upgrade
-        brew install git
-        sudo rm -rf ~/Downloads
-        ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads 
+sudo apt update && sudo apt upgrade
+sudo update-alternatives --config editor # 3
+    # macos
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"   # install homebrew
+    brew update && brew upgrade
+    brew install git
+    sudo rm -rf ~/Downloads
+    ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads 
 
-# ssh keys
-ls -al ~/.ssh   # check if a key pair already exists
-ssh-keygen -t rsa -b 4096 -C "van@fagaceae.com"
-eval "$(ssh-agent -s)"  # start ssh-agent in background
-# add key to ssh agent
-    # ---linux---
-        ssh-add ~/.ssh/id_rsa
-    # ---macos---
-        open ~/.ssh/config          # check if file exists
-        touch touch ~/.ssh/config   # create if not exists
-        # add the following to config to store the ssh key in os keychain:
-            Host *
-            AddKeysToAgent yes
-            UseKeychain yes
-            IdentityFile ~/.ssh/id_rsa
-            ssh-add -K ~/.ssh/id_rsa
-# copy local public key to clipboard
-    # ---linux---
-        xclip -sel clip < ~/.ssh/id_rsa.pub
-        # sudo apt install xclip if command doesn't exist
-    # ---macos---
-        pbcopy < ~/.ssh/id_rsa.pub
-# add authorized keys 
-    # from local to local
-        vim ~/.ssh/authorized_keys
-    # from local to remote
-        ssh-copy-id van@138.91.32.89
-# get remote's public key from local
-    # ---linux---
-        ssh van@138.91.32.89 "cat ~/.ssh/id_rsa.pub" | xclip -selection c
-    # ---macos---
-        ssh van@138.91.32.89 "cat ~/.ssh/id_rsa.pub" | pbcopy
+# create ssh key pairs
+ls -al ~/.ssh                                       # check if a key exists
+ssh-keygen -t rsa -b 4096 -C "van@[machinename]"    # generate a new key pair
+eval "$(ssh-agent -s)"      # start ssh-agent in background
+ssh-add ~/.ssh/id_rsa       # add key to agent
+    # macs
+    open ~/.ssh/config      # check if file exists
+    touch  ~/.ssh/config    # create if not exists
+                            # add the following to config to store the ssh key in os keychain:
+                            #   Host *
+                            #   AddKeysToAgent yes
+                            #   UseKeychain yes
+                            #   IdentityFile ~/.ssh/id_rsa
+                            #   ssh-add -K ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub | xclip -selection c      # get [local] public key
+                                                # macos: use pbcopy instead of xclip
+ssh-copy-id [user]@[remote]                     # add [local] public key to [remote]
+ssh [user]@[remote] "cat ~/.ssh/id_rsa.pub" | xclip -selection c    # get public key of [remote]
+echo '[remote public key]' >> ~/.ssh/authorized_keys                # add [remote] public key to allow access
+echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use [remote] name instead of ip address
 
-# config git
-# test connection to git using ssh key
-ssh -T git@github.com
-# clone git with ssh: git@github.com:lvnfg/dot.git
-# clone with https: https://github.com/lvnfg/dot.git
+# git
+ssh -T git@github.com   # test ssh connection to git
 git conifg --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
-git clone https://github.com/lvnfg/dot ~/desktop/dot
+git clone git@github.com:lvnfg/dot.git ~/desktop/dot
 
 # link dotfiles
-ln -s ~/desktop/dot/.vimrc ~/.vimrc
-ln -s ~/desktop/dot/.bashrc ~/.bashrc
-ln -s ~/desktop/dot/.zshrc ~/.zshrc
-
-# -----------FRESH SNAPSHOT END------------------
-
-# add remote host to use name instead of ip when ssh
-echo '104.215.158.213 vmDev' | sudo tee -a /etc/hosts
-
+ln -s ~/desktop/dot/.vimrc      ~/.vimrc
+ln -s ~/desktop/dot/.zshrc      ~/.bashrc    # use .zshrc for bash scripts
+ln -s ~/desktop/dot/.zshrc      ~/.zshrc
 # vs code
-    # ---linux---
-        # ubuntu = ~/.config/Code/
-    # ---macos---
-        rm ~/Library/Application\ Support/Code/User/settings.json
-        rm ~/Library/Application\ Support/Code/User/keybindings.json
-        rm -r ~/Library/Application\ Support/Code/User/snippets
-        # Create symlinks to VS Code setting files in repos
-        ln -s ~/Desktop/dot/code/settings.json ~/Library/Application\ Support/Code/User/settings.json
-        ln -s ~/Desktop/dot/code/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-        ln -s ~/Desktop/dot/code/snippets ~/Library/Application\ Support/Code/User/snippets
-# install vs codespace
-sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install vso
-vso start
+ln -s ~/desktop/dot/code/settings.json      ~/.config/Code/settings.json
+ln -s ~/desktop/dot/code/keybindings.json   ~/.config/Code/keybindings.json
+ln -s ~/desktop/dot/code/snippets           ~/.config/Code/snippets\
+    # macos
+    # ~/Library/Application\ Support/Code/User/
 
-# AZURE CLI
-# --------------------------------------------------
-    # ---linux---
-        sudo apt-get update
-        sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
-        curl -sL https://packages.microsoft.com/keys/microsoft.asc |
-            gpg --dearmor |
-            sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-        AZ_REPO=$(lsb_release -cs)
-        echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
-            sudo tee /etc/apt/sources.list.d/azure-cli.list
-        sudo apt-get update
-        sudo apt-get install azure-cli
+# desktop environment
+sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
+sudo apt install xrdp
+sudo systemctl status xrdp  # verify xrdp is running
+vim /etc/xrdp/startwm.sh    # edit setting xrdp settings to enable use of lxde
+                            # comment out the last 2 lines and add: lxsession -s Lubuntu -e LXDE
+sudo service xrdp restart   # restart xrdp. (sudo systemctl restart xrdp?)
+
+# azure cli
+sudo apt-get update
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+curl -sL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-get update
+sudo apt-get install azure-cli
     # ---macos---
-        brew install azure-cli
-# configure default output
-az configure 
+    brew install azure-cli
+az configure  # configure default output to table
