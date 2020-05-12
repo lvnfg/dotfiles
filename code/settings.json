@@ -39,5 +39,6 @@
     "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Dark+ (contrast)",
-    "terminal.integrated.shell.osx": "/bin/zsh"
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "window.zoomLevel": 0
 }

@@ -1,8 +1,12 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "cmd+`",
-        "command": "workbench.action.terminal.toggleTerminal"
+        "key": "cmd+`"
+        ,"command": "workbench.action.terminal.toggleTerminal"
+    }
+    ,{
+        "key": "cmd+shift+`"
+        ,"command": "workbench.action.terminal.new"
     }
     ,{
         "key": "cmd+shift+a"
