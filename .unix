@@ -7,8 +7,6 @@ sudo update-alternatives --config editor # 3
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"   # install homebrew
     brew update && brew upgrade
     brew install git
-    sudo rm -rf ~/Downloads
-    ln -s ~/Library/Mobile\ Documents/com~apple~CloudDocs/Downloads ~/Downloads 
 
 # create ssh key pairs
 ls -al ~/.ssh                                       # check if a key exists
