@@ -27,8 +27,8 @@ cat ~/.ssh/id_rsa.pub | xclip -selection c      # get [local] public key
                                                 # macos: use pbcopy instead of xclip
 ssh-copy-id [user]@[remote]                     # add [local] public key to [remote]
 ssh [user]@[remote] "cat ~/.ssh/id_rsa.pub" | xclip -selection c    # get public key of [remote]
-echo '[remote public key]' >> ~/.ssh/authorized_keys                # add [remote] public key to allow access
-echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use [remote] name instead of ip address
+echo '[public key]' >> ~/.ssh/authorized_keys                       # manage authorized keys
+echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use name instead of ip address
 
 # git
 ssh -T git@github.com   # test ssh connection to git
@@ -41,6 +41,9 @@ git clone git@github.com:lvnfg/dot.git ~/desktop/dot
 ln -s ~/dot/.vimrc      ~/.vimrc
 ln -s ~/dot/.zshrc      ~/.bashrc    # use .zshrc for bash scripts
 ln -s ~/dot/.zshrc      ~/.zshrc
+
+# ---backup ends---
+
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
 ln -s ~/dot/code/keybindings.json   ~/.config/Code/keybindings.json
