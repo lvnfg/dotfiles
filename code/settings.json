@@ -8,7 +8,6 @@
          ,"activityBar.background": "#000000"
     },
     "telemetry.enableTelemetry": false,
-    "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
     "git.enableSmartCommit": true,
     "explorer.confirmDelete": false,
@@ -38,7 +37,7 @@
     "editor.renderWhitespace": "none",
     "workbench.statusBar.visible": false,
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Dark+ (contrast)",
     "terminal.integrated.shell.osx": "/bin/zsh",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "python.dataScience.sendSelectionToInteractiveWindow": true
 }
