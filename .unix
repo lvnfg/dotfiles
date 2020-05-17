@@ -34,21 +34,23 @@ echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use [remot
 
 # git
 ssh -T git@github.com   # test ssh connection to git
-git conifg --global core.editor "vim"
+git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
 git clone git@github.com:lvnfg/dot.git ~/desktop/dot
 
 # link dotfiles
-ln -s ~/desktop/dot/.vimrc      ~/.vimrc
-ln -s ~/desktop/dot/.zshrc      ~/.bashrc    # use .zshrc for bash scripts
-ln -s ~/desktop/dot/.zshrc      ~/.zshrc
+ln -s ~/dot/.vimrc      ~/.vimrc
+ln -s ~/dot/.zshrc      ~/.bashrc    # use .zshrc for bash scripts
+ln -s ~/dot/.zshrc      ~/.zshrc
 # vs code
-ln -s ~/desktop/dot/code/settings.json      ~/.config/Code/settings.json
-ln -s ~/desktop/dot/code/keybindings.json   ~/.config/Code/keybindings.json
-ln -s ~/desktop/dot/code/snippets           ~/.config/Code/snippets\
+ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
+ln -s ~/dot/code/keybindings.json   ~/.config/Code/keybindings.json
+ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     # macos
-    # ~/Library/Application\ Support/Code/User/
+    ln -s ~/dot/code/settings.json      ~/Library/Application\ Support/Code/User/settings.json
+    ln -s ~/dot/code/keybindings.json   ~/Library/Application\ Support/Code/User/keybindings.json
+    ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
 
 # desktop environment
 sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
