@@ -42,7 +42,7 @@ ln -s ~/dot/.vimrc      ~/.vimrc
 ln -s ~/dot/.zshrc      ~/.bashrc    # use .zshrc for bash scripts
 ln -s ~/dot/.zshrc      ~/.zshrc
 
-# ---backup ends---
+# ---unix backup ends---
 
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
