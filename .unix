@@ -13,17 +13,18 @@ sudo update-alternatives --config editor # 3
 # create ssh key pairs
 ls -al ~/.ssh                                       # check if a key exists
 ssh-keygen -t rsa -b 4096 -C "van@[machinename]"    # generate a new key pair
+# add ssh key to agent
 eval "$(ssh-agent -s)"      # start ssh-agent in background
 ssh-add ~/.ssh/id_rsa       # add key to agent
     # macs
     open ~/.ssh/config      # check if file exists
     touch  ~/.ssh/config    # create if not exists
-                            # add the following to config to store the ssh key in os keychain:
-                            #   Host *
-                            #   AddKeysToAgent yes
-                            #   UseKeychain yes
-                            #   IdentityFile ~/.ssh/id_rsa
-                            #   ssh-add -K ~/.ssh/id_rsa
+    # add the following to config to store the ssh key in os keychain:
+    #   Host *
+    #   AddKeysToAgent yes
+    #   UseKeychain yes
+    #   IdentityFile ~/.ssh/id_rsa
+    ssh-add -K ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection c      # get [local] public key
                                                 # macos: use pbcopy instead of xclip
 ssh-copy-id [user]@[remote]                     # add [local] public key to [remote]
