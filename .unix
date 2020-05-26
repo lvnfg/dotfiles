@@ -8,6 +8,10 @@ sudo update-alternatives --config editor # 3
     brew update && brew upgrade
     brew install git
 
+# connect to remote host
+echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use host name name instead of ip address
+ssh-copy-id [user]@[remote]                                         # add [local] public key to [remote]
+
 # create ssh key pairs
 ls -al ~/.ssh                                       # check if a key exists
 ssh-keygen -t rsa -b 4096 -C "van@[machinename]"    # generate a new key pair
@@ -25,10 +29,9 @@ ssh-add ~/.ssh/id_rsa       # add key to agent
     ssh-add -K ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection c      # get [local] public key
                                                 # macos: use pbcopy instead of xclip
-ssh-copy-id [user]@[remote]                     # add [local] public key to [remote]
 ssh [user]@[remote] "cat ~/.ssh/id_rsa.pub" | xclip -selection c    # get public key of [remote]
 echo '[public key]' >> ~/.ssh/authorized_keys                       # manage authorized keys
-echo '[remote IP address] [remote name]' | sudo tee -a /etc/hosts   # use name instead of ip address
+
 
 # git
 ssh -T git@github.com   # test ssh connection to git
@@ -43,7 +46,7 @@ ln -s ~/dot/.bashrc      ~/.bashrc
     # macos
     ln -s ~/dot/.zshrc      ~/.zshrc
 
-# -----  COMMON SETUP END -----
+# ----- COMMON SETUP FOR BACKUP END -----
 
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
@@ -53,18 +56,3 @@ ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     ln -s ~/dot/code/settings.json      ~/Library/Application\ Support/Code/User/settings.json
     ln -s ~/dot/code/keybindings.json   ~/Library/Application\ Support/Code/User/keybindings.json
     ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
-
-# azure cli
-sudo apt-get update
-sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
-curl -sL https://packages.microsoft.com/keys/microsoft.asc |
-    gpg --dearmor |
-    sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
-    sudo tee /etc/apt/sources.list.d/azure-cli.list
-sudo apt-get update
-sudo apt-get install azure-cli
-    # ---macos---
-    brew install azure-cli
-az configure  # configure default output to table
