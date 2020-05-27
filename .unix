@@ -42,11 +42,8 @@ git clone git@github.com:lvnfg/dot.git ~/dot
 
 # link dotfiles
 ln -s ~/dot/.vimrc      ~/.vimrc
-ln -s ~/dot/.bashrc      ~/.bashrc
-    # macos
-    ln -s ~/dot/.zshrc      ~/.zshrc
-
-# ----- COMMON SETUP FOR BACKUP END -----
+ln -s ~/dot/.bashrc     ~/.bashrc
+ln -s ~/dot/.zshrc      ~/.zshrc   
 
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
@@ -56,3 +53,12 @@ ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     ln -s ~/dot/code/settings.json      ~/Library/Application\ Support/Code/User/settings.json
     ln -s ~/dot/code/keybindings.json   ~/Library/Application\ Support/Code/User/keybindings.json
     ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
+
+# desktop environment
+sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
+sudo apt install xrdp
+sudo systemctl status xrdp  # verify xrdp is running
+vim /etc/xrdp/startwm.sh    # edit setting xrdp settings to enable use of lxde
+                            # comment out the last 2 lines and add:
+                            #   lxsession -s Lubuntu -e LXDE
+sudo service xrdp restart   # restart xrdp. (sudo systemctl restart xrdp?)
