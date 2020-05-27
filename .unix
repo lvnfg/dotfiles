@@ -55,7 +55,7 @@ ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
 
 # desktop environment
-sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
+sudo apt install --no-install-recommends lubuntu-desktop
 sudo apt install xrdp
 sudo systemctl status xrdp  # verify xrdp is running
 vim /etc/xrdp/startwm.sh    # edit setting xrdp settings to enable use of lxde
