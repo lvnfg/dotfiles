@@ -41,14 +41,8 @@ git clone git@github.com:lvnfg/dot.git ~/dot
 
 # link dotfiles
 ln -s ~/dot/.vimrc      ~/.vimrc
-<<<<<<< HEAD
-ln -s ~/dot/.bashrc      ~/.bashrc
-    # macos
-    ln -s ~/dot/.zshrc      ~/.zshrc
-=======
 ln -s ~/dot/.bashrc     ~/.bashrc
 ln -s ~/dot/.zshrc      ~/.zshrc   
->>>>>>> 5b41de35b8bf47221f858f672468166db7db8f7d
 
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
@@ -60,7 +54,6 @@ ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
 
 # desktop environment
-<<<<<<< HEAD
 sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
 sudo apt install xrdp
 sudo systemctl status xrdp  # verify xrdp is running
@@ -71,12 +64,3 @@ sudo service xrdp restart       # restart xrdp. (sudo systemctl restart xrdp?)
 # to remove desktop environment
 sudo apt purge --remove lubuntu-*; sudo apt autoremove -y
 sudo vim /etc/xrdp/startwm.sh   # undo the steps used to install desktop env 
-=======
-sudo apt install --no-install-recommends lubuntu-desktop
-sudo apt install xrdp
-sudo systemctl status xrdp  # verify xrdp is running
-vim /etc/xrdp/startwm.sh    # edit setting xrdp settings to enable use of lxde
-                            # comment out the last 2 lines and add:
-                            #   lxsession -s Lubuntu -e LXDE
-sudo service xrdp restart   # restart xrdp. (sudo systemctl restart xrdp?)
->>>>>>> 5b41de35b8bf47221f858f672468166db7db8f7d
