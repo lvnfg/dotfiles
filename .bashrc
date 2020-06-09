@@ -3,4 +3,4 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 # for non-color prompt
 # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 
-alias t0='tmux attach -d -t 0'
+alias tmux0='tmux attach -d -t 0'
