@@ -44,6 +44,7 @@ ln -s ~/dot/.vimrc      ~/.vimrc
 ln -s ~/dot/.bashrc     ~/.bashrc
 ln -s ~/dot/.zshrc      ~/.zshrc   
 ln -s ~/dot/.tmux.conf ~/.tmux.conf
+ln -s ~/dot/.Xresources ~/.Xresources
 
 # tmux
 sudo apt install tmux
