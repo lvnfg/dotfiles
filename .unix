@@ -58,13 +58,11 @@ ln -s ~/dot/code/snippets           ~/.config/Code/snippets\
     ln -s ~/dot/code/snippets           ~/Library/Application\ Support/Code/User/snippets
 
 # desktop environment
-sudo apt install --no-install-recommends lubuntu-desktop    # try sudo pat install lxde to see if this is even smaller
+sudo apt install lxde
 sudo apt install xrdp
 sudo systemctl status xrdp  # verify xrdp is running
-sudo vim /etc/xrdp/startwm.sh   # edit setting xrdp settings to enable use of lxde
-                                # comment out the last 2 lines and add:
-                                #   lxsession -s Lubuntu -e LXDE
-sudo service xrdp restart       # restart xrdp. (sudo systemctl restart xrdp?)
-# to remove desktop environment
-sudo apt purge --remove lubuntu-*; sudo apt autoremove -y
-sudo vim /etc/xrdp/startwm.sh   # undo the steps used to install desktop env 
+sudo vim /etc/xrdp/startwm.sh   # add to end of file:
+                                #   lxsession -s LXDE -e LXDE
+sudo service xrdp restart
+sudo systemctl set-default multi-user.target    # disable GUI on boot. Use graphical.target to reenable
+sudo passwd van # set user password to connect over xrdp if none existing
