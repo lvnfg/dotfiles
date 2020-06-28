@@ -49,6 +49,16 @@ ln -s ~/dot/.Xresources ~/.Xresources
 # tmux
 sudo apt install tmux
 
+# disable ssh password login, including root
+sudo vim /etc/ssh/sshd_config
+# change the following lines to no 
+# ChallengeResponseAuthentication no
+# PasswordAuthentication no
+# UsePAM no
+# PermitRootLogin no
+systemctl restart ssh
+
+
 # vs code
 ln -s ~/dot/code/settings.json      ~/.config/Code/settings.json
 ln -s ~/dot/code/keybindings.json   ~/.config/Code/keybindings.json
