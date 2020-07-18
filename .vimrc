@@ -35,6 +35,10 @@ syntax on
 "hide tilde (~) characters by changing color to black
 highlight EndOfBuffer ctermfg=black ctermbg=black
 
+"fix wrong colors in tmux by forcing 256 colors
+set background=dark
+set t_Co=256
+
 "prevent the cursor from moving back one character when exiting insert mode
 "by overloading the Esc key in insert mode to additionall run then `^
 "command which moves the rcusor to the position where it had been the last time
