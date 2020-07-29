@@ -1,16 +1,22 @@
 #!/bin/bash
 
-# starting up
-sudo apt update && sudo apt upgrade
-sudo update-alternatives --config editor # 2
+# ADMINISTRATIVE
 sudo apt install tmux
+sudo apt update && sudo apt upgrade
+sudo update-alternatives --config editor
 ssh-keygen -t rsa -b 4096 -C "van@vmdev"    # generate a new key pair
-sudo apt install git    # remember to copy ssh key to github
+sudo apt install git
 git clone git@github.com:lvnfg/dotfiles.git     ~/repos/dotfiles
 git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
-rm ~/.bashrc && ln -s ~/repos/dotfiles/.bashrc ~/.bashrc && source .bashrc
+cd ~
+rm ~/.bashrc
+ln -s ~/repos/dotfiles/.bashrc		~/.bashrc && source .bashrc
+ln -s ~/repos/dotfiles/.vimrc 		~/.vimrc
+ln -s ~/repos/dotfiles/.tmux.conf 	~/.tmux.conf
+
+# SECURITY
 # disable ssh password login, including root
 sudo vim /etc/ssh/sshd_config
     # change the following lines to no 
@@ -20,7 +26,7 @@ sudo vim /etc/ssh/sshd_config
     #   PermitRootLogin no
 sudo systemctl restart ssh
 
-# development tools
+# DEV TOOLS
 sudo apt install postgresql-client
 # desktop environment, if necessary
 sudo apt install lxde
