@@ -1,10 +1,13 @@
 # -----------------------------------------------------------------------------
-# LVF-DEV PROJECT
+# CHLOE'S PROJECT
 # -----------------------------------------------------------------------------
-gcloud projects create lvf-dev --name="lvf-dev" --set-as-default
-gcloud billing projects link lvf-dev --billing-account 0184BB-A2AA63-01982E
+gcloud projects create chloes --name="chloes" --set-as-default
+gcloud billing projects link chloes --billing-account 0184BB-A2AA63-01982E
 # TODO: cli to add project-wide ssh keys metadata to project
-# remember to change this
+
+# vmadmin
+# TODO
+
 # vmdev
 # ------------------------------
 # create service account for vmdev
