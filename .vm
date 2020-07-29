@@ -17,6 +17,7 @@ rm ~/.bashrc
 ln -s ~/repos/dotfiles/.bashrc		~/.bashrc && source .bashrc
 ln -s ~/repos/dotfiles/.vimrc 		~/.vimrc
 ln -s ~/repos/dotfiles/.tmux.conf 	~/.tmux.conf
+ln -s ~/repos/dotfiles/.ssh/config  ~/.ssh/config
 
 # SECURITY
 # disable ssh password login, including root
@@ -28,7 +29,7 @@ sudo vim /etc/ssh/sshd_config
     #   PermitRootLogin no
 sudo systemctl restart ssh
 
-# DEV TOOLS
+# vmdev
 sudo apt install postgresql-client
 # desktop environment, if necessary
 sudo apt install lxde
