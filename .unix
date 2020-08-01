@@ -34,6 +34,7 @@ sudo systemctl restart ssh
 # ------------------
 
 # vmdev
+sudo apt install python3-pip
 sudo apt install postgresql-client
 # desktop environment, if necessary
 sudo apt install lxde
