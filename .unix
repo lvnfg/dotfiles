@@ -29,6 +29,10 @@ sudo vim /etc/ssh/sshd_config
     #   PermitRootLogin no
 sudo systemctl restart ssh
 
+# ------------------
+# END FRESH SNAPSHOT
+# ------------------
+
 # vmdev
 sudo apt install postgresql-client
 # desktop environment, if necessary
