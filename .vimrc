@@ -61,3 +61,4 @@ let g:netrw_liststyle = 3 "show tree view by default
 
 "always split below
 set splitbelow
+set splitright

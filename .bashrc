@@ -2,6 +2,9 @@ alias t0="tmux attach-session -t 0"
 alias ls="ls -al --color=auto -h --group-directories-first"
 alias connectpostgres='psql -h 34.87.69.143 -U postgres'
 
+# let vim terminal use colors
+export TERM=xterm-256color
+
 # ---Debian 10 (buster) default .bashrc scripts---
 # ------------------------------------------------
 # ~/.bashrc: executed by bash(1) for non-login shells.
