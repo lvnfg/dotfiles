@@ -1,5 +1,5 @@
 alias t0="tmux attach-session -t 0"
-alias ls="ls -al --color=auto"
+alias ls="ls -al --color=auto -h --group-directories-first"
 alias connectpostgres='psql -h 34.87.69.143 -U postgres'
 
 # ---Debian 10 (buster) default .bashrc scripts---
