@@ -8,3 +8,6 @@ export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/nu
 export LIBGL_ALWAYS_INDIRECT=1
 # install VcXsrv
 # launch in default settings and check the box (enable) "Disable access control"
+# remember to run matplotlib.use("GTK") before importing anything else from matplotlib
+# note: chekc which x11 package needs to be installed on vmdev, GTK confirmed did not work
+# ssh -X into remote host
