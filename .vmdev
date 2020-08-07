@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# ADMINISTRATIVE
 sudo apt install tmux
 sudo apt update && sudo apt upgrade
 sudo update-alternatives --config editor
@@ -30,12 +29,28 @@ sudo vim /etc/ssh/sshd_config
 sudo systemctl restart ssh
 
 # ------------------
-# END FRESH SNAPSHOT
+# end fresh snapshot
 # ------------------
 
-# vmdev
+# developement tools
 sudo apt install python3-pip
 sudo apt install postgresql-client
+
+# set up X11 forwarding
+# on vmdev (remote without X environment:
+cat /etc/ssh/sshd_config | grep X11Forwarding # make sure it is Yes
+sudo apt install xauth
+# on local box (where image should be output to)
+# Windows WSL 2: install Debian 10
+    sudo apt update && sudo apt upgrade
+    # add the followings to .bashrc & resource
+    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+    export LIBGL_ALWAYS_INDIRECT=1
+    source .bashrc
+    # install VcXrsv. Check the box "Disable access control" when launch
+    # ssh -X [remote]
+    
+
 # desktop environment, if necessary
 sudo apt install lxde
 sudo apt install xrdp
