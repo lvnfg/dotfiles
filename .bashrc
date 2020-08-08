@@ -3,7 +3,7 @@ alias ls="ls -al --color=auto -h --group-directories-first"
 alias connectpostgres="psql -h 34.87.69.143 -U postgres"
 
 # use vim keybindings in bash
-set -o vi
+# set -o vi    # turning this on make blink append ctrl+v character when pasting from iPad clipboard
 
 # let vim terminal use colors
 export TERM=xterm-256color
