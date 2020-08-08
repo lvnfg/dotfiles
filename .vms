@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sudo apt install tmux -y
+sudo apt install -y tmu
 mkdir ~/repos
 cd ~/repos
-sudo apt install git -y
+sudo apt install -y git
 git clone https:/github.com/lvnfg/dotfiles
 git config --global core.editor "vim"
 git config --global core.user "van"
@@ -37,8 +37,8 @@ if [ $HOSTNAME == "vmatm" ]; then
     sudo apt install -y openjdk-11-jdk-headless
     rm clientportal.gw.zip
     # install firefox and its webdriver
-    sudo apt install firefox-esr
-    sudo apt install wget
+    sudo apt install -y firefox-esr
+    sudo apt install -y wget
     wget -O geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
     tar xzf geckodriver.tar.gz
     sudo mv geckodriver /usr/bin/geckodriver
