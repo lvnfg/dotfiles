@@ -1,6 +1,9 @@
 alias t0="tmux attach-session -t 0"
 alias ls="ls -al --color=auto -h --group-directories-first"
-alias connectpostgres='psql -h 34.87.69.143 -U postgres'
+alias connectpostgres="psql -h 34.87.69.143 -U postgres"
+
+# use vim keybindings in bash
+set -o vi
 
 # let vim terminal use colors
 export TERM=xterm-256color
