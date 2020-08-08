@@ -4,7 +4,7 @@ sudo apt install -y tmu
 mkdir ~/repos
 cd ~/repos
 sudo apt install -y git
-git clone https:/github.com/lvnfg/dotfiles
+git clone https:/lvnfg@github.com/lvnfg/dotfiles
 git config --global core.editor "vim"
 git config --global core.user "van"
 git conifg --global core.email "-"
@@ -28,7 +28,7 @@ source ~/.bashrc
 # sudo systemctl restart ssh
 
 if [ $HOSTNAME == "vmatm" ]; then
-    git clone https://github.com/lvnfg/atm ~/repos/atm
+    git clone https://lvnfg@github.com/lvnfg/atm ~/repos/atm
     # install ibgateway
     # cd ~/repos/atm
     # curl https://download2.interactivebrokers.com/portal/clientportal.gw.zip --output clientportal.gw.zip
