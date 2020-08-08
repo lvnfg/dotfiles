@@ -1,61 +1,55 @@
 #!/bin/bash
 
-sudo apt install tmux
-sudo apt update && sudo apt upgrade
-sudo update-alternatives --config editor
-ssh-keygen -t rsa -b 4096 -C "van@vmdev"    # generate a new key pair
-sudo apt install git
-cd ~
-mkdir repos
-mkdir downloads
-git clone git@github.com:lvnfg/dotfiles.git     ~/repos/dotfiles
+sudo apt install tmux -y
+mkdir ~/repos
+cd ~/repos
+sudo apt install git -y
+git clone https:/github.com/lvnfg/dotfiles
 git config --global core.editor "vim"
-git config --global user.name "van"
-git config --global user.email "-"
-rm ~/.bashrc
-ln -s ~/repos/dotfiles/.bashrc		~/.bashrc && source .bashrc
+git config --global core.user "van"
+git conifg --global core.email "-"
 ln -s ~/repos/dotfiles/.vimrc 		~/.vimrc
+ln -s ~/repos/dotfiles/.vim         ~/.vim
 ln -s ~/repos/dotfiles/.tmux.conf 	~/.tmux.conf
 ln -s ~/repos/dotfiles/.ssh/config  ~/.ssh/config
+rm ~/.bashrc
+ln -s ~/repos/dotfiles/.bashrc		~/.bashrc
+source ~/.bashrc
 
-# SECURITY
+# generate ssh key if needed
+# ssh-keygen -t rsa -b 4096 -C "van@vm-"
 # disable ssh password login, including root
-sudo vim /etc/ssh/sshd_config
-    # change the following lines to no 
-    #   ChallengeResponseAuthentication no
-    #   PasswordAuthentication no
-    #   UsePAM no
-    #   PermitRootLogin no
-sudo systemctl restart ssh
+# sudo vim /etc/ssh/sshd_config
+# change the following lines to no 
+#   ChallengeResponseAuthentication no
+#   PasswordAuthentication no
+#   UsePAM no
+#   PermitRootLogin no
+# sudo systemctl restart ssh
 
-# ------------------
-# end fresh snapshot
-# ------------------
+if [ $HOSTNAME == "vmatm" ]; then
+    sudo apt install -y python3-pip 
+    sudo apt install -y postgresql-client
+    sudo apt install -y xauth
+    # cat /etc/ssh/sshd_config | grep X11Forwarding
+    # make sure it says yes
+    # on local box (where image should be output to)
+    # Windows WSL 2: install Debian 10
+        sudo apt update && sudo apt upgrade
+        # add the followings to .bashrc & resource
+        export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+        export LIBGL_ALWAYS_INDIRECT=1
+        source .bashrc
+        # install VcXrsv. Check the box "Disable access control" when launch
+        # ssh -X [remote]
+    # desktop environment, if necessary
+    # sudo apt install lxde
+    # sudo apt install xrdp
+    # sudo systemctl status xrdp  # verify xrdp is running
+    # sudo vim /etc/xrdp/startwm.sh   # add to end of file: lxsession -s LXDE -e LXDE
+    # sudo service xrdp restart
+    # sudo systemctl set-default multi-user.target    # disable GUI on boot. Use graphical.target to reenable
+    # sudo passwd van # set user password to connect over xrdp if none existing
+fi
 
-# developement tools
-sudo apt install python3-pip
-sudo apt install postgresql-client
 
-# set up X11 forwarding
-# on vmdev (remote without X environment:
-cat /etc/ssh/sshd_config | grep X11Forwarding # make sure it is Yes
-sudo apt install xauth
-# on local box (where image should be output to)
-# Windows WSL 2: install Debian 10
-    sudo apt update && sudo apt upgrade
-    # add the followings to .bashrc & resource
-    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-    export LIBGL_ALWAYS_INDIRECT=1
-    source .bashrc
-    # install VcXrsv. Check the box "Disable access control" when launch
-    # ssh -X [remote]
-    
-
-# desktop environment, if necessary
-sudo apt install lxde
-sudo apt install xrdp
-sudo systemctl status xrdp  # verify xrdp is running
-sudo vim /etc/xrdp/startwm.sh   # add to end of file: lxsession -s LXDE -e LXDE
-sudo service xrdp restart
-sudo systemctl set-default multi-user.target    # disable GUI on boot. Use graphical.target to reenable
-sudo passwd van # set user password to connect over xrdp if none existing
