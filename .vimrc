@@ -46,3 +46,6 @@ let g:netrw_liststyle = 3 "show tree view by default
 "always split below
 set splitbelow
 set splitright
+
+" reduce vim-gitgtter update time and consequently vim's swap file delaya
+set updatetime=100  " this in is milisecond
