@@ -1,6 +1,5 @@
 alias t0="tmux attach-session -t 0"
 alias ls="ls -al --color=auto -h --group-directories-first"
-alias connectpostgres="psql -h 34.87.69.143 -U postgres"
 alias gitStatusAll="find ~/repos -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
 alias gitPushAll="find ~/repos -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
 alias gitCloneAll="find ~/repos -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git clone && echo)' \;"
