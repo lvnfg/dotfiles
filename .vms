@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# set case-insensitive autocomplettion
+echo set completion-ignore-case on | sudo tee -a /etc/inputrc
 sudo apt install -y tmu
 sudo apt install -y git
 git clone https:/lvnfg@github.com/lvnfg/dotfiles
