@@ -47,8 +47,21 @@ let g:netrw_liststyle = 3 " show tree view by default
 set splitbelow
 set splitright
 
+" vim-git-gutter plugin config
 " reduce vim-gitgtter update time and consequently vim's swap file delaya
 set updatetime=100  " this in is milisecond
+
+" vim ale plugin config
+" enable built-in autocompletion in ale. must enable before ale is loaded
+let g:ale_completion_enabled = 0    " use deoplete instead
+let g:ale_completion_delay = 100
+" always show ale gutter
+let g:ale_sign_column_always = 1
+" only run linters when files are saved
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
 
 " always keep the following at bottom:
 packloadall             " load all packages to generate helptaps (from ale)
