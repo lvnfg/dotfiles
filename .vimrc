@@ -49,3 +49,7 @@ set splitright
 
 " reduce vim-gitgtter update time and consequently vim's swap file delaya
 set updatetime=100  " this in is milisecond
+
+" always keep the following at bottom:
+packloadall             " load all packages to generate helptaps (from ale)
+silent! helptags ALL    " load all helptags now, after plugins have been loaded
