@@ -47,6 +47,7 @@ if [ $HOSTNAME == "vmatm" ]; then
     # install dependencies
     sudo apt install -y python3-pip 
     sudo apt install -y postgresql-client
+    pip3 install python-language-server
     pip3 install psycopg2-binar
     pip3 install google-cloud-secretmanager
     pip3 install matplotlib
