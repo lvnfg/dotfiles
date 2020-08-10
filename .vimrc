@@ -47,6 +47,9 @@ let g:netrw_liststyle = 3 " show tree view by default
 set splitbelow
 set splitright
 
+" set sign column to always shows (helps for vim-git-gutter
+set signcolumn=yes
+
 " vim-git-gutter plugin config
 " reduce vim-gitgtter update time and consequently vim's swap file delaya
 set updatetime=100  " this in is milisecond
