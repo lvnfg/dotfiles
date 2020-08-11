@@ -9,9 +9,9 @@ echo Installing git
 sudo apt install -y git
 git config --global credential.helper cache 3600
 git config --global core.editor "vim"
-git config --global core.user "van"
-git config --global core.email "-"
-git clone https:/lvnfg@github.com/lvnfg/dotfiles
+git config --global user.name "van"
+git config --global user.email "-"
+git clone https://github.com/lvnfg/dotfiles
 
 # set case-insensitive autocomplettion
 echo set completion-ignore-case on | sudo tee -a /etc/inputrc
