@@ -4,18 +4,18 @@
 # git config --global credential.helper cache 3600
 # git clone https:/lvnfg@github.com/lvnfg/dotfiles
 
-echo setting up git
-# git config --global core.editor "vim"
-# git config --global core.user "van"
-# git conifg --global core.email "-"
+echo Setting up git
+git config --global core.editor "vim"
+git config --global core.user "van"
+git config --global core.email "-"
 
-echo "installing tmux"
+echo Installing tmux
 sudo apt install -y tmux
 
 # set case-insensitive autocomplettion
 echo set completion-ignore-case on | sudo tee -a /etc/inputrc
 
-echo creating dotfies simlinks
+echo Creating dotfies simlinks
 ln -s ~/dotfiles/.vimrc         ~/.vimrc
 ln -s ~/dotfiles/.vim           ~/.vim
 ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
@@ -24,7 +24,7 @@ rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc		~/.bashrc
 source ~/.bashrc
 
-echo remember to disable all ssh password login, including root
+echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
 #   ChallengeResponseAuthentication no
@@ -33,8 +33,24 @@ echo remember to disable all ssh password login, including root
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
-echo remember to generate ssh key if needed
+echo Remember to generate ssh key if needed
 # ssh-keygen -t rsa -b 4096 -C "van@vm-"
+
+echo Select an environment to setup:
+select env in skip vminf vmatm vmatm-dev
+do
+    echo $env selected
+    if [[ $env = "skip" ]]; then
+        echo Environment setup skipped
+        break
+    elif [[ $env = "vminf" ]] || [[ $env = "vmatm" ]]; then
+        echo Case switch vminf or vmatm
+        break
+    else
+        echo Unknown cases
+        break
+    fi
+done
 
 if [ $HOSTNAME == "vmatm" ]; then
     git clone https://lvnfg@github.com/lvnfg/atm ~/atm
