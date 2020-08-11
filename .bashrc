@@ -1,8 +1,8 @@
 alias t0="tmux attach-session -t 0"
 alias ls="ls -al --color=auto -h --group-directories-first"
-alias gitStatusAll="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
-alias gitPushAll="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
-alias gitPullAll="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
+alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
+alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
+alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
 
 # use vim keybindings in bash
 # set -o vi    # turning this on make blink append ctrl+v character when pasting from iPad clipboard
