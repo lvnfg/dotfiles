@@ -2,6 +2,9 @@
 
 # common setup for all GNU debian linux VMs
 
+echo Initializing gcloud service account
+gcloud init
+
 echo Installing tmux
 sudo apt install -y tmux
 
