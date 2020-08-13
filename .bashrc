@@ -11,7 +11,6 @@ if [ -f ~/dotfiles/.git-completion.bash ]; then
   . ~/dotfiles/.git-completion.bash
 fi
 # Aliases
-alias gitStatus="git status --short"
 alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
 alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
 alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
