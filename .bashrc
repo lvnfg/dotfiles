@@ -22,6 +22,11 @@ alias t0="tmux attach-session -t 0"
 alias t1="tmux attach-session -t 1"
 
 # -----------------------------------------------
+# Vim
+# -----------------------------------------------
+# Set C-p -> fzf file search and open in vim
+bind -x '"\C-p":vim $(fzf)'
+
 # Prompt & terminal
 # -----------------------------------------------
 # Set variable identifying the chroot you work in (used in the prompt below)
