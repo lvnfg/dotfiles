@@ -26,8 +26,8 @@ alias t1="tmux attach-session -t 1"
 # -----------------------------------------------
 # Set C-p -> fzf file search and open in vim
 bind -x '"\C-p":vim $(fzf)'
-# Find all including hiddens
-export FZF_DEFAULT_COMMAND='find .'
+# Find all including hiddens but ignore .git
+export FZF_DEFAULT_COMMAND="find . | grep -v '\.git'"
 
 # Prompt & terminal
 # -----------------------------------------------
