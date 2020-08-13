@@ -15,6 +15,7 @@ git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
 git config status.short true
+git config status.branch true
 # git clone https://github.com/lvnfg/dotfiles
 
 # set case-insensitive autocomplettion
