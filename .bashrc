@@ -3,14 +3,15 @@
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
-getGitBranch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+getGitStatus() {
+    git -c color.status=always status --short --branch 2> /dev/null | head -n 1
 }
 # Enable git autocomple in bash
 if [ -f ~/dotfiles/.git-completion.bash ]; then
   . ~/dotfiles/.git-completion.bash
 fi
 # Aliases
+alias gitStatus="git status --short"
 alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
 alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
 alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
@@ -29,7 +30,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 # Set default prompt info & colors
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\] \[\033[93m\][`getGitBranch`]\[\033[00m\]
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\] \[\033[01;92m\]\w\[\033[00m\] `getGitStatus`
 $ '
 # Use vim keybindings in bash prompts
 set -o vi    
