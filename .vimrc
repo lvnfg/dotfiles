@@ -53,3 +53,8 @@ set signcolumn=yes
 " vim-git-gutter plugin config
 " reduce vim-gitgtter update time and consequently vim's swap file delaya
 set updatetime=100  " this in is milisecond
+
+" load all plugins at the end
+packloadall
+" load all helptags after plugins and ignore errors
+silent! helptags ALL

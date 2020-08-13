@@ -42,9 +42,13 @@ sudo apt autoremove -y
 echo Vim install done
 
 echo Cloning .vim plugins
+echo Cloning vim-gitgutter
 mkdir -p ~/.vim/pack/bundle/start
 cd ~/.vim/pack/bundle/start
 git clone https://github.com/airblade/vim-gitgutter
+echo Clone ale
+git clone https://github.com/dense-analysis/ale.git
+
 
 echo Installing fzf
 sudo apt install -y fzf
