@@ -36,6 +36,9 @@ echo Purging pre-installed vim
 sudo apt purge -y vim
 echo Moving vim to path
 sudo mv ~/vim/src/vim /usr/bin
+echo Cleaning up
+sudo rm -rf ~/vim
+sudo apt autoremove
 echo Vim install done
 
 echo Cloning .vim plugins
