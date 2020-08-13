@@ -2,9 +2,6 @@
 
 # common setup for all GNU debian linux VMs
 
-echo Initializing gcloud service account
-gcloud init
-
 echo Installing tmux
 sudo apt install -y tmux
 
@@ -57,3 +54,6 @@ echo Remember to disable all ssh password login, including root
 
 echo Remember to generate ssh key if needed
 # ssh-keygen -t rsa -b 4096 -C "van@vm-"
+
+echo Remember to init gcloud if this is the first time run
+# gcloud init
