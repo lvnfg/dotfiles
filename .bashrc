@@ -1,4 +1,5 @@
 alias t0="tmux attach-session -t 0"
+alias t1="tmux attach-session -t 1"
 alias ls="ls -al --color=auto -h --group-directories-first"
 alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
 alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
