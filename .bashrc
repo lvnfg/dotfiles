@@ -3,8 +3,8 @@
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
-parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+getGitBranch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 # aliases
 alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
@@ -25,7 +25,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 # Set default prompt info & colors
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;92m\]\w\[\033[00m\]\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;92m\]\w\[\033[00m\] `getGitBranch` $ '
 # use vim keybindings in bash prompts
 set -o vi    
 # let vim & tmux terminals use colors
