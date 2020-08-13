@@ -1,5 +1,24 @@
+
 # -----------------------------------------------
-# Prompt & terminal configs
+# Git
+# -----------------------------------------------
+# Get current git branch name to display in prompt
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+# aliases
+alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
+alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
+alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
+
+# -----------------------------------------------
+# Tmux 
+# -----------------------------------------------
+alias t0="tmux attach-session -t 0"
+alias t1="tmux attach-session -t 1"
+
+# -----------------------------------------------
+# Prompt & terminal
 # -----------------------------------------------
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -11,19 +30,6 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[0
 set -o vi    
 # let vim & tmux terminals use colors
 export TERM=xterm-256color
-
-# -----------------------------------------------
-# Git
-# -----------------------------------------------
-alias git-status-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
-alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all && echo)' \;"
-alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
-
-# -----------------------------------------------
-# Tmux 
-# -----------------------------------------------
-alias t0="tmux attach-session -t 0"
-alias t1="tmux attach-session -t 1"
 
 # ------------------------------------------------
 # ls
