@@ -46,6 +46,9 @@ mkdir -p ~/.vim/pack/bundle/start
 cd ~/.vim/pack/bundle/start
 git clone https://github.com/airblade/vim-gitgutter
 
+echo Installing fzf
+sudo apt install -y fzf
+
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
