@@ -22,10 +22,12 @@ alias t0="tmux attach-session -t 0"
 alias t1="tmux attach-session -t 1"
 
 # -----------------------------------------------
-# Vim
+# Vim & fzf
 # -----------------------------------------------
 # Set C-p -> fzf file search and open in vim
 bind -x '"\C-p":vim $(fzf)'
+# Find all including hiddens
+export FZF_DEFAULT_COMMAND='find .'
 
 # Prompt & terminal
 # -----------------------------------------------
