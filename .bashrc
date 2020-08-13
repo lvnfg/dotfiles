@@ -11,10 +11,9 @@ if [ -f ~/dotfiles/.git-completion.bash ]; then
   . ~/dotfiles/.git-completion.bash
 fi
 # Aliases
-# alias gitStatusAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git status --short --branch 2> /dev/null)' \;"
-alias gitStatusAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {}; fi && git status --short --branch 2> /dev/null && echo)' \;" # git status --short --branch 2> /dev/null)' \;"
-alias gitPushAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git push --all 2> /dev/null )' \;"
-alias gitPullAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
+alias gitStatusAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {}; fi && git status --short --branch 2> /dev/null && echo)' \;"
+alias gitPushAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all && echo; fi)' \;"
+alias gitPullAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull && echo; fi)' \;"
 
 # -----------------------------------------------
 # Tmux 
