@@ -5,7 +5,10 @@ alias git-push-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec
 alias git-pull-all="find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(echo {} && cd {} && git pull && echo)' \;"
 
 # use vim keybindings in bash
-# set -o vi    # turning this on make blink append ctrl+v character when pasting from iPad clipboard
+# Turning this on make blink append ctrl+v character when pasting 
+# from iPad clipboard. Drag and drop in works fine. Only happens
+# in the terminal and not in vim though.
+set -o vi    
 
 # let vim terminal use colors
 export TERM=xterm-256color
