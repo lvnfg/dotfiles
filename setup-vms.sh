@@ -38,7 +38,7 @@ echo Moving vim to path
 sudo mv ~/vim/src/vim /usr/bin
 echo Cleaning up
 sudo rm -rf ~/vim
-sudo apt autoremove
+sudo apt autoremove -y
 echo Vim install done
 
 echo Cloning .vim plugins
