@@ -19,6 +19,7 @@ echo Creating dotfies simlinks
 ln -s ~/dotfiles/.vimrc         ~/.vimrc
 ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
 ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
+ln -s ~/dotfiles/.inputrc       ~/.inputrc
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc		~/.bashrc
 source ~/.bashrc
