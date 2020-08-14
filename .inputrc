@@ -1,13 +1,15 @@
 # My own configs
 # -----------------------------------------------------------------
 # Affects Bash and all tools that use GNU readlines, such as MySQL
-# command line. Log out and in again to effect changes.
+# command line. Restart bash with
+#   exec bash -l
+# to effect changes.
 
 # Case-insensitive autocomplete
 set completion-ignore-case on
 
 # Use vi mode
-set editing-mode=vi
+set editing-mode vi
 
 # Unbind default vi mode shortcuts to free it up for bash
 "\C-p":
