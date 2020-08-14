@@ -11,7 +11,6 @@ git config --global credential.helper cache 3600
 git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
-# git clone https://github.com/lvnfg/dotfiles
 
 # set case-insensitive autocomplettion
 echo set completion-ignore-case on | sudo tee -a /etc/inputrc
@@ -24,24 +23,8 @@ rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc		~/.bashrc
 source ~/.bashrc
 
-echo Cloning vim github repo
-git clone https://github.com/vim/vim.git ~/vim
-echo Building vim from source
-cd ~/vim/src
-sudo apt install -y libncurses5-dev
-make distclean  # clear previous install
-make
-sudo make install
-echo Purging pre-installed vim
-sudo apt purge -y vim
-echo Moving vim to path
-sudo mv ~/vim/src/vim /usr/bin
-echo Cleaning up
-sudo rm -rf ~/vim
-sudo apt autoremove -y
-echo Vim install done
-
 echo Cloning .vim plugins
+echo Cloning vim-gitgutter
 mkdir -p ~/.vim/pack/bundle/start
 cd ~/.vim/pack/bundle/start
 git clone https://github.com/airblade/vim-gitgutter
