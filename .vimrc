@@ -55,6 +55,15 @@ set signcolumn=yes
 " reduce vim-gitgtter update time and consequently vim's swap file delaya
 set updatetime=100  " this in is milisecond
 
+" Enable lightline
+set laststatus=2
+set noshowmode  " turn off vim's statusline
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ]],
+    \ }
+\}
+
 " load all plugins at the end
 packloadall
 " load all helptags after plugins and ignore errors

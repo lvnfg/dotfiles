@@ -25,10 +25,10 @@ ln -s ~/dotfiles/.bashrc		~/.bashrc
 source ~/.bashrc
 
 echo Cloning .vim plugins
-echo Cloning vim-gitgutter
 mkdir -p ~/.vim/pack/bundle/start
 cd ~/.vim/pack/bundle/start
 git clone https://github.com/airblade/vim-gitgutter
+git clone https://github.com/itchyny/lightline.vim
 
 echo Installing fzf
 sudo apt install -y fzf
