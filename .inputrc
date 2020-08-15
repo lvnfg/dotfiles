@@ -10,32 +10,36 @@
 set completion-ignore-case on
 
 # Vi mode setup
+# ------------------------------
 set editing-mode vi
 set show-mode-in-prompt on
 # Specifiy exactly what to shows in each mode (bash 4.4+)
 set vi-ins-mode-string \1\e[5 q\2\033[00;90m+
 set vi-cmd-mode-string \1\e[2 q\2\033[00;90m:
 
-# Setup auto complete
-# --------------------------
-# show all completions as soon as tab is pressed, even if there 
-# are multiple matches
+# Vi insert mode
+# ------------------------------
+set keymap vi-insert
+# Unbind C-p shortcuts to free it up for vim fzf
+"\C-p":
+# show all completions as soon as tab is pressed
 set show-all-if-ambiguous on
-
-# In vi command mode
-# --------------------------
-# Unbind default vi mode shortcuts to free it up for bash
-"\C-p":
-
-# In vi insert mode
-# --------------------------
-# Unbind default vi mode shortcuts to free it up for bash
-"\C-p":
 # Pressing tab will list all comletions and select the first one. 
 # Pressing it again will cycle through available completions
 TAB:menu-complete
 # Shift-Tab cycles completions backward
 "\e[Z": menu-complete-backward
+
+# Vi command mode
+# ------------------------------
+set keymap vi-command
+# "\C-p":  # freeing this will still not enable vim fzf
+# shortcut to work as that requires expanding the alias
+# into string, possible only in insert mode.
+
+# Both Vi modes
+# ------------------------------
+set keymap vi
 
 # ------------------------------------------------------------------
 # Default configs copied from /etc/inputrc
