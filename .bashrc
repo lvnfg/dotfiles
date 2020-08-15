@@ -31,11 +31,11 @@ alias t1="tmux attach-session -t 1"
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
 bind -x '"\C-p":vim $(fzf)'
-alias bashf='bash $(fzf)'
-alias cdf='cd $(fzf)'
-alias vimf='vim $(fzf)'
-alias pyf='vim $(fzf)'
-alias lsf='ls $(fzf)'
+alias vimf='vim $(fzf)'     # vim can open both files and folders
+alias bashf='bash $(find ~ -name "*.sh" | grep -v -e ".git" | fzf)'
+alias cdf='cd $(find ~ -type d | grep -v -e ".git" | fzf)'
+alias pyf='python3 $(find ~ -name "*.py" | grep -v -e ".git" | fzf)'
+alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
 
 # Prompt & terminal
 # -----------------------------------------------
