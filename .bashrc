@@ -35,6 +35,7 @@ alias bashf='bash $(fzf)'
 alias cdf='cd $(fzf)'
 alias vimf='vim $(fzf)'
 alias pyf='vim $(fzf)'
+alias lsf='ls $(fzf)'
 
 # Prompt & terminal
 # -----------------------------------------------
