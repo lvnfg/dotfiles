@@ -30,9 +30,11 @@ alias t1="tmux attach-session -t 1"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
-alias vimf='vim $(fzf)'
 bind -x '"\C-p":vim $(fzf)'
-
+alias bashf='bash $(fzf)'
+alias cdf='cd $(fzf)'
+alias vimf='vim $(fzf)'
+alias pyf='vim $(fzf)'
 
 # Prompt & terminal
 # -----------------------------------------------
