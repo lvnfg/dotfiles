@@ -24,12 +24,16 @@ highlight EndOfBuffer ctermfg=black ctermbg=black
 set background=dark
 set t_Co=256
 
-" prevent the cursor from moving back one character when exiting insert mode
-" by overloading the Esc key in insert mode to additionall run then `^
-" command which moves the rcusor to the position where it had been the last time
-" insert mode was left
-" not recommended since the mess with the default cursor mechanics
-" :inoremap <silent> <Esc> <Esc>`^
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[2 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+"Cursor settings:
+"  1 -> blinking block
+"  2 -> solid block
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
 
 " indenting
 set autoindent
