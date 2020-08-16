@@ -22,7 +22,6 @@ ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
 ln -s ~/dotfiles/.inputrc       ~/.inputrc
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc		~/.bashrc
-source ~/.bashrc
 
 echo Cloning .vim plugins
 mkdir -p ~/.vim/pack/bundle/start
@@ -45,5 +44,4 @@ echo Remember to disable all ssh password login, including root
 echo Remember to generate ssh key if needed
 # ssh-keygen -t rsa -b 4096 -C "van@vm-"
 
-echo Remember to init gcloud if this is the first time run
-# gcloud init
+echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
