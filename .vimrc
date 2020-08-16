@@ -25,8 +25,7 @@ set background=dark
 set t_Co=256
 
 let &t_SI.="\e[5 q" "SI = INSERT mode
-let &t_SR.="\e[2 q" "SR = REPLACE mode
-let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+let &t_EI.="\e[2 q" "EI = All other modes (ELSE)
 "Cursor settings:
 "  1 -> blinking block
 "  2 -> solid block
