@@ -36,7 +36,7 @@ alias cdf='cd $(find ~ -type d | grep -v -e ".git" | fzf)'
 alias pyf='python3 $(find ~ -name "*.py" | grep -v -e ".git" | fzf)'
 alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
 bind -x '"\C-p":vimf'
-bind -x '"\C-o":cdf'
+bind -x '"\C-o":cdf && printf "$PWD " && getGitFileStatus && echo'
 
 # Prompt & terminal
 # -----------------------------------------------
