@@ -25,4 +25,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4	" when indenting with >
 
-
+" vim-plug
+call plug#begin()
+	Plug 'itchyny/lightline.vim'
+	Plug 'airblade/vim-gitgutter'
+call plug#end()
