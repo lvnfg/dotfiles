@@ -32,27 +32,6 @@ echo Purging pre-installed vim
 sudo apt purge -y vim
 sudo apt autoremove
 
-# echo Setting up VIM
-# echo Installing latest VIM from source
-# git clone git@github.com:vim/vim ~/vim
-# cd ~/vim/src
-# sudo apt install -y libncurses5-dev
-# make distclean  # clear previous install if any
-# make
-# sudo make install
-# sudo mv ~/vim/src/vim /usr/bin
-# echo Clearning up
-# sudo rm -rf ~/vim
-# sudo apt purge -y vim
-# sudo apt autoremove -y
-# which vim
-# vim --version
-# echo Cloning .vim plugins
-# mkdir -p ~/.vim/pack/bundle/start
-# cd ~/.vim/pack/bundle/start
-# git clone git@github.com:airblade/vim-gitgutter
-# git clone git@github.com:itchyny/lightline.vim
-
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
