@@ -27,15 +27,17 @@ alias t1="tmux attach-session -t 1"
 # -----------------------------------------------
 # Vim & fzf
 # -----------------------------------------------
+# Shorten nvim
+alias nv="nvim"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
-alias vimf='vim $(fzf)'     # vim can open both files and folders
+alias nvf='nvim $(fzf)'     # vim can open both files and folders
 alias bashf='bash $(find ~ -name "*.sh" | grep -v -e ".git" | fzf)'
 alias cdf='cd $(find ~ -type d | grep -v -e ".git" | fzf)'
 alias pyf='python3 $(find ~ -name "*.py" | grep -v -e ".git" | fzf)'
 alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
-bind -x '"\C-p":vimf'
+bind -x '"\C-p":nvf'
 bind -x '"\C-o":cdf && printf "$PWD " && getGitFileStatus && echo'
 
 # Prompt & terminal
