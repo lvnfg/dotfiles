@@ -1,6 +1,12 @@
 " disable vi compatibility and enable advanced vim features
 set nocompatible 
 
+" let backspace delete:
+" indent = indentation
+" eol = end of line character
+" start = everything else, not just the start of insert
+set backspace=indent,eol,start
+
 " show line numbers
 set number 
 
