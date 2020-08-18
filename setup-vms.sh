@@ -8,12 +8,14 @@ sudo apt install -y fzf
 sudo apt install -y git
 
 echo Creating symlinks
-ln -s ~/dotfiles/.vimrc         ~/.vimrc
-ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
-ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
-ln -s ~/dotfiles/.inputrc       ~/.inputrc
-rm ~/.bashrc
+rm      ~/.bashrc
+mkdir   ~/.config/nvim
 ln -s ~/dotfiles/.bashrc		~/.bashrc
+ln -s ~/dotfiles/.inputrc       ~/.inputrc
+ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
+ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
+ln -s ~/dotfiles/init.vim       ~/.config/nvim/
+ln -s ~/dotfiles/.vimrc         ~/.vimrc
 
 echo Configuring git
 git config --global credential.helper cache 3600
@@ -21,26 +23,35 @@ git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
 
-echo Setting up VIM
-echo Installing latest VIM from source
-git clone git@github.com:vim/vim ~/vim
-cd ~/vim/src
-sudo apt install -y libncurses5-dev
-make distclean  # clear previous install if any
-make
-sudo make install
-sudo mv ~/vim/src/vim /usr/bin
-echo Clearning up
-sudo rm -rf ~/vim
+echo Installing neovim
+sudo apt install -y neovim
+echo Installing plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+echo Purging pre-installed vim
 sudo apt purge -y vim
-sudo apt autoremove -y
-which vim
-vim --version
-echo Cloning .vim plugins
-mkdir -p ~/.vim/pack/bundle/start
-cd ~/.vim/pack/bundle/start
-git clone git@github.com:airblade/vim-gitgutter
-git clone git@github.com:itchyny/lightline.vim
+sudo apt autoremove
+
+# echo Setting up VIM
+# echo Installing latest VIM from source
+# git clone git@github.com:vim/vim ~/vim
+# cd ~/vim/src
+# sudo apt install -y libncurses5-dev
+# make distclean  # clear previous install if any
+# make
+# sudo make install
+# sudo mv ~/vim/src/vim /usr/bin
+# echo Clearning up
+# sudo rm -rf ~/vim
+# sudo apt purge -y vim
+# sudo apt autoremove -y
+# which vim
+# vim --version
+# echo Cloning .vim plugins
+# mkdir -p ~/.vim/pack/bundle/start
+# cd ~/.vim/pack/bundle/start
+# git clone git@github.com:airblade/vim-gitgutter
+# git clone git@github.com:itchyny/lightline.vim
 
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
