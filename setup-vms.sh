@@ -21,9 +21,6 @@ git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
 
-# set case-insensitive autocomplettion
-echo set completion-ignore-case on | sudo tee -a /etc/inputrc
-
 echo Setting up VIM
 echo Installing latest VIM from source
 git clone git@github.com:vim/vim ~/vim
