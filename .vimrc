@@ -21,7 +21,6 @@ set ignorecase
 
 " enable syntax highlighting
 syntax on 
-filetype plugin on
 
 " hide tilde (~) characters by changing color to black
 highlight EndOfBuffer ctermfg=black ctermbg=black
