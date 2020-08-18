@@ -30,7 +30,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 echo Purging pre-installed vim
 sudo apt purge -y vim
-sudo apt autoremove
+sudo apt autoremove -y
 
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
