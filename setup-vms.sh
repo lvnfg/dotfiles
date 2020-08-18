@@ -23,6 +23,21 @@ ln -s ~/dotfiles/.inputrc       ~/.inputrc
 rm ~/.bashrc
 ln -s ~/dotfiles/.bashrc		~/.bashrc
 
+echo Purging pre-installed VIM
+sudo apt purge -y vim
+sudo apt autoremove
+echo Installing latest VIM from source
+git clone git@github.com:vim/vim.git ~/vim
+cd ~/vim/src
+sudo apt install -y libncurses5-dev
+make distclean  # clear previous install if any
+make
+sudo make install
+sudo mv ~/vim/src/vim /usr/bin
+echo Clearning up
+sudo rm -rf ~/vim
+echo VIM installation done
+
 echo Cloning .vim plugins
 mkdir -p ~/.vim/pack/bundle/start
 cd ~/.vim/pack/bundle/start
