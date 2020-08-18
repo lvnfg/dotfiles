@@ -5,6 +5,8 @@
 echo Installing apps
 sudo apt install -y tmux
 sudo apt install -y fzf
+sudo apt install -y wget
+sudo apt install -y unzip
 sudo apt install -y git
 
 echo Creating symlinks
