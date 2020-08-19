@@ -20,7 +20,6 @@ ln -s ~/dotfiles/init.vim       ~/.config/nvim/
 ln -s ~/dotfiles/.vimrc         ~/.vimrc
 
 echo Configuring git
-git config --global credential.helper cache 3600
 git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
