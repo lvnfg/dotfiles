@@ -16,9 +16,9 @@ git config --global user.name "van"
 git config --global user.email "-"
 
 echo Creating symlinks
-rm      ~/.bashrc
-mkdir   ~/.config/nvim
-ln -s ~/dotfiles/.bashrc		~/.bashrc
+rm      	~/.bashrc
+mkdir -p	~/.config/nvim
+ln -s ~/dotfiles/.bashrc	~/.bashrc
 ln -s ~/dotfiles/.inputrc       ~/.inputrc
 ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
 ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
