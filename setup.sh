@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# common setup for all GNU debian linux VMs
-
 echo Installing apps
 sudo apt install -y tmux
 sudo apt install -y fzf
