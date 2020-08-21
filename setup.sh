@@ -8,6 +8,7 @@ sudo apt install -y unzip
 sudo apt install -y git
 
 echo Cloning dotfiles
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 git clone git@github.com:lvnfg/dotfiles
 echo Configuring git
 git config --global core.editor "vim"
