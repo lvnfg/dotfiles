@@ -30,7 +30,7 @@ set keymap vi-insert
 # Unbind C-p shortcuts to free it up for vim fzf
 "\C-p":
 # show all completions as soon as tab is pressed
-# set show-all-if-ambiguous on
+set show-all-if-ambiguous on
 # Pressing tab will list all comletions and select the first one. 
 # Pressing it again will cycle through available completions
 TAB:menu-complete
