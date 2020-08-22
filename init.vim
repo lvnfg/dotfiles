@@ -80,6 +80,7 @@ highlight Type							ctermfg=51		" int, long, char...
 highlight Todo			ctermbg=black	ctermfg=33		" Anything that needs extra attention
 														" mostly the keywords TODO, FIXME, XXX
 " ----------
+highlight SignColumn	ctermbg=black
 highlight EndOfBuffer	ctermbg=black	ctermfg=black	
 highlight LineNr						ctermfg=grey
 " ----------
