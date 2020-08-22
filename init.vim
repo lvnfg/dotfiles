@@ -25,6 +25,16 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4	" when indenting with >
 
+" Autocompletion
+" ---------------------------
+" Set completion menu popup to:
+"	menuone = shows even if there's only 1 match
+"	noinsert = do not automatically insert the first match
+"	noselect = don't enable this, otherwise C-Y will not insert the match
+set completeopt=menuone,noinsert,noselect
+" Remap tab to act as C-n (insert the selected match)
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+
 " vim-plug
 call plug#begin()
 	Plug 'itchyny/lightline.vim'
