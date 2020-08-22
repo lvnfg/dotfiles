@@ -5,8 +5,6 @@ set splitbelow		" Always split below
 set splitright		" Always split to the right
 set signcolumn=yes 	" Always show the sign gutter
 set updatetime=100  " Reduce vim-gitgutter update time (affect nvim's swap update)
-set laststatus=2    " Turn of statusline (replace with lightline)"
-set noshowmode
 
 " Editing
 " ------------------------------ 
@@ -23,12 +21,8 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"		"Remap tab to act as
 " Vim-Plug
 " ------------------------------ 
 call plug#begin()
-	Plug 'itchyny/lightline.vim'
 	Plug 'airblade/vim-gitgutter'
 call plug#end()
-
-
-
 
 " Color theme
 " ------------------------------ 
