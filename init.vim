@@ -5,6 +5,7 @@ set splitbelow		" Always split below
 set splitright		" Always split to the right
 set signcolumn=yes 	" Always show the sign gutter
 set updatetime=100  " Reduce vim-gitgutter update time (affect nvim's swap update)
+set laststatus=0	" Disable status line
 
 " Editing
 " ------------------------------ 
