@@ -9,7 +9,7 @@ sudo apt install -y git
 
 echo Cloning dotfiles
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-git clone git@github.com:lvnfg/dotfiles
+git clone git@github.com:lvnfg/dotfiles		~/repos/
 echo Configuring git
 git config --global core.editor "vim"
 git config --global user.name "van"
@@ -18,12 +18,12 @@ git config --global user.email "-"
 echo Creating symlinks
 rm      	~/.bashrc
 mkdir -p	~/.config/nvim
-ln -s ~/dotfiles/.bashrc	~/.bashrc
-ln -s ~/dotfiles/.inputrc       ~/.inputrc
-ln -s ~/dotfiles/.ssh/config    ~/.ssh/config
-ln -s ~/dotfiles/.tmux.conf 	~/.tmux.conf
-ln -s ~/dotfiles/init.vim       ~/.config/nvim/
-ln -s ~/dotfiles/.vimrc         ~/.vimrc
+ln -s ~/repos/dotfiles/.bashrc		~/.bashrc
+ln -s ~/repos/dotfiles/.inputrc     ~/.inputrc
+ln -s ~/repos/dotfiles/.ssh/config  ~/.ssh/config
+ln -s ~/repos/dotfiles/.tmux.conf 	~/.tmux.conf
+ln -s ~/repos/dotfiles/init.vim     ~/.config/nvim/
+ln -s ~/repos/dotfiles/.vimrc       ~/.vimrc
 
 
 echo Installing neovim
