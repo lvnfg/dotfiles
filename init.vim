@@ -13,12 +13,11 @@ set noruler			" Disable ruler in command line
 set ignorecase		" Case insensitive matching
 set tabstop=4		" Press Tab = insert 4 spaces
 set softtabstop=4	" SoftTabStop should = TabStop
-set shiftwidth=4	" Insert 4 spaces when indenting with >
+set shiftwidth=4	" Insert 4 spaces when indenting with > and new line
 
 " Autocompletion
 " ------------------------------ 
 set completeopt=menuone,noinsert,noselect		" Setup completion menu popup behavior
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"		"Remap tab to act as C-n
 
 " Vim-Plug
 " ------------------------------ 
