@@ -44,7 +44,7 @@ sudo update-alternatives --install /usr/bin/vimdiff vim diff	"$nvimPath" 110
 echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim +PlugInstall +qall
+nvim --headless +PlugInstall +qall
 
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
