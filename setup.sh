@@ -17,7 +17,6 @@ git config --global user.email "-"
 
 echo Creating symlinks
 rm      	~/.bashrc
-mkdir -p	~/.config/nvim
 ln -s ~/dotfiles/.bashrc		~/.bashrc
 ln -s ~/dotfiles/.inputrc		~/.inputrc
 ln -s ~/dotfiles/.ssh/config	~/.ssh/config
@@ -42,6 +41,7 @@ echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 echo Creating vim symlinks
+mkdir -p	~/.config/nvim
 ln -s ~/dotfiles/init.vim		~/.config/nvim/
 ln -s ~/dotfiles/.vimrc			~/.vimrc
 nvim.appimage --headless +PlugInstall +qall
