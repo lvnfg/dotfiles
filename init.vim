@@ -32,21 +32,6 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-" completion-nvim
-" ------------------------------ 
-" Attach to language servers (1 line for each LS)
-lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-" Better autocompletion popup behavior
-set completeopt=menuone,noinsert,noselect
-" Avoid showing message extra message when using completion
-set shortmess+=c
-" Select first match and navigate popup menu with Tab
-inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <C-j>	pumvisible() ? "\<C-n>"	: "\<C-j>"
-inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
 
 " nvim-lsp sever
 " ------------------------------ 
@@ -68,6 +53,22 @@ nvim_lsp.pyls_ms.setup{
     }
 }
 pyls_ms
+
+" completion-nvim
+" ------------------------------ 
+" Attach to language servers (1 line for each LS)
+lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+" Better autocompletion popup behavior
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+" Select first match and navigate popup menu with Tab
+inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <C-j>	pumvisible() ? "\<C-n>"	: "\<C-j>"
+inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
 
 " Color theme
 " ------------------------------ 
