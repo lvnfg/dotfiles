@@ -27,7 +27,18 @@ ln -s ~/dotfiles/.vimrc			~/.vimrc
 
 
 echo Installing neovim
-sudo apt install -y neovim
+sudo apt install -y fuse
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/bin/
+echo Setting nvim as default and alternatives
+nvimPath="/usr/bin/nvim.appimage"
+set -u
+sudo update-alternatives --install /usr/bin/ex		ex			"$nvimPath" 110
+sudo update-alternatives --install /usr/bin/vi		vi			"$nvimPath" 110
+sudo update-alternatives --install /usr/bin/view	view		"$nvimPath" 110
+sudo update-alternatives --install /usr/bin/vim		vim			"$nvimPath" 110
+sudo update-alternatives --install /usr/bin/vimdiff vim diff	"$nvimPath" 110
 echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

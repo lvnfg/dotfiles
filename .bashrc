@@ -28,6 +28,7 @@ alias t1="tmux attach-session -t 1"
 # Vim & fzf
 # -----------------------------------------------
 # Shorten nvim
+alias nvim="/usr/bin/nvim.appimage"
 alias nv="nvim"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
