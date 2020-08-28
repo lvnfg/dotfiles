@@ -2,6 +2,7 @@
 -- -----------------------------------------------------------------------
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.pyls_ms.setup{
+	on_attach=require'completion'.on_attach;
 	init_options = {
 		analysisUpdates = true,
 		asyncStartup = true,
@@ -14,7 +15,3 @@ nvim_lsp.pyls_ms.setup{
 		}
 	}
 }
-
--- completion-nvim
--- -----------------------------------------------------------------------
-require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
