@@ -40,6 +40,8 @@ set shortmess+=c
 " Select first match and navigate popup menu with Tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\S-Tab>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\C-k>"
 
 " nvim-lsp sever
 " ------------------------------ 
