@@ -27,7 +27,27 @@ set completeopt=menuone,noinsert,noselect		" Setup completion menu popup behavio
 " ------------------------------ 
 call plug#begin()
 	Plug 'airblade/vim-gitgutter'
+	Plug 'neovim/nvim-lsp'
 call plug#end()
+
+" nvim-lsp sever config
+" https://github.com/neovim/nvim-lsp#configurations
+lua <<ENDLUA
+local nvim_lsp = require'nvim_lsp'
+nvim_lsp.pyls_ms.setup{
+	init_options = {
+      analysisUpdates = true,
+      asyncStartup = true,
+      displayOptions = {},
+      interpreter = {
+        properties = {
+          InterpreterPath = "/usr/bin/python3",
+          Version = "3.7"
+        }
+      }
+    }
+}
+ENDLUA
 
 " Color theme
 " ------------------------------ 
