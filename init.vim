@@ -57,7 +57,9 @@ pyls_ms
 " completion-nvim
 " ------------------------------ 
 " Attach to language servers (1 line for each LS)
-lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+if filereadable("/home/van/.config/nvim/lua/nvim_lsp.lua")
+	lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+endif
 " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
 " Better autocompletion popup behavior
