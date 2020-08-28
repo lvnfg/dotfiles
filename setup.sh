@@ -31,6 +31,8 @@ sudo apt install -y fuse
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/
+sudo apt purge -y vim
+sudo apt autoremove -y
 echo Setting nvim as default and alternatives
 nvimPath="/usr/bin/nvim.appimage"
 set -u
@@ -42,9 +44,7 @@ sudo update-alternatives --install /usr/bin/vimdiff vim diff	"$nvimPath" 110
 echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-echo Purging pre-installed vim
-sudo apt purge -y vim
-sudo apt autoremove -y
+nvim +PlugInstall +qall
 
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
