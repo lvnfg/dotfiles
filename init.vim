@@ -39,46 +39,8 @@ call plug#begin()
 	Plug 'nvim-lua/completion-nvim'
 call plug#end()
 
-" nvim-lsp sever config
-" https://github.com/neovim/nvim-lsp#configurations
-" lua <<ENDLUA
-" local nvim_lsp = require'nvim_lsp'
-" nvim_lsp.pyls_ms.setup{
-" 	on_attach=require'completion'.on_attach;
-" 	init_options = {
-" 		analysisUpdates = true,
-" 		asyncStartup = true,
-" 		displayOptions = {},
-" 		interpreter = {
-" 			properties = {
-" 				InterpreterPath = "/usr/bin/python3",
-" 				Version = "3.7"
-" 			}
-" 		}
-" 	}
-" }
-" ENDLUA
-
+" Source init.lua to bring in lua completion modules
 lua require'init'
-" lua <<lsp
-" local nvim_lsp = require'nvim_lsp'
-" nvim_lsp.pyls_ms.setup{
-" 	init_options = {
-" 		analysisUpdates = true,
-" 		asyncStartup = true,
-" 		displayOptions = {},
-" 		interpreter = {
-" 			properties = {
-" 				InterpreterPath = "/usr/bin/python3",
-" 				Version = "3.7"
-" 			}
-" 		}
-" 	}
-" }
-" lsp
-" 
-" lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 " Color theme
 " ------------------------------ 
