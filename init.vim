@@ -26,6 +26,11 @@ call plug#begin()
 	Plug 'neovim/nvim-lsp'
 	Plug 'nvim-lua/completion-nvim'
 call plug#end()
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 " completion-nvim
 " ------------------------------ 
