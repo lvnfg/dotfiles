@@ -22,10 +22,7 @@ ln -s ~/dotfiles/.bashrc		~/.bashrc
 ln -s ~/dotfiles/.inputrc		~/.inputrc
 ln -s ~/dotfiles/.ssh/config	~/.ssh/config
 ln -s ~/dotfiles/.tmux.conf		~/.tmux.conf
-ln -s ~/dotfiles/.vimrc			~/.vimrc
 
-
-ln -s ~/dotfiles/init.vim		~/.config/nvim/
 echo Installing neovim
 sudo apt install -y fuse
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -44,7 +41,10 @@ sudo update-alternatives --install /usr/bin/vimdiff vim diff	"$nvimPath" 110
 echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim --headless +PlugInstall +qall
+echo Creating vim symlinks
+ln -s ~/dotfiles/init.vim		~/.config/nvim/
+ln -s ~/dotfiles/.vimrc			~/.vimrc
+nvim.appimage --headless +PlugInstall +qall
 echo Creating init.lua symlink
 ln -s ~/dotfiles/init.lua		~/.config/nvim/
 
