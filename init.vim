@@ -19,39 +19,8 @@ let g:pyindent_continue = '&sw * 2'
 let g:pyindent_nested_paren = '&sw'
 let g:pyindent_open_paren = '&sw'		" Fix double indentation
 
-" Vim-Plug
+" Autocomplete behavior
 " ------------------------------ 
-call plug#begin()
-	Plug 'airblade/vim-gitgutter'
-	Plug 'neovim/nvim-lsp'
-	Plug 'nvim-lua/completion-nvim'
-call plug#end()
-
-" nvim-lsp sever
-" ------------------------------ 
-" https://github.com/neovim/nvim-lsp#configurations
-" Microsoft python language server
-lua <<pyls_ms
-local nvim_lsp = require'nvim_lsp'
-nvim_lsp.pyls_ms.setup{
-	init_options = {
-      analysisUpdates = true,
-      asyncStartup = true,
-      displayOptions = {},
-      interpreter = {
-        properties = {
-          InterpreterPath = "/usr/bin/python3",
-          Version = "3.7"
-        }
-      }
-    }
-}
-require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
-pyls_ms
-
-" completion-nvim
-" ------------------------------ 
-autocmd BufEnter * lua require'completion'.on_attach()
 " Better autocompletion popup behavior
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
@@ -61,6 +30,15 @@ inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <C-j>	pumvisible() ? "\<C-n>"	: "\<C-j>"
 inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
+
+" Vim-Plug
+" ------------------------------ 
+call plug#begin()
+	Plug 'airblade/vim-gitgutter'
+	Plug 'neovim/nvim-lsp'
+	Plug 'nvim-lua/completion-nvim'
+call plug#end()
+
 
 " Color theme
 " ------------------------------ 
