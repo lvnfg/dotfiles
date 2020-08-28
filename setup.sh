@@ -43,10 +43,12 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 echo Creating vim symlinks
 mkdir -p	~/.config/nvim/lua
+touch		~/.config/nvim/lua/init.lua
 ln -s ~/dotfiles/init.vim		~/.config/nvim/
 ln -s ~/dotfiles/.vimrc			~/.vimrc
 nvim.appimage --headless -c 'PlugInstall' +qall
 echo Creating init.lua symlink
+rm								~/.config/nvim/lua/init.lua
 ln -s ~/dotfiles/init.lua		~/.config/nvim/lua/
 
 echo Installing language server and vim integration
