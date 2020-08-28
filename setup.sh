@@ -6,6 +6,7 @@ sudo apt install -y fzf
 sudo apt install -y wget
 sudo apt install -y unzip
 sudo apt install -y git
+sudo apt install -y python3-pip
 
 echo Cloning dotfiles
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
@@ -41,12 +42,26 @@ echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 echo Creating vim symlinks
-mkdir -p	~/.config/nvim
+mkdir -p	~/.config/nvim/lua
 ln -s ~/dotfiles/init.vim		~/.config/nvim/
 ln -s ~/dotfiles/.vimrc			~/.vimrc
-nvim.appimage --headless +PlugInstall +qall
+nvim.appimage --headless -c 'PlugInstall' +qall
 echo Creating init.lua symlink
-ln -s ~/dotfiles/init.lua		~/.config/nvim/
+ln -s ~/dotfiles/init.lua		~/.config/nvim/lua/
+
+echo Installing language server and vim integration
+echo Installing .Net core SDK
+url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
+fileName="dotnet.deb"
+wget -O $fileName $url
+sudo apt-get update
+sudo apt-get install -y apt-transport-https
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-3.1
+rm $fileName
+echo Add python interpreter to nvim
+nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
+pip3 install pynvim
 
 echo Remember to disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
