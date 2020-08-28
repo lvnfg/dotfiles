@@ -19,20 +19,33 @@ let g:pyindent_continue = '&sw * 2'
 let g:pyindent_nested_paren = '&sw'
 let g:pyindent_open_paren = '&sw'		" Fix double indentation
 
-" Autocompletion
-" ------------------------------ 
-set completeopt=menuone,noinsert,noselect		" Setup completion menu popup behavior
-
 " Vim-Plug
 " ------------------------------ 
 call plug#begin()
 	Plug 'airblade/vim-gitgutter'
 	Plug 'neovim/nvim-lsp'
+	Plug 'nvim-lua/completion-nvim'
 call plug#end()
 
-" nvim-lsp sever config
+" completion-nvim
+" ------------------------------ 
+" Attach to language servers (1 line for each LS)
+lua require'nvim_lsp'.pyls_ms.setup{on_attach=require'completion'.on_attach}
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+" Better autocompletion popup behavior
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+" Select first match and navigate popup menu with Tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\S-Tab>"
+
+" nvim-lsp sever
+" ------------------------------ 
 " https://github.com/neovim/nvim-lsp#configurations
-lua <<ENDLUA
+" Microsoft python language server
+lua <<pyls_ms
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.pyls_ms.setup{
 	init_options = {
@@ -47,7 +60,7 @@ nvim_lsp.pyls_ms.setup{
       }
     }
 }
-ENDLUA
+pyls_ms
 
 " Color theme
 " ------------------------------ 
