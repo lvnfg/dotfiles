@@ -33,13 +33,13 @@ alias nv="nvim"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
-fzfnvim() {
+fzfFileInNvim() {
 	result=$(find ~ -type f | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
 		nvim "$result"
 	fi
 }
-fzfcd() {
+fzfcdGo() {
 	result=$(find ~ -type d | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
 		cd "$result"
@@ -47,15 +47,15 @@ fzfcd() {
 		echo
 	fi
 }
-fzfRunDefault() {
+fzfExecuteDefault() {
 	result=$(find ~ -type f | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
 		echo TODO: check extension, pass argument, run default app
 	fi
 }
-bind -x '"\C-g":fzfnvim'
-bind -x '"\C-f":fzfcd'
-bind -x '"\C-r":fzfRunDefault'
+bind -x '"\C-f":fzfFileInNvim'
+bind -x '"\C-g":fzfcdGo'
+bind -x '"\C-e":fzfExecuteDefault'
 
 # Prompt & terminal
 # -----------------------------------------------
