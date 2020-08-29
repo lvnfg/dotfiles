@@ -47,11 +47,15 @@ fzfcd() {
 		echo
 	fi
 }
-alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
-alias bashf='bash $(find ~ -type f -name "*.sh" | grep -v -e ".git" | fzf)'
-alias pyf='python3 $(find ~ -type f -name "*.py" | grep -v -e ".git" | fzf)'
+fzfRunDefault() {
+	result=$(find ~ -type f | grep -v -e ".git" | fzf)
+	if [[ ! -z "$result" ]]; then
+		echo TODO: check extension, pass argument, run default app
+	fi
+}
 bind -x '"\C-g":fzfnvim'
 bind -x '"\C-f":fzfcd'
+bind -x '"\C-r":fzfRunDefault'
 
 # Prompt & terminal
 # -----------------------------------------------
