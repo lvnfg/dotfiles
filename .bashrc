@@ -33,12 +33,17 @@ alias nv="nvim"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
+fzfnvim() {
+	result=$(find ~ -type f | grep -v -e ".git" | fzf)
+	if [[ ! -z "$result" ]]; then
+		nvim "$result"
+	fi
+}
 alias cdf='cd $(find ~ -type d | grep -v -e ".git" | fzf)'
 alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
-alias nvf='nvim $(find ~ -type f | grep -v -e ".git" | fzf)'
 alias bashf='bash $(find ~ -type f -name "*.sh" | grep -v -e ".git" | fzf)'
 alias pyf='python3 $(find ~ -type f -name "*.py" | grep -v -e ".git" | fzf)'
-bind -x '"\C-g":nvf'
+bind -x '"\C-g":fzfnvim'
 bind -x '"\C-f":cdf && printf "--> $PWD "'
 
 # Prompt & terminal
