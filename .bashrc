@@ -39,12 +39,19 @@ fzfnvim() {
 		nvim "$result"
 	fi
 }
-alias cdf='cd $(find ~ -type d | grep -v -e ".git" | fzf)'
+fzfcd() {
+	result=$(find ~ -type d | grep -v -e ".git" | fzf)
+	if [[ ! -z "$result" ]]; then
+		cd "$result"
+		echo -e "--> $result \c" && getGitFileStatus
+		echo
+	fi
+}
 alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
 alias bashf='bash $(find ~ -type f -name "*.sh" | grep -v -e ".git" | fzf)'
 alias pyf='python3 $(find ~ -type f -name "*.py" | grep -v -e ".git" | fzf)'
 bind -x '"\C-g":fzfnvim'
-bind -x '"\C-f":cdf && printf "--> $PWD "'
+bind -x '"\C-f":fzfcd'
 
 # Prompt & terminal
 # -----------------------------------------------
