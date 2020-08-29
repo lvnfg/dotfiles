@@ -101,7 +101,7 @@ highlight SignColumn	ctermbg=black
 highlight EndOfBuffer	ctermbg=black	ctermfg=black	
 highlight LineNr						ctermfg=grey
 " ----------
-highlight Pmenu			ctermbg=black	ctermfg=white	" Popup menu normal item
-highlight PmenuSel		ctermbg=24		ctermfg=white	" Popup Selected item
+highlight Pmenu			ctermbg=234		ctermfg=white	" Popup menu normal item
+highlight PmenuSel		ctermbg=25		ctermfg=white	" Popup Selected item
 highlight PmenuSbar		ctermbg=black					" Popup Scrollbar
 highlight PmenuThumb	ctermbg=black					" Popup Scrollbar thumb
