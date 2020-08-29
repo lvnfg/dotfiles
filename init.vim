@@ -18,6 +18,7 @@ set shiftwidth=4	" Insert 4 spaces when indenting with > and new line
 let g:pyindent_continue = '&sw * 2'
 let g:pyindent_nested_paren = '&sw'
 let g:pyindent_open_paren = '&sw'		" Fix double indentation
+set clipboard+=unnamedplus				" Always use + register as clipboard
 
 " Autocomplete behavior
 " ------------------------------ 
