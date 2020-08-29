@@ -20,18 +20,6 @@ let g:pyindent_nested_paren = '&sw'
 let g:pyindent_open_paren = '&sw'		" Fix double indentation
 set clipboard+=unnamedplus				" Always use + register as clipboard
 
-" Autocomplete behavior
-" ------------------------------ 
-" Better autocompletion popup behavior
-set completeopt=menuone,noinsert,noselect
-" Avoid showing message extra message when using completion
-set shortmess+=c
-" Select first match and navigate popup menu with Tab
-inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <C-j>	pumvisible() ? "\<C-n>"	: "\<C-j>"
-inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
-
 " Vim-Plug
 " ------------------------------ 
 call plug#begin()
@@ -42,6 +30,22 @@ call plug#end()
 
 " Source init.lua to bring in lua completion modules
 lua require'init'
+
+" Autocomplete behavior
+" ------------------------------ 
+" Better autocompletion popup behavior
+set completeopt=menuone,noinsert,noselect
+" completion-nvim
+let g:completion_sorting = "alphabet"		" alphabet, length, none
+let g:completion_matching_strategy_list = ['substring', 'exact', 'fuzzy', 'all']
+let g:completion_matching_ignore_case = 1
+" Avoid showing message extra message when using completion
+set shortmess+=c
+" Select first match and navigate popup menu with Tab
+inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <C-j>	pumvisible() ? "\<C-n>"	: "\<C-j>"
+inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
 
 " Color theme
 " ------------------------------ 
