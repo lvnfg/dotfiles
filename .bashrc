@@ -38,8 +38,8 @@ alias lsf='ls $(find ~ -type d | grep -v -e ".git" | fzf)'
 alias nvf='nvim $(find ~ -type f | grep -v -e ".git" | fzf)'
 alias bashf='bash $(find ~ -type f -name "*.sh" | grep -v -e ".git" | fzf)'
 alias pyf='python3 $(find ~ -type f -name "*.py" | grep -v -e ".git" | fzf)'
-bind -x '"\C-p":nvf'
-bind -x '"\C-f":cdf && printf "$PWD " && getGitFileStatus && echo'
+bind -x '"\C-d":nvf'
+bind -x '"\C-f":cdf && printf "$PWD "'
 
 # Prompt & terminal
 # -----------------------------------------------
