@@ -73,64 +73,79 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 
 " Color theme
 " ------------------------------ 
-" :highlight to see all elements and their colors
-" Color   name references: https://jonasjacek.github.io/colors/ 
-" ----------
-" Syntax highlighting
-highlight Normal		ctermbg=black	ctermfg=white	" Default background and text foreground
-highlight Comment						ctermfg=2
-" ---------- 
-highlight Constant						ctermfg=79		" Any constant
-highlight String						ctermfg=172		" String constant
-"			Character									" 'c', '\n'
-"			Number										" 234, 0xff
-"			Boolean										" True, false
-"			Float										" 2.3e10...
-" ----------
-"			*Identifier									" Any variable name
-"			Function									" Function name and methods for classes
-" ----------
-highlight Statement						ctermfg=171		" Any statement
-highlight Conditional					ctermfg=171		" If, then, else, switch...
-highlight Repeat						ctermfg=171		" while, for, loop...
-highlight Label							ctermfg=171		" case, default...
-highlight Operator						ctermfg=11		" +, -, *, /...
-highlight Keyword						ctermfg=171		" Any other keyword
-highlight Exception						ctermfg=171		" Try, catch, throw
-" ----------
-"			*Preproc									" Generic preprocessor
-"			Include										" Preproc #include
-"			Define										" Preproc #define
-"			Macro										" Same as Define
-"			PreCondit									" Preproc #if, #else...
-" ----------
-highlight Type							ctermfg=51		" int, long, char...
-"			StorageClass								" static, register, volatile...
-"			Structure									" struct, union, enum...
-"			Typedef										" A typedef
-" ----------
-"			*Special									" Any special symbol
-"			SpecialChar									" Special char in a constant
-"			Tag											" Can use C-] on this
-"			Delimiter									" Char that needs attention
-"			SpecialComment								" Special thing inside a comment
-"			Debug										" Debugging statement
-" ----------
-"			*Underlined									" Text that stands out, url, html link
-" ----------
-"			*Ignore										" Left blank, hidden
-" ----------
-"			*Error										" Any errorneous construct
-" ----------
-highlight Todo			ctermbg=black	ctermfg=33		" Anything that needs extra attention
-														" mostly the keywords TODO, FIXME, XXX
-" ----------
-highlight SignColumn	ctermbg=black
-highlight EndOfBuffer	ctermbg=black	ctermfg=black	
-highlight LineNr						ctermfg=grey
-" ----------
-highlight Pmenu			ctermbg=234		ctermfg=white	" Popup menu normal item
-highlight PmenuSel		ctermbg=25		ctermfg=white	" Popup Selected item
-highlight PmenuSbar		ctermbg=234						" Popup Scrollbar
-highlight PmenuThumb	ctermbg=25						" Popup Scrollbar thumb
-highlight Tooltip		ctermbg=red		
+" All highlight elements' current colors	:highlight
+" All highlight groups						:help highlight-groups
+" All syntax rules							:syntax
+" ------------------------------ 
+" * Normal: default background and text foreground
+  highlight Normal			ctermbg=black	ctermfg=white
+  highlight Comment							ctermfg=2
+" ------------------------------ 
+" * Constants: string, 234, 0x3ff, +, -, *, /, true, false, 1.3e1000...
+  highlight Constant						ctermfg=79	
+  highlight String							ctermfg=172
+" highlight Character
+" highlight Number	
+" highlight Boolean	
+" highlight Float	
+" ------------------------------ 
+" * Identifiers: function names, methods, classes...
+" highlight Identifier
+" highlight Function
+" ------------------------------ 
+" * Statements: if, else, case, switch, loop, for, while, try, catch, throw...
+  highlight Statement						ctermfg=171
+" highlight Conditional
+" highlight Repeat	
+" highlight Label
+  highlight Operator						ctermfg=11
+" highlight Keyword
+" highlight Exception
+" ------------------------------ 
+" * Preprocessor: #include, #exclude, #define
+" highlight Preproc								
+" highlight Include							
+" highlight Define						
+" highlight Macro					
+" highlight PreCondit			
+" ------------------------------ 
+" * Type: int, long, chair, static, register, struct, union, enum, typedef
+  highlight Type							ctermfg=51
+" highlight StorageClass
+" highlight Structure
+" highlight Typedef	
+" ------------------------------ 
+" * Special: special symbols, debugging statements, char that needs attention
+" highlight *Special
+" highlight SpecialChar
+" highlight Tag		
+" highlight Delimiter
+" highlight SpecialComment
+" highlight Debug
+" ------------------------------ 
+" highlight *Underlined
+" ------------------------------ 
+" highlight *Ignore	
+" ------------------------------ 
+" highlight *Error
+" ------------------------------ 
+" * TODO, FIXME....
+  highlight Todo			ctermbg=black	ctermfg=33
+" ------------------------------ 
+" * Editor elements
+  highlight SignColumn		ctermbg=black
+  highlight EndOfBuffer		ctermbg=black	ctermfg=black	
+  highlight LineNr							ctermfg=grey
+" ------------------------------ 
+" * Popup menu
+  highlight Pmenu			ctermbg=234		ctermfg=white
+  highlight PmenuSel		ctermbg=25		ctermfg=white
+  highlight PmenuSbar		ctermbg=234	
+  highlight PmenuThumb		ctermbg=25
+  highlight Tooltip			ctermbg=red
+" ------------------------------ 
+" * Diagnostic sign & virtual text
+" highlight LspDiagnosticsErrorSign			ctermbg=red		ctermfg=grey
+" highlight LspDiagnosticsWarningSign		ctermbg=red		ctermfg=grey
+" highlight LspDiagnosticsInformationSign	ctermbg=		ctermfg=	
+" highlight LspDiagnosticsHintSign			ctermbg=		ctermfg=	
