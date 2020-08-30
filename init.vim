@@ -49,7 +49,7 @@ inoremap <expr> <C-k>	pumvisible() ? "\<C-p>"	: "\<C-k>"
 
 " Color theme
 " ------------------------------ 
-" Element name references: http://vimdoc.sourceforge.net/htmldoc/syntax.html
+" :highlight to see all elements and their colors
 " Color   name references: https://jonasjacek.github.io/colors/ 
 " ----------
 " Syntax highlighting
