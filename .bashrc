@@ -50,7 +50,12 @@ fzfcdGo() {
 fzfExecuteDefault() {
 	result=$(find ~ -type f | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
-		echo TODO: check extension, pass argument, run default app
+		last3=${result:(-3)}
+		if [[ $last3 = ".sh" ]]; then
+			bash $result
+		elif [[ $last3 = ".py" ]]; then
+			python3 $result
+		fi
 	fi
 }
 bind -x '"\C-f":fzfFileInNvim'
