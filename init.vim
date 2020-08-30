@@ -107,5 +107,6 @@ highlight LineNr						ctermfg=grey
 " ----------
 highlight Pmenu			ctermbg=234		ctermfg=white	" Popup menu normal item
 highlight PmenuSel		ctermbg=25		ctermfg=white	" Popup Selected item
-highlight PmenuSbar		ctermbg=black					" Popup Scrollbar
-highlight PmenuThumb	ctermbg=black					" Popup Scrollbar thumb
+highlight PmenuSbar		ctermbg=234						" Popup Scrollbar
+highlight PmenuThumb	ctermbg=25						" Popup Scrollbar thumb
+highlight Tooltip		ctermbg=red		
