@@ -114,7 +114,7 @@ echo
 echo -------------------------------------------------------------------------------
 echo 256 colors
 echo -------------------------------------------------------------------------------
-for fgbg in 38 48 ; do # Foreground / Background
+for fgbg in 48 38 ; do # Foreground / Background
     for color in {0..255} ; do # Colors
         # Display the color
         printf "\e[${fgbg};5;%sm  %3s  \e[0m" $color $color
