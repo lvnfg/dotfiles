@@ -31,7 +31,7 @@ ln -s ~/dotfiles/.tmux.conf		~/.tmux.conf
 # Neovim
 # ----------------------------------------------------------------
 if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = ORIGIN ]]; then
-	sudo apt install neovim
+	sudo apt install -y neovim
 else
 	sudo apt install -y fuse
 	wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -56,7 +56,11 @@ mkdir -p	~/.config/nvim/lua
 touch		~/.config/nvim/lua/init.lua
 ln -s ~/dotfiles/init.vim		~/.config/nvim/
 ln -s ~/dotfiles/.vimrc			~/.vimrc
-nvim.appimage --headless -c 'PlugInstall' +qall
+if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = ORIGIN ]]; then
+	nvim --headless -c 'PlugInstall' +qall
+else
+	nvim.appimage --headless -c 'PlugInstall' +qall
+fi
 echo Creating init.lua symlink
 rm								~/.config/nvim/lua/init.lua
 ln -s ~/dotfiles/init.lua		~/.config/nvim/lua/
