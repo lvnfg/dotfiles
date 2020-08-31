@@ -1,4 +1,5 @@
 if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = ORIGIN ]]; then
+	cd ~/.ssh
 	SSH_ENV="$HOME/.ssh/agent-environment"
 	function start_agent {
 		echo "Initialising new SSH agent..."
