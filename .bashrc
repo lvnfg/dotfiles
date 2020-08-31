@@ -60,7 +60,7 @@ fzfExecuteDefault() {
 }
 bind -x '"\C-f":fzfFileInNvim'
 bind -x '"\C-g":fzfcdGo'
-bind -x '"\C-e":fzfExecuteDefault'
+bind -x '"\C-a":fzfExecuteDefault'
 
 # Prompt & terminal
 # -----------------------------------------------
