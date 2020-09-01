@@ -153,3 +153,6 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 " highlight LspDiagnosticsWarningSign		ctermbg=red		ctermfg=grey
 " highlight LspDiagnosticsInformationSign	ctermbg=		ctermfg=	
 " highlight LspDiagnosticsHintSign			ctermbg=		ctermfg=	
+" ------------------------------ 
+" * Search
+  highlight Search							ctermbg=244
