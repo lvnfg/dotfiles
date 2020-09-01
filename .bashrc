@@ -1,4 +1,9 @@
-if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = ORIGIN ]]; then
+hostType=vm
+if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = origin ]]; then
+	hostType=wsl	
+fi
+
+if [[ $hostType = wsl ]]; then
 	cd ~/.ssh
 	SSH_ENV="$HOME/.ssh/agent-environment"
 	function start_agent {
