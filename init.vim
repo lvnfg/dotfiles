@@ -22,6 +22,10 @@ set clipboard+=unnamedplus				" Always use + register as clipboard
 " Remap r (replace char under cursor) to C-r (redo) as C-r is captured by
 " tmux for switch to next pane
 noremap r <C-R>
+" Remap ; to : to spare my left pinky
+noremap ; :
+" noremap <Space>
+" noremap <Tab>
 
 " Vim-Plug
 " ------------------------------ 
