@@ -52,8 +52,7 @@ let g:completion_matching_ignore_case = 1
 " Avoid showing message extra message when using completion
 set shortmess+=c
 " Select first match and navigate popup menu with Tab
-inoremap <expr> <Tab>	pumvisible() ? "\<C-n>"	: "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab>	pumvisible() ? "\<Space>"	: "\<Tab>"
 
 " Diagnostic behavior
 " ------------------------------ 
