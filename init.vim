@@ -56,15 +56,16 @@ let g:completion_matching_ignore_case = 1
 " Avoid showing message extra message when using completion
 set shortmess+=c
 " Select first match and navigate popup menu with Tab
-inoremap <expr> <Tab>	pumvisible() ? "\<Space>"	: "\<Tab>"
+inoremap <expr> <Tab>	pumvisible() ? "<C-n>"	: "\<Tab>"
+inoremap <expr> <S-Tab>	pumvisible() ? "<C-p>"	: "\<S-Tab>"
 
 " Diagnostic behavior
 " ------------------------------ 
 " diagnostic-nvim
 let g:diagnostic_enable_virtual_text	= 1
-let g:diagnostic_virtual_text_prefix	= ' '
-let g:diagnostic_trimmed_virtual_text	= '20'
-let g:space_before_virtual_text			= 1
+" let g:diagnostic_virtual_text_prefix	= '-> '
+" let g:diagnostic_trimmed_virtual_text	= '20'
+" let g:space_before_virtual_text			= 1
 let g:diagnostic_enable_underline		= 1
 let g:diagnostic_auto_popup_while_jump	= 1
 let g:diagnostic_insert_delay			= 1
