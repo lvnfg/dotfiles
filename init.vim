@@ -83,8 +83,14 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 " All syntax rules							:syntax
 " ------------------------------ 
 " * Normal: default background and text foreground
-  highlight Normal			ctermbg=black	ctermfg=white
+" Set normal ctermbg=None let vim take tmux active/inactive pane bg color
+  highlight Normal			ctermbg=none	ctermfg=white
   highlight Comment							ctermfg=2
+" ------------------------------ 
+" * Editor elements
+  highlight SignColumn		ctermbg=None
+  highlight EndOfBuffer		ctermbg=None ctermfg=black	
+  highlight LineNr							ctermfg=grey
 " ------------------------------ 
 " * Constants: string, 234, 0x3ff, +, -, *, /, true, false, 1.3e1000...
   highlight Constant						ctermfg=79	
@@ -136,11 +142,6 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 " ------------------------------ 
 " * TODO, FIXME....
   highlight Todo			ctermbg=black	ctermfg=33
-" ------------------------------ 
-" * Editor elements
-  highlight SignColumn		ctermbg=black
-  highlight EndOfBuffer		ctermbg=black	ctermfg=black	
-  highlight LineNr							ctermfg=grey
 " ------------------------------ 
 " * Popup menu
   highlight Pmenu			ctermbg=234		ctermfg=white
