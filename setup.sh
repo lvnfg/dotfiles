@@ -14,7 +14,7 @@
 hostType=vm
 if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = origin ]]; then
 	hostType=wsl	
-[[ "$HOSTNAME" = DESKTOP ]]; then
+elif [[ "$HOSTNAME" = macbook ]]; then
     hostType=macbook
 fi
 
