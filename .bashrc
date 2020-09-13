@@ -54,12 +54,6 @@ alias t1="tmux attach-session -t 1"
 # -----------------------------------------------
 # Vim & fzf
 # -----------------------------------------------
-# Shorten nvim
-if [[ ! -z "$(which nvim)" ]] || [[ ! -z "$(which nvim.appimage)" ]]; then
-    alias vim="nvim"
-fi
-alias nvim="/usr/bin/nvim.appimage"
-alias nv="nvim"
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 # Alias + shortcut to search and open in vim
@@ -68,8 +62,6 @@ fzfFileInEditor() {
 	if [[ ! -z "$result" ]]; then
         if [[ ! -z "$(which code)" ]]; then
             code "$result"
-		elif [[ ! -z "$(which nvim)" ]] || [[ ! -z "$(which nvim.appimage)" ]]; then
-		    nvim "$result"
 		else
 		    vim "$result"
 		fi
@@ -111,9 +103,6 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[00;90m\]\u@\h\[\033[00m\] \[\033[0
 set -o vi    
 # Let vim & tmux terminals use colors
 export TERM=xterm-256color
-# Make nvim the default editor
-export VISUAL=nvim
-export EDITOR="$VISUAL"
 
 # ------------------------------------------------
 # ls
