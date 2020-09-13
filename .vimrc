@@ -2,6 +2,7 @@
 " ------------------------------ 
 noremap ; :
 noremap r <C-R>
+noremap <Esc> :noh
 
 if !exists('g:vscode')
 	" General
