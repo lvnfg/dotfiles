@@ -67,28 +67,5 @@ else
 		   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	nvim.appimage --headless -c 'PlugInstall' +qall
 	ln -s ~/dotfiles/init.lua		~/.config/nvim/lua/
-
-	    # Language servers
-	    # ----------------------------------------------------------------
-	    if [[ $hostType = wsl ]]; then
-		    # Skip
-		    echo Language server setup skipped for $hostType
-	    else
-		    # Microsoft python language server
-		    echo Installing .Net core SDK
-		    url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
-		    fileName="dotnet.deb"
-		    wget -O $fileName $url
-		    sudo dpkg -i $fileName
-		    sudo apt-get update
-		    sudo apt-get install -y apt-transport-https
-		    sudo apt-get update
-		    sudo apt-get install -y dotnet-sdk-3.1
-		    rm $fileName
-		    echo Add python interpreter to nvim
-		    nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
-		    pip3 install pynvim
-	    fi
-    fi
 fi
 echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
