@@ -22,7 +22,10 @@ if !exists('g:vscode')
 	set noruler			" Disable ruler in command line
 	set updatetime=100  " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes 	" Always show the sign gutter
-	highlight SignColumn ctermbg=black
+	" Minimize visual prominence of sign column & end of buffer
+	highlight SignColumn        ctermbg=black
+    highlight EndOfBuffer		ctermbg=None    ctermfg=black	
+    highlight LineNr							ctermfg=grey
 	" fix wrong colors in tmux by forcing 256 colors
 	set background=dark
 	set t_Co=256
@@ -116,87 +119,4 @@ if !exists('g:vscode')
 		" load all helptags after plugins and ignore errors
 		silent! helptags ALL
 	endif
-    
-    " Color theme
-    " ------------------------------ 
-    " All highlight elements' current colors	:highlight
-    " All highlight groups						:help highlight-groups
-    " All syntax rules							:syntax
-    " ------------------------------ 
-    " * Normal: default background and text foreground
-    " Set normal ctermbg=None let vim take tmux active/inactive pane bg color
-      highlight Normal			ctermbg=none	ctermfg=white
-      highlight Comment							ctermfg=2
-    " ------------------------------ 
-    " * Editor elements
-      highlight SignColumn		ctermbg=None
-      highlight EndOfBuffer		ctermbg=None    ctermfg=black	
-      highlight LineNr							ctermfg=grey
-    " ------------------------------ 
-    " * Constants: string, 234, 0x3ff, +, -, *, /, true, false, 1.3e1000...
-      highlight Constant						ctermfg=79	
-      highlight String							ctermfg=172
-    " highlight Character
-    " highlight Number	
-    " highlight Boolean	
-    " highlight Float	
-    " ------------------------------ 
-    " * Identifiers: function names, methods, classes...
-    " highlight Identifier
-    " highlight Function
-    " ------------------------------ 
-    " * Statements: if, else, case, switch, loop, for, while, try, catch, throw...
-      highlight Statement						ctermfg=171
-    " highlight Conditional
-    " highlight Repeat	
-    " highlight Label
-      highlight Operator						ctermfg=11
-    " highlight Keyword
-    " highlight Exception
-    " ------------------------------ 
-    " * Preprocessor: #include, #exclude, #define
-    " highlight Preproc								
-    " highlight Include							
-    " highlight Define						
-    " highlight Macro					
-    " highlight PreCondit			
-    " ------------------------------ 
-    " * Type: int, long, chair, static, register, struct, union, enum, typedef
-      highlight Type							ctermfg=51
-    " highlight StorageClass
-    " highlight Structure
-    " highlight Typedef	
-    " ------------------------------ 
-    " * Special: special symbols, debugging statements, char that needs attention
-    " highlight *Special
-    " highlight SpecialChar
-    " highlight Tag		
-    " highlight Delimiter
-    " highlight SpecialComment
-    " highlight Debug
-    " ------------------------------ 
-    " highlight *Underlined
-    " ------------------------------ 
-    " highlight *Ignore	
-    " ------------------------------ 
-    " highlight *Error
-    " ------------------------------ 
-    " * TODO, FIXME....
-      highlight Todo			ctermbg=black	ctermfg=33
-    " ------------------------------ 
-    " * Popup menu
-      highlight Pmenu			ctermbg=234		ctermfg=white
-      highlight PmenuSel		ctermbg=25		ctermfg=white
-      highlight PmenuSbar		ctermbg=234	
-      highlight PmenuThumb		ctermbg=25
-      highlight Tooltip			ctermbg=red
-    " ------------------------------ 
-    " * Diagnostic sign & virtual text
-    " highlight LspDiagnosticsErrorSign			ctermbg=red		ctermfg=grey
-    " highlight LspDiagnosticsWarningSign		ctermbg=red		ctermfg=grey
-    " highlight LspDiagnosticsInformationSign	ctermbg=		ctermfg=	
-    " highlight LspDiagnosticsHintSign			ctermbg=		ctermfg=	
-    " ------------------------------ 
-    " * Search
-      highlight Search							ctermbg=244
 endif
