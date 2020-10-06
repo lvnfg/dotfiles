@@ -39,6 +39,8 @@ sudo apt install -y python3-pip
 # ----------------------------------------------------------------
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 git clone git@github.com:lvnfg/dotfiles		~/dotfiles
+cd dotfiles
+git checkout dev
 git config --global core.editor "vim"
 git config --global user.name "van"
 git config --global user.email "-"
