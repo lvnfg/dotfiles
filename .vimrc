@@ -69,7 +69,9 @@ if !exists('g:vscode')
 		call plug#end()
 		" Settings for lua plugins must be loaded after vim-plug, otherwise lua scripts 
 	    " not found error will be shown.
-		lua require'init'
+		if !empty(glob("path/to/file"))
+		    lua require'init'
+		endif
 		" On a newly created vm opening vim for the first time will show lua scripts
 		" not found error if lua scripts are present but their plugins have not yet
 		" been loaded. This prevents setup scripts from automatically setting up nvim.

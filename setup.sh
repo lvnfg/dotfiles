@@ -61,16 +61,11 @@ else
 	sudo update-alternatives --install /usr/bin/view	view		"$nvimPath" 110
 	sudo update-alternatives --install /usr/bin/vim		vim			"$nvimPath" 110
 	sudo update-alternatives --install /usr/bin/vimdiff vim diff	"$nvimPath" 110
+	ln -s ~/dotfiles/.vimrc 		~/.config/nvim/
 	echo Installing plug.vim
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 		   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	echo Creating vim symlinks
-	mkdir -p	~/.config/nvim/lua
-	touch		~/.config/nvim/lua/init.lua
-	ln -s ~/dotfiles/.vimrc 		~/.config/nvim/
 	nvim.appimage --headless -c 'PlugInstall' +qall
-	echo Creating init.lua symlink
-	rm ~/.config/nvim/lua/init.lua
 	ln -s ~/dotfiles/init.lua		~/.config/nvim/lua/
 
 	    # Language servers
