@@ -18,7 +18,7 @@ elif [[ "$HOSTNAME" = macbook ]]; then
     hostType=macbook
 fi
 
-if [[ $hostType = macbook ]]; then
+if [[ $hostType = macbook ]] || [[ $hostType = wsl ]]; then
     ln -s ~/dotfiles/.ssh/config		~/.ssh/config
     sudo chmod 600 ~/.ssh/config
 else
