@@ -4,7 +4,9 @@ noremap ; :
 noremap r <C-R>
 noremap <Esc> :noh<cr>
 
-if !exists('g:vscode')
+if exists('g:vscode')
+    " pass
+else
 	" General
 	" ------------------------------ 
 	" disable vi compatibility and enable advanced vim features
