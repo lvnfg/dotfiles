@@ -53,8 +53,6 @@ else
 	wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 	chmod u+x nvim.appimage
 	sudo mv nvim.appimage /usr/bin/
-	sudo apt purge -y vim
-	sudo apt autoremove -y
 	echo Setting nvim as default and alternatives
 	nvimPath="/usr/bin/nvim.appimage"
 	set -u
