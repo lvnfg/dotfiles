@@ -21,7 +21,7 @@ set -euo pipefail
 # Basic utilities
 # ----------------------------------------------------------------
 if [[ $env = mac ]]; then
-    # brew install xx    
+    echo Brew install here   
 elif [[ $env = vm ]]; then
     sudo apt update && sudo apt upgrade -y
     sudo apt install -y openssh-client
