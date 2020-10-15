@@ -3,6 +3,7 @@
 # Arguments handling
 env=$1
 task=$2
+task3=$3
 
 # set -e		# exit if error
 # set -u		# error on undeclared variable
@@ -56,7 +57,7 @@ fi
 
 # Neovim
 # ----------------------------------------------------------------
-if [[ $task = nvim ]]; then
+if [[ $task = nvim ]] || [[ $task3 = nvim ]]; then
     sudo apt install -y fuse
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
