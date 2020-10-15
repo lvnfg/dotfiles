@@ -2,8 +2,7 @@
 
 # Arguments handling
 env=$1
-task=$2
-task3=$3
+task=( $2 $3 $4 $5 $6 $7 $8 $9 )
 
 # set -e		# exit if error
 # set -u		# error on undeclared variable
@@ -38,7 +37,7 @@ fi
 
 # Dotfiles and environment setup
 # ----------------------------------------------------------------
-if [[ $task = dot ]]; then
+if [[ ${task[*]} =~ dot ]]; then
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
     git config --global core.editor     "vim"
@@ -57,7 +56,7 @@ fi
 
 # Neovim
 # ----------------------------------------------------------------
-if [[ $task = nvim ]] || [[ $task3 = nvim ]]; then
+if [[ ${task[*]} =~ nvim ]]; then
     sudo apt install -y fuse
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
