@@ -3,7 +3,7 @@
 # set -e		# exit if error
 # set -u		# error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
-set -euo pipefail
+# set -euo pipefail
 
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
@@ -13,9 +13,6 @@ set -euo pipefail
 #   UsePAM no
 #   PermitRootLogin no
 # sudo systemctl restart ssh
-
-runType=$1
-echo "run type = $runType"
 
 # Basic utilities
 # ----------------------------------------------------------------
@@ -56,12 +53,12 @@ sudo mv nvim.appimage /usr/bin/
 echo Setting nvim as default and alternatives
 nvimPath="/usr/bin/nvim.appimage"
 set -u
-sudo update-alternatives --install /usr/bin/ex		ex		"$nvimPath" 110
-sudo update-alternatives --install /usr/bin/vi		vi		"$nvimPath" 110
-sudo update-alternatives --install /usr/bin/view	view		"$nvimPath" 110
-sudo update-alternatives --install /usr/bin/vim		vim		"$nvimPath" 110
+sudo update-alternatives --install /usr/bin/ex		    ex		    "$nvimPath" 110
+sudo update-alternatives --install /usr/bin/vi		    vi		    "$nvimPath" 110
+sudo update-alternatives --install /usr/bin/view	    view	    "$nvimPath" 110
+sudo update-alternatives --install /usr/bin/vim		    vim		    "$nvimPath" 110
 sudo update-alternatives --install /usr/bin/vimdiff 	vim diff	"$nvimPath" 110
-mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim/lua/
 ln -s ~/repos/dotfiles/init.vim 	~/.config/nvim/init.vim
 echo Installing plug.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
