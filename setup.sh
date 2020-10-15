@@ -1,13 +1,12 @@
 #!/bin/bash
 
 # Arguments handling
-env=$1
-task=( $2 $3 $4 $5 $6 $7 $8 $9 )
+task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
 # set -e		# exit if error
 # set -u		# error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
-set -euo pipefail
+# set -euo pipefail
 
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
@@ -20,9 +19,9 @@ set -euo pipefail
 
 # Basic utilities
 # ----------------------------------------------------------------
-if [[ $env = mac ]]; then
+if [[ ${task[0]} =~ mac ]]; then
     echo Brew install here   
-elif [[ $env = vm ]]; then
+elif [[ ${task[0]} =~ vm ]]; then
     sudo apt update && sudo apt upgrade -y
     sudo apt install -y openssh-client
     sudo apt install -y tmux
@@ -31,7 +30,7 @@ elif [[ $env = vm ]]; then
     sudo apt install -y wget
     sudo apt install -y unzip
     sudo apt install -y curl
-elif [[ $env = dev ]]; then
+elif [[ ${task[0]} =~ dev ]]; then
     sudo apt install -y python3-pip
 fi
 
@@ -48,7 +47,7 @@ if [[ ${task[*]} =~ dot ]]; then
     ln -s ~/repos/dotfiles/.inputrc		~/.inputrc
     ln -s ~/repos/dotfiles/.tmux.conf	~/.tmux.conf
     ln -s ~/repos/dotfiles/.vimrc		~/.vimrc
-    if [[ $1 = mac ]]; then
+    if [[ ${task[0]} =~ mac ]]; then
         ln -s ~/repos/dotfiles/.ssh/config		~/.ssh/config
         sudo chmod 600 ~/.ssh/config
     fi
