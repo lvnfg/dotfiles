@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# set -e		# exit if error
+# set -u		# error on undeclared variable
+# set -o pipefail	# fail pipeline if any part fails
+set -euo pipefail
+
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
