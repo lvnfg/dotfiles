@@ -26,8 +26,8 @@ else
 	set signcolumn=yes 	" Always show the sign gutter
 	" Minimize visual prominence of sign column & end of buffer
 	highlight SignColumn        ctermbg=black
-    highlight EndOfBuffer		ctermbg=None    ctermfg=black	
-    highlight LineNr							ctermfg=grey
+    	highlight EndOfBuffer		ctermbg=None    ctermfg=black	
+    	highlight LineNr							ctermfg=grey
 	" fix wrong colors in tmux by forcing 256 colors
 	set background=dark
 	set t_Co=256

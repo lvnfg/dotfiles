@@ -4,7 +4,6 @@ if [[ "$HOSTNAME" = DESKTOP ]] || [[ "$HOSTNAME" = origin ]]; then
 fi
 
 if [[ $hostType = wsl ]]; then
-	cd ~/.ssh
 	SSH_ENV="$HOME/.ssh/agent-environment"
 	function start_agent {
 		echo "Initialising new SSH agent..."
