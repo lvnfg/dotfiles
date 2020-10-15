@@ -9,13 +9,13 @@ getGitFileStatus() {
     git -c color.status=always status --short 2> /dev/null | tr '\n' " "
 }
 # Enable git autocomple in bash
-if [ -f ~/dotfiles/.git-completion.bash ]; then
-  . ~/dotfiles/.git-completion.bash
+if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
+  . ~/repos/dotfiles/.git-completion.bash
 fi
 # Aliases
-alias gitStatusAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch && echo; fi)' \;"
-alias gitPushAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all && echo; fi)' \;"
-alias gitPullAll="echo && find ~ -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull && echo; fi)' \;"
+alias gitStatusAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch && echo; fi)' \;"
+alias gitPushAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all && echo; fi)' \;"
+alias gitPullAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull && echo; fi)' \;"
 
 # -----------------------------------------------
 # Tmux 
