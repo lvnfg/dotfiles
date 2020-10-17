@@ -1,8 +1,10 @@
 " Common settings for vim, nvim, vscode-nvim
 " ------------------------------ 
 noremap ; :
-noremap r <C-R>
+noremap r <C-r>
 noremap <Esc> :noh<cr>
+" Scroll up
+noremap <C-r> <C-y>
 
 if exists('g:vscode')
     " pass
