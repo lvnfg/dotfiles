@@ -3,10 +3,6 @@
 noremap ; :
 noremap r <C-r>
 noremap <Esc> :noh<cr>
-" Scroll up 1 line
-noremap <C-r> <C-y>
-" Scroll up 1/2 page
-noremap <C-f> <C-u>
 
 if exists('g:vscode')
     " pass
