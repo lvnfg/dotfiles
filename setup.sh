@@ -95,6 +95,11 @@ if [[ ${task[*]} =~ docker ]]; then
        stable"
     sudo apt-get update
     sudo apt-get install docker-ce docker-ce-cli containerd.io
+    # Use docker cli without sudo
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    # Verify successful installation
     sudo docker run hello-world         # Verify installation successful
 fi
 
