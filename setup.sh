@@ -32,26 +32,6 @@ elif [[ ${task[0]} =~ vm ]]; then
     apt install -y curl
 fi
 
-# Dev tools
-# ----------------------------------------------------------------
-if [[ ${task[0]} =~ dev ]]; then
-    apt install -y python3-pip
-	# Microsoft python language server
-	echo Installing .Net core SDK
-	url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
-	fileName="dotnet.deb"
-	wget -O $fileName $url
-	dpkg -i $fileName
-	apt-get update
-	apt-get install -y apt-transport-https
-	apt-get update
-	apt-get install -y dotnet-sdk-3.1
-	rm $fileName
-	echo Add python interpreter to nvim
-	nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
-	pip3 install pynvim
-fi
-
 # Dotfiles and environment setup
 # ----------------------------------------------------------------
 if [[ ${task[*]} =~ dot ]]; then
@@ -98,6 +78,26 @@ if [[ ${task[*]} =~ vim ]]; then
 	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim.appimage --headless -c 'PlugInstall' +qall
     ln -s ~/repos/dotfiles/init.lua	~/.config/nvim/lua/init.lua
+fi
+
+# Dev tools
+# ----------------------------------------------------------------
+if [[ ${task[0]} =~ dev ]]; then
+    apt install -y python3-pip
+	# Microsoft python language server
+	echo Installing .Net core SDK
+	url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
+	fileName="dotnet.deb"
+	wget -O $fileName $url
+	dpkg -i $fileName
+	apt-get update
+	apt-get install -y apt-transport-https
+	apt-get update
+	apt-get install -y dotnet-sdk-3.1
+	rm $fileName
+	echo Add python interpreter to nvim
+	nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
+	pip3 install pynvim
 fi
 
 # Docker
