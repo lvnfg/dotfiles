@@ -84,10 +84,10 @@ if [[ ${task[*]} =~ vim ]]; then
     echo Setting nvim as default and alternatives
     nvimPath="/usr/bin/nvim.appimage"
     set -u
-    update-alternatives --install /usr/bin/ex		    ex		    "$nvimPath" 110
-    update-alternatives --install /usr/bin/vi		    vi		    "$nvimPath" 110
+    update-alternatives --install /usr/bin/ex		ex		    "$nvimPath" 110
+    update-alternatives --install /usr/bin/vi		vi		    "$nvimPath" 110
     update-alternatives --install /usr/bin/view	    view	    "$nvimPath" 110
-    update-alternatives --install /usr/bin/vim		    vim		    "$nvimPath" 110
+    update-alternatives --install /usr/bin/vim		vim		    "$nvimPath" 110
     update-alternatives --install /usr/bin/vimdiff 	vim diff	"$nvimPath" 110
     mkdir -p ~/.config/nvim/lua/
     rm ~/.config/nvim/init.vim 
