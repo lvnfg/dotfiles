@@ -19,22 +19,24 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
 # Basic utilities
 # ----------------------------------------------------------------
-if [[ ${task[0]} =~ mac ]]; then
-    echo Brew install here   
-elif [[ ${task[0]} =~ vm ]]; then
-    apt update && apt upgrade -y
-    apt install -y openssh-client
-    apt install -y tmux
-    apt install -y fzf
-    apt install -y git
-    apt install -y wget
-    apt install -y unzip
-    apt install -y curl
+if [[ ${task[*]} =~ utils ]] || [[ ${task[1]} =~ all ]]; then
+    if [[ ${task[0]} =~ mac ]]; then
+        echo Brew install here   
+    elif [[ ${task[0]} =~ vm ]] || [[ ${task[0]} =~ container ]] ; then
+        apt update && apt upgrade -y
+        apt install -y openssh-client
+        apt install -y tmux
+        apt install -y fzf
+        apt install -y git
+        apt install -y wget
+        apt install -y unzip
+        apt install -y curl
+    fi
 fi
 
 # Dotfiles and environment setup
 # ----------------------------------------------------------------
-if [[ ${task[*]} =~ dot ]]; then
+if [[ ${task[*]} =~ dot ]] || [[ ${task[1]} =~ all ]]; then
     mkdir -p ~/repos
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
@@ -56,7 +58,7 @@ fi
 
 # Neovim
 # ----------------------------------------------------------------
-if [[ ${task[*]} =~ vim ]]; then
+if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
     apt install -y fuse
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
@@ -82,48 +84,52 @@ fi
 
 # Dev tools
 # ----------------------------------------------------------------
-if [[ ${task[0]} =~ dev ]]; then
-    apt install -y python3-pip
-	# Microsoft python language server
-	echo Installing .Net core SDK
-	url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
-	fileName="dotnet.deb"
-	wget -O $fileName $url
-	dpkg -i $fileName
-	apt-get update
-	apt-get install -y apt-transport-https
-	apt-get update
-	apt-get install -y dotnet-sdk-3.1
-	rm $fileName
-	echo Add python interpreter to nvim
-	nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
-	pip3 install pynvim
+if [[ ${task[1]} =~ devtools ]] || [[ ${task[1]} =~ all ]]; then
+    if [[ ${task[0]} =~ container ]]; then
+        apt install -y python3-pip
+	    # Microsoft python language server
+	    echo Installing .Net core SDK
+	    url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
+	    fileName="dotnet.deb"
+	    wget -O $fileName $url
+	    dpkg -i $fileName
+	    apt-get update
+	    apt-get install -y apt-transport-https
+	    apt-get update
+	    apt-get install -y dotnet-sdk-3.1
+	    rm $fileName
+	    echo Add python interpreter to nvim
+	    nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
+	    pip3 install pynvim
+    fi
 fi
 
 # Docker
 # ----------------------------------------------------------------
-if [[ ${task[*]} =~ docker ]]; then
-    apt-get update
-    apt-get install \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg-agent \
-        software-properties-common
-    curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-    apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
-    add-apt-repository \
-       "deb [arch=amd64] https://download.docker.com/linux/debian \
-       $(lsb_release -cs) \
-       stable"
-    apt-get update
-    apt-get install docker-ce docker-ce-cli containerd.io
-    # Use docker cli without sudo
-    groupadd docker
-    usermod -aG docker $USER
-    newgrp docker
-    # Verify successful installation
-    docker run hello-world         # Verify installation successful
+if [[ ${task[*]} =~ docker ]] || [[ ${task[1]} =~ all ]]; then
+    if [[ ${task[0]} =~ vm ]]; then
+        apt-get update
+        apt-get install \
+            apt-transport-https \
+            ca-certificates \
+            curl \
+            gnupg-agent \
+            software-properties-common
+        curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+        apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
+        add-apt-repository \
+           "deb [arch=amd64] https://download.docker.com/linux/debian \
+           $(lsb_release -cs) \
+           stable"
+        apt-get update
+        apt-get install docker-ce docker-ce-cli containerd.io
+        # Use docker cli without sudo
+        groupadd docker
+        usermod -aG docker $USER
+        newgrp docker
+        # Verify successful installation
+        docker run hello-world         # Verify installation successful
+    fi
 fi
 
 echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
