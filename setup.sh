@@ -38,19 +38,16 @@ fi
 # ----------------------------------------------------------------
 if [[ ${task[*]} =~ dot ]]; then
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-    git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
+    git clone git@github.com:lvnfg/dotfiles		~/dotfiles
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
-    rm  ~/.bashrc
-    ln -s ~/repos/dotfiles/.bashrc		~/.bashrc
-    ln -s ~/repos/dotfiles/.inputrc		~/.inputrc
-    ln -s ~/repos/dotfiles/.tmux.conf	~/.tmux.conf
-    ln -s ~/repos/dotfiles/.vimrc		~/.vimrc
-    if [[ ${task[0]} =~ mac ]]; then
-        ln -s ~/repos/dotfiles/.ssh/config		~/.ssh/config
-        sudo chmod 600 ~/.ssh/config
-    fi
+    rm ~/.bashrc 	&& ln -s ~/dotfiles/.bashrc	~/.bashrc
+    rm ~/.inputrc 	&& ln -s ~/dotfiles/.inputrc	~/.inputrc
+    rm ~/.tmux.conf	&& ln -s ~/dotfiles/.tmux.conf	~/.tmux.conf
+    rm ~/.vimrc 	&& ln -s ~/dotfiles/.vimrc	~/.vimrc
+    rm ~/.ssh/config 	&& ln -s ~/dotfiles/.ssh/config	~/.ssh/config
+    sudo chmod 600 ./.ssh/config
 fi
 
 # Neovim
@@ -69,12 +66,12 @@ if [[ ${task[*]} =~ nvim ]]; then
     sudo update-alternatives --install /usr/bin/vim		    vim		    "$nvimPath" 110
     sudo update-alternatives --install /usr/bin/vimdiff 	vim diff	"$nvimPath" 110
     mkdir -p ~/.config/nvim/lua/
-    ln -s ~/repos/dotfiles/init.vim 	~/.config/nvim/init.vim
+    rm ~/.config/nvim/init.vim && ln -s ~/dotfiles/init.vim 	~/.config/nvim/init.vim
     echo Installing plug.vim
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim.appimage --headless -c 'PlugInstall' +qall
-    ln -s ~/repos/dotfiles/init.lua		~/.config/nvim/lua/
+    rm ~/.config/nvim/lua/init.lua && ln -s ~/dotfiles/init.lua	~/.config/nvim/lua/init.lua
 fi
 
 # Docker
