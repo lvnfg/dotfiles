@@ -37,6 +37,33 @@ function linkDotfiles() {
     chmod 600 ~/.ssh/config
 }
 
+function installDocker() {
+        sudo apt-get update
+        sudo apt-get install -y \
+            apt-transport-https \
+            ca-certificates     \
+            curl                \
+            gnupg-agent         \
+            software-properties-common
+        curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+        sudo apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
+        sudo add-apt-repository \
+           "deb [arch=amd64] https://download.docker.com/linux/debian \
+           $(lsb_release -cs) \
+           stable"
+        sudo apt-get update
+        sudo apt-get install -y \
+            docker-ce       \
+            docker-ce-cli   \ 
+            containerd.io   \
+        # Use docker cli without sudo
+        sudo groupadd docker
+        sudo usermod -aG docker $USER
+        sudo newgrp docker
+        # Verify successful installation
+        docker run hello-world         # Verify installation successful
+}
+
 if [[ ${task[0]} =~ vm ]]; then
 	sudo apt update 
 	sudo apt upgrade -y
@@ -48,6 +75,7 @@ if [[ ${task[0]} =~ vm ]]; then
 	    unzip   \
 	    curl
     linkDotfiles
+    installDocker
 fi
 
 # Neovim
@@ -101,34 +129,6 @@ if [[ ${task[1]} =~ devtools ]] || [[ ${task[1]} =~ all ]]; then
 	    echo Add python interpreter to nvim
 	    nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
 	    pip3 install pynvim
-    fi
-fi
-
-# Docker
-# ----------------------------------------------------------------
-if [[ ${task[*]} =~ docker ]]; then
-    if [[ ${task[0]} =~ vm ]]; then
-        apt-get update
-        apt-get install \
-            apt-transport-https \
-            ca-certificates \
-            curl \
-            gnupg-agent \
-            software-properties-common
-        curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-        apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
-        add-apt-repository \
-           "deb [arch=amd64] https://download.docker.com/linux/debian \
-           $(lsb_release -cs) \
-           stable"
-        apt-get update
-        apt-get install docker-ce docker-ce-cli containerd.io
-        # Use docker cli without sudo
-        groupadd docker
-        usermod -aG docker $USER
-        newgrp docker
-        # Verify successful installation
-        docker run hello-world         # Verify installation successful
     fi
 fi
 
