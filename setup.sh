@@ -66,7 +66,6 @@ if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
     ln -s ~/apps/nvim/squashfs-root/usr/bin/nvim /usr/bin/nvim
     nvimPath="/usr/bin/nvim"
 fi
-if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
 if [[ ${task[*]} =~ vimold ]]; then
     apt install -y fuse
     mv nvim.appimage /usr/bin/
