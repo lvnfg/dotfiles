@@ -13,7 +13,7 @@ noremap <C-u> <C-d>
 noremap <C-i> <C-u>
 
 if exists('g:vscode')
-    " pass
+    " Do nothing to avoid conflicts when loaded as extension in vscode
 else
 	" General
 	" ------------------------------ 
