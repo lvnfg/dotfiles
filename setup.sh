@@ -89,6 +89,27 @@ function installNeovim() {
     ln -s ~/repos/dotfiles/init.lua	~/.config/nvim/lua/init.lua
 }
 
+function installDevTools() {
+    sudo apt install -y python3-pip
+	# Microsoft python language server
+	echo Installing .Net core SDK
+	url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
+	fileName="dotnet.deb"
+	wget -O $fileName $url
+	dpkg -i $fileName
+	sudo apt-get update
+	sudo apt-get install -y apt-transport-https
+	sudo apt-get update
+	sudo apt-get install -y dotnet-sdk-3.1
+	rm $fileName
+	echo Add python interpreter to nvim
+	nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
+	pip3 install pynvim
+}
+
+# --------------------------------
+# Actual setup scripts
+# --------------------------------
 if [[ ${task[0]} =~ vm ]]; then
 	sudo apt update 
 	sudo apt upgrade -y
@@ -101,28 +122,6 @@ if [[ ${task[0]} =~ vm ]]; then
 	    curl
     linkDotfiles
     installDocker
+    echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 fi
 
-# Dev tools
-# ----------------------------------------------------------------
-if [[ ${task[1]} =~ devtools ]] || [[ ${task[1]} =~ all ]]; then
-    if [[ ${task[0]} =~ container ]]; then
-        apt install -y python3-pip
-	    # Microsoft python language server
-	    echo Installing .Net core SDK
-	    url="https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb"
-	    fileName="dotnet.deb"
-	    wget -O $fileName $url
-	    dpkg -i $fileName
-	    apt-get update
-	    apt-get install -y apt-transport-https
-	    apt-get update
-	    apt-get install -y dotnet-sdk-3.1
-	    rm $fileName
-	    echo Add python interpreter to nvim
-	    nvim.appimage --headless -c 'LspInstall pyls_ms' +qall
-	    pip3 install pynvim
-    fi
-fi
-
-echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
