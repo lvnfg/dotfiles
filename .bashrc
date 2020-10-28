@@ -62,7 +62,8 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[00;90m\]\u@\h\[\033[00m\] \[\033[0
 # Use vim keybindings in bash prompts
 set -o vi    
 # Let vim & tmux terminals use colors
-export TERM=xterm-256color
+# export TERM=xterm-256color
+export TERM=screen-256color
 
 # ------------------------------------------------
 # ls
