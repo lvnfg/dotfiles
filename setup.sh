@@ -45,7 +45,7 @@ function installDocker() {
             curl                \
             gnupg-agent         \
             software-properties-common
-        curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+        sudo curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
         sudo apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
         sudo add-apt-repository \
            "deb [arch=amd64] https://download.docker.com/linux/debian \
@@ -70,14 +70,14 @@ function installNeovim() {
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
     ./nvim.appimage --appimage-extract
-    ln -s ~/apps/nvim/squashfs-root/usr/bin/nvim /usr/bin/nvim
+    sudo ln -s ~/apps/nvim/squashfs-root/usr/bin/nvim /usr/bin/nvim
     nvimPath="/usr/bin/nvim"
     set -u
-    update-alternatives --install /usr/bin/ex		ex		    "$nvimPath" 110
-    update-alternatives --install /usr/bin/vi		vi		    "$nvimPath" 110
-    update-alternatives --install /usr/bin/view	    view	    "$nvimPath" 110
-    update-alternatives --install /usr/bin/vim		vim		    "$nvimPath" 110
-    update-alternatives --install /usr/bin/vimdiff 	vim diff	"$nvimPath" 110
+    sudo update-alternatives --install /usr/bin/ex		ex		    "$nvimPath" 110
+    sudo update-alternatives --install /usr/bin/vi		vi		    "$nvimPath" 110
+    sudo update-alternatives --install /usr/bin/view	    view	    "$nvimPath" 110
+    sudo update-alternatives --install /usr/bin/vim		vim		    "$nvimPath" 110
+    sudo update-alternatives --install /usr/bin/vimdiff 	vim diff	"$nvimPath" 110
     mkdir -p ~/.config/nvim/lua/
     rm ~/.config/nvim/init.vim 
     rm ~/.config/nvim/lua/init.lua
@@ -123,7 +123,9 @@ if [[ ${task[0]} =~ vm ]]; then
     linkDotfiles
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 fi
-
 if [[ ${task[*]} =~ docker ]]; then
     installDocker
+fi
+if [[ ${task[*]} =~ vim ]]; then
+    installNeovim
 fi
