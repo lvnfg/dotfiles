@@ -121,7 +121,9 @@ if [[ ${task[0]} =~ vm ]]; then
 	    unzip   \
 	    curl
     linkDotfiles
-    installDocker
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 fi
 
+if [[ ${task[*]} =~ docker ]]; then
+    installDocker
+fi
