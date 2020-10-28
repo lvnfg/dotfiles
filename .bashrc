@@ -47,8 +47,8 @@ fzfcdGo() {
 		echo
 	fi
 }
-bind -x '"\C-f":fzfFileInEditor'
-bind -x '"\C-g":fzfcdGo'
+bind -x '"ƒ":fzfFileInEditor'
+bind -x '"∂":fzfcdGo'
 
 # Prompt & terminal
 # -----------------------------------------------
