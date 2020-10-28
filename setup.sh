@@ -106,7 +106,7 @@ fi
 
 # Docker
 # ----------------------------------------------------------------
-if [[ ${task[*]} =~ docker ]] || [[ ${task[1]} =~ all ]]; then
+if [[ ${task[*]} =~ docker ]]; then
     if [[ ${task[0]} =~ vm ]]; then
         apt-get update
         apt-get install \
