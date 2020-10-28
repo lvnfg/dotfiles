@@ -32,6 +32,7 @@ else
 	set noruler			" Disable ruler in command line
 	set updatetime=100  " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes 	" Always show the sign gutter
+	set hlsearch        " Highlight search term
 	" Minimize visual prominence of sign column & end of buffer
 	highlight SignColumn        ctermbg=black
     highlight EndOfBuffer		ctermbg=None    ctermfg=black	
