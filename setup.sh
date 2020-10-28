@@ -89,6 +89,7 @@ if [[ ${task[0]} =~ vm ]]; then
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y \
+	    vim     \
 	    tmux    \
 	    fzf     \
 	    git     \
