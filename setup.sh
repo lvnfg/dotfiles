@@ -3,8 +3,8 @@
 # Arguments handling
 task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
-# set -e		# exit if error
-# set -u		# error on undeclared variable
+# set -e		    # exit if error
+# set -u		    # error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
 # set -euo pipefail
 
@@ -59,9 +59,16 @@ fi
 # Neovim
 # ----------------------------------------------------------------
 if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
-    apt install -y fuse
+    mkdir -p ~/apps/nvim && cd ~/apps/nvim
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
+    ./nvim.appimage --appimage-extract
+    ln -s ~/apps/nvim/squashfs-root/usr/bin/nvim /usr/bin/nvim
+    nvimPath="/usr/bin/nvim"
+fi
+if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
+if [[ ${task[*]} =~ vimold ]]; then
+    apt install -y fuse
     mv nvim.appimage /usr/bin/
     echo Setting nvim as default and alternatives
     nvimPath="/usr/bin/nvim.appimage"
