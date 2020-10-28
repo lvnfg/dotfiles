@@ -17,21 +17,16 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
-# Basic utilities
-# ----------------------------------------------------------------
-if [[ ${task[*]} =~ utils ]] || [[ ${task[1]} =~ all ]]; then
-    if [[ ${task[0]} =~ mac ]]; then
-        echo Brew install here   
-    elif [[ ${task[0]} =~ vm ]] || [[ ${task[0]} =~ container ]] ; then
-        apt update && apt upgrade -y
-        apt install -y openssh-client
-        apt install -y tmux
-        apt install -y fzf
-        apt install -y git
-        apt install -y wget
-        apt install -y unzip
-        apt install -y curl
-    fi
+if [[ ${task[0]} =~ vm ]]; then
+	sudo apt update 
+	sudo apt upgrade -y
+	sudo apt install -y \
+	    tmux    \
+	    fzf     \
+	    git     \
+	    wget    \
+	    unzip   \
+	    curl
 fi
 
 # Dotfiles and environment setup
