@@ -64,35 +64,14 @@ function installDocker() {
         docker run hello-world         # Verify installation successful
 }
 
-if [[ ${task[0]} =~ vm ]]; then
-	sudo apt update 
-	sudo apt upgrade -y
-	sudo apt install -y \
-	    tmux    \
-	    fzf     \
-	    git     \
-	    wget    \
-	    unzip   \
-	    curl
-    linkDotfiles
-    installDocker
-fi
-
-# Neovim
-# ----------------------------------------------------------------
-if [[ ${task[*]} =~ vim ]] || [[ ${task[1]} =~ all ]]; then
-    mkdir -p ~/apps/nvim && cd ~/apps/nvim
+function installNeovim() {
+    mkdir -p ~/apps/nvim 
+    cd ~/apps/nvim
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage
     ./nvim.appimage --appimage-extract
     ln -s ~/apps/nvim/squashfs-root/usr/bin/nvim /usr/bin/nvim
     nvimPath="/usr/bin/nvim"
-fi
-if [[ ${task[*]} =~ vimold ]]; then
-    apt install -y fuse
-    mv nvim.appimage /usr/bin/
-    echo Setting nvim as default and alternatives
-    nvimPath="/usr/bin/nvim.appimage"
     set -u
     update-alternatives --install /usr/bin/ex		ex		    "$nvimPath" 110
     update-alternatives --install /usr/bin/vi		vi		    "$nvimPath" 110
@@ -108,6 +87,20 @@ if [[ ${task[*]} =~ vimold ]]; then
 	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim.appimage --headless -c 'PlugInstall' +qall
     ln -s ~/repos/dotfiles/init.lua	~/.config/nvim/lua/init.lua
+}
+
+if [[ ${task[0]} =~ vm ]]; then
+	sudo apt update 
+	sudo apt upgrade -y
+	sudo apt install -y \
+	    tmux    \
+	    fzf     \
+	    git     \
+	    wget    \
+	    unzip   \
+	    curl
+    linkDotfiles
+    installDocker
 fi
 
 # Dev tools
