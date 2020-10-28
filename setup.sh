@@ -17,21 +17,7 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
-if [[ ${task[0]} =~ vm ]]; then
-	sudo apt update 
-	sudo apt upgrade -y
-	sudo apt install -y \
-	    tmux    \
-	    fzf     \
-	    git     \
-	    wget    \
-	    unzip   \
-	    curl
-fi
-
-# Dotfiles and environment setup
-# ----------------------------------------------------------------
-if [[ ${task[*]} =~ dot ]] || [[ ${task[1]} =~ all ]]; then
+function linkDotfiles() {
     mkdir -p ~/repos
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
@@ -49,6 +35,19 @@ if [[ ${task[*]} =~ dot ]] || [[ ${task[1]} =~ all ]]; then
     ln -s ~/repos/dotfiles/.vimrc	    ~/.vimrc
     ln -s ~/repos/dotfiles/.ssh/config	~/.ssh/config
     chmod 600 ~/.ssh/config
+}
+
+if [[ ${task[0]} =~ vm ]]; then
+	sudo apt update 
+	sudo apt upgrade -y
+	sudo apt install -y \
+	    tmux    \
+	    fzf     \
+	    git     \
+	    wget    \
+	    unzip   \
+	    curl
+    linkDotfiles
 fi
 
 # Neovim
