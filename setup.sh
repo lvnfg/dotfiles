@@ -17,13 +17,16 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
-function linkDotfiles() {
+function cloneDotfilesRepo() {
     mkdir -p ~/repos
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
+}
+
+function linkDotfiles() {
     rm ~/.bashrc
     rm ~/.inputrc
     rm ~/.tmux.conf
@@ -78,6 +81,7 @@ if [[ ${task[0]} =~ vm ]]; then
 	    wget    \
 	    unzip   \
 	    curl
+    cloneDotfilesRepo
     linkDotfiles
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 fi
