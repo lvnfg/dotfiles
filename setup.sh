@@ -38,6 +38,8 @@ function linkDotfiles() {
 }
 
 function installDocker() {
+        # Uninstall old versions
+        sudo apt-get remove docker docker-engine docker.io containerd runc
         sudo apt-get update
         sudo apt-get install -y \
             apt-transport-https \
@@ -45,23 +47,18 @@ function installDocker() {
             curl                \
             gnupg-agent         \
             software-properties-common
-        sudo curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
         sudo apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
         sudo add-apt-repository \
            "deb [arch=amd64] https://download.docker.com/linux/debian \
            $(lsb_release -cs) \
            stable"
         sudo apt-get update
-        sudo apt-get install -y \
-            docker-ce       \
-            docker-ce-cli   \ 
-            containerd.io   \
+        sudo apt-get install docker-ce docker-ce-cli containerd.io
         # Use docker cli without sudo
-        sudo groupadd docker
+        sudo groupadd -f docker
         sudo usermod -aG docker $USER
-        sudo newgrp docker
-        # Verify successful installation
-        docker run hello-world         # Verify installation successful
+        newgrp docker
 }
 
 # --------------------------------
