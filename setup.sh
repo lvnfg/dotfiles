@@ -85,9 +85,6 @@ if [[ ${task[0]} =~ vm ]]; then
     linkDotfiles
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 fi
-if [[ ${task[*]} =~ docker ]]; then
-    installDocker
-fi
 
 # Allow calling functions by name from command line
 "$@"
