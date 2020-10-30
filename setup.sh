@@ -33,6 +33,9 @@ function linkDotfiles() {
     ln -s ~/repos/dotfiles/.inputrc	    ~/.inputrc
     ln -s ~/repos/dotfiles/.tmux.conf	~/.tmux.conf
     ln -s ~/repos/dotfiles/.vimrc	    ~/.vimrc
+}
+
+function linkSSH() {
     ln -s ~/repos/dotfiles/.ssh/config	~/.ssh/config
     chmod 600 ~/.ssh/config
 }
