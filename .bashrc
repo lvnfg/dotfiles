@@ -50,7 +50,7 @@ searchFile() {
         echo $result
     fi
 }
-openInEditor() {
+openFileInEditor() {
 	result=$(searchFile)
 	if [[ ! -z "$result" ]]; then
         if [[ ! -z "$(which code)" ]]; then
@@ -60,7 +60,7 @@ openInEditor() {
 	    fi
     fi
 }
-bind -x '"ƒ":openInEditor'      # Opt-f
+bind -x '"ƒ":openFileInEditor'      # Opt-f
 bind -x '"∂":changeDirectory'   # Opt-d
 
 # Prompt & terminal
