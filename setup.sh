@@ -84,3 +84,6 @@ fi
 if [[ ${task[*]} =~ docker ]]; then
     installDocker
 fi
+
+# Allow calling functions by name from command line
+"$@"
