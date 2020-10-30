@@ -28,6 +28,7 @@ alias t1="tmux attach-session -t 1"
 # -----------------------------------------------
 # Find all including hiddens but ignore .git
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Alias + shortcut to search and open in vim
 fzfFileInEditor() {
 	result=$(find ~ -type f | grep -v -e ".git" | fzf)
