@@ -1,7 +1,6 @@
 " Common settings for vim, nvim, vscode-nvim
 " ------------------------------ 
 noremap ; :
-noremap r <C-r>
 noremap <Esc> :noh<cr>
 " Scroll up 1 line
 noremap <C-k> <C-y>
