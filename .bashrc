@@ -30,15 +30,21 @@ alias t1="tmux attach-session -t 1"
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Alias + shortcut to search and open in vim
-fzfFileInEditor() {
+searchFile() {
 	result=$(find ~ -type f | grep -v -e ".git" | fzf)
+	if [[ ! -z "$result" ]]; then
+        echo $result
+    fi
+}
+openInEditor() {
+	result=$(searchFile)
 	if [[ ! -z "$result" ]]; then
         if [[ ! -z "$(which code)" ]]; then
             code "$result"
-		else
+	    else
 		    vim "$result"
-		fi
-	fi
+	    fi
+    fi
 }
 fzfcdGo() {
 	result=$(find ~ -type d | grep -v -e ".git" | fzf)
@@ -48,8 +54,12 @@ fzfcdGo() {
 		echo
 	fi
 }
-bind -x '"ƒ":fzfFileInEditor'
-bind -x '"∂":fzfcdGo'
+fzfExecute() {
+    $1 $2 $3
+}
+bind -x '"ƒ":openInEditor'     # Opt-f
+bind -x '"∂":fzfcdGo'          # Opt-d
+bind -x '"Ï":fzfExecute'       # Opt-shift-f
 
 # Prompt & terminal
 # -----------------------------------------------
