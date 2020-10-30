@@ -60,13 +60,9 @@ openFileInEditor() {
 	    fi
     fi
 }
-executeFile() {
-	result=$(searchFile)
-} 
 # Aliases
 bind -x '"∂":changeDirectory'   # Opt-d
 bind -x '"ƒ":openFileInEditor'  # Opt-f
-bind -x '"Ï":executeFile'       # Opt-shift-f
 
 # Prompt & terminal
 # -----------------------------------------------
