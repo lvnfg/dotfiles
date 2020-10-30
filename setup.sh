@@ -67,6 +67,10 @@ function installDocker() {
     newgrp docker
 }
 
+function build() {
+    docker build -t dev:latest .
+}
+
 # --------------------------------
 # Actual setup scripts
 # --------------------------------
