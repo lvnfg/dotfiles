@@ -87,4 +87,6 @@ LS_COLORS='rs=0:di=01;92:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:c
 # Make ls color persistent across sessions
 export LS_COLORS
 # Set default ls behavior
-alias ls="ls -al --color=auto -h --group-directories-first"
+if [ "$OSTYPE" == linux-gnu ]; then
+    alias ls="ls -al --color=auto -h --group-directories-first"
+fi
