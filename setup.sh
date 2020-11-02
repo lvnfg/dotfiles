@@ -28,11 +28,13 @@ function cloneDotfilesRepo() {
 
 function linkDotfiles() {
     rm ~/.bashrc
+    rm ~/.profile
     rm ~/.inputrc
     rm ~/.tmux.conf
     rm ~/.vimrc
     rm ~/.ssh/config
     ln -s ~/repos/dotfiles/.bashrc	    ~/.bashrc
+    ln -s ~/repos/dotfiles/.bashrc      ~/.profile
     ln -s ~/repos/dotfiles/.inputrc	    ~/.inputrc
     ln -s ~/repos/dotfiles/.tmux.conf	~/.tmux.conf
     ln -s ~/repos/dotfiles/.vimrc	    ~/.vimrc
