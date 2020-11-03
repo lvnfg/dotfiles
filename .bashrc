@@ -8,6 +8,11 @@ documents="$HOME/Documents"
 downloads="$HOME/Downloads"
 dotfiles="$desktop/dotfiles"
 
+defaultEditor="vim"
+if [[ "$hosttype" = mac ]]; then
+    defaultEditor="nvim"
+fi
+
 # -----------------------------------------------
 # Git
 # -----------------------------------------------
@@ -64,11 +69,7 @@ searchFile() {
 openFileInEditor() {
 	result=$(searchFile)
 	if [[ ! -z "$result" ]]; then
-        if [[ ! -z "$(which code)" ]]; then
-            code "$result"
-	    else
-		    vim "$result"
-	    fi
+        $defaultEditor "$result"
     fi
 }
 # Aliases
