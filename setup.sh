@@ -21,8 +21,8 @@ source ./.bashrc 2> /dev/null
 # sudo systemctl restart ssh
 
 function createDirectories() {
-    mkdir -p $desktop
-    mkdir -p $downloads
+    mkdir -pv $desktop
+    mkdir -pv $downloads
 }
 
 function cloneDotfiles() {
