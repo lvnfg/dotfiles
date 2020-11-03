@@ -73,12 +73,7 @@ function installNeovim() {
     if [[ "$hosttype" = macos ]]; then
         brew install --HEAD neovim
     else
-        vimpath="$defaultEditor"
-        sudo update-alternatives --install /usr/bin/ex      ex          $vimpath 110
-        sudo update-alternatives --install /usr/bin/vi      vi          $vimpath 110
-        sudo update-alternatives --install /usr/bin/view    view        $vimpath 110
-        sudo update-alternatives --install /usr/bin/vim     vim         $vimpath 110
-        sudo update-alternatives --install /usr/bin/vimdiff vimdiff     $vimpath 110
+        sudo apt install neovim
     fi
     wdir="$HOME/.config/nvim"   
     mkdir -pv $wdir
