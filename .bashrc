@@ -6,6 +6,7 @@ fi
 desktop="$HOME/Desktop"
 documents="$HOME/Documents"
 downloads="$HOME/Downloads"
+dotfiles="$desktop/dotfiles"
 
 # -----------------------------------------------
 # Git
