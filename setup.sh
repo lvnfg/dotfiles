@@ -72,11 +72,16 @@ function installNeovim() {
     if [[ "$hosttype" = mac ]]; then
         brew install --HEAD neovim
     else
-        echo TODO linux install
+        vimpath="$(which neovim.appimage)"
+        sudo update-alternatives --install /usr/bin/ex ex               $vimpath 110
+        sudo update-alternatives --install /usr/bin/vi vi               $vimpath 110
+        sudo update-alternatives --install /usr/bin/view view           $vimpath 110
+        sudo update-alternatives --install /usr/bin/vim vim             $vimpath 110
+        sudo update-alternatives --install /usr/bin/vimdiff vimdiff     $vimpath 110
     fi
     wdir="$HOME/.config/nvim"   
     mkdir -pv $wdir
-    rm -f 
+    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
 }
 
 function build() {
