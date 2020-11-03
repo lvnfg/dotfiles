@@ -4,8 +4,8 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 desktop="$HOME/Desktop"
-documents=$"HOME/Documents"
-downloads=$"HOME/Downloads"
+documents="$HOME/Documents"
+downloads="$HOME/Downloads"
 
 # -----------------------------------------------
 # Git
