@@ -35,11 +35,6 @@ function cloneDotfilesRepo() {
 
 function linkDotfiles() {
     sourceDir="$desktop/dotfiles"
-    rm ~/.bashrc
-    rm ~/.profile
-    rm ~/.inputrc
-    rm ~/.tmux.conf
-    rm ~/.vimrc
     rm ~/.ssh/config
     rm -f ~/.bashrc     && ln -s sourceDir/.bashrc	    ~/.bashrc
     rm -f ~/.profile    && ln -s sourceDir/.bashrc      ~/.profile
