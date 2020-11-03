@@ -35,13 +35,13 @@ function cloneDotfiles() {
 }
 
 function linkDotfiles() {
-    sourceDir="$desktop/dotfiles"
-    rm -f ~/.bashrc     && ln -s $sourceDir/.bashrc	        ~/.bashrc
-    rm -f ~/.profile    && ln -s $sourceDir/.bashrc         ~/.profile
-    rm -f ~/.inputrc    && ln -s $sourceDir/.inputrc	    ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $sourceDir/.tmux.conf	    ~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $sourceDir/.vimrc	        ~/.vimrc
-    rm -f ~/.ssh/config && ln -s $sourceDir/.ssh/config	    ~/.ssh/config
+    wdir="$desktop/dotfiles"
+    rm -f ~/.bashrc     && ln -s $wdir/.bashrc	        ~/.bashrc
+    rm -f ~/.profile    && ln -s $wdir/.bashrc          ~/.profile
+    rm -f ~/.inputrc    && ln -s $wdir/.inputrc	        ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $wdir/.tmux.conf	    ~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $wdir/.vimrc	        ~/.vimrc
+    rm -f ~/.ssh/config && ln -s $wdir/.ssh/config	    ~/.ssh/config
     chmod 600 ~/.ssh/config
 }
 
