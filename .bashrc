@@ -3,6 +3,10 @@ if [ "$(uname)" == "Darwin" ]; then
     hosttype="mac" 
 fi
 
+desktop="$HOME/Desktop"
+documents=$"HOME/Documents"
+downloads=$"HOME/Downloads"
+
 # -----------------------------------------------
 # Git
 # -----------------------------------------------
@@ -18,9 +22,9 @@ if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
   . ~/repos/dotfiles/.git-completion.bash
 fi
 # Aliases
-alias gitStatusAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch && echo; fi)' \;"
-alias gitPushAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all && echo; fi)' \;"
-alias gitPullAll="echo && find ~/repos -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull && echo; fi)' \;"
+alias gitStatusAll="echo && find $desktop -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch && echo; fi)' \;"
+alias gitPushAll="echo && find $desktop -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all && echo; fi)' \;"
+alias gitPullAll="echo && find $desktop -maxdepth 1 -mindepth 1 -type d -regex '[^.]*$' -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull && echo; fi)' \;"
 
 # -----------------------------------------------
 # Tmux 
