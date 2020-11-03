@@ -4,7 +4,7 @@
 task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
 # set -e		    # exit if error
-# set -u		    # error on undeclared variable
+  set -u		    # error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
 # set -euo pipefail
 
@@ -17,27 +17,35 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
+desktop="$HOME/Desktop"
+downloads="$HOME/Downloads"
+
+function createDirectories() {
+    mkdir -p $desktop
+    mkdir -p $downloads
+}
+
 function cloneDotfilesRepo() {
-    mkdir -p ~/repos
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-    git clone git@github.com:lvnfg/dotfiles		~/repos/dotfiles
+    git clone git@github.com:lvnfg/dotfiles		$desktop/dotfiles
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
 }
 
 function linkDotfiles() {
+    sourceDir="$desktop/dotfiles"
     rm ~/.bashrc
     rm ~/.profile
     rm ~/.inputrc
     rm ~/.tmux.conf
     rm ~/.vimrc
     rm ~/.ssh/config
-    ln -s ~/repos/dotfiles/.bashrc	    ~/.bashrc
-    ln -s ~/repos/dotfiles/.bashrc      ~/.profile
-    ln -s ~/repos/dotfiles/.inputrc	    ~/.inputrc
-    ln -s ~/repos/dotfiles/.tmux.conf	~/.tmux.conf
-    ln -s ~/repos/dotfiles/.vimrc	    ~/.vimrc
+    rm -f ~/.bashrc     && ln -s sourceDir/.bashrc	    ~/.bashrc
+    rm -f ~/.profile    && ln -s sourceDir/.bashrc      ~/.profile
+    rm -f ~/.inputrc    && ln -s sourceDir/.inputrc	    ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s sourceDir/.tmux.conf	~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s sourceDir/.vimrc	    ~/.vimrc
 }
 
 function linkSSH() {
@@ -77,6 +85,7 @@ function build() {
 # Actual setup scripts
 # --------------------------------
 if [[ ${task[0]} =~ vm ]]; then
+	createDirectories
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y \
