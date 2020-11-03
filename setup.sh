@@ -3,6 +3,9 @@
 # Arguments handling
 task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
+# Get hosttype and default directories from .bashrc
+source ./.bashrc 2> /dev/null
+
 # set -e		    # exit if error
   set -u		    # error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
@@ -17,9 +20,6 @@ task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 #   PermitRootLogin no
 # sudo systemctl restart ssh
 
-desktop="$HOME/Desktop"
-downloads="$HOME/Downloads"
-
 function createDirectories() {
     mkdir -p $desktop
     mkdir -p $downloads
@@ -27,7 +27,8 @@ function createDirectories() {
 
 function cloneDotfilesRepo() {
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-    git clone git@github.com:lvnfg/dotfiles		$desktop/dotfiles
+    wdir="$desktop/dotfiles"
+    git clone git@github.com:lvnfg/dotfiles	    $wdir
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
@@ -66,6 +67,12 @@ function installDocker() {
     sudo groupadd -f docker
     sudo usermod -aG docker $USER
     newgrp docker
+}
+
+function installNeovim() {
+    if [[ "$hosttype" = mac ]]; then
+        echo $hosttype 
+    fi
 }
 
 function build() {
