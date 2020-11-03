@@ -35,17 +35,16 @@ function cloneDotfilesRepo() {
 
 function linkDotfiles() {
     sourceDir="$desktop/dotfiles"
-    rm ~/.ssh/config
-    rm -f ~/.bashrc     && ln -s sourceDir/.bashrc	    ~/.bashrc
-    rm -f ~/.profile    && ln -s sourceDir/.bashrc      ~/.profile
-    rm -f ~/.inputrc    && ln -s sourceDir/.inputrc	    ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s sourceDir/.tmux.conf	~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s sourceDir/.vimrc	    ~/.vimrc
+    rm -f ~/.bashrc     && ln -s $sourceDir/.bashrc	        ~/.bashrc
+    rm -f ~/.profile    && ln -s $sourceDir/.bashrc         ~/.profile
+    rm -f ~/.inputrc    && ln -s $sourceDir/.inputrc	    ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $sourceDir/.tmux.conf	    ~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $sourceDir/.vimrc	        ~/.vimrc
+    rm -f ~/.ssh/config && ln -s $sourceDir/.ssh/config	    ~/.ssh/config
+    chmod 600 ~/.ssh/config
 }
 
 function linkSSH() {
-    ln -s ~/repos/dotfiles/.ssh/config	~/.ssh/config
-    chmod 600 ~/.ssh/config
 }
 
 function installDocker() {
