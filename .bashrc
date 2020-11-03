@@ -36,7 +36,7 @@ export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Fzf search and action functions
 searchDirectory() {
-	result=$(find ~ -type d | grep -v -e ".git" | fzf)
+	result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
 		echo $result
 	fi
@@ -50,7 +50,7 @@ changeDirectory() {
     fi
 } 
 searchFile() {
-	result=$(find ~ -type f | grep -v -e ".git" | fzf)
+	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then
         echo $result
     fi
