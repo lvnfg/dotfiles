@@ -44,9 +44,6 @@ function linkDotfiles() {
     chmod 600 ~/.ssh/config
 }
 
-function linkSSH() {
-}
-
 function installDocker() {
     # Uninstall old versions
     sudo apt-get remove docker docker-engine docker.io containerd runc
