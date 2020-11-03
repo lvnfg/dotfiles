@@ -69,14 +69,16 @@ function installDocker() {
 }
 
 function installNeovim() {
-    if [[ "$hosttype" = mac ]]; then
+    vimpath=""
+    if [[ "$hosttype" = macos ]]; then
         brew install --HEAD neovim
+        vimpath="$(which nvim)"
     else
         vimpath="$(which neovim.appimage)"
-        sudo update-alternatives --install /usr/bin/ex ex               $vimpath 110
-        sudo update-alternatives --install /usr/bin/vi vi               $vimpath 110
-        sudo update-alternatives --install /usr/bin/view view           $vimpath 110
-        sudo update-alternatives --install /usr/bin/vim vim             $vimpath 110
+        sudo update-alternatives --install /usr/bin/ex      ex          $vimpath 110
+        sudo update-alternatives --install /usr/bin/vi      vi          $vimpath 110
+        sudo update-alternatives --install /usr/bin/view    view        $vimpath 110
+        sudo update-alternatives --install /usr/bin/vim     vim         $vimpath 110
         sudo update-alternatives --install /usr/bin/vimdiff vimdiff     $vimpath 110
     fi
     wdir="$HOME/.config/nvim"   
