@@ -72,9 +72,8 @@ function installNeovim() {
     vimpath=""
     if [[ "$hosttype" = macos ]]; then
         brew install --HEAD neovim
-        vimpath="$(which nvim)"
     else
-        vimpath="$(which neovim.appimage)"
+        vimpath="$defaultEditor"
         sudo update-alternatives --install /usr/bin/ex      ex          $vimpath 110
         sudo update-alternatives --install /usr/bin/vi      vi          $vimpath 110
         sudo update-alternatives --install /usr/bin/view    view        $vimpath 110
