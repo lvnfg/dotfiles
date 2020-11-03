@@ -27,8 +27,7 @@ function createDirectories() {
 
 function cloneDotfiles() {
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-    wdir="$desktop/dotfiles"
-    git clone git@github.com:lvnfg/dotfiles	    $wdir
+    git clone git@github.com:lvnfg/dotfiles	    $dotfiles
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
@@ -36,12 +35,12 @@ function cloneDotfiles() {
 
 function linkDotfiles() {
     wdir="$desktop/dotfiles"
-    rm -f ~/.bashrc     && ln -s $wdir/.bashrc	        ~/.bashrc
-    rm -f ~/.profile    && ln -s $wdir/.bashrc          ~/.profile
-    rm -f ~/.inputrc    && ln -s $wdir/.inputrc	        ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $wdir/.tmux.conf	    ~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $wdir/.vimrc	        ~/.vimrc
-    rm -f ~/.ssh/config && ln -s $wdir/.ssh/config	    ~/.ssh/config
+    rm -f ~/.bashrc     && ln -s $dotfiles/.bashrc	        ~/.bashrc
+    rm -f ~/.profile    && ln -s $dotfiles/.bashrc          ~/.profile
+    rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $dotfiles/.tmux.conf	    ~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $dotfiles/.vimrc	        ~/.vimrc
+    rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config
     chmod 600 ~/.ssh/config
 }
 
@@ -71,8 +70,13 @@ function installDocker() {
 
 function installNeovim() {
     if [[ "$hosttype" = mac ]]; then
-        echo $hosttype 
+        brew install --HEAD neovim
+    else
+        echo TODO linux install
     fi
+    wdir="$HOME/.config/nvim"   
+    mkdir -pv $wdir
+    rm -f 
 }
 
 function build() {
