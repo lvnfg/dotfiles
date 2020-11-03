@@ -25,7 +25,7 @@ function createDirectories() {
     mkdir -p $downloads
 }
 
-function cloneDotfilesRepo() {
+function cloneDotfiles() {
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     wdir="$desktop/dotfiles"
     git clone git@github.com:lvnfg/dotfiles	    $wdir
