@@ -87,7 +87,7 @@ function build() {
 # --------------------------------
 # Actual setup scripts
 # --------------------------------
-if [[ ${task[0]} =~ vm ]]; then
+function vm() {
 	createDirectories
 	sudo apt update 
 	sudo apt upgrade -y
@@ -102,7 +102,7 @@ if [[ ${task[0]} =~ vm ]]; then
     cloneDotfiles
     linkDotfiles
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
-fi
+}
 
 # Allow calling functions by name from command line
 "$@"
