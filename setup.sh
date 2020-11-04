@@ -104,5 +104,13 @@ function vm() {
     echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
 }
 
+function mac() {
+    # Install xcode cli
+    xcode-select --install
+    # Install homebrew
+    url="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+    /bin/bash -c "$(curl -fsSL $url)" 
+}
+
 # Allow calling functions by name from command line
 "$@"
