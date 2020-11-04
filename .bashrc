@@ -1,7 +1,12 @@
 hosttype=""
-if [ "$(uname)" == "Darwin" ]; then
-    hosttype="mac" 
-fi
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     hosttype=linux;
+    Darwin*)    hosttype=mac;
+    CYGWIN*)    hosttype=cygwin;;
+    MINGW*)     hosttype=MinGw;;
+    *)          hosttype="UNKNOWN:${unameOut}"
+esac
 
 desktop="$HOME/Desktop"
 documents="$HOME/Documents"
