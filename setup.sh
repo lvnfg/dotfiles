@@ -84,6 +84,8 @@ function build() {
     docker build -t dev:latest .
 }
 
+reminder="Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)"
+
 # --------------------------------
 # Actual setup scripts
 # --------------------------------
@@ -101,15 +103,34 @@ function vm() {
 	    curl
     cloneDotfiles
     linkDotfiles
-    echo 'Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)'
+    echo $reminder
+}
+
+function upgradeBash() {
+    # For macos only
+    # Require homebrew
+    brew install bash
+    # Add to list of available shells
+    sudo echo "/usr/local/bin/bash" >> /etc/shells
+    # Set default shells
+    chsh -s /usr/local/bin/bash
 }
 
 function mac() {
-    # Install xcode cli
     xcode-select --install
-    # Install homebrew
-    url="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
-    /bin/bash -c "$(curl -fsSL $url)" 
+    cloneDotfiles
+    linkDotfiles
+    homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+    /bin/bash -c "$(curl -fsSL $homebrewurl)" 
+    brew doctor
+    brew install    \
+        fzf         \
+        mas
+    brew cask install \
+        iterm2              \
+        visual-studio-code  \
+    installNeovim
+    echo $reminder
 }
 
 # Allow calling functions by name from command line
