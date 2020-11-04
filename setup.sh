@@ -128,6 +128,13 @@ function mac() {
     brew cask install \
         iterm2              \
         visual-studio-code  
+    brew install mas
+    mas install 1107421413  # 1Blocker
+    mas install 1333542190  # 1Password
+    mas install 1295203466  # Microsoft remote desktop
+    mas install 1153157709  # Speedtest
+    mas install 425424353   # The Unarchiver
+    mas install 1480933944  # Vimari
     installNeovim
     echo $reminder
 }
