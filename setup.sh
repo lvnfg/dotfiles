@@ -124,8 +124,7 @@ function mac() {
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
     brew install    \
-        fzf         \
-        mas
+        fzf         
     brew cask install \
         iterm2              \
         visual-studio-code  \
