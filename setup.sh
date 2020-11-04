@@ -123,11 +123,8 @@ function mac() {
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
-    brew install    \
-        fzf         
-    brew cask install \
-        iterm2              \
-        visual-studio-code  
+    installNeovim
+    brew install fzf
     brew install mas
     mas install 1107421413  # 1Blocker
     mas install 1333542190  # 1Password
@@ -135,7 +132,8 @@ function mac() {
     mas install 1153157709  # Speedtest
     mas install 425424353   # The Unarchiver
     mas install 1480933944  # Vimari
-    installNeovim
+    brew cask install iterm2
+    brew cask install visual-studio-code
     echo $reminder
 }
 
