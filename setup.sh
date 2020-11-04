@@ -11,6 +11,7 @@ source ./.bashrc 2> /dev/null
 # set -o pipefail	# fail pipeline if any part fails
 # set -euo pipefail
 
+reminder="Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)"
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
@@ -84,7 +85,6 @@ function build() {
     docker build -t dev:latest .
 }
 
-reminder="Done. Remember to source .bashrc, exec bash -l, and gcloud init (if this is the first time run)"
 
 # --------------------------------
 # Actual setup scripts
