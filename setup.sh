@@ -70,9 +70,9 @@ function installDocker() {
 
 function installNeovim() {
     vimpath=""
-    if [[ "$hosttype" = macos ]]; then
+    if [[ "$hosttype" = mac ]]; then
         brew install --HEAD neovim
-    else
+    elif [[ "$hosttype" = linux ]]; then
         sudo apt install neovim
     fi
     wdir="$HOME/.config/nvim"   
@@ -127,7 +127,7 @@ function mac() {
         fzf         
     brew cask install \
         iterm2              \
-        visual-studio-code  \
+        visual-studio-code  
     installNeovim
     echo $reminder
 }
