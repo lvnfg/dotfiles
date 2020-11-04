@@ -1,8 +1,8 @@
 hosttype=""
 unameOut="$(uname -s)"
 case "${unameOut}" in
-    Linux*)     hosttype=linux;
-    Darwin*)    hosttype=mac;
+    Linux*)     hosttype=linux;;
+    Darwin*)    hosttype=mac;;
     CYGWIN*)    hosttype=cygwin;;
     MINGW*)     hosttype=MinGw;;
     *)          hosttype="UNKNOWN:${unameOut}"
