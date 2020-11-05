@@ -89,6 +89,16 @@ function installNeovim() {
     rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
 }
 
+function upgradeBash() {
+    # For macos only
+    # Require homebrew
+    brew install bash
+    # Add to list of available shells
+    sudo echo "/usr/local/bin/bash" >> /etc/shells
+    # Set default shells
+    chsh -s /usr/local/bin/bash
+}
+
 function build() {
     docker build -t dev:latest .
 }
@@ -113,16 +123,6 @@ function vm() {
     linkDotfiles
     configureGit
     echo $reminder
-}
-
-function upgradeBash() {
-    # For macos only
-    # Require homebrew
-    brew install bash
-    # Add to list of available shells
-    sudo echo "/usr/local/bin/bash" >> /etc/shells
-    # Set default shells
-    chsh -s /usr/local/bin/bash
 }
 
 function mac() {
