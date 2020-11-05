@@ -29,6 +29,9 @@ function createDirectories() {
 function cloneDotfiles() {
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     git clone git@github.com:lvnfg/dotfiles	    $dotfiles
+}
+
+function configureGit() {
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
