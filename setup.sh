@@ -122,6 +122,8 @@ function vm() {
     cloneDotfiles
     linkDotfiles
     configureGit
+    installDocker
+    build
     echo $reminder
 }
 
