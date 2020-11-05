@@ -111,6 +111,7 @@ function vm() {
 	    curl
     cloneDotfiles
     linkDotfiles
+    configureGit
     echo $reminder
 }
 
@@ -128,6 +129,7 @@ function mac() {
     xcode-select --install
     cloneDotfiles
     linkDotfiles
+    configureGit
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
