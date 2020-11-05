@@ -99,7 +99,7 @@ function installDocker() {
     newgrp docker
 }
 
-function build() {
+function buildDevImage() {
     docker build -t dev:latest .
 }
 
@@ -123,7 +123,7 @@ function vm() {
     linkDotfiles
     configureGit
     installDocker
-    build
+    buildDevImage
     echo $reminder
 }
 
