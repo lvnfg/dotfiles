@@ -49,8 +49,10 @@ function linkDotfiles() {
     rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
     rm -f ~/.tmux.conf  && ln -s $dotfiles/.tmux.conf	    ~/.tmux.conf
     rm -f ~/.vimrc      && ln -s $dotfiles/.vimrc	        ~/.vimrc
-    rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config
-    chmod 600 ~/.ssh/config
+    if [[ "$hosttype" = mac ]]; then
+        rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config
+        chmod 600 ~/.ssh/config
+    fi
 }
 
 function installNeovim() {
