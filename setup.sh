@@ -53,6 +53,28 @@ function linkDotfiles() {
     chmod 600 ~/.ssh/config
 }
 
+function installNeovim() {
+    vimpath=""
+    if [[ "$hosttype" = mac ]]; then
+        brew install --HEAD neovim
+    elif [[ "$hosttype" = linux ]]; then
+        sudo apt install neovim
+    fi
+    wdir="$HOME/.config/nvim"   
+    mkdir -pv $wdir
+    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
+}
+
+function upgradeBash() {
+    # For macos only
+    # Require homebrew
+    brew install bash
+    # Add to list of available shells
+    sudo echo "/usr/local/bin/bash" >> /etc/shells
+    # Set default shells
+    chsh -s /usr/local/bin/bash
+}
+
 function installDocker() {
     # Uninstall old versions
     sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -75,28 +97,6 @@ function installDocker() {
     sudo groupadd -f docker
     sudo usermod -aG docker $USER
     newgrp docker
-}
-
-function installNeovim() {
-    vimpath=""
-    if [[ "$hosttype" = mac ]]; then
-        brew install --HEAD neovim
-    elif [[ "$hosttype" = linux ]]; then
-        sudo apt install neovim
-    fi
-    wdir="$HOME/.config/nvim"   
-    mkdir -pv $wdir
-    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
-}
-
-function upgradeBash() {
-    # For macos only
-    # Require homebrew
-    brew install bash
-    # Add to list of available shells
-    sudo echo "/usr/local/bin/bash" >> /etc/shells
-    # Set default shells
-    chsh -s /usr/local/bin/bash
 }
 
 function build() {
