@@ -104,8 +104,8 @@ LS_COLORS='rs=0:di=01;92:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:c
 # Make ls color persistent across sessions
 export LS_COLORS
 # Set default ls behavior
-if [ ! "$hosttype" == mac ]; then
+if [ "$hosttype" == linux ]; then
     alias ls="ls -al -h --color=auto --group-directories-first"
-else
-    alias ls="ls -al -h"
+elif [ "$hosttype" == mac ]; then
+    alias ls="gls -al -h --color=auto --group-directories-first"
 fi
