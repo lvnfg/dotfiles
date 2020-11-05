@@ -136,6 +136,7 @@ function mac() {
     brew install mas
     mas install 1107421413  # 1Blocker
     mas install 1333542190  # 1Password
+    mas install 405399194   # Kindle
     mas install 1295203466  # Microsoft remote desktop
     mas install 1153157709  # Speedtest
     mas install 425424353   # The Unarchiver
