@@ -22,8 +22,10 @@ if [[ "$hosttype" = mac ]]; then
     defaultEditor="nvim"
 fi
 
+# DO NOT ENABLE ANY OF THESE FLAGS IN MAIN BODY
+# TO AVOID ERRORS WHEN SOURCING FROM .bashrc
 # set -e		    # exit if error
-  set -u		    # error on undeclared variable
+# set -u		    # error on undeclared variable
 # set -o pipefail	# fail pipeline if any part fails
 # set -euo pipefail
 
