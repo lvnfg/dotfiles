@@ -15,7 +15,6 @@ function getPublicIP() {
 function azNSG() {
     if [[ "$1" = open ]]; then
         ip="$(getPublicIP)" 
-        echo $ip
         accessType="Allow" 
     else
         ip="*"
