@@ -41,7 +41,7 @@ reminder="Remember to source .bashrc, exec bash -l, and gcloud init (if this is 
 # sudo systemctl restart ssh
 
 function createDirectories() {
-    mkdir -pv $desktop
+    mkdir -pv $repos
     mkdir -pv $downloads
 }
 
