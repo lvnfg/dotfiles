@@ -1,5 +1,5 @@
 # Get hosttype and default directories from .bashrc
-source $HOME/Desktop/dotfiles/setup.sh 2> /dev/null
+source $HOME/Repos/dotfiles/setup.sh 2> /dev/null
 
 # -----------------------------------------------
 # Git

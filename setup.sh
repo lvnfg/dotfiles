@@ -16,7 +16,8 @@ esac
 desktop="$HOME/Desktop"
 documents="$HOME/Documents"
 downloads="$HOME/Downloads"
-dotfiles="$desktop/dotfiles"
+repos="$HOME/Repos"
+dotfiles="$Repos/dotfiles"
 defaultEditor="vim"
 if [[ "$hosttype" = mac ]]; then
     defaultEditor="nvim"
