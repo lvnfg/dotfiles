@@ -159,6 +159,7 @@ function setupMac() {
     installNeovim
     brew install fzf
     brew install mas
+    brew install azure-cli
     brew install coreutils
     mas install 1107421413  # 1Blocker
     mas install 1333542190  # 1Password
