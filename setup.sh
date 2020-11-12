@@ -3,8 +3,24 @@
 # Arguments handling
 task=( $1 $2 $3 $4 $5 $6 $7 $8 $9 )
 
-# Get hosttype and default directories from .bashrc
-source ./.bashrc 2> /dev/null
+# Define base environment variables
+hosttype=""
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     hosttype=linux;;
+    Darwin*)    hosttype=mac;;
+    CYGWIN*)    hosttype=cygwin;;
+    MINGW*)     hosttype=MinGw;;
+    *)          hosttype="UNKNOWN:${unameOut}"
+esac
+desktop="$HOME/Desktop"
+documents="$HOME/Documents"
+downloads="$HOME/Downloads"
+dotfiles="$desktop/dotfiles"
+defaultEditor="vim"
+if [[ "$hosttype" = mac ]]; then
+    defaultEditor="nvim"
+fi
 
 # set -e		    # exit if error
   set -u		    # error on undeclared variable
