@@ -4,7 +4,6 @@ source $HOME/Repos/dotfiles/setup.sh 2> /dev/null
 # -----------------------------------------------
 # Networking
 # -----------------------------------------------
-publicIP=""
 function getPublicIP() {
     publicIP="$(curl ipecho.net/plain)"
     echo $publicIP
@@ -13,15 +12,22 @@ function getPublicIP() {
 # -----------------------------------------------
 # Azure
 # -----------------------------------------------
-function openAccessToVM() {
-    ip="$(getPublicIP)" 
+function azNSG() {
+    if [[ "$1" = open ]]; then
+        ip="$(getPublicIP)" 
+        echo $ip
+        accessType="Allow" 
+    else
+        ip="*"
+        accessType="Deny"
+    fi
     az network nsg rule update              \
         -g rg-dev                           \
         --nsg-name dev-nsg                  \
         --name  van                         \
         --source-address-prefixes "$ip"     \
         --destination-address-prefix "*"    \
-        --access "Allow"
+        --access "$accessType"
 }
 
 # -----------------------------------------------
