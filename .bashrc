@@ -12,6 +12,7 @@ function getPublicIP() {
 # -----------------------------------------------
 # Azure
 # -----------------------------------------------
+azDefaultRG="rg-dev"
 function azNSG() {
     if [[ "$1" = open ]]; then
         ip="$(getPublicIP)" 
@@ -27,6 +28,25 @@ function azNSG() {
         --source-address-prefixes "$ip"     \
         --destination-address-prefix "*"    \
         --access "$accessType"
+}
+function azVMDev() {
+    vmName="dev-vm"
+    if [[ "$1" = create ]]; then
+        az vm create                        \
+            -n $vmName                      \
+            -g $azDefaultRG                 \ 
+            --location southeastasia        \
+            --accelerated-networking true   \
+            --vnet-name dev-vnet            \
+            --nsg dev-nsg                   \
+            --subnet default                \
+            --public-ip-address dev-vm-ip   \
+            --storage-sku Premium_LRS       \
+            --size Standard_F8s_v2          \
+            --admin-username van            \
+            --ssh-key-values $HOME/.ssh/id_rsa.pub  \
+            --image debian:debian-10:10-gen2:latest                          
+    fi
 }
 
 # -----------------------------------------------
