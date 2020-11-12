@@ -2,6 +2,15 @@
 source $HOME/Repos/dotfiles/setup.sh 2> /dev/null
 
 # -----------------------------------------------
+# Networking
+# -----------------------------------------------
+publicIP=""
+function getPublicIPAddress() {
+    publicIP="$(curl ipecho.net/plain)"
+    echo $publicIP
+}
+
+# -----------------------------------------------
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
