@@ -109,7 +109,7 @@ function buildDevImage() {
 # --------------------------------
 # Actual setup scripts
 # --------------------------------
-function vm() {
+function setupVM() {
 	createDirectories
 	sudo apt update 
 	sudo apt upgrade -y
@@ -129,7 +129,7 @@ function vm() {
     echo $reminder
 }
 
-function mac() {
+function setupMac() {
     xcode-select --install
     configureGit
     cloneDotfiles
