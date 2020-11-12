@@ -60,9 +60,16 @@ openFileInEditor() {
         $defaultEditor "$result"
     fi
 }
+openFileInCode() {
+	result=$(searchFile)
+	if [[ ! -z "$result" ]]; then
+        code "$result"
+    fi
+}
 # Aliases
 bind -x '"∂":changeDirectory'   # Opt-d
 bind -x '"ƒ":openFileInEditor'  # Opt-f
+bind -x '"Ï":openFileInCode'    # Opt-Shift-f
 
 # Prompt & terminal
 # -----------------------------------------------
