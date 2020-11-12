@@ -11,6 +11,20 @@ function getPublicIP() {
 }
 
 # -----------------------------------------------
+# Azure
+# -----------------------------------------------
+function openAccessToVM() {
+    ip="$(getPublicIP)" 
+    az network nsg rule update              \
+        -g rg-dev                           \
+        --nsg-name dev-nsg                  \
+        --name  van                         \
+        --source-address-prefixes "$ip"     \
+        --destination-address-prefix "*"    \
+        --access "Allow"
+}
+
+# -----------------------------------------------
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
