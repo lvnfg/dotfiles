@@ -4,6 +4,13 @@ source $scripts/networking.sh           2> /dev/null
 source $scripts/azure.sh                2> /dev/null
 
 # -----------------------------------------------
+# Reminders cli
+# -----------------------------------------------
+alias remind="reminders add Reminders"
+alias relist="reminders show Reminders"
+alias recom="reminders complete Reminders"
+
+# -----------------------------------------------
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
