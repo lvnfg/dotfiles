@@ -1,13 +1,6 @@
 # Get hosttype and default directories from .bashrc
 source $HOME/Repos/dotfiles/setup.sh 2> /dev/null
-
-# -----------------------------------------------
-# Networking
-# -----------------------------------------------
-function getPublicIP() {
-    publicIP="$(curl ipecho.net/plain)"
-    echo $publicIP
-}
+source $scripts/networking.sh 2> /dev/null
 
 # -----------------------------------------------
 # Azure
