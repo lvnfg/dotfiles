@@ -1,25 +1,41 @@
+set -euo pipefail
+
 azDefaultRG="rg-dev"
 
-function aznsg() {
-    if [[ "$1" = open ]]; then
-        ip="$(getPublicIP)" 
-        accessType="Allow" 
-    elif [[ "$1" = openall ]]; then
-        ip="*" 
-        accessType="Allow" 
-    else
-        ip="*"
-        accessType="Deny"
-    fi
+
+# -----------------------------------------------
+# az nsg: Network Security Group
+# -----------------------------------------------
+nsgSourceIP=""
+nsgAccessType=""
+function azNSGUpdate() {
     az network nsg rule update              \
         -g rg-dev                           \
         --nsg-name dev-nsg                  \
         --name  van                         \
-        --source-address-prefixes "$ip"     \
+        --source-address-prefixes "$nsgSourceIP"     \
         --destination-address-prefix "*"    \
-        --access "$accessType"
+        --access "$nsgAccessType"
+}
+function azNSGOpenAll() {
+    nsgSourceIP="*" 
+    nsgAccessType="Allow" 
+    azNSGUpdate
+}
+function azNSGOpenSingle() {
+    nsgSourceIP="$(getPublicIP)" 
+    nsgAccessType="Allow" 
+    azNSGUpdate
+}
+function azNSGCloseAll() {
+    nsgSourceIP="*"
+    nsgAccessType="Deny"
+    azNSGUpdate
 }
 
+# -----------------------------------------------
+# az vm: Virtual Machine 
+# -----------------------------------------------
 function azVMDev() {
     vmName="dev-vm"
     if [[ "$1" = create ]]; then
