@@ -19,9 +19,9 @@ if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
 fi
 # Aliases
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
-alias gitStatusAll="echo && find $desktop $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
-alias gitPushAll="echo && find $desktop $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
-alias gitPullAll="echo && find $desktop $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
+alias gitStatusAll="echo && find $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
+alias gitPushAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
+alias gitPullAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
 
 # -----------------------------------------------
 # Tmux 
