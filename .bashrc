@@ -17,6 +17,9 @@ function azNSG() {
     if [[ "$1" = open ]]; then
         ip="$(getPublicIP)" 
         accessType="Allow" 
+    elif [[ "$1" = openall ]]; then
+        ip="*" 
+        accessType="Allow" 
     else
         ip="*"
         accessType="Deny"
