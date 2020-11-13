@@ -18,6 +18,7 @@ documents="$HOME/Documents"
 downloads="$HOME/Downloads"
 repos="$HOME/Repos"
 dotfiles="$repos/dotfiles"
+scripts="$dotfiles/scripts"
 defaultEditor="vim"
 if [[ "$hosttype" = mac ]]; then
     defaultEditor="nvim"
