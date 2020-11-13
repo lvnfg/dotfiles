@@ -13,7 +13,7 @@ function getPublicIP() {
 # Azure
 # -----------------------------------------------
 azDefaultRG="rg-dev"
-function azNSG() {
+function aznsg() {
     if [[ "$1" = open ]]; then
         ip="$(getPublicIP)" 
         accessType="Allow" 
