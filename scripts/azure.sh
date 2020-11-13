@@ -1,5 +1,3 @@
-set -euo pipefail
-
 azDefaultRG="rg-dev"
 
 
