@@ -70,6 +70,11 @@ function linkDotfiles() {
     rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
     rm -f ~/.tmux.conf  && ln -s $dotfiles/.tmux.conf	    ~/.tmux.conf
     rm -f ~/.vimrc      && ln -s $dotfiles/.vimrc	        ~/.vimrc
+    # nvim config
+    wdir="$HOME/.config/nvim"   
+    mkdir -pv $wdir
+    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
+    # host files config
     if [[ "$hosttype" = mac ]]; then
         rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config
         chmod 600 ~/.ssh/config
@@ -83,9 +88,6 @@ function installNeovim() {
     elif [[ "$hosttype" = linux ]]; then
         sudo apt install neovim
     fi
-    wdir="$HOME/.config/nvim"   
-    mkdir -pv $wdir
-    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
 }
 
 function upgradeBash() {
