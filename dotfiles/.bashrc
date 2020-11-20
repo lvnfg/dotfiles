@@ -1,7 +1,6 @@
 # Get hosttype and default directories from .bashrc
 source $HOME/Repos/core/setup.sh        2> /dev/null
-source $scripts/networking.sh           2> /dev/null
-source $scripts/azure.sh                2> /dev/null
+for file in "$(find $scripts -type f -maxdepth 1)"; do source $file; done
 
 alias re="reminders add Inbox"
 
