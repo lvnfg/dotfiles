@@ -1,14 +1,7 @@
 # Get hosttype and default directories from .bashrc
-source $HOME/Repos/dotfiles/setup.sh    2> /dev/null
+source $HOME/Repos/core/setup.sh        2> /dev/null
 source $scripts/networking.sh           2> /dev/null
 source $scripts/azure.sh                2> /dev/null
-
-# -----------------------------------------------
-# Reminders cli
-# -----------------------------------------------
-alias remind="reminders add Reminders"
-alias relist="reminders show Reminders"
-alias recom="reminders complete Reminders"
 
 # -----------------------------------------------
 # Git
