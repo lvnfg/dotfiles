@@ -3,6 +3,8 @@ source $HOME/Repos/core/setup.sh        2> /dev/null
 source $scripts/networking.sh           2> /dev/null
 source $scripts/azure.sh                2> /dev/null
 
+alias re="reminders add Inbox"
+
 # -----------------------------------------------
 # Git
 # -----------------------------------------------
