@@ -2,6 +2,9 @@
 source $HOME/Repos/core/setup.sh        2> /dev/null
 for file in "$(find $scripts -type f -maxdepth 1)"; do source $file; done
 
+# -----------------------------------------------
+# reminders-cli
+# -----------------------------------------------
 alias re="reminders add Inbox"
 
 # -----------------------------------------------
