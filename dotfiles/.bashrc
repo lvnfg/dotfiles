@@ -1,6 +1,11 @@
 # Get hosttype and default directories from .bashrc
-source $HOME/Repos/core/setup.sh        2> /dev/null
-for file in "$(find $scripts -type f -maxdepth 1)"; do source $file; done
+source $HOME/Repos/core/setup.sh    2> /dev/null
+for file in $(find $scripts -type f -print | sort)
+do
+    echo $file
+    source $file
+done
+unset file
 
 # -----------------------------------------------
 # reminders-cli
