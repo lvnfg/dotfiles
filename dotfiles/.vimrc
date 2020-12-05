@@ -11,6 +11,9 @@ noremap <C-u> <C-d>
 " Scroll down half page
 noremap <C-i> <C-u>
 
+" Editing
+set ignorecase		" Case insensitive matching
+
 if exists('g:vscode')
     " Do nothing to avoid conflicts when loaded as extension in vscode
 else
@@ -53,7 +56,6 @@ else
 	" Editing
 	" ------------------------------ 
 	syntax on			" Enable syntax highlighting
-	set ignorecase		" Case insensitive matching
 	set splitbelow		" Always split below
 	set splitright		" Always split to the right
 	" indenting
