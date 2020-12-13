@@ -78,7 +78,7 @@ openFileInCode() {
     fi
 }
 # Aliases
-bind -x '"∂":changeDirectory'   # Opt-d
+bind -x '"©":changeDirectory'   # Opt-g
 bind -x '"ƒ":openFileInEditor'  # Opt-f
 bind -x '"Ï":openFileInCode'    # Opt-Shift-f
 
