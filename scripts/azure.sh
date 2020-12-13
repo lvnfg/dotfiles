@@ -1,4 +1,4 @@
-azDefaultRG="rg-dev"
+azDefaultRG="rgDev"
 
 
 # -----------------------------------------------
@@ -8,8 +8,8 @@ nsgSourceIP=""
 nsgAccessType=""
 function azNSGUpdate() {
     az network nsg rule update              \
-        -g rg-dev                           \
-        --nsg-name dev-nsg                  \
+        -g $azDefaultRG                     \
+        --nsg-name nsgDev                   \
         --name  van                         \
         --source-address-prefixes "$nsgSourceIP"     \
         --destination-address-prefix "*"    \
