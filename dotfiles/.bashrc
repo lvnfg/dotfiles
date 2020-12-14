@@ -2,10 +2,18 @@
 source $HOME/Repos/core/setup.sh    2> /dev/null
 for file in $(find $scripts -type f -print | sort)
 do
-    echo $file
+    # echo "Sourcing: $file"
     source $file
 done
 unset file
+
+# -----------------------------------------------
+# Networking
+# -----------------------------------------------
+function getPublicIP() {
+    publicIP="$(curl ipecho.net/plain)"
+    echo $publicIP
+}
 
 # -----------------------------------------------
 # reminders-cli
