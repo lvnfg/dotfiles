@@ -165,7 +165,6 @@ function setupMac() {
     brew install mas
     brew install azure-cli
     brew install coreutils
-    brew install keith/formulae/reminders-cli
     mas install 1107421413  # 1Blocker
     mas install 1333542190  # 1Password
     mas install 405399194   # Kindle

@@ -16,11 +16,6 @@ function getPublicIP() {
 }
 
 # -----------------------------------------------
-# reminders-cli
-# -----------------------------------------------
-alias re="reminders add Inbox"
-
-# -----------------------------------------------
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
