@@ -174,6 +174,9 @@ function setupMac() {
     mas install 1480933944  # Vimari
     brew cask install iterm2
     brew cask install visual-studio-code
+    # vscode & azure data studio vim key repeat
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false 
+    defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
     echo $reminder
 }
 
