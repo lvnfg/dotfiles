@@ -22,7 +22,7 @@ function azOpenCurrentIP() {
     azSQLServerFirewallRuleEndIPAddress="$currentIP"
     azSQLServerFirewallUpdate
 }
-function azOpenAll() {
+function azOpenAllIP() {
     currentIP="$(getPublicIP)" 
     echo "$thisIP"
     # -----------
