@@ -1,33 +1,80 @@
-azDefaultRG="rgDev"
+currentIP=""
+
+# -----------------------------------------------
+# Personal access
+# -----------------------------------------------
+function azOpenCurrentIP() {
+    currentIP="$(getPublicIP)" 
+    echo "$currentIP"
+    # -----------
+    azRG="rgDev"
+    azNSGName="nsgdev"
+    azNSGRuleName="van"
+    azNSGAccessType="allow"
+    azNSGSourceAddressPrefix="$currentIP"
+    azNSGDestinationAddressPrefix="*"
+    azNSGUpdate
+    # -----------
+    azRG="rgHQ"
+    azSQLServer="phuongphatgroup"
+    azSQLServerFirewallRuleName="van"
+    azSQLServerFirewallRuleStartIPAddress="$currentIP"
+    azSQLServerFirewallRuleEndIPAddress="$currentIP"
+    azSQLServerFirewallUpdate
+}
+function azOpenAll() {
+    currentIP="$(getPublicIP)" 
+    echo "$thisIP"
+    # -----------
+    azRG="rgDev"
+    azNSGName="nsgdev"
+    azNSGRuleName="van"
+    azNSGAccessType="allow"
+    azNSGSourceAddressPrefix="*"
+    azNSGDestinationAddressPrefix="*"
+    azNSGUpdate
+    # -----------
+    azRG="rgHQ"
+    azSQLServer="phuongphatgroup"
+    azSQLServerFirewallRuleName="van"
+    azSQLServerFirewallRuleStartIPAddress="$currentIP"
+    azSQLServerFirewallRuleEndIPAddress="$currentIP"
+    azSQLServerFirewallUpdate
+}
+function azCloseAll() {
+    azRG="rgDev"
+    azNSGName="nsgdev"
+    azNSGRuleName="van"
+    azNSGAccessType="deny"
+    azNSGSourceAddressPrefix="*"
+    azNSGDestinationAddressPrefix="*"
+    azNSGUpdate
+    # -----------
+    azRG="rgHQ"
+    azSQLServer="phuongphatgroup"
+    azSQLServerFirewallRuleName="van"
+    azSQLServerFirewallRuleStartIPAddress="0.0.0.0"
+    azSQLServerFirewallRuleEndIPAddress="0.0.0.0"
+    azSQLServerFirewallUpdate
+}
 
 # -----------------------------------------------
 # az nsg: Network Security Group
 # -----------------------------------------------
-nsgSourceIP=""
-nsgAccessType=""
+azNSGName=""
+azNSGRuleName=""
+azNSGAccessType=""
+azNSGSourceAddressPrefix=""
+azNSGDestinationAddressPrefix=""
 function azNSGUpdate() {
-    az network nsg rule update              \
-        -g $azDefaultRG                     \
-        --nsg-name nsgDev                   \
-        --name  van                         \
-        --source-address-prefixes "$nsgSourceIP"     \
-        --destination-address-prefix "*"    \
-        --access "$nsgAccessType"
-}
-function azNSGOpenAll() {
-    nsgSourceIP="*" 
-    nsgAccessType="Allow" 
-    azNSGUpdate
-}
-function azNSGOpenSingle() {
-    nsgSourceIP="$(getPublicIP)" 
-    nsgAccessType="Allow" 
-    azNSGUpdate
-}
-function azNSGCloseAll() {
-    nsgSourceIP="*"
-    nsgAccessType="Deny"
-    azNSGUpdate
+    echo "Updating nsg rule"
+    az network nsg rule update                  \
+        --resource-group    $azRG               \
+        --nsg-name          $azNSGName          \
+        --name              $azNSGRuleName      \
+        --access            $azNSGAccessType    \
+        --source-address-prefixes       "$azNSGSourceAddressPrefix"         \
+        --destination-address-prefix    "$azNSGDestinationAddressPrefix"    
 }
 
 # -----------------------------------------------
@@ -37,8 +84,8 @@ function azVMDev() {
     vmName="dev-vm"
     if [[ "$1" = create ]]; then
         az vm create                        \
-            -n $vmName                      \
-            -g $azDefaultRG                 \ 
+            --resource-group    $azRG       \
+            --name $vmName                  \
             --location southeastasia        \
             --accelerated-networking true   \
             --vnet-name dev-vnet            \
@@ -51,4 +98,21 @@ function azVMDev() {
             --ssh-key-values $HOME/.ssh/id_rsa.pub  \
             --image debian:debian-10:10-gen2:latest                          
     fi
+}
+
+# -----------------------------------------------
+# az sql sever 
+# -----------------------------------------------
+azSQLServer=""
+azSQLServerFirewallRuleName=""
+azSQLServerFirewallRuleStartIPAddress=""
+azSQLServerFirewallRuleEndIPAddress=""
+function azSQLServerFirewallUpdate() {
+    echo "Updating sql server firewall rule"
+    az sql server firewall-rule update      \
+        --resource-group        $azRG                                   \
+        --server                $azSQLServer                            \
+        --name                  $azSQLServerFirewallRuleName            \
+        --start-ip-address      $azSQLServerFirewallRuleStartIPAddress  \
+        --end-ip-address        $azSQLServerFirewallRuleEndIPAddress    
 }
