@@ -3,7 +3,7 @@ currentIP=""
 # -----------------------------------------------
 # Personal access
 # -----------------------------------------------
-function azOpenCurrentIP() {
+function openCurrentIP() {
     currentIP="$(getPublicIP)" 
     echo "$currentIP"
     # -----------
@@ -22,7 +22,7 @@ function azOpenCurrentIP() {
     azSQLServerFirewallRuleEndIPAddress="$currentIP"
     azSQLServerFirewallUpdate
 }
-function azOpenAllIP() {
+function openAllIP() {
     currentIP="$(getPublicIP)" 
     echo "$thisIP"
     # -----------
@@ -41,7 +41,7 @@ function azOpenAllIP() {
     azSQLServerFirewallRuleEndIPAddress="$currentIP"
     azSQLServerFirewallUpdate
 }
-function azCloseAll() {
+function closeAllAccess() {
     azRG="rgDev"
     azNSGName="nsgdev"
     azNSGRuleName="van"
