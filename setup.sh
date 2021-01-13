@@ -16,7 +16,7 @@ esac
 desktop="$HOME/Desktop"
 documents="$HOME/Documents"
 downloads="$HOME/Downloads"
-repos="$HOME/Repos"
+repos="$HOME/repos"
 core="$repos/core"
 dotfiles="$core/dotfiles"
 scripts="$core/scripts"
