@@ -53,19 +53,19 @@ else
 	"  5 -> blinking vertical bar
 	"  6 -> solid vertical bar
 
-	" Editing
-	" ------------------------------ 
-	syntax on			" Enable syntax highlighting
-	set splitbelow		" Always split below
-	set splitright		" Always split to the right
-	" indenting
-	set expandtab
+	" Indenting
 	set autoindent
+	set noexpandtab     " Tab as tab, not as spaces
 	set copyindent
 	set preserveindent
 	set tabstop=4		" Press Tab = insert 4 spaces
 	set softtabstop=4	" SoftTabStop should = TabStop
 	set shiftwidth=4	" Insert 4 spaces when indenting with > and new line
+	" Editing
+	" ------------------------------ 
+	syntax on			" Enable syntax highlighting
+	set splitbelow		" Always split below
+	set splitright		" Always split to the right
 	" Python indenting
 	let g:pyindent_continue = '&sw * 2'
 	let g:pyindent_nested_paren = '&sw'
