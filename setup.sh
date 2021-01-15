@@ -64,16 +64,25 @@ function configureGit() {
 }
 
 function linkDotfiles() {
+
     wdir="$desktop/dotfiles"
     rm -f ~/.bashrc     && ln -s $dotfiles/.bashrc	        ~/.bashrc
     rm -f ~/.profile    && ln -s $dotfiles/.bashrc          ~/.profile
     rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
     rm -f ~/.tmux.conf  && ln -s $dotfiles/.tmux.conf	    ~/.tmux.conf
     rm -f ~/.vimrc      && ln -s $dotfiles/.vimrc	        ~/.vimrc
+	
+	# install vim-plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# run PlugInstall in the background
+    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
+    
     # nvim config
     wdir="$HOME/.config/nvim"   
     mkdir -pv $wdir
     rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
+
     # host files config
     if [[ "$hosttype" = mac ]]; then
         rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config

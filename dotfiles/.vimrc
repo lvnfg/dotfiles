@@ -2,14 +2,17 @@
 " ------------------------------ 
 noremap ; :
 noremap <Esc> :noh<cr>
-" Scroll up 1 line
-noremap <C-k> <C-y>
-" Scroll down 1 line 
-noremap <C-j> <C-e>
-" Scroll up half page
-noremap <C-u> <C-d>
-" Scroll down half page
-noremap <C-i> <C-u>
+ 
+" Install global plugins
+call plug#begin()
+	Plug 'junegunn/vim-easy-align'
+call plug#end()
+
+" vim-easy-align settings
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Editing
 set ignorecase		" Case insensitive matching
