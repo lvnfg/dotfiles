@@ -156,7 +156,6 @@ function setupVM() {
     cloneDotfiles
     linkDotfiles
     configureGit
-    installDocker
     buildDevImage
     echo $reminder
 }
