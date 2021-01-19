@@ -145,14 +145,14 @@ function setupVM() {
 	createDirectories
 	sudo apt update 
 	sudo apt upgrade -y
-	sudo apt install -y \
-	    vim     \
-	    tmux    \
-	    fzf     \
-	    git     \
-	    wget    \
-	    unzip   \
-	    curl
+	sudo apt install -y vim
+	sudo apt install -y tmux
+	sudo apt install -y fzf
+	sudo apt install -y git
+	sudo apt install -y wget
+	sudo apt install -y unzip
+	sudo apt install -y curl
+	sudo apt install -y bash-completion
     cloneDotfiles
     linkDotfiles
     configureGit
@@ -173,6 +173,7 @@ function setupMac() {
     brew install mas
     brew install azure-cli
     brew install coreutils
+    brew install bash-completion
     mas install 1107421413  # 1Blocker
     mas install 1333542190  # 1Password
     mas install 405399194   # Kindle

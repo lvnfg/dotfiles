@@ -16,6 +16,11 @@ function getPublicIP() {
 }
 
 # -----------------------------------------------
+# bash-completion
+# -----------------------------------------------
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+# -----------------------------------------------
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
