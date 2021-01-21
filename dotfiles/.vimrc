@@ -6,6 +6,7 @@ noremap <Esc> :noh<cr>
 " Install global plugins
 call plug#begin()
 	Plug 'junegunn/vim-easy-align'
+	Plug 'michaeljsmith/vim-indent-object'
 call plug#end()
 
 " vim-easy-align settings
