@@ -5,13 +5,14 @@ source $HOME/repos/core/setup.sh    2> /dev/null
 # Core aliases
 # -----------------------------------------------
 cloud="python3 $core/cloud.py"
-# vms
-alias openvmwin="$cloud open vmwin"
-alias openvmwinAllIPs="$cloud open vmwin allIPs"
-alias closevmdev="$cloud close vmwin"
+# vmdev
 alias openvmdev="$cloud open vmdev"
+alias closevmdev="$cloud close vmdev"
 alias openvmdevAllIPs="$cloud open vmdev allIP"
-alias closevmwin="$cloud close vmdev"
+# vmwin
+alias openvmwin="$cloud open vmwin"
+alias closevmwin="$cloud close vmwin"
+alias openvmwinAllIPs="$cloud open vmwin allIPs"
 # sql server
 alias opensqlpp="$cloud open sqlpp"
 alias opensqlppAllIPs="$cloud open sqlpp allIPs"
