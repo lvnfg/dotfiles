@@ -59,7 +59,7 @@ else
 
 	" Indenting
 	set autoindent
-	set noexpandtab     " Tab as tab, not as spaces
+	set expandtab       " Expand tab as spaces
 	set copyindent
 	set preserveindent
 	set tabstop=4		" Press Tab = insert 4 spaces
