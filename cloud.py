@@ -2,6 +2,9 @@ import os
 import sys
 import subprocess
 
+arg1 = ''
+arg2 = ''
+arg3 = ''
 try:
     arg1 = sys.argv[1]
     arg2 = sys.argv[2]
@@ -10,6 +13,7 @@ except:
     pass
 
 def getPublicIP():
+    url='ipecho.net/plain'
     ip = subprocess.run(['curl', url], stdout=subprocess.PIPE).stdout.decode('utf8')
     print(ip)
     return ip 

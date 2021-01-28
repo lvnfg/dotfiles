@@ -6,17 +6,16 @@ source $HOME/repos/core/setup.sh    2> /dev/null
 # -----------------------------------------------
 cloud="python3 $core/cloud.py"
 # vmdev
-alias vmdevOpen="$cloud open vmdev"
-alias vmdevClose="$cloud close vmdev"
-alias vmdevOpenAllIPs="$cloud open vmdev allIP"
+alias openvmdev="$cloud open vmdev"
+alias closevmdev="$cloud close vmdev"
+alias openvmdevAllIPs="$cloud open vmdev allIP"
 # vmwin
-alias vmwinOpen="$cloud open vmwin"
-alias vmwinClose="$cloud close vmwin"
-alias vmwinOpenAllIPs="$cloud open vmwin allIPs"
+alias openvmwin="$cloud open vmwin"
+alias closevmwin="$cloud close vmwin"
+alias openvmwinAllIPs="$cloud open vmwin allIPs"
 # sql server
-alias sqlppOpen="$cloud open sqlpp"
-alias sqlppOpenAllIPs="$cloud open sqlpp allIPs"
-alias sqlppClose="$cloud close sqlpp"
+alias opensqlpp="$cloud open sqlpp"
+alias closesqlpp="$cloud close sqlpp"
 
 # -----------------------------------------------
 # Networking
