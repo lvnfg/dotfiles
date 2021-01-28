@@ -9,45 +9,51 @@ try:
 except:
     pass
 
-publicIP = ''
-if arg1 == 'open':
-    url='ipecho.net/plain'
-    publicIP = subprocess.run(['curl', url], stdout=subprocess.PIPE).stdout.decode('utf8')
-    print(f'{publicIP}')
-    
+def getPublicIP():
+    ip = subprocess.run(['curl', url], stdout=subprocess.PIPE).stdout.decode('utf8')
+    print(ip)
+    return ip 
+
 # Azure
 azResourceGroup = "rgDev"
 if arg2[:2] == 'vm':
-    aznsgName = sys.argv[2] + '-nsg'
-    aznsgRuleName = 'van'
-    aznsgAccessType = 'allow' if arg1 == 'open' else 'deny'
-    aznsgSource = publicIP if arg1 == 'open' else '*'
-    aznsgDestination = '*'
+    nsgName        = sys.argv[2] + '-nsg'
+    ruleName       = 'van'
+    destinationIP  = '*'
+    if arg1       == 'open':
+        accessType = 'allow'
+        sourceIP   = '*' if arg3 == 'allIPs' else getPublicIP()
+    else:
+        sourceIP   = '*' 
+        accessType = 'deny'
     command = f"""
         az network nsg rule update  \
         --resource-group {azResourceGroup}  \
-        --nsg-name {aznsgName}  \
-        --name {aznsgRuleName}  \
-        --access {aznsgAccessType}  \
-        --source-address-prefixes "{aznsgSource}"  \
-        --destination-address-prefix "{aznsgDestination}"
+        --nsg-name {nsgName}  \
+        --name {ruleName}  \
+        --access {accessType}  \
+        --source-address-prefixes "{sourceIP}"  \
+        --destination-address-prefix "{destinationIP}"
     """
     os.system(command)
 
 if arg2[:3] == 'sql':
+    ruleName = 'van'
     if arg2[-2:] == 'pp':
         azResourceGroup = 'rgHQ'
-        azsqlServer = 'phuongphatgroup'
-    azsqlSeverFirewallRuleName = 'van'
-    azsqlServerStartIP = publicIP if arg1 == 'open' else '0.0.0.0'
-    azsqlServerEndIP = publicIP if arg1 == 'open' else '0.0.0.0'
+        serverName = 'phuongphatgroup'
+    if arg2 == 'open':
+        startIP = getPublicIP()
+    else:
+        startIP = '0.0.0.0'
+    endIP = startIP
     command = f"""
         az sql server firewall-rule update \
         --resource-group {azResourceGroup} \
-        --server {azsqlServer} \
-        --name {azsqlSeverFirewallRuleName} \
-        --start-ip-address {azsqlServerStartIP} \
-        --end-ip-address {azsqlServerEndIP}
+        --server {serverName} \
+        --name {ruleName} \
+        --start-ip-address {startIP} \
+        --end-ip-address {endIP}
     """
     os.system(command)
 
