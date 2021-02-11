@@ -14,8 +14,8 @@ alias openvmwin="$cloud open vmwin"
 alias closevmwin="$cloud close vmwin"
 alias openvmwinAllIPs="$cloud open vmwin allIPs"
 # sql server
-alias opensqlpp="$cloud open sqlpp"
-alias closesqlpp="$cloud close sqlpp"
+alias opensqlpp="$cloud open sql pp"
+alias closesqlpp="$cloud close sql pp"
 
 # -----------------------------------------------
 # Networking

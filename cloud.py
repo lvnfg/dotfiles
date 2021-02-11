@@ -41,12 +41,12 @@ if arg2[:2] == 'vm':
     """
     os.system(command)
 
-if arg2[:3] == 'sql':
+if arg2 == 'sql':
     ruleName = 'van'
-    if arg2[-2:] == 'pp':
+    if arg3 == 'pp':
         azResourceGroup = 'rgHQ'
         serverName = 'phuongphatgroup'
-    if arg2 == 'open':
+    if arg1 == 'open':
         startIP = getPublicIP()
     else:
         startIP = '0.0.0.0'
