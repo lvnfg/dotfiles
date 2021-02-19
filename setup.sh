@@ -144,6 +144,7 @@ function setupVM() {
 	createDirectories
 	sudo apt update 
 	sudo apt upgrade -y
+	sudo apt install -y jq
 	sudo apt install -y vim
 	sudo apt install -y tmux
 	sudo apt install -y fzf
@@ -168,6 +169,7 @@ function setupMac() {
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
     installNeovim
+    brew install jq
     brew install fzf
     brew install mas
     brew install azure-cli
