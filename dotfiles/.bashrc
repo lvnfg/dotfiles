@@ -4,21 +4,10 @@ source $HOME/repos/core/setup.sh    2> /dev/null
 # -----------------------------------------------
 # Core aliases
 # -----------------------------------------------
-cloud="python3 $core/cloud.py"
-# vmdev
-alias openvmdev="$cloud open vmdev"
-alias closevmdev="$cloud close vmdev"
-alias openvmdevAllIPs="$cloud open vmdev allIP"
-# vmwin
-alias openvmwin="$cloud open vmwin"
-alias closevmwin="$cloud close vmwin"
-alias openvmwinAllIPs="$cloud open vmwin allIPs"
-# sql server
-alias opensqlpp="$cloud open sql pp"
-alias closesqlpp="$cloud close sql pp"
+alias core="python3 $core/core.py"
 
 # -----------------------------------------------
-# Networking
+# Cloud work
 # -----------------------------------------------
 function getPublicIP() {
     publicIP="$(curl ipecho.net/plain)"
