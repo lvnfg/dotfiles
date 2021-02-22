@@ -71,7 +71,8 @@ class vm():
             sourceIP = getPublicIP()
         ruleName = 'van'
         destinationIP = '*'
-        print(f'updating nsg rule {self.nsgName}: {accessType} access to {destinationIP} from {sourceIP}')
+        info = f('{self.nsgName}: {acessType} access from {sourceIP} to {destinationIP}')
+        print(f'updating {info}')
         command = f"""
             az network nsg rule update  \
             --resource-group {self.resourceGroup}  \
@@ -82,8 +83,6 @@ class vm():
             --destination-address-prefix "{destinationIP}"
         """
         os.system(command)
-
-    
         
 #-------------------------------------------------------------------------------- 
 
