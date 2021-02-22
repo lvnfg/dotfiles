@@ -71,7 +71,7 @@ class vm():
             sourceIP = getPublicIP()
         ruleName = 'van'
         destinationIP = '*'
-        info = f('{self.nsgName}: {acessType} access from {sourceIP} to {destinationIP}')
+        info = f'{self.nsgName}: {accessType} access from {sourceIP} to {destinationIP}'
         print(f'updating {info}')
         command = f"""
             az network nsg rule update  \
