@@ -72,26 +72,22 @@ searchFile() {
         echo $result
     fi
 }
-openFileInEditor() {
+openFileInCode() {
 	result=$(searchFile)
 	hasCode=$(which code)
 	if [[ ! -z "$result" ]]; then
-        if [[ ! -z "$hasCode" ]]; then
-            code "$result"
-        else
-            $defaultEditor "$result"
-        fi
+        code "$result"
     fi
 }
 openFileInVim() {
 	result=$(searchFile)
 	if [[ ! -z "$result" ]]; then
-        code "$result"
+        $defaultEditor "$result"
     fi
 }
 # Aliases
 bind -x '"©":changeDirectory'   # Opt-g
-bind -x '"ƒ":openFileInEditor'  # Opt-f
+bind -x '"ƒ":openFileInCode'    # Opt-f
 bind -x '"Ï":openFileInVim'     # Opt-Shift-f
 
 # Prompt & terminal
