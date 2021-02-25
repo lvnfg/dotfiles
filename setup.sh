@@ -139,6 +139,8 @@ function buildDevImage() {
 
 # --------------------------------
 # Actual setup scripts
+# DO NOT INSTALL AZ CLI IN VM
+# Infra should be managed in core
 # --------------------------------
 function setupVM() {
 	createDirectories
@@ -153,7 +155,6 @@ function setupVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash # az cli
     cloneDotfiles
     linkDotfiles
     configureGit
