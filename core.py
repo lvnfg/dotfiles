@@ -66,9 +66,12 @@ class vm():
         
     def updateNSG(self, accessType, sourceIP = None):
         accessDict = {'open': 'allow', 'close': 'deny'}
-        accessType = accessDict[accessType]
         if sourceIP == None:
-            sourceIP = getPublicIP()
+            if accessType == 'close':
+                sourceIP = '*'
+            else:
+                sourceIP = getPublicIP()
+        accessType = accessDict[accessType]
         ruleName = 'van'
         destinationIP = '*'
         info = f'{self.nsgName}: {accessType} access from {sourceIP} to {destinationIP}'
