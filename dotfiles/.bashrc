@@ -34,6 +34,7 @@ if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
   . ~/repos/dotfiles/.git-completion.bash
 fi
 # Aliases
+alias gitppush="git pull && git push"
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 alias gitStatusAll="echo && find $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
 alias gitPushAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
@@ -87,8 +88,8 @@ openFileInVim() {
 }
 # Aliases
 bind -x '"©":changeDirectory'   # Opt-g
-bind -x '"ƒ":openFileInCode'    # Opt-f
-bind -x '"∂":openFileInVim'     # Opt-d
+bind -x '"ƒ":openFileInVim'     # Opt-f
+bind -x '"∂":openFileInCode'    # Opt-d
 
 # Prompt & terminal
 # -----------------------------------------------
