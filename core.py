@@ -31,7 +31,7 @@ def main():
     elif args.resource[:3] == 'sql':
         resourceType = 'sql'
     if resourceType == 'vm':
-        vm(args.resource).parse(args.task)
+        vm(args.resource).parse()
     else:
         print(f'Unknown resource type: {args.Resource}')
 
@@ -47,31 +47,41 @@ class vm():
         self.nsgName       = vmName + '-nsg'
         self.resourceGroup = 'rgDev'
 
-    def parse(self, task, sourceIP = None):
-        if task in ['start', 'stop']:
-            self.powerVM(task)
-        elif task in ['open', 'close']:
-            self.updateNSG(task, sourceIP)
+    def parse(self):
+        if args.task in ['start', 'stop']:
+            self.powerVM()
+        elif args.task in ['open', 'close']:
+            self.updateNSG()
 
-    def powerVM(self, powerType):
-        if powerType == 'stop':
-            powerType = 'deallocate'
-        print(f'preparing to {powerType} {self.vmName}')
+    def powerVM(self):
+        powerTask = None
+        if args.task == 'stop':
+            powerTask = 'deallocate'
+        else:
+            powerTask = args.task
+        print(f'preparing to {powerTask} {self.vmName}')
         command = f"""
-            az vm {powerType} \
+            az vm {powerTask} \
             --resource-group {self.resourceGroup} \
             --name {self.vmName}
         """
         os.system(command)
         
-    def updateNSG(self, accessType, sourceIP = None):
-        accessDict = {'open': 'allow', 'close': 'deny'}
-        if sourceIP == None:
-            if accessType == 'close':
+    def updateNSG(self):
+        sourceIP = args.sourceIP
+        if args.sourceIP == None:
+            if args.task == 'close':
                 sourceIP = '*'
             else:
                 sourceIP = getPublicIP()
-        accessType = accessDict[accessType]
+        elif args.sourceIP == 'all':
+            sourceIP = '*'
+        else:
+            sourceIP = args.sourceIP
+        
+        accessDict = {'open': 'allow', 'close': 'deny'}
+        accessType = accessDict[args.task]
+        
         ruleName = 'van'
         destinationIP = '*'
         info = f'{self.nsgName}: {accessType} access from {sourceIP} to {destinationIP}'
