@@ -5,6 +5,7 @@ source $HOME/repos/core/setup.sh    2> /dev/null
 # Core aliases
 # -----------------------------------------------
 alias core="python3 $core/core.py"
+alias atm="python3 $repos/atm/main.py"
 
 # -----------------------------------------------
 # Cloud work
