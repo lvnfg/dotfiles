@@ -1,5 +1,25 @@
-# Get hosttype and default directories from .bashrc
-source $HOME/repos/core/setup.sh    2> /dev/null
+# Get hosttype and define base locations
+hosttype=""
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     hosttype=linux;;
+    Darwin*)    hosttype=mac;;
+    CYGWIN*)    hosttype=cygwin;;
+    MINGW*)     hosttype=MinGw;;
+    *)          hosttype="UNKNOWN:${unameOut}"
+esac
+desktop="$HOME/Desktop"
+documents="$HOME/Documents"
+downloads="$HOME/Downloads"
+repos="$HOME/repos"
+core="$repos/core"
+dotfiles="$core/dotfiles"
+
+# Set default terminal editor = vim for mac
+defaultEditor="vim"
+if [[ "$hosttype" = mac ]]; then
+    defaultEditor="nvim"
+fi
 
 # -----------------------------------------------
 # Core aliases
