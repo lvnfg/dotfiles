@@ -36,7 +36,7 @@ def main():
         print(f'Unknown resource type: {args.Resource}')
 
 def getPublicIP():
-    url='ipecho.net/plain'
+    url='https://ipinfo.io/ip'
     ip = subprocess.run(['curl', url], stdout=subprocess.PIPE).stdout.decode('utf8')
     print(ip)
     return ip 
