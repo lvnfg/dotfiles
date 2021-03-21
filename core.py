@@ -84,8 +84,8 @@ class vm():
         
         ruleName = 'van'
         destinationIP = '*'
-        info = f'{self.nsgName}: {accessType} access from {sourceIP} to {destinationIP}'
-        print(f'updating {info}')
+        info = f'{accessType} access from {sourceIP} to {destinationIP} for {self.nsgName}'
+        print(f'updating: {info}')
         command = f"""
             az network nsg rule update  \
             --resource-group {self.resourceGroup}  \
