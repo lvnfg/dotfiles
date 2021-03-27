@@ -17,10 +17,18 @@ parser.add_argument(
     help='The target resource of the task, e.g. vmdev, sqldev'
 )
 parser.add_argument(
-    '-s', '--source-ip', 
-    dest='sourceIP',
+    '-i', '--ip-address', 
+    dest='ipAddress',
     type=str, 
-    help='Override default source ip address'
+    help='Specify the ip address to use (default: current public ip)'
+)
+parser.add_argument(
+    '-I', '--ip-address-all', 
+    dest='ipAddressAll',
+    action='store_const',
+    const=True,
+    default=False,
+    help='use the widest IP range possible (normally *)'
 )
 args = parser.parse_args()
 
@@ -68,16 +76,13 @@ class vm():
         os.system(command)
         
     def updateNSG(self):
-        sourceIP = args.sourceIP
-        if args.sourceIP == None:
-            if args.task == 'close':
-                sourceIP = '*'
-            else:
-                sourceIP = getPublicIP()
-        elif args.sourceIP == 'all':
+        sourceIP = None
+        if args.ipAddressAll == True or args.task == 'close':
             sourceIP = '*'
+        elif args.ipAddress != None:
+            sourceIP = args.ipAddress
         else:
-            sourceIP = args.sourceIP
+            sourceIP = getPublicIP()
         
         accessDict = {'open': 'allow', 'close': 'deny'}
         accessType = accessDict[args.task]
