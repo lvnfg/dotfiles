@@ -17,10 +17,18 @@ parser.add_argument(
     help='The target resource of the task, e.g. vmdev, sqldev'
 )
 parser.add_argument(
-    '-s', '--source-ip', 
-    dest='sourceIP',
+    '-i', '--ip-address', 
+    dest='ipAddress',
     type=str, 
-    help='Override default source ip address'
+    help='Specify the ip address to use (default: current public ip)'
+)
+parser.add_argument(
+    '-I', '--ip-address-all', 
+    dest='ipAddressAll',
+    action='store_const',
+    const=True,
+    default=False,
+    help='use the widest IP range possible (normally *)'
 )
 args = parser.parse_args()
 
@@ -36,7 +44,7 @@ def main():
         print(f'Unknown resource type: {args.Resource}')
 
 def getPublicIP():
-    url='ipecho.net/plain'
+    url='https://ipinfo.io/ip'
     ip = subprocess.run(['curl', url], stdout=subprocess.PIPE).stdout.decode('utf8')
     print(ip)
     return ip 
@@ -68,24 +76,21 @@ class vm():
         os.system(command)
         
     def updateNSG(self):
-        sourceIP = args.sourceIP
-        if args.sourceIP == None:
-            if args.task == 'close':
-                sourceIP = '*'
-            else:
-                sourceIP = getPublicIP()
-        elif args.sourceIP == 'all':
+        sourceIP = None
+        if args.ipAddressAll == True or args.task == 'close':
             sourceIP = '*'
+        elif args.ipAddress != None:
+            sourceIP = args.ipAddress
         else:
-            sourceIP = args.sourceIP
+            sourceIP = getPublicIP()
         
         accessDict = {'open': 'allow', 'close': 'deny'}
         accessType = accessDict[args.task]
         
         ruleName = 'van'
         destinationIP = '*'
-        info = f'{self.nsgName}: {accessType} access from {sourceIP} to {destinationIP}'
-        print(f'updating {info}')
+        info = f'{accessType} access from {sourceIP} to {destinationIP} for {self.nsgName}'
+        print(f'updating: {info}')
         command = f"""
             az network nsg rule update  \
             --resource-group {self.resourceGroup}  \
