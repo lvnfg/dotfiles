@@ -66,16 +66,27 @@ alias gitPullAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} &&
 # -----------------------------------------------
 alias t0="tmux attach-session -t 0"
 alias t1="tmux attach-session -t 1"
+alias t2="tmux attach-session -t 2"
+alias t3="tmux attach-session -t 3"
+alias t4="tmux attach-session -t 4"
 
 # -----------------------------------------------
 # Vim & fzf
 # -----------------------------------------------
 # Find all including hiddens but ignore .git
-export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
+if [[ "$hosttype" = mac ]]; then
+    export FZF_DEFAULT_COMMAND="find $repos | grep -v -e '\.git' -e '\.swp'"
+else
+    export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
+fi
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Fzf search and action functions
 searchDirectory() {
-	result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
+    if [[ "$hosttype" = mac ]]; then
+	    result=$(find $repos -type d 2> /dev/null | grep -v -e ".git" | fzf)
+	else
+	    result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
+	fi
 	if [[ ! -z "$result" ]]; then
 		echo $result
 	fi
@@ -89,7 +100,11 @@ changeDirectory() {
     fi
 } 
 searchFile() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
+    if [[ "$hosttype" = mac ]]; then
+	    result=$(find $repos -type f 2> /dev/null | grep -v -e ".git" | fzf)
+	else
+	    result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
+	fi
 	if [[ ! -z "$result" ]]; then
         echo $result
     fi
