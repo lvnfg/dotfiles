@@ -20,6 +20,8 @@ defaultEditor="vim"
 if [[ "$hosttype" = mac ]]; then
     defaultEditor="nvim"
 fi
+export VISUAL="$defaultEditor"
+export EDITOR="$defaultEditor"
 
 # -----------------------------------------------
 # Core aliases
