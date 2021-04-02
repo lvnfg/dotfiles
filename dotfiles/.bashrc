@@ -27,7 +27,7 @@ export EDITOR="$defaultEditor"
 # Core aliases
 # -----------------------------------------------
 alias core="python3 $core/core.py"
-alias atm="python3 $repos/atm/main.py"
+alias atm="python3 $repos/atm/atm/main.py"
 
 # -----------------------------------------------
 # Cloud work
