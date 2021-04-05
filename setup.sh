@@ -40,7 +40,6 @@ function configureGit() {
 }
 
 function linkDotfiles() {
-
     wdir="$desktop/dotfiles"
     rm -f ~/.bashrc     && ln -s $dotfiles/.bashrc	        ~/.bashrc
     rm -f ~/.profile    && ln -s $dotfiles/.bashrc          ~/.profile
