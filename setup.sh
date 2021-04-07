@@ -162,10 +162,23 @@ function setupMac() {
     mas install 1480933944  # Vimari
     brew cask install iterm2
     brew cask install visual-studio-code
+    # Mount remote directories over ssh
+    brew install --cask osxfuse
+    brew install sshfs
     # vscode & azure data studio vim key repeat
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false 
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
     echo $reminder
+}
+
+function mountatmdb() {
+    # mount just the db folder from atm repo in vmdev
+    sshfs van@52.230.96.182:/home/van/repos/atm/db/ /Users/van/repos/atm-db
+}
+
+function mountbidb() {
+    # mount just the db folder from bi repo in vmdev
+    echo "TODO"
 }
 
 # Allow calling functions by name from command line
