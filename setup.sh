@@ -3,12 +3,6 @@
 # Get hosttype and base locations from .bashrc
 source "$PWD/.bashrc" 2> /dev/null
 
-# set -e		    # exit if error
-# set -u		    # error on undeclared variable
-# set -o pipefail	# fail pipeline if any part fails
-# set -euo pipefail
-
-reminder="Remember to source .bashrc, exec bash -l, and az login / gcloud init (if this is the first time run)"
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
 # change the following lines to no 
@@ -135,7 +129,6 @@ function setupVM() {
     linkDotfiles
     configureGit
     buildDevImage
-    echo $reminder
 }
 
 function setupMac() {
@@ -165,7 +158,6 @@ function setupMac() {
     # vscode & azure data studio vim key repeat
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false 
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
-    echo $reminder
 }
 
 # Allow calling functions by name from command line
