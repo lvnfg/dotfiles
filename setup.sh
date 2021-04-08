@@ -27,6 +27,28 @@ function freshSetup() {
     # sudo service sshd restart
 }
 
+# Skip this part if restoring from a snapshot marked as -fresh-desktop
+function installDesktop() {
+    # Install a desktop environment and configure remote desktop access
+    # https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop
+    # XFCE desktop environment
+    sudo apt install -y xfce4
+    # Remote desktop server
+    sudo apt-get -y install xrdp
+    sudo systemctl enable xrdp
+    # Use XFCE for remote desktop session
+    echo xfce4-session >~/.xsession
+    # Create a password for the current user to login to xrdp
+    sudo passwd van
+    # Install firefox ESR (Extended Support Release)
+    sudo apt install firefox-esr 
+    # Remember to open port 3389 on network security group.
+    # Peformance improvements for remote desktop:
+    #   Set wallpaper style to none
+    #   Turn off compositing to improve rdp performance
+    #   xfconf-query -c xfwm4 -p /general/use_compositing -t bool -s false      # Must be run in desktop env. True to activate agin
+}
+
 # If restoring from a fresh snapshot:
 function restoreFromFresh() {
     cd $dotfiles
