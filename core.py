@@ -53,7 +53,10 @@ class vm():
     def __init__(self, vmName):
         self.vmName        = vmName
         self.nsgName       = vmName + '-nsg'
-        self.resourceGroup = 'rgDev'
+        if args.resource == 'vmdev':
+            self.resourceGroup = 'rgDev'
+        elif args.resource == 'vmwin':
+            self.resourceGroup = 'rgIntegration'
 
     def parse(self):
         if args.task in ['start', 'stop']:
