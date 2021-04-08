@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get hosttype and base locations from .bashrc
-source "$PWD/dotfiles/.bashrc" 2> /dev/null
+source "$PWD/.bashrc" 2> /dev/null
 
 # set -e		    # exit if error
 # set -u		    # error on undeclared variable
