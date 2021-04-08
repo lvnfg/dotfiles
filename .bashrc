@@ -8,9 +8,6 @@ case "${unameOut}" in
     MINGW*)     hosttype=MinGw;;
     *)          hosttype="UNKNOWN:${unameOut}"
 esac
-desktop="$HOME/Desktop"
-documents="$HOME/Documents"
-downloads="$HOME/Downloads"
 repos="$HOME/repos"
 dotfiles="$repos/dotfiles"
 

@@ -1,20 +1,25 @@
 #!/bin/bash
-
 # Get hosttype and base locations from .bashrc
 source "$PWD/.bashrc" # 2> /dev/null
 
-# Disable all ssh password login, including root
-# sudo vim /etc/ssh/sshd_config
-# change the following lines to no 
-#   ChallengeResponseAuthentication no
-#   PasswordAuthentication no
-#   UsePAM no
-#   PermitRootLogin no
-# sudo systemctl restart ssh
-
-function createDirectories() {
+# Skip this part if restoring from a snapshot marked fres
+function freshSetup() {
+    # These are the steps that must be done manually when
+    #   - Setting up a new mac
+    #   - Creating a new VM and login for the first time
+    #  When the steps are done, create a snapshot and mark as -fresh
+    cd ~
     mkdir -pv $repos
-    mkdir -pv $downloads
+    cd $repos
+    git clone git@github.com:lvnfg/dotfiles
+    # Disable all ssh password login, including root
+    sudo vim /etc/ssh/sshd_config
+        # change the following lines to no 
+        #   ChallengeResponseAuthentication no
+        #   PasswordAuthentication no
+        #   UsePAM no
+        #   PermitRootLogin no
+    sudo systemctl restart ssh
 }
 
 function cloneDotfiles() {
@@ -34,7 +39,6 @@ function configureGit() {
 }
 
 function linkDotfiles() {
-    wdir="$desktop/dotfiles"
     rm -f ~/.bashrc     && ln -s $dotfiles/.bashrc	        ~/.bashrc
     rm -f ~/.profile    && ln -s $dotfiles/.bashrc          ~/.profile
     rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
@@ -105,7 +109,6 @@ function installDocker() {
 function buildDevImage() {
     docker build -t dev:latest .
 }
-
 
 # --------------------------------
 # Actual setup scripts
