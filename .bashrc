@@ -25,7 +25,7 @@ export EDITOR="$defaultEditor"
 # -----------------------------------------------
 # Core aliases
 # -----------------------------------------------
-alias dot="python3 $repos/dot.py"
+alias dot="python3 $repos/dotfiles/dot.py"
 alias atm="python3 $repos/atm/main.py"
 
 # -----------------------------------------------
