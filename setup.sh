@@ -150,9 +150,7 @@ function setupMac() {
     mas install 1333542190  # 1Password
     mas install 405399194   # Kindle
     mas install 1295203466  # Microsoft remote desktop
-    mas install 1153157709  # Speedtest
     mas install 425424353   # The Unarchiver
-    mas install 1480933944  # Vimari
     brew cask install iterm2
     brew cask install visual-studio-code
     # vscode & azure data studio vim key repeat
