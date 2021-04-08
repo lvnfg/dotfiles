@@ -28,8 +28,6 @@ export EDITOR="$defaultEditor"
 # -----------------------------------------------
 alias core="python3 $core/core.py"
 alias atm="python3 $repos/atm/main.py"
-alias mountatmdb="sshfs van@52.230.96.182:/home/van/repos/atm/db/ /Users/van/repos/atm-db"
-mountatmdb
 
 # -----------------------------------------------
 # Cloud work
