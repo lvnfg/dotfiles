@@ -12,8 +12,7 @@ desktop="$HOME/Desktop"
 documents="$HOME/Documents"
 downloads="$HOME/Downloads"
 repos="$HOME/repos"
-core="$repos/core"
-dotfiles="$core/dotfiles"
+dotfiles="$repos/dotfiles"
 
 # Set default terminal editor = vim for mac
 defaultEditor="vim"
@@ -26,7 +25,7 @@ export EDITOR="$defaultEditor"
 # -----------------------------------------------
 # Core aliases
 # -----------------------------------------------
-alias core="python3 $core/core.py"
+alias dot="python3 $repos/dot.py"
 alias atm="python3 $repos/atm/main.py"
 
 # -----------------------------------------------
