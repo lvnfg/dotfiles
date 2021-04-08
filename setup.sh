@@ -2,12 +2,12 @@
 # Get hosttype and base locations from .bashrc
 source "$PWD/.bashrc" # 2> /dev/null
 
-# Skip this part if restoring from a snapshot marked fres
+# Skip this part if restoring from a snapshot marked as -fresh.
+# These are the steps that must be done manually when:
+#   - Setting up a new mac
+#   - Creating a new VM and login for the first time
+#  When the steps are done, create a snapshot and mark -fres.
 function freshSetup() {
-    # These are the steps that must be done manually when
-    #   - Setting up a new mac
-    #   - Creating a new VM and login for the first time
-    #  When the steps are done, create a snapshot and mark as -fresh
     cd ~
     mkdir -pv $repos
     cd $repos
@@ -22,9 +22,13 @@ function freshSetup() {
     sudo systemctl restart ssh
 }
 
-function cloneDotfiles() {
-    ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-    git clone git@github.com:lvnfg/dotfiles	    $dotfiles
+# If restoring from a fresh snapshot:
+function restoreFromFresh() {
+    cd $dotfiles
+    git pull
+    bash setup.sh linkDotfiles
+    source ~/.bashrc
+    exec bash -l
 }
 
 function configureGit() {
@@ -116,7 +120,7 @@ function buildDevImage() {
 # Infra should be managed in core
 # --------------------------------
 function setupVM() {
-	createDirectories
+    linkDotfiles
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y jq
@@ -128,17 +132,14 @@ function setupVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-    cloneDotfiles
-    linkDotfiles
     configureGit
     buildDevImage
 }
 
 function setupMac() {
+    linkDotfiles
     xcode-select --install
     configureGit
-    cloneDotfiles
-    linkDotfiles
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
