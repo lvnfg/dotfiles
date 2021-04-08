@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get hosttype and base locations from .bashrc
-source "$PWD/.bashrc" 2> /dev/null
+source "$PWD/.bashrc" # 2> /dev/null
 
 # Disable all ssh password login, including root
 # sudo vim /etc/ssh/sshd_config
