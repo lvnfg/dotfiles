@@ -8,18 +8,23 @@ source "$PWD/.bashrc" # 2> /dev/null
 #   - Creating a new VM and login for the first time
 #  When the steps are done, create a snapshot and mark -fres.
 function freshSetup() {
-    cd ~
-    mkdir -pv $repos
-    cd $repos
+    mkdir -pv ~/repos && cd ~/repos
+    sudo apt install git -y
     git clone git@github.com:lvnfg/dotfiles
-    # Disable all ssh password login, including root
-    sudo vim /etc/ssh/sshd_config
-        # change the following lines to no 
-        #   ChallengeResponseAuthentication no
-        #   PasswordAuthentication no
-        #   UsePAM no
-        #   PermitRootLogin no
-    sudo systemctl restart ssh
+    cd ~/repos/dotfiles && bash setup.sh linkDotfiles   # Must be execute in directory
+    source ~/.bashrc
+    # Password login should be disabled by default on Azure Debian 10 Gen 1 image.
+    # If not, disable password root login by editing sshd_config:
+    # sudo vim /etc/ssh/sshd_config
+    # change the following lines to:
+    #   PubkeyAuthentication yes            # Default commented out. Important, will not be able to log back in if not enabled
+    #   UsePAM yes                          # Default. May disable pubkey authen if set to no, keep yes for the moment
+    #   PasswordAuthentication no           # Default
+    #   PermitEmptyPasswords no             # Default 
+    #   PermitRootLogin no                  # Not found in Azure Debian 10 Gen 1 image's sshd
+    #   ChallengeResponseAuthentication no  # Default
+    # Restart ssh services to put the new settings into effect:
+    # sudo service sshd restart
 }
 
 # If restoring from a fresh snapshot:
@@ -133,7 +138,6 @@ function setupVM() {
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
     configureGit
-    buildDevImage
 }
 
 function setupMac() {
