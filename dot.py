@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 import argparse
@@ -81,10 +82,12 @@ resourceList = [
 ]
 
 def main():
+    res = args.resource.lower().replace(' ', '')
     for r in resourceList:
-        if r.name == args.resource:
+        if res == 'all' or res == r.name:
             r.parse()
-            return 
+            if res != 'all':
+                return 
 
 if __name__ == "__main__":
     main()
