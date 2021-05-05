@@ -19,6 +19,9 @@ fi
 export VISUAL="$defaultEditor"
 export EDITOR="$defaultEditor"
 
+# Set starting directory
+cd $repos
+
 # -----------------------------------------------
 # Core aliases
 # -----------------------------------------------
