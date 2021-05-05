@@ -218,6 +218,7 @@ function setupWSL() {
     git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"   # Use Windows Credential Manger from wsl
     echo Setting default SSH shell to WSL
     New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\bash.exe" -PropertyType String -Force
+}
 
 # Allow calling functions by name from command line
 "$@"
