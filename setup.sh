@@ -147,7 +147,6 @@ function buildDevImage() {
 # Infra should be managed in core
 # --------------------------------
 function setupVM() {
-    linkDotfiles
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y python3-pip
@@ -160,12 +159,13 @@ function setupVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
+    linkDotfiles
     configureGit
 }
 
 function setupMac() {
-    linkDotfiles
     xcode-select --install
+    linkDotfiles
     configureGit
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
