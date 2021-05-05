@@ -189,5 +189,35 @@ function setupMac() {
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
 }
 
+function setupWSL() {
+    # Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
+    # Run this from an elevated Powershell prompt
+    echo Installing openssh-server on Windows 10
+    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+    Start-Service sshd
+    Set-Service -Name sshd -StartupType 'Automatic'
+    Get-NetFirewallRule -Name *ssh*     # Verify firewall rule is created automatically by setup. If not, manually create one using the line below.
+    echo New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 2
+    echo "If user is admin, ssh config directory is located in %programdata%\ssh (C:\ProgramData usually). Otherwise C:\user\[username]\.ssh\ is used instead."
+    cd C:\ProgramData\ssh
+    echo Create file administrators_authorized_keys and add public keys using:
+    cat ~/.ssh/id_rsa.pub | pbcopy
+    echo Set authorized keys permissions:
+        Right click authorized_keys, go to Properties -> Security -> Advanced
+        Click "Disable inheritance";
+        Choose "Convert inherited permissions into explicit permissions on this object" when prompted
+        Remove all permissions on file except for the SYSTEM and yourself.
+    echo Disable password authentication by opening sshd_config and set the following to no:
+        PasswordAuthentication no
+        PermitEmptyPasswords no
+    Restart-Service sshd
+    echo Enable wsl 2 on windows 10: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Download Debian image on Windows Store.
+    bash
+    sudo apt update -y && sudo apt upgrade -y
+    sudo apt install git -y
+    git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"   # Use Windows Credential Manger from wsl
+    echo Setting default SSH shell to WSL
+    New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\bash.exe" -PropertyType String -Force
+
 # Allow calling functions by name from command line
 "$@"
