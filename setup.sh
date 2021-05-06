@@ -209,6 +209,7 @@ function wsl() {
             #ListenAddress ::
             PubkeyAuthentication    yes
             PasswordAuthentication  no
+            PermitEmptyPasswords    no
         "
         sudo service ssh --full-restart
         sudo service ssh start
