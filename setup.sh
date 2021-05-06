@@ -146,7 +146,7 @@ function buildDevImage() {
 # DO NOT INSTALL AZ CLI IN VM
 # Infra should be managed in core
 # --------------------------------
-function setupVM() {
+function linux() {
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y python3-pip
@@ -163,7 +163,7 @@ function setupVM() {
     configureGit
 }
 
-function setupMac() {
+function mac() {
     xcode-select --install
     linkDotfiles
     configureGit
@@ -189,10 +189,10 @@ function setupMac() {
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
 }
 
-function setupWSL() {
+function wslOld() {
     # Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
-    # Run this from an elevated Powershell prompt
-    echo Installing openssh-server on Windows 10
+
+    # Installing openssh-server on Windows 10
     Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
     Start-Service sshd
     Set-Service -Name sshd -StartupType 'Automatic'
@@ -211,14 +211,35 @@ function setupWSL() {
         PasswordAuthentication no
         PermitEmptyPasswords no
     Restart-Service sshd
-    echo Enable wsl 2 on windows 10: https://docs.microsoft.com/en-us/windows/wsl/install-win10. Download Debian image on Windows Store.
+
+    # Setup WSL. Docs: https://docs.microsoft.com/en-us/windows/wsl/install-win10
     bash
     sudo apt update -y && sudo apt upgrade -y
     sudo apt install git -y
     git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"   # Use Windows Credential Manger from wsl
     New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\bash.exe" -PropertyType String -Force    # Set default ssh shell to wsl
     New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force   # Set default ssh shell to PS
+
+    # Enable SSH direcly into WSL with agent forwarding without going through Windows host first
+    sudo apt install openssh-server
+    sudo vim /etc/ssh/sshd_config
+    # TODO: run WSL at startup
 }
 
+function wsl() {
+    # 1. Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
+    # 2. Install WSL on windows: https://docs.microsoft.com/en-us/windows/wsl/install-win10
+    # 3. Disable sudo password
+        sudo visudo     # Then add below line to END OF FILE: [username] ALL=(ALL) NOPASSWD:ALL
+    # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
+        sudo apt update -y && sudo apt upgrade -y
+        sudo apt install openssh-server
+    # 5. Install git and clone repos. At this point ssh agent forwarding should work.
+        sudo apt install git
+        git clone git@github.com:lvnfg/dotfiles
+    # 6. Run setupVM()
+    # 7. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
+        ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $repos/ppg-bi-as-semantic
+}
 # Allow calling functions by name from command line
 "$@"
