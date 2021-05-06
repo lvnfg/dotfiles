@@ -234,12 +234,14 @@ function wsl() {
     # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
         sudo apt update -y && sudo apt upgrade -y
         sudo apt install openssh-server
-    # 5. Install git and clone repos. At this point ssh agent forwarding should work.
+    # 5. Set WSL to run at startup
+    # 6. Install git and clone repos. At this point ssh agent forwarding should work.
         sudo apt install git
         git clone git@github.com:lvnfg/dotfiles
-    # 6. Run setupVM()
-    # 7. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
+    # 7. Run setupVM()
+    # 8. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
         ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $repos/ppg-bi-as-semantic
 }
+
 # Allow calling functions by name from command line
 "$@"
