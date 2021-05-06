@@ -120,6 +120,26 @@ function buildDevImage() {
     docker build -t dev:latest .
 }
 
+function installPython() {
+    # Install python
+    version="3.9.5"
+    dir="Python-$version"
+    tarball="$dir.tar.xz"
+    url="https://www.python.org/ftp/python/$version/$tarball"
+    sudo apt update
+    sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+    curl -O $url
+    #curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+    tar -xf $tarball
+    rm $tarball
+    cd $dir
+    ./configure --enable-optimizations --enable-loadable-sqlite-extensions
+    sudo make -j 4
+    sudo make install    # will overwrite system's python3. To install side by side: sudo make altinstall
+    cd ..
+    sudo rm -rf $dir
+}
+
 # --------------------------------
 # Actual setup scripts
 # DO NOT INSTALL AZ CLI IN VM
@@ -140,6 +160,7 @@ function linux() {
 	sudo apt install -y bash-completion
     linkDotfiles
     configureGit
+    installPython
 }
 
 function mac() {
