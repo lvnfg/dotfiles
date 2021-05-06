@@ -58,9 +58,9 @@ fi
 # Aliases
 alias gitppush="git pull && git push"
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
-alias gitStatusAll="echo && find $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
-alias gitPushAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
-alias gitPullAll="echo && find $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
+alias gitStatusAll="echo && find -L $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
+alias gitPushAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
+alias gitPullAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
 
 # -----------------------------------------------
 # Tmux 
