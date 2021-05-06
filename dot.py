@@ -19,14 +19,15 @@ def getPublicIP():
     return ip 
 
 def updateNSG(
-    task:          str,
-    name:          str = None,
-    resourceGroup: str = None,  # Required if exact name is provided. Constructed from prefix otherwise
-    prefix:        str = None,
-    region:        str = None,
-    sourceIP:      str = None,
-    destinationIP: str = '*',
-    ruleName:      str = 'van',
+    task:                  str,
+    name:                  str = None,
+    resourceGroup:         str = None,  # Required if exact name is provided. Constructed from prefix otherwise
+    prefix:                str = None,
+    region:                str = None,
+    sourceIP:              str = None,
+    destinationIP:         str = '*',
+    ruleName:              str = 'van',
+    destinationPortRanges: str = '22 2222 3389',
 ) -> None:
     if not name:
         name          = f'{prefix}-nsg-{region}'
@@ -39,8 +40,15 @@ def updateNSG(
     accessDict = {'open': 'allow', 'close': 'deny'}
     accessType = accessDict[args.task]
     
-    info = f'[{name}] {sourceIP} -> {destinationIP} {accessType.upper()}'
-    print(f'updating: {info}')
+    info = f"""
+    NSG:        {name}
+    Rule name:  {ruleName}
+    Access:     {accessType.upper()}
+    From:       {sourceIP} 
+    To:         {destinationIP} 
+    Ports:      {destinationPortRanges.replace(" ", ", ")}
+    """
+    print(f'{info}')
     command = f"""
         az network nsg rule update  \
         --resource-group {resourceGroup}  \
@@ -48,7 +56,8 @@ def updateNSG(
         --name {ruleName}  \
         --access {accessType}  \
         --source-address-prefixes "{sourceIP}"  \
-        --destination-address-prefix "{destinationIP}"
+        --destination-address-prefix "{destinationIP}"  \
+        --destination-port-ranges {destinationPortRanges}
     """
     os.system(command)
 
