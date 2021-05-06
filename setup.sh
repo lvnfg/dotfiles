@@ -2,55 +2,40 @@
 # Get hosttype and base locations from .bashrc
 source "$PWD/.bashrc" # 2> /dev/null
 
-# Skip this part if restoring from a snapshot marked as -fresh.
-# These are the steps that must be done manually when:
-#   - Setting up a new mac
-#   - Creating a new VM and login for the first time
-#  When the steps are done, create a snapshot and mark -fres.
 function freshSetup() {
+    # Skip this part if restoring from a snapshot marked as -fresh.
+    # These are the steps that must be done manually when setting up a new mac or creating a new VM and login for the first time.
     mkdir -pv ~/repos && cd ~/repos
     sudo apt install git -y
     git clone git@github.com:lvnfg/dotfiles
     cd ~/repos/dotfiles && bash setup.sh linkDotfiles   # Must be execute in directory
     source ~/.bashrc
-    # Password login should be disabled by default on Azure Debian 10 Gen 1 image.
-    # If not, disable password root login by editing sshd_config:
-    # sudo vim /etc/ssh/sshd_config
-    # change the following lines to:
-    #   PubkeyAuthentication yes            # Default commented out. Important, will not be able to log back in if not enabled
-    #   UsePAM yes                          # Default. May disable pubkey authen if set to no, keep yes for the moment
-    #   PasswordAuthentication no           # Default
-    #   PermitEmptyPasswords no             # Default 
-    #   PermitRootLogin no                  # Not found in Azure Debian 10 Gen 1 image's sshd
-    #   ChallengeResponseAuthentication no  # Default
-    # Restart ssh services to put the new settings into effect:
-    # sudo service sshd restart
+    sudo vim /etc/ssh/sshd_config       # Disable password login. All this should be default on Azure VM Debian 10 Gen 1 image.
+    "
+        PubkeyAuthentication yes            # Default commented out. Important, will not be able to log back in if not enabled
+        UsePAM yes                          # Default. May disable pubkey authen if set to no, keep yes for the moment
+        PasswordAuthentication no           # Default
+        PermitEmptyPasswords no             # Default 
+        PermitRootLogin no                  # Not found in Azure Debian 10 Gen 1 image's sshd
+        ChallengeResponseAuthentication no  # Default
+    "
+    sudo service sshd restart
 }
 
-# Skip this part if restoring from a snapshot marked as -fresh-desktop
 function installDesktop() {
-    # Install a desktop environment and configure remote desktop access
-    # https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop
-    # XFCE desktop environment
-    sudo apt install -y xfce4
-    # Remote desktop server
-    sudo apt-get -y install xrdp
-    sudo systemctl enable xrdp
-    # Use XFCE for remote desktop session
-    echo xfce4-session >~/.xsession
-    # Create a password for the current user to login to xrdp
-    sudo passwd van
-    # Install firefox ESR (Extended Support Release)
-    sudo apt install firefox-esr 
-    # Remember to open port 3389 on network security group.
-    # Peformance improvements for remote desktop:
-    #   Set wallpaper style to none
-    #   Turn off compositing to improve rdp performance
-    #   xfconf-query -c xfwm4 -p /general/use_compositing -t bool -s false      # Must be run in desktop env. True to activate agin
+    # Skip this part if restoring from a snapshot marked as -fresh-desktop
+    # Install a desktop environment and configure remote desktop access. https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop
+    sudo apt install -y xfce4                                          # Install XFCE desktop environment
+    sudo apt-get -y install xrdp                                       # Install Remote desktop server
+    sudo systemctl enable xrdp                                         # Enable xrdp for use
+    echo xfce4-session >~/.xsession                                    # Use XFCE for remote desktop session
+    sudo passwd van                                                    # Create a password for the current user to login to xrdp
+    sudo apt install firefox-esr                                       # Install firefox ESR (Extended Support Release)
+    xfconf-query -c xfwm4 -p /general/use_compositing -t bool -s false # Disable compositing for rdp performance. Must be run in desktop env. True to activate again.
 }
 
-# If restoring from a fresh snapshot:
 function restoreFromFresh() {
+    # If restoring from a fresh snapshot:
     cd $dotfiles
     git pull
     bash setup.sh linkDotfiles
@@ -105,12 +90,9 @@ function installNeovim() {
 
 function upgradeBash() {
     # For macos only
-    # Require homebrew
-    brew install bash
-    # Add to list of available shells
-    sudo echo "/usr/local/bin/bash" >> /etc/shells
-    # Set default shells
-    chsh -s /usr/local/bin/bash
+    brew install bash                               # Must install homebrew first
+    sudo echo "/usr/local/bin/bash" >> /etc/shells  # Add to list of available shells
+    chsh -s /usr/local/bin/bash                     # Set new bash as default shell
 }
 
 function installDocker() {
@@ -125,10 +107,7 @@ function installDocker() {
         software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     sudo apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
-    sudo add-apt-repository \
-       "deb [arch=amd64] https://download.docker.com/linux/debian \
-       $(lsb_release -cs) \
-       stable"
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
     sudo apt-get update
     sudo apt-get install docker-ce docker-ce-cli containerd.io
     # Use docker cli without sudo
@@ -189,52 +168,39 @@ function mac() {
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
 }
 
-function wslOld() {
-    # Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
-
-    # Installing openssh-server on Windows 10
-    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-    Start-Service sshd
-    Set-Service -Name sshd -StartupType 'Automatic'
-    Get-NetFirewallRule -Name *ssh*     # Verify firewall rule is created automatically by setup. If not, manually create one using the line below.
-    echo New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 2
-    echo "If user is admin, ssh config directory is located in %programdata%\ssh (C:\ProgramData usually). Otherwise C:\user\[username]\.ssh\ is used instead."
-    cd C:\ProgramData\ssh
-    echo Create file administrators_authorized_keys and add public keys using:
-    cat ~/.ssh/id_rsa.pub | pbcopy
-    echo Set authorized keys permissions:
-        Right click authorized_keys, go to Properties -> Security -> Advanced
-        Click "Disable inheritance";
-        Choose "Convert inherited permissions into explicit permissions on this object" when prompted
-        Remove all permissions on file except for the SYSTEM and yourself.
-    echo Disable password authentication by opening sshd_config and set the following to no:
-        PasswordAuthentication no
-        PermitEmptyPasswords no
-    Restart-Service sshd
-
-    # Setup WSL. Docs: https://docs.microsoft.com/en-us/windows/wsl/install-win10
-    bash
-    sudo apt update -y && sudo apt upgrade -y
-    sudo apt install git -y
-    git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"   # Use Windows Credential Manger from wsl
-    New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\bash.exe" -PropertyType String -Force    # Set default ssh shell to wsl
-    New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force   # Set default ssh shell to PS
-
-    # Enable SSH direcly into WSL with agent forwarding without going through Windows host first
-    sudo apt install openssh-server
-    sudo vim /etc/ssh/sshd_config
-    # TODO: run WSL at startup
-}
-
 function wsl() {
     # 1. Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
     # 2. Install WSL on windows: https://docs.microsoft.com/en-us/windows/wsl/install-win10
     # 3. Disable sudo password
-        sudo visudo     # Then add below line to END OF FILE: [username] ALL=(ALL) NOPASSWD:ALL
+        sudo visudo 
+        "
+            Add to END OF FILE: 
+            [username] ALL=(ALL) NOPASSWD:ALL   # Aside from convenience, also used to start ssh on startup without sudo password prompt.
+        "
     # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
         sudo apt update -y && sudo apt upgrade -y
         sudo apt install openssh-server
-    # 5. Set WSL to run at startup
+        sudo vim /etc/ssh/sshd_config 
+        "
+            Port 2222               # In case Windows host is listening to 22. Any other number is fine.
+            #AddressFamily any
+            ListenAddress 0.0.0.0
+            #ListenAddress ::
+            PubkeyAuthentication    yes
+            PasswordAuthentication  no
+        "
+        sudo service ssh --full-restart
+        sudo service ssh start
+        vim ~/.ssh/authorized_keys  # Add pubkey here
+    # 5. Copy enable-ssh-to-wsl.ps1 and enable-ssh-to-wsl.cmd to C:\Users\van\Desktop\Apps\wsl and a task scheduler job with the following:
+    '
+        Name:             enable-ssh-to-wsl
+        Trigger:          At system startup
+        Security options: Run whether the user is logged on or not
+        Action:           Start a program
+        Program/script:   powershell
+        Argument:         -File "C:\Users\van\OneDrive - Phuong Phat Group\Desktop\Apps\wsl\enable-ssh-to-wsl.ps1"
+    '
     # 6. Install git and clone repos. At this point ssh agent forwarding should work.
         sudo apt install git
         git clone git@github.com:lvnfg/dotfiles

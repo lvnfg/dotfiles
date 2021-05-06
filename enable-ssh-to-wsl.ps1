@@ -6,6 +6,10 @@
 #   for delete exist rules and ports use 'delete' as parameter, for show ports use 'list' as parameter.
 #   written by Daehyuk Ahn, Aug-1-2020
 
+# Start ssh server in wsl
+C:\Windows\System32\bash.exe -c "sudo /etc/init.d/ssh start"  
+
+
 # Display all portproxy information
 If ($Args[0] -eq "list") {
     netsh interface portproxy show v4tov4;
