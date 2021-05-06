@@ -160,7 +160,6 @@ function linux() {
 	sudo apt install -y bash-completion
     linkDotfiles
     configureGit
-    installPython
 }
 
 function mac() {
