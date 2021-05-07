@@ -30,8 +30,8 @@ def updateNSG(
     destinationPortRanges: str = '22 2222 3389',
 ) -> None:
     if not name:
-        name          = f'{prefix}-nsg-{region}'
-        resourceGroup = f'{prefix}-rg'
+        name          = f'{prefix}-{region}-nsg'
+        resourceGroup = f'{prefix}'
     if not sourceIP:
         if task == 'close':
             sourceIP = '*'
