@@ -8,7 +8,6 @@ from dataclasses import dataclass
 parser = argparse.ArgumentParser(description = 'Provide core functionlities to aid administrative tasks',)
 parser.add_argument('task', type=str, help='The task to be done, e.g. close, open, start, stop...')
 parser.add_argument('prefix', type=str, help='Provide just the prefix of the resouce group to open access to all resources within that group at once')
-parser.add_argument('region', nargs='?', type=str, default='sea', help='Option region code for the resource, e.g. sea, usw, usn...')
 parser.add_argument('-i', '--ip-address', dest='ipAddress', type=str, help='Specify the ip address to use (default: current public ip).')
 args = parser.parse_args()
 
@@ -21,16 +20,17 @@ def getPublicIP():
 def updateNSG(
     task:                  str,
     name:                  str = None,
+    env:                   str = 'pro',
     resourceGroup:         str = None,  # Required if exact name is provided. Constructed from prefix otherwise
     prefix:                str = None,
-    region:                str = None,
+    region:                str = 'sea',
     sourceIP:              str = None,
     destinationIP:         str = '*',
     ruleName:              str = 'van',
     destinationPortRanges: str = '22 2222 3389',
 ) -> None:
     if not name:
-        name          = f'{prefix}-{region}-nsg'
+        name          = f'{prefix}-{env}-{region}-nsg'
         resourceGroup = f'{prefix}'
     if not sourceIP:
         if task == 'close':
@@ -66,7 +66,7 @@ def main():
     task = args.task
     if task in ('open', 'close'):
         sourceIP = '*' if args.ipAddress in ('a', 'all') else args.ipAddress
-        updateNSG(task=args.task, prefix=args.prefix, region=args.region, sourceIP=sourceIP)
+        updateNSG(task=args.task, prefix=args.prefix, sourceIP=sourceIP)
     elif task in ('start', 'stop'):
         pass
 
