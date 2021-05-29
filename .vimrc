@@ -29,6 +29,9 @@ else
 	let g:netrw_banner = 0 " remove help banner
 	let g:netrw_liststyle = 3 " show tree view by default
 
+    " enable scrolling with mouse
+    set mouse=a
+
 	" Visual
 	" ------------------------------ 
 	set number			" Show line numbers
