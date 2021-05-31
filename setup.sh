@@ -140,6 +140,27 @@ function installPython() {
     sudo rm -rf $dir
 }
 
+function setupVPN() {
+    # Setup vnet and vpn gateway for Azure P2S: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+    # Generate certificates in linux: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site-linux
+    sudo apt install strongswan
+    sudo apt install strongswan-pki
+    sudo apt install libstrongswan-extra-plugins
+    # Generate root certificate
+    export rootcert="vpn-root"
+    sudo ipsec pki --gen --outform pem > "${rootcert}-key.pem"
+    sudo ipsec pki --self --in "${rootcert}-key.pem" --dn "CN=${rootcert}" --ca --outform pem > "${rootcert}-cert.pem"
+    openssl x509 -in "${rootcert}-cert.pem" -outform der | base64 -w0 ; echo
+    # Generate client certificate
+    export clientcert="vpn-mac"
+    export clientpassword=""
+    sudo ipsec pki --gen --outform pem > "${clientcert}-key.pem"
+    sudo ipsec pki --pub --in "${clientcert}-key.pem" | sudo ipsec pki --issue --cacert "${rootcert}"-cert.pem --cakey "${rootcert}"-key.pem --dn "CN=${clientcert}" --san "${clientcert}" --flag clientAuth --outform pem > "${clientcert}-cert.pem"
+    # Generate p12 bundle
+    openssl pkcs12 -in "${clientcert}-cert.pem" -inkey "${clientcert}-key.pem" -certfile "${rootcert}"-cert.pem -export -out "${clientcert}.p12" -password "pass:${clientpassword}"
+    # Install certificates for macos: https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac
+}
+
 # --------------------------------
 # Actual setup scripts
 # DO NOT INSTALL AZ CLI IN VM
