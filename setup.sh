@@ -134,12 +134,13 @@ function installPython() {
     rm $tarball
     cd $dir
     ./configure --enable-optimizations --enable-loadable-sqlite-extensions
+    # Required to fix error when importing pandas after building Python from source
+    sudo apt-get install liblzma-dev
+    # Build python
     sudo make -j 4
     sudo make install    # will overwrite system's python3. To install side by side: sudo make altinstall
     cd ..
     sudo rm -rf $dir
-    # Required to fix error when importing pandas after building Python from source
-    sudo apt-get install liblzma-dev
 }
 
 function setupVPN() {
