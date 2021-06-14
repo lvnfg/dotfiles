@@ -85,6 +85,8 @@ function installNeovim() {
         brew install --HEAD neovim
     elif [[ "$hosttype" = linux ]]; then
         sudo apt install neovim
+        # To install unstable release / appimage version, use the link:
+        # https://github.com/neovim/neovim/releases/
     fi
 }
 
