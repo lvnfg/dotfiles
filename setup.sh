@@ -87,6 +87,9 @@ function installNeovim() {
         sudo apt install neovim
         # To install unstable release / appimage version, use the link:
         # https://github.com/neovim/neovim/releases/
+        # Squash the appimage, rename folder to nvim, move to ~, and
+        # create symlink:
+        # sudo ln -s ~/nvim/usr/bin/nvim /usr/bin/nvim
     fi
 }
 
