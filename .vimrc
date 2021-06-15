@@ -3,10 +3,16 @@
 noremap ; :
 noremap <Esc> :noh<cr>
  
-" Install global plugins
+" Install plugins
 call plug#begin()
 	Plug 'junegunn/vim-easy-align'
 	Plug 'michaeljsmith/vim-indent-object'
+	
+    if exists('g:vscode')
+        " Skip install
+    else
+        Plug 'airblade/vim-gitgutter'
+    endif
 call plug#end()
 
 " vim-easy-align settings
