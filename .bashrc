@@ -12,9 +12,9 @@ repos="$HOME/repos"
 dotfiles="$repos/dotfiles"
 
 # Set default terminal editor = vim for mac
-defaultEditor="vim"
-if [[ "$hosttype" = mac ]]; then
-    defaultEditor="nvim"
+defaultEditor="$(which nvim)"
+if [ -z "$defaultEditor" ]; then
+    defaultEditor="vim"
 fi
 export VISUAL="$defaultEditor"
 export EDITOR="$defaultEditor"
