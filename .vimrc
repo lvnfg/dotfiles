@@ -39,6 +39,10 @@ else
     " enable scrolling with mouse
     set mouse=a
 
+    " Tab completion
+    inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
     " nvim-compe settings
     set completeopt=menuone,noselect
     let g:compe = {}
