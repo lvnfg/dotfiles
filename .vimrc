@@ -2,6 +2,8 @@
 " ----------------------------- 
 let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
+noremap <leader>w :wq<cr>
+noremap <leader>q :q!<cr>
  
 " Install plugins
 call plug#begin()
