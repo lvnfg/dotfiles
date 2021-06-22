@@ -1,7 +1,6 @@
 " Common settings for vim, nvim, vscode-nvim
-    noremap <Ctrl><Shift
-" ------------------------------ 
-noremap ; :
+" ----------------------------- 
+let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
  
 " Install plugins
@@ -41,9 +40,12 @@ else
 
     " enable scrolling with mouse
     set mouse=a
-
+    
     " fzf
-    let g:fzf_layout = { 'down': '40%' }
+    map <leader>p :Files<cr>
+
+    " netrw
+    map <leader>E :Vexplore<cr>
 
     " Tab completion
     inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
