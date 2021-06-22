@@ -1,4 +1,5 @@
 " Common settings for vim, nvim, vscode-nvim
+    noremap <Ctrl><Shift
 " ------------------------------ 
 noremap ; :
 noremap <Esc> :noh<cr>
@@ -13,6 +14,8 @@ call plug#begin()
     else
         Plug 'airblade/vim-gitgutter'
         Plug 'hrsh7th/nvim-compe'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
     endif
 call plug#end()
 
@@ -38,6 +41,9 @@ else
 
     " enable scrolling with mouse
     set mouse=a
+
+    " fzf
+    let g:fzf_layout = { 'down': '40%' }
 
     " Tab completion
     inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
