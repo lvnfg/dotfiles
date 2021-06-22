@@ -4,6 +4,7 @@ let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
 noremap <leader>w :wq<cr>
 noremap <leader>q :q!<cr>
+noremap <leader>a ggVG
  
 " Install plugins
 call plug#begin()
