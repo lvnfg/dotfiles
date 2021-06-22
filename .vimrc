@@ -15,6 +15,7 @@ call plug#begin()
         Plug 'hrsh7th/nvim-compe'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
+        Plug 'vim-airline/vim-airline'
     endif
 call plug#end()
 
@@ -34,18 +35,17 @@ else
 	" ------------------------------ 
 	" disable vi compatibility and enable advanced vim features
 	set nocompatible 
+	
 	" netrw config
 	let g:netrw_banner = 0 " remove help banner
 	let g:netrw_liststyle = 3 " show tree view by default
+    map <leader>E :Vexplore<cr>
 
     " enable scrolling with mouse
     set mouse=a
     
     " fzf
     map <leader>p :Files<cr>
-
-    " netrw
-    map <leader>E :Vexplore<cr>
 
     " Tab completion
     inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -67,7 +67,6 @@ else
     let g:compe.max_kind_width = 100
     let g:compe.max_menu_width = 100
     let g:compe.documentation = v:true
-
     let g:compe.source = {}
     let g:compe.source.path = v:true
     let g:compe.source.buffer = v:true
