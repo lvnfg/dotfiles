@@ -143,3 +143,5 @@ function runColorTest() {
 
     exit 0
 }
+
+"$@"
