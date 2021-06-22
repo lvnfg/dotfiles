@@ -95,12 +95,12 @@ else
 	set signcolumn=yes 	" Always show the sign gutter
 	set hlsearch        " Highlight search term
 	" Minimize visual prominence of sign column & end of buffer
-	highlight SignColumn        ctermbg=black
-    highlight EndOfBuffer		ctermbg=None    ctermfg=black	
-    highlight LineNr							ctermfg=grey
+	"highlight SignColumn        ctermbg=black
+    "highlight EndOfBuffer		ctermbg=None    ctermfg=black	
+    "highlight LineNr							ctermfg=black
 	" fix wrong colors in tmux by forcing 256 colors
-	set background=dark
-	set t_Co=256
+	"set background=dark
+	"set t_Co=256
 	" Modal cursor
 	let &t_SI.="\e[5 q" "SI = INSERT mode
 	let &t_EI.="\e[2 q" "EI = All other modes (ELSE)
