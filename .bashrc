@@ -11,9 +11,7 @@ defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor=
 export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set default editor to nvim if installed
 
 # Repos scripts aliases
-alias dot="python3 $REPOS/dotfiles/dot.py"
 alias atm="python3 $REPOS/atm/main.py"
-
 
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
