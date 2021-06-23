@@ -227,16 +227,18 @@ function setupPython() {
 function setupVPNCertificates() {
     # Setup vnet and vpn gateway for Azure P2S: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
     # Generate certificates in linux: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site-linux
+    echo "Enter cert name:"
+    read certname       # ex: "dev-atm-vpn-iphone"
+    echo "Enter client password:"
+    read clientpassword
     sudo apt install strongswan
     sudo apt install strongswan-pki
     sudo apt install libstrongswan-extra-plugins
     # Generate root certificate
-    export certname="dev-atm-vpn-iphone"
     sudo ipsec pki --gen --outform pem > "${certname}-root-key.pem"
     sudo ipsec pki --self --in "${certname}-root-key.pem" --dn "CN=${certname}-root" --ca --outform pem > "${certname}-root-cert.pem"
     openssl x509 -in "${certname}-root-cert.pem" -outform der | base64 -w0 ; echo
     # Generate client certificate
-    export clientpassword=""
     sudo ipsec pki --gen --outform pem > "${certname}-client-key.pem"
     sudo ipsec pki --pub --in "${certname}-client-key.pem" | sudo ipsec pki --issue --cacert "${certname}-root-cert.pem" --cakey "${certname}-root-key.pem" --dn "CN=${certname}" --san "${certname}" --flag clientAuth --outform pem > "${certname}-client-cert.pem"
     # Generate p12 bundle
