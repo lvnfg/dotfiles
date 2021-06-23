@@ -13,9 +13,7 @@ dotfiles="$repos/dotfiles"
 
 # Set default terminal editor = vim for mac
 defaultEditor="$(which nvim)"
-if [ -z "$defaultEditor" ]; then
-    defaultEditor="vim"
-fi
+if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi
 export VISUAL="$defaultEditor"
 export EDITOR="$defaultEditor"
 
@@ -28,10 +26,7 @@ alias atm="python3 $repos/atm/main.py"
 # -----------------------------------------------
 # Cloud work
 # -----------------------------------------------
-function getPublicIP() {
-    publicIP="$(curl ipecho.net/plain)"
-    echo $publicIP
-}
+function getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
 
 # -----------------------------------------------
 # bash-completion
@@ -42,12 +37,8 @@ function getPublicIP() {
 # Git
 # -----------------------------------------------
 # Get current git branch name to display in prompt
-getGitBranchStatus() {
-    git status --short --branch 2> /dev/null | head -n 1
-}
-getGitFileStatus() {
-    git -c color.status=always status --short 2> /dev/null | tr '\n' " "
-}
+getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
+getGitFileStatus() { git -c color.status=always status --short 2> /dev/null | tr '\n' " " ; }
 # Enable git autocomple in bash
 if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
   . ~/repos/dotfiles/.git-completion.bash
