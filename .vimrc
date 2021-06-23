@@ -2,9 +2,6 @@
 " ----------------------------- 
 let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
-noremap <leader>w :wq<cr>
-noremap <leader>q :q<cr>
-noremap <leader>Q :q!<cr>
 noremap <leader>a ggVG
  
 " Install plugins
