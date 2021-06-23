@@ -93,7 +93,7 @@ changeDirectory() {
 	result=$(searchDirectory)
 	if [[ ! -z "$result" ]]; then
 		cd "$result"
-		echo -e "--> $result \c" && getGitFileStatus
+		echo -e "pwd changed to: $result \c" && getGitFileStatus
 		echo
     fi
 } 
