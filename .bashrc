@@ -1,3 +1,7 @@
+# Repos scripts aliases
+alias dot="python3 $REPOS/dotfiles/dot.py"
+alias atm="python3 $REPOS/atm/main.py"
+
 # Get hosttype and define base locations
 unameOut="$(uname -s)" && hosttype=""
 case "${unameOut}" in
@@ -5,27 +9,21 @@ case "${unameOut}" in
     Darwin*)    hosttype=mac;;
     *)          hosttype="UNKNOWN:${unameOut}"
 esac
-repos="$HOME/repos"
-dotfiles="$repos/dotfiles"
-
-# Repos scripts aliases
-alias dot="python3 $repos/dotfiles/dot.py"
-alias atm="python3 $repos/atm/main.py"
-
-set -o vi                       # Use vim keybindings in bash prompts
-export TERM=screen-256color     # Let vim & tmux terminals use colors
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion   # Enable bash completion
+set -o vi                                                                 # Use vim keybindings in bash prompts
+export TERM=screen-256color                                               # Let vim & tmux terminals use colors
+export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
+getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
 # Set default editor to nvim if installed
 defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi && export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"
-getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
 
 # Git
-if [ -f ~/repos/dotfiles/.git-completion.bash ]; then . ~/repos/dotfiles/.git-completion.bash ; fi  # Enable autocomple in bash
-alias gitppush="git pull && git push"   # Always pull before push
+if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
+alias gitppush="git pull && git push"                                                # Always pull before push
 alias gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
-alias gitStatusAll="echo && find -L $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
-alias gitPushAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
-alias gitPullAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
+alias gitStatusAll="echo && find -L $REPOS $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
+alias gitPushAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
+alias gitPullAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
 
 # Tmux
 alias t0="tmux attach-session -t 0"
