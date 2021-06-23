@@ -1,58 +1,39 @@
 # Get hosttype and define base locations
-hosttype=""
-unameOut="$(uname -s)"
+unameOut="$(uname -s)" && hosttype=""
 case "${unameOut}" in
     Linux*)     hosttype=linux;;
     Darwin*)    hosttype=mac;;
-    CYGWIN*)    hosttype=cygwin;;
-    MINGW*)     hosttype=MinGw;;
     *)          hosttype="UNKNOWN:${unameOut}"
 esac
 repos="$HOME/repos"
 dotfiles="$repos/dotfiles"
 
-# Set default terminal editor = vim for mac
-defaultEditor="$(which nvim)"
-if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi
-export VISUAL="$defaultEditor"
-export EDITOR="$defaultEditor"
-
-# -----------------------------------------------
-# Core aliases
-# -----------------------------------------------
+# Repos scripts aliases
 alias dot="python3 $repos/dotfiles/dot.py"
 alias atm="python3 $repos/atm/main.py"
 
-# -----------------------------------------------
-# Cloud work
-# -----------------------------------------------
-function getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
+# Set default editor to nvim if installed
+defaultEditor="$(which nvim)"
+if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi && export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"
 
-# -----------------------------------------------
-# bash-completion
-# -----------------------------------------------
+getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
+
+# Enable bash completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-# -----------------------------------------------
-# Git
-# -----------------------------------------------
-# Get current git branch name to display in prompt
+# Git: get current git branch name to display in prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
 getGitFileStatus() { git -c color.status=always status --short 2> /dev/null | tr '\n' " " ; }
-# Enable git autocomple in bash
-if [ -f ~/repos/dotfiles/.git-completion.bash ]; then
-  . ~/repos/dotfiles/.git-completion.bash
-fi
-# Aliases
-alias gitppush="git pull && git push"
-gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
+# Git: enable autocomple in bash
+if [ -f ~/repos/dotfiles/.git-completion.bash ]; then . ~/repos/dotfiles/.git-completion.bash ; fi
+alias gitppush="git pull && git push"   # Always pull before push
+# Git: batch action for all directories in ~/repos
+alias gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 alias gitStatusAll="echo && find -L $repos $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
 alias gitPushAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
 alias gitPullAll="echo && find -L $repos $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
 
-# -----------------------------------------------
-# Tmux 
-# -----------------------------------------------
+# Tmux
 alias t0="tmux attach-session -t 0"
 alias t1="tmux attach-session -t 1"
 alias t2="tmux attach-session -t 2"
