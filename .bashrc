@@ -121,8 +121,8 @@ openFileInVim() {
     fi
 }
 # Aliases
-bind -x '"©":changeDirectory'   # Opt-g
-bind -x '"ƒ":openFileInVim'     # Opt-f
+bind -x '"ç":changeDirectory'   # Opt-c
+bind -x '"√":openFileInVim'     # Opt-v
 bind -x '"∂":openFileInCode'    # Opt-d
 
 # Prompt & terminal
