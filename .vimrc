@@ -16,6 +16,10 @@ call plug#begin()
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         Plug 'vim-airline/vim-airline'
+        Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+        " Install parser for language with :TSInstall
+        " Supported languges: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+        " bash, css, html, javascript, typescript, json, latex, lua, python, yaml
     endif
 call plug#end()
 
