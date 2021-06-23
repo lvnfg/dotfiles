@@ -1,7 +1,10 @@
+#!/bin/bash
+
 # General
 set -o vi                                                                 # Use vim keybindings in bash prompts
 export TERM=screen-256color                                               # Let vim & tmux terminals use colors
 export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
+source "$DOTFILES/setup.sh" # 2> /dev/null                                # Make setup.sh functions autocomplete
 getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
 defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi 
@@ -10,6 +13,7 @@ export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set 
 # Repos scripts aliases
 alias dot="python3 $REPOS/dotfiles/dot.py"
 alias atm="python3 $REPOS/atm/main.py"
+
 
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
