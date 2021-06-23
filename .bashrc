@@ -107,13 +107,6 @@ searchFile() {
         echo $result
     fi
 }
-openFileInCode() {
-	result=$(searchFile)
-	hasCode=$(which code)
-	if [[ ! -z "$result" ]]; then
-        code "$result"
-    fi
-}
 openFileInVim() {
 	result=$(searchFile)
 	if [[ ! -z "$result" ]]; then
@@ -123,7 +116,6 @@ openFileInVim() {
 # Aliases
 bind -x '"ç":changeDirectory'   # Opt-c
 bind -x '"√":openFileInVim'     # Opt-v
-bind -x '"∂":openFileInCode'    # Opt-d
 
 # Prompt & terminal
 # -----------------------------------------------
