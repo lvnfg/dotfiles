@@ -40,12 +40,12 @@ if !exists('g:vscode')
     map <leader>r :vsplit<cr>
     " Move between panes
     map <leader>d <C-W>h
-    map <leader>f <C-W>j
+    map <leader>f <C-W>l
     " Move between buffers
     map <leader>j :bprevious<cr>
     map <leader>k :bnext<cr>
     map <leader>w :bd<cr>
-	
+
 	syntax on                 " Enable syntax highlighting
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
@@ -54,23 +54,24 @@ if !exists('g:vscode')
 	set number                " Show line numbers
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
-	set laststatus=0          " Disable status line
+	set laststatus=0          " Enable status line
 	set noruler               " Disable ruler in command line
 	set updatetime=100        " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes        " Always show the sign gutter
 	set hlsearch              " Highlight search term
-    let &t_SI.="\e[5 q"       " Thin cursor for insert mode (SI) mode
+    let &t_SI.="\e[5 q"       " Thin cursor for insert mode mode
+    let &t_RI.="\e[4 q"       " Underline cursor for replace mode 
     let &t_EI.="\e[2 q"       " Thick cursor for all other modes (EI = ELSE)
 	let g:netrw_banner = 0    " remove netrw help banner
 	let g:netrw_liststyle = 3 " show tree view by default
-
+	
+    colorscheme molokai
     " Enable True color
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-    colorscheme molokai
 
 	" Indenting
 	set autoindent
