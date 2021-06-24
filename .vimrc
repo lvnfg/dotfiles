@@ -32,18 +32,23 @@ noremap <leader>Q :q!<cr>
 
 if !exists('g:vscode')
 	" Keybindings
-    map <leader>E :Vexplore<cr>
+    map <leader>b :Vexplore<cr>
     map <M-f> :Files<cr>
     map <leader>p :Files<cr>
     " Split pane
-    map <leader>e :split<cr>
-    map <leader>r :vsplit<cr>
-    " Move between panes
-    map <leader>d <C-W>h
-    map <leader>f <C-W>l
+    map <leader>E :split<cr>
+    map <leader>R :vsplit<cr>
+    " Resize splits
+    map <leader>h :vertical resize -5<cr>
+    map <leader>j :resize -5<cr>
+    map <leader>k :resize +5<cr>
+    map <leader>l :vertical resize +5<cr>
+    " Move between splits
+    map <leader>e <C-W>h
+    map <leader>r <C-W>l
     " Move between buffers
-    map <leader>j :bprevious<cr>
-    map <leader>k :bnext<cr>
+    map <leader>d :bprevious<cr>
+    map <leader>f :bnext<cr>
     map <leader>w :bd<cr>
 
 	syntax on                 " Enable syntax highlighting
