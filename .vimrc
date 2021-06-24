@@ -26,8 +26,15 @@ call plug#begin()
         " Install parser for language with :TSInstall
         " Supported languges: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
         " bash, css, html, javascript, typescript, json, latex, lua, python, yaml
+        " Colorscheme
+        Plug 'tomasr/molokai'
+        Plug 'sonph/onehalf', { 'rtp': 'vim' }
     endif
 call plug#end()
+
+" Colorscheme
+colorscheme molokai
+let g:airline_theme='onehalfdark'
 
 " vim-easy-align settings
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -43,8 +50,8 @@ if exists('g:vscode')
 else
 	" General
 	" ------------------------------ 
-	" disable vi compatibility and enable advanced vim features
 	set nocompatible 
+	" disable vi compatibility and enable advanced vim features
 	
 	" netrw config
 	let g:netrw_banner = 0 " remove help banner
@@ -61,31 +68,6 @@ else
     " Tab completion
     inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-    " nvim-compe settings
-    set completeopt=menuone,noselect
-    let g:compe = {}
-    let g:compe.enabled = v:true
-    let g:compe.autocomplete = v:true
-    let g:compe.debug = v:false
-    let g:compe.min_length = 1
-    let g:compe.preselect = 'enable'
-    let g:compe.throttle_time = 80
-    let g:compe.source_timeout = 200
-    let g:compe.resolve_timeout = 800
-    let g:compe.incomplete_delay = 400
-    let g:compe.max_abbr_width = 100
-    let g:compe.max_kind_width = 100
-    let g:compe.max_menu_width = 100
-    let g:compe.documentation = v:true
-    let g:compe.source = {}
-    let g:compe.source.path = v:true
-    let g:compe.source.buffer = v:true
-    let g:compe.source.calc = v:true
-    let g:compe.source.nvim_lsp = v:true
-    let g:compe.source.nvim_lua = v:true
-    let g:compe.source.vsnip = v:true
-    let g:compe.source.ultisnips = v:true
 
     " True color
     if exists('+termguicolors')
