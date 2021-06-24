@@ -6,7 +6,6 @@ call plug#begin()
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
-        Plug 'vim-airline/vim-airline'
         if has('nvim')
             Plug 'hrsh7th/nvim-compe'
             Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -71,10 +70,7 @@ if !exists('g:vscode')
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
-    
-    " Colorschemes
     colorscheme molokai
-    let g:airline_theme='onehalfdark'
 
 	" Indenting
 	set autoindent
