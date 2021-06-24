@@ -49,6 +49,7 @@ else
     set mouse=a
     
     " fzf
+    map <M-f> :Files<cr>
     map <leader>p :Files<cr>
 
     " Tab completion
