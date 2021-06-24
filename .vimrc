@@ -2,7 +2,13 @@
 " ----------------------------- 
 let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
+" Select all
 noremap <leader>a ggVG
+" File saving & quitting
+noremap <leader>w :w<cr>
+noremap <leader>W :wq<cr>
+noremap <leader>q :q<cr>
+noremap <leader>Q :q!<cr>
  
 " Install plugins
 call plug#begin()
