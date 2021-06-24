@@ -7,6 +7,7 @@ call plug#begin()
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         if has('nvim')
+            Plug 'neovim/nvim-lspconfig'
             Plug 'hrsh7th/nvim-compe'
             Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
             " :TSInstall bash, css, html, javascript, typescript, json, latex, lua, python, yaml
