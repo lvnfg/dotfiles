@@ -7,8 +7,15 @@ call plug#begin()
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         if has('nvim')
-            Plug 'neovim/nvim-lspconfig'
-            Plug 'hrsh7th/nvim-compe'
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            " :CocInstall coc-css coc-eslint coc-html coc-tsserver 
+            " :CocInstall coc-json coc-xml coc-yaml
+            " :CocInstall coc-sh        # bash and shell
+            " :CocInstall coc-pyright
+            " :CocInstall coc-sql
+            " :CocInstall coc-texlab    # Latex
+            " :CocUpdate to update all extensions to the latest version
+            " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
             Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
             " :TSInstall bash, css, html, javascript, typescript, json, latex, lua, python, yaml
         endif
@@ -23,14 +30,13 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-set ignorecase                " Case insensitive matching
-let mapleader="\<Space>"      " Remap leader key
-
 noremap <Esc> :noh<cr>
 noremap <leader>a ggVG
 noremap <leader>q :q<cr>
 noremap <leader>Q :q!<cr>
 
+set ignorecase                " Case insensitive matching
+let mapleader="\<Space>"      " Remap leader key
 if !exists('g:vscode')
 	" Keybindings
     map <leader>b :Vexplore<cr>

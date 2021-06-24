@@ -36,6 +36,7 @@ function setupLinuxVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
+	curl -sL install-node.now.sh/lts | sudo bash    # Install node.js
 	setupDotfiles
 	setupGitConfigs
 }
