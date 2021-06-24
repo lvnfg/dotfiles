@@ -36,18 +36,17 @@ function setupLinuxVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-    linkDotfiles
-    configureGit
+	setupDotfiles
+	setupGitConfigs
 }
 
 function setupMacOS() {
     xcode-select --install
-    linkDotfiles
-    configureGit
+	setupDotfiles
+	setupGitConfigs
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
-    installNeovim
     brew install jq
     brew install fzf
     brew install mas
@@ -71,27 +70,27 @@ function setupWSL() {
     # 1. Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
     # 2. Install WSL on windows: https://docs.microsoft.com/en-us/windows/wsl/install-win10
     # 3. Disable sudo password
-        sudo visudo 
-        "
-            Add to END OF FILE: 
-            [username] ALL=(ALL) NOPASSWD:ALL   # Aside from convenience, also used to start ssh on startup without sudo password prompt.
-        "
+    sudo visudo 
+    "
+        Add to END OF FILE: 
+        [username] ALL=(ALL) NOPASSWD:ALL   # Aside from convenience, also used to start ssh on startup without sudo password prompt.
+    "
     # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
-        sudo apt update -y && sudo apt upgrade -y
-        sudo apt install openssh-server
-        sudo vim /etc/ssh/sshd_config 
-        "
-            Port 2222               # In case Windows host is listening to 22. Any other number is fine.
-            #AddressFamily any
-            ListenAddress 0.0.0.0
-            #ListenAddress ::
-            PubkeyAuthentication    yes
-            PasswordAuthentication  no
-            PermitEmptyPasswords    no
-        "
-        sudo service ssh --full-restart
-        sudo service ssh start
-        vim ~/.ssh/authorized_keys  # Add pubkey here
+    sudo apt update -y && sudo apt upgrade -y
+    sudo apt install openssh-server
+    sudo vim /etc/ssh/sshd_config 
+    "
+        Port 2222               # In case Windows host is listening to 22. Any other number is fine.
+        #AddressFamily any
+        ListenAddress 0.0.0.0
+        #ListenAddress ::
+        PubkeyAuthentication    yes
+        PasswordAuthentication  no
+        PermitEmptyPasswords    no
+    "
+    sudo service ssh --full-restart
+    sudo service ssh start
+    vim ~/.ssh/authorized_keys  # Add pubkey here
     # 5. Copy enable-ssh-to-wsl.ps1 and enable-ssh-to-wsl.cmd to C:\Users\van\Desktop\Apps\wsl and a task scheduler job with the following:
     '
         Name:             enable-ssh-to-wsl
@@ -102,11 +101,11 @@ function setupWSL() {
         Argument:         -File "C:\Users\van\OneDrive - Phuong Phat Group\Desktop\Apps\wsl\enable-ssh-to-wsl.ps1"
     '
     # 6. Install git and clone repos. At this point ssh agent forwarding should work.
-        sudo apt install git
-        git clone git@github.com:lvnfg/dotfiles
+    sudo apt install git
+    git clone git@github.com:lvnfg/dotfiles
     # 7. Run setupVM()
     # 8. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
-        ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $REPOS/ppg-bi-as-semantic
+    ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $REPOS/ppg-bi-as-semantic
 }
 
 function setupLinuxDesktopEnvironment() {
@@ -133,26 +132,24 @@ function setupGitConfigs() {
 }
 
 function setupDotfiles() {
-    rm -f ~/.bashrc     && ln -s $dotfiles/.bashrc	        ~/.bashrc
-    rm -f ~/.profile    && ln -s $dotfiles/.bashrc          ~/.profile
-    rm -f ~/.inputrc    && ln -s $dotfiles/.inputrc	        ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $dotfiles/.tmux.conf	    ~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $dotfiles/.vimrc	        ~/.vimrc
+    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	        ~/.bashrc
+    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc          ~/.profile
+    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	        ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	    ~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	        ~/.vimrc
 	
 	# install vim-plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	# run PlugInstall in the background
-    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
+    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"   # run PlugInstall in the background
     
     # nvim config
-    wdir="$HOME/.config/nvim"   
-    mkdir -pv $wdir
-    rm -f $wdir/init.vim && ln -s $dotfiles/init.vim $wdir/init.vim
+    wdir="$HOME/.config/nvim" && mkdir -pv $wdir
+    rm -f $wdir/init.vim && ln -s $DOTFILES/init.vim $wdir/init.vim
 
     # host files config
     if [[ "$hosttype" = mac ]]; then
-        rm -f ~/.ssh/config && ln -s $dotfiles/.ssh/config	    ~/.ssh/config
+        rm -f ~/.ssh/config && ln -s $DOTFILES/.ssh/config ~/.ssh/config
         chmod 600 ~/.ssh/config
     fi
 }
@@ -227,10 +224,8 @@ function setupPython() {
 function setupVPNCertificates() {
     # Setup vnet and vpn gateway for Azure P2S: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
     # Generate certificates in linux: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site-linux
-    echo "Enter cert name:"
-    read certname       # ex: "dev-atm-vpn-iphone"
-    echo "Enter client password:"
-    read clientpassword
+    echo "Enter cert name: "        && read certname            # ex: "dev-atm-vpn-iphone"
+    echo "Enter client password: "  && read clientpassword
     sudo apt install strongswan
     sudo apt install strongswan-pki
     sudo apt install libstrongswan-extra-plugins
