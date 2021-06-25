@@ -16,8 +16,6 @@ call plug#begin()
             " :CocInstall coc-texlab    # Latex
             " :CocUpdate to update all extensions to the latest version
             " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-            Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-            " :TSInstall bash, css, html, javascript, typescript, json, latex, lua, python, yaml
         endif
         " Colorschemes
         Plug 'tomasr/molokai'
