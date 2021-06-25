@@ -22,6 +22,7 @@ alias gitPushAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {}
 alias gitPullAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
 
 # Tmux
+alias tmux="tmux -u"
 alias t0="tmux attach-session -t 0"
 alias t1="tmux attach-session -t 1"
 alias t2="tmux attach-session -t 2"
