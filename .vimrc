@@ -41,12 +41,13 @@ if !exists('g:vscode')
 	" Keybindings
     noremap <M-d> :Lex<cr>
     noremap <M-f> :Files<cr>
+    " Move between buffers
+    noremap <M-E> :bprevious<cr>
+    noremap <M-R> :bnext<cr>
     " Split pane
-    noremap <M-E> :split<cr>
-    noremap <M-R> :vsplit<cr>
+    noremap <M-e> :split<cr>
+    noremap <M-r> :vsplit<cr>
     " Move between splits
-    noremap <M-e> <C-W>h
-    noremap <M-r> <C-W><C-W>
     noremap <M-h> <C-W>h
     noremap <M-j> <C-W>j
     noremap <M-k> <C-W>k
@@ -56,9 +57,6 @@ if !exists('g:vscode')
     noremap <M-J> :resize -5<cr>
     noremap <M-K> :resize +5<cr>
     noremap <M-L> :vertical resize +5<cr>
-    " Move between buffers
-    noremap <M-D> :bprevious<cr>
-    noremap <M-F> :bnext<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set splitbelow            " Always split below
