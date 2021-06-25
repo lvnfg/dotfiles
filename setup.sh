@@ -23,12 +23,10 @@ function setupSecureAuthenticationForLinuxVM() {
     "
 }
 
-
 function setupLinuxVM() {
     # DO NOT INSTALL AZ CLI IN VM. Infra should be managed in core
 	sudo apt update 
 	sudo apt upgrade -y
-    sudo apt install -y neovim
 	sudo apt install -y python3-pip
 	sudo apt install -y jq
 	sudo apt install -y tmux
@@ -38,10 +36,51 @@ function setupLinuxVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-	curl -sL install-node.now.sh/lts | sudo bash    # Install node.js
 	setupDotfiles
 	setupGitConfigs
+	setupNeovim
 }
+
+function setupNeovim() {
+    cd ~
+    wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
+    rm nvim.appimage && mv mv squashfs-root neovim-nightly
+
+    # remove preinstalled neovim if any
+    sudo apt remove neovim
+    sudo rm /usr/bin/nvim
+    # Must use /usr/local/bin for macos compatibility
+    ln -s ~/neovim-nightly/usr/bin/nvim    /usr/bin/local/nvim
+
+	# Install node.js for coc.nvim
+	curl -sL install-node.now.sh/lts | sudo bash    # Install node.js
+	
+	# install vim-plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"   # run PlugInstall in the background
+
+    # symlink nvim config
+    wdir="$HOME/.config/nvim" && mkdir -pv $wdir
+    rm -f $wdir/init.vim && ln -s $DOTFILES/init.vim $wdir/init.vim
+}
+
+function setupDotfiles() {
+    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	    ~/.bashrc
+    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc	    ~/.profile
+    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	    ~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	    ~/.vimrc
+}
+
+function setupSSHConfig() {
+    if [[ "$hosttype" = mac ]]; then
+        rm -f ~/.ssh/config && ln -s $DOTFILES/.ssh/config ~/.ssh/config
+        chmod 600 ~/.ssh/config
+    fi
+}
+
 
 function setupMacOS() {
     xcode-select --install
@@ -67,6 +106,32 @@ function setupMacOS() {
     # vscode & azure data studio vim key repeat
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false 
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
+}
+
+function setupPython() {
+    # Install python
+    version="3.9.5"
+    echo "Installing Python $version"
+    dir="Python-$version"
+    tarball="$dir.tar.xz"
+    url="https://www.python.org/ftp/python/$version/$tarball"
+    sudo apt update
+    sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+    curl -O $url
+    #curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
+    tar -xf $tarball
+    rm $tarball
+    cd $dir
+    ./configure --enable-optimizations --enable-loadable-sqlite-extensions
+    # Required to fix error when importing pandas after building Python from source
+    sudo apt-get install -y lzma 
+    sudo apt-get install -y liblzma-dev
+    sudo configure
+    # Build python
+    sudo make -j 4
+    sudo make install    # will overwrite system's python3. To install side by side: sudo make altinstall
+    cd ..
+    sudo rm -rf $dir
 }
 
 function setupWSL() {
@@ -134,38 +199,6 @@ function setupGitConfigs() {
     git config --global format.pretty format:"$gitFormatString"
 }
 
-function setupDotfiles() {
-    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	~/.bashrc
-    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc	~/.profile
-    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	~/.vimrc
-	
-	# install vim-plug
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"   # run PlugInstall in the background
-    
-    # nvim config
-    wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-    rm -f $wdir/init.vim && ln -s $DOTFILES/init.vim $wdir/init.vim
-
-    # host files config
-    if [[ "$hosttype" = mac ]]; then
-        rm -f ~/.ssh/config && ln -s $DOTFILES/.ssh/config ~/.ssh/config
-        chmod 600 ~/.ssh/config
-    fi
-}
-
-function setupNeovimNightly() {
-    echo "pending"
-    # To install unstable release / appimage version, use the link:
-    # https://github.com/neovim/neovim/releases/
-    # Squash the appimage, rename folder to nvim, move to ~, and
-    # create symlink:
-    # sudo ln -s ~/nvim/usr/bin/nvim /usr/bin/nvim
-}
-
 function setupBash() {
     # For macos only
     brew install bash                               # Must install homebrew first
@@ -196,32 +229,6 @@ function setupDocker() {
 
 function buildDevImage() {
     docker build -t dev:latest .
-}
-
-function setupPython() {
-    # Install python
-    version="3.9.5"
-    echo "Installing Python $version"
-    dir="Python-$version"
-    tarball="$dir.tar.xz"
-    url="https://www.python.org/ftp/python/$version/$tarball"
-    sudo apt update
-    sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
-    curl -O $url
-    #curl -O https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tar.xz
-    tar -xf $tarball
-    rm $tarball
-    cd $dir
-    ./configure --enable-optimizations --enable-loadable-sqlite-extensions
-    # Required to fix error when importing pandas after building Python from source
-    sudo apt-get install -y lzma 
-    sudo apt-get install -y liblzma-dev
-    sudo configure
-    # Build python
-    sudo make -j 4
-    sudo make install    # will overwrite system's python3. To install side by side: sudo make altinstall
-    cd ..
-    sudo rm -rf $dir
 }
 
 function setupVPNCertificates() {
