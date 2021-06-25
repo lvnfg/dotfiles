@@ -1,4 +1,6 @@
 #!/bin/bash
+export REPOS="$HOME/repos"
+export DOTFILES="$HOME/repos/dotfiles"
 
 function setupSecureAuthenticationForLinuxVM() {
     sudo vim /etc/ssh/sshd_config       # Disable password login. All this should be default on Azure VM Debian 10 Gen 1 image.
@@ -133,11 +135,11 @@ function setupGitConfigs() {
 }
 
 function setupDotfiles() {
-    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	        ~/.bashrc
-    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc          ~/.profile
-    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	        ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	    ~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	        ~/.vimrc
+    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	~/.bashrc
+    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc	~/.profile
+    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	~/.inputrc
+    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	~/.tmux.conf
+    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	~/.vimrc
 	
 	# install vim-plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
