@@ -46,12 +46,16 @@ if !exists('g:vscode')
     noremap <M-R> :vsplit<cr>
     " Move between splits
     noremap <M-e> <C-W>h
-    noremap <M-r> <C-W>l
+    noremap <M-r> <C-W><C-W>
+    noremap <M-h> <C-W>h
+    noremap <M-j> <C-W>j
+    noremap <M-k> <C-W>k
+    noremap <M-l> <C-W>l
     " Resize splits
-    noremap <M-h> :vertical resize -5<cr>
-    noremap <M-j> :resize -5<cr>
-    noremap <M-k> :resize +5<cr>
-    noremap <M-l> :vertical resize +5<cr>
+    noremap <M-H> :vertical resize -5<cr>
+    noremap <M-J> :resize -5<cr>
+    noremap <M-K> :resize +5<cr>
+    noremap <M-L> :vertical resize +5<cr>
     " Move between buffers
     noremap <M-D> :bprevious<cr>
     noremap <M-F> :bnext<cr>
