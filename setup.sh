@@ -29,7 +29,6 @@ function setupLinuxVM() {
 	sudo apt upgrade -y
 	sudo apt install -y jq
 	sudo apt install -y tmux
-	sudo apt install -y fzf
 	sudo apt install -y git
 	sudo apt install -y wget
 	sudo apt install -y unzip
@@ -37,6 +36,7 @@ function setupLinuxVM() {
 	sudo apt install -y bash-completion
 	setupDotfiles
 	setupGitConfigs
+	setupFZF
 	setupNeovim
 }
 
@@ -71,6 +71,12 @@ function setupDotfiles() {
     rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	    ~/.inputrc
     rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	~/.tmux.conf
     rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	    ~/.vimrc
+}
+
+function setupFZF() {
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
 }
 
 function setupSSHConfig() {
