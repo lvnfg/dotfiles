@@ -29,33 +29,32 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+let mapleader="\<Space>"      " Remap leader key
 noremap <Esc> :noh<cr>
+noremap <M-s> :w<cr>
+noremap <M-w> :q<cr>
+noremap <M-Q> :q!<cr>
 noremap <leader>a ggVG
-noremap <leader>q :q<cr>
-noremap <leader>Q :q!<cr>
 
 set ignorecase                " Case insensitive matching
-let mapleader="\<Space>"      " Remap leader key
 if !exists('g:vscode')
 	" Keybindings
-    map <leader>b :Vexplore<cr>
-    map <M-f> :Files<cr>
-    map <leader>p :Files<cr>
+    noremap <M-d> :Lex<cr>
+    noremap <M-f> :Files<cr>
     " Split pane
-    map <leader>E :split<cr>
-    map <leader>R :vsplit<cr>
-    " Resize splits
-    map <leader>h :vertical resize -5<cr>
-    map <leader>j :resize -5<cr>
-    map <leader>k :resize +5<cr>
-    map <leader>l :vertical resize +5<cr>
+    noremap <M-E> :split<cr>
+    noremap <M-R> :vsplit<cr>
     " Move between splits
-    map <leader>e <C-W>h
-    map <leader>r <C-W>l
+    noremap <M-e> <C-W>h
+    noremap <M-r> <C-W>l
+    " Resize splits
+    noremap <M-h> :vertical resize -5<cr>
+    noremap <M-j> :resize -5<cr>
+    noremap <M-k> :resize +5<cr>
+    noremap <M-l> :vertical resize +5<cr>
     " Move between buffers
-    map <leader>d :bprevious<cr>
-    map <leader>f :bnext<cr>
-    map <leader>w :bd<cr>
+    noremap <M-D> :bprevious<cr>
+    noremap <M-F> :bnext<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set splitbelow            " Always split below
