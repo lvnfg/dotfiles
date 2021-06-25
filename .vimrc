@@ -15,6 +15,7 @@ call plug#begin()
             " :CocInstall coc-sql
             " :CocInstall coc-texlab    # Latex
             " :CocUpdate to update all extensions to the latest version
+            " :CocConfig to open coc-settings.json
             " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
         endif
         " Colorschemes

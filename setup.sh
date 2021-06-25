@@ -63,6 +63,7 @@ function setupNeovim() {
     # symlink nvim config
     wdir="$HOME/.config/nvim" && mkdir -pv $wdir
     rm -f $wdir/init.vim && ln -s $DOTFILES/init.vim $wdir/init.vim
+    ln -s ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 }
 
 function setupDotfiles() {
