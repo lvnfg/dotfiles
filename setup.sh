@@ -27,7 +27,6 @@ function setupLinuxVM() {
     # DO NOT INSTALL AZ CLI IN VM. Infra should be managed in core
 	sudo apt update 
 	sudo apt upgrade -y
-	sudo apt install -y python3-pip
 	sudo apt install -y jq
 	sudo apt install -y tmux
 	sudo apt install -y fzf
@@ -132,6 +131,7 @@ function setupPython() {
     sudo make install    # will overwrite system's python3. To install side by side: sudo make altinstall
     cd ..
     sudo rm -rf $dir
+	sudo apt install -y python3-pip
 }
 
 function setupWSL() {
