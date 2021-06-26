@@ -41,17 +41,15 @@ if !exists('g:vscode')
 	" Keybindings
     noremap <M-d> :Lex<cr>
     noremap <M-f> :Files<cr>
-    " Move between buffers
-    noremap <M-E> :bprevious<cr>
-    noremap <M-R> :bnext<cr>
     " Split pane
-    noremap <M-e> :split<cr>
-    noremap <M-r> :vsplit<cr>
+    noremap <M-E> :split<cr>
+    noremap <M-R> :vsplit<cr>
     " Move between splits
-    noremap <M-h> <C-W>h
-    noremap <M-j> <C-W>j
-    noremap <M-k> <C-W>k
-    noremap <M-l> <C-W>l
+    noremap <M-e> <C-W>h
+    noremap <M-r> <C-W><C-W>
+    " Move between buffers
+    noremap <M-h> :bprevious<cr>
+    noremap <M-l> :bnext<cr>
     " Resize splits
     noremap <M-H> :vertical resize -5<cr>
     noremap <M-J> :resize -5<cr>
