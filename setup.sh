@@ -21,7 +21,6 @@ function setup-passwordless-auth-for-linux-vm() {
 
 function setup-linux-vm() {
     # DO NOT INSTALL AZ CLI IN VM. Infra should be managed in core
-    set -eou pipefail
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y jq
@@ -119,7 +118,6 @@ function setup-macos() {
 }
 
 function setup-python() {
-    set -eou pipefail
     # Install python
     version="3.9.5"
     echo "Installing Python $version"
