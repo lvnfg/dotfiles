@@ -7,24 +7,21 @@ function setup-passwordless-auth-for-linux-vm() {
     echo "
     To disable password authenticaion, run:
     sudo vim /etc/ssh/sshd_config           
-
     Then edit the following:
-
         PubkeyAuthentication yes            # Default commented out. Important, will not be able to log back in if not enabled
         UsePAM yes                          # Default. May disable pubkey authen if set to no, keep yes for the moment
         PasswordAuthentication no           # Default
         PermitEmptyPasswords no             # Default 
         PermitRootLogin no                  # Not found in Azure Debian 10 Gen 1 image's sshd
         ChallengeResponseAuthentication no  
-        
     sudo service sshd restart
-    
     All this should be default on Azure VM Debian 10 Gen 1 image.
     "
 }
 
 function setup-linux-vm() {
     # DO NOT INSTALL AZ CLI IN VM. Infra should be managed in core
+    set -eou pipefail
 	sudo apt update 
 	sudo apt upgrade -y
 	sudo apt install -y jq
@@ -34,55 +31,62 @@ function setup-linux-vm() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-	setup-dotfiles
-	setup-git-configs
+	setup-nvim
+	echo "setting up dotfiles"
+	# setup-dotfiles
+	# fzf install must be at end of list due to its install script messing with symlinks
+	echo "setting up git-configs"
+	# setup-git-configs
 	setup-fzf
-	setup-neovim-nvim
+	setup-nodejs
 }
 
-function setup-neovim-nvim() {
+function setup-nvim() {
     cd ~
     wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
-    rm nvim.appimage && mv mv squashfs-root neovim-nightly
-
+    rm nvim.appimage && rm -rf ~/neovim-nightly 
+    mv squashfs-root ~/neovim-nightly
     # remove preinstalled neovim if any
+    echo "removing neovim"
     sudo apt remove neovim
-    sudo rm /usr/bin/nvim
+    sudo rm -f /usr/bin/nvim
     # Must use /usr/local/bin for macos compatibility
-    ln -s ~/neovim-nightly/usr/bin/nvim    /usr/bin/local/nvim
-
-	# Install node.js for coc.nvim
-	curl -sL install-node.now.sh/lts | sudo bash    # Install node.js
-	
+    echo "creating neovim symlink"
+    sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 	# install vim-plug
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"   # run PlugInstall in the background
-
+	echo "installing vim plug"
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     # symlink nvim config
+    echo "creating neovim config symlinks"
     wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-    rm -f $wdir/init.vim && ln -s $DOTFILES/init.vim $wdir/init.vim
-    ln -s ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+    ln -s -f $DOTFILES/init.vim $wdir/init.vim
+    ln -s -f ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 }
 
 function setup-dotfiles() {
-    rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	    ~/.bashrc
-    rm -f ~/.profile    && ln -s $DOTFILES/.bashrc	    ~/.profile
-    rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	    ~/.inputrc
-    rm -f ~/.tmux.conf  && ln -s $DOTFILES/.tmux.conf	~/.tmux.conf
-    rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	    ~/.vimrc
+    ln -s -f $DOTFILES/.bashrc	    ~/.bashrc
+    ln -s -f $DOTFILES/.bashrc	    ~/.profile
+    ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
+    ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
+    ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
+}
+
+function setup-nodejs() {
+	# Install node.js for coc.nvim
+	curl -sL install-node.now.sh/lts | sudo bash
 }
 
 function setup-fzf() {
+    rm -rf ~/.fzf
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
-    sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
+    sudo ln -s -f ~/.fzf/bin/fzf  /usr/local/bin/fzf
 }
 
 function setup-ssh-config() {
     if [[ "$hosttype" = mac ]]; then
-        rm -f ~/.ssh/config && ln -s $DOTFILES/.ssh/config ~/.ssh/config
+        ln -s -f $DOTFILES/.ssh/config ~/.ssh/config
         chmod 600 ~/.ssh/config
     fi
 }
@@ -115,6 +119,7 @@ function setup-macos() {
 }
 
 function setup-python() {
+    set -eou pipefail
     # Install python
     version="3.9.5"
     echo "Installing Python $version"
