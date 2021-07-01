@@ -2,7 +2,7 @@
 export REPOS="$HOME/repos"
 export DOTFILES="$HOME/repos/dotfiles"
 
-function setupSecureAuthenticationForLinuxVM() {
+function setup-passwordless-auth-for-linux-vm() {
     sudo vim /etc/ssh/sshd_config       # Disable password login. All this should be default on Azure VM Debian 10 Gen 1 image.
     echo "
     To disable password authenticaion, run:
@@ -23,7 +23,7 @@ function setupSecureAuthenticationForLinuxVM() {
     "
 }
 
-function setupLinuxVM() {
+function setup-linux-vm() {
     # DO NOT INSTALL AZ CLI IN VM. Infra should be managed in core
 	sudo apt update 
 	sudo apt upgrade -y
@@ -34,13 +34,13 @@ function setupLinuxVM() {
 	sudo apt install -y unzip
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
-	setupDotfiles
-	setupGitConfigs
-	setupFZF
-	setupNeovim
+	setup-dotfiles
+	setup-git-configs
+	setup-fzf
+	setup-neovim-nvim
 }
 
-function setupNeovim() {
+function setup-neovim-nvim() {
     cd ~
     wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
@@ -66,7 +66,7 @@ function setupNeovim() {
     ln -s ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 }
 
-function setupDotfiles() {
+function setup-dotfiles() {
     rm -f ~/.bashrc     && ln -s $DOTFILES/.bashrc	    ~/.bashrc
     rm -f ~/.profile    && ln -s $DOTFILES/.bashrc	    ~/.profile
     rm -f ~/.inputrc    && ln -s $DOTFILES/.inputrc	    ~/.inputrc
@@ -74,13 +74,13 @@ function setupDotfiles() {
     rm -f ~/.vimrc      && ln -s $DOTFILES/.vimrc	    ~/.vimrc
 }
 
-function setupFZF() {
+function setup-fzf() {
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
 }
 
-function setupSSHConfig() {
+function setup-ssh-config() {
     if [[ "$hosttype" = mac ]]; then
         rm -f ~/.ssh/config && ln -s $DOTFILES/.ssh/config ~/.ssh/config
         chmod 600 ~/.ssh/config
@@ -88,10 +88,10 @@ function setupSSHConfig() {
 }
 
 
-function setupMacOS() {
+function setup-macos() {
     xcode-select --install
-	setupDotfiles
-	setupGitConfigs
+	setup-dotfiles
+	setup-git-configs
     homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
     /bin/bash -c "$(curl -fsSL $homebrewurl)" 
     brew doctor
@@ -114,7 +114,7 @@ function setupMacOS() {
     defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
 }
 
-function setupPython() {
+function setup-python() {
     # Install python
     version="3.9.5"
     echo "Installing Python $version"
@@ -141,7 +141,7 @@ function setupPython() {
 	sudo apt install -y python3-pip
 }
 
-function setupWSL() {
+function setup-wsl() {
     # 1. Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
     # 2. Install WSL on windows: https://docs.microsoft.com/en-us/windows/wsl/install-win10
     # 3. Disable sudo password
@@ -178,12 +178,12 @@ function setupWSL() {
     # 6. Install git and clone repos. At this point ssh agent forwarding should work.
     sudo apt install git
     git clone git@github.com:lvnfg/dotfiles
-    # 7. Run setupVM()
+    # 7. Run setup-linux-vm()
     # 8. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
     ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $REPOS/ppg-bi-as-semantic
 }
 
-function setupLinuxDesktopEnvironment() {
+function setup-linux-desktop-environment() {
     # Skip this part if restoring from a snapshot marked as -fresh-desktop
     # Install a desktop environment and configure remote desktop access. https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop
     sudo apt install -y xfce4                                          # Install XFCE desktop environment
@@ -195,7 +195,7 @@ function setupLinuxDesktopEnvironment() {
     xfconf-query -c xfwm4 -p /general/use_compositing -t bool -s false # Disable compositing for rdp performance. Must be run in desktop env. True to activate again.
 }
 
-function setupGitConfigs() {
+function setup-git-configs() {
     git config --global core.editor     "vim"
     git config --global user.name       "van"
     git config --global user.email      "-"
@@ -206,14 +206,14 @@ function setupGitConfigs() {
     git config --global format.pretty format:"$gitFormatString"
 }
 
-function setupBash() {
+function setup-bash-upgrade() {
     # For macos only
     brew install bash                               # Must install homebrew first
     sudo echo "/usr/local/bin/bash" >> /etc/shells  # Add to list of available shells
     chsh -s /usr/local/bin/bash                     # Set new bash as default shell
 }
 
-function setupDocker() {
+function setup-docker() {
     # Uninstall old versions
     sudo apt-get remove docker docker-engine docker.io containerd runc
     sudo apt-get update
@@ -234,11 +234,11 @@ function setupDocker() {
     newgrp docker
 }
 
-function buildDevImage() {
+function setup-docker-build-dev-image() {
     docker build -t dev:latest .
 }
 
-function setupVPNCertificates() {
+function setup-vpn-certificates() {
     # Setup vnet and vpn gateway for Azure P2S: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
     # Generate certificates in linux: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site-linux
     echo "Enter cert name: "        && read certname            # ex: "dev-atm-vpn-iphone"
