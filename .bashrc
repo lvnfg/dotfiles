@@ -16,7 +16,7 @@ alias atm="python3 $REPOS/atm/main.py"
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
 alias gitppush="git pull && git push"                                                # Always pull before push
-alias gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
+gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 alias gitStatusAll="echo && find -L $REPOS $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
 alias gitPushAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
 alias gitPullAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
