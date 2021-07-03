@@ -259,6 +259,16 @@ function setup-vpn-certificates() {
     # Install certificates for macos: https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac
 }
 
+function setup-work-repos() {
+    dir="$HOME/work-repos"
+    mkdir $dir && cd $dir
+    git clone git@ssh.dev.azure.com:v3/ppg-dev/dbHQ/dbHQ
+    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-dw-sql-db/ppg-dw-sql-db
+    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-func-api/ppg-int-func-api && cd ppg-int-func-api && git checkout dev && cd ..
+    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-func-scheduler/ppg-int-func-scheduler && cd ppg-int-func-scheduler && git checkout dev && cd ..
+    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-sql-db/ppg-int-sql-db
+}
+
 
 # Allow calling functions by name from command line
 "$@"
