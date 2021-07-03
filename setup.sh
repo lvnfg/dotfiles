@@ -31,11 +31,10 @@ function setup-linux-vm() {
 	sudo apt install -y curl
 	sudo apt install -y bash-completion
 	setup-nvim
-	echo "setting up dotfiles"
-	# setup-dotfiles
-	# fzf install must be at end of list due to its install script messing with symlinks
-	echo "setting up git-configs"
-	# setup-git-configs
+	setup-dotfiles
+	setup-git-configs
+	# scripts with install or make must be run 
+	# at end of to avoid messing with home repos
 	setup-fzf
 	setup-nodejs
 }
@@ -89,7 +88,6 @@ function setup-ssh-config() {
         chmod 600 ~/.ssh/config
     fi
 }
-
 
 function setup-macos() {
     xcode-select --install
