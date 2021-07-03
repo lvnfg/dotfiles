@@ -37,6 +37,7 @@ function setup-linux-vm() {
 	# at end of to avoid messing with home repos
 	setup-fzf
 	setup-nodejs
+	setup-python
 }
 
 function setup-nvim() {
