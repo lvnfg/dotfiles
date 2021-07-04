@@ -260,6 +260,17 @@ function setup-vpn-certificates() {
     # Install certificates for macos: https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac
 }
 
+function setup-net-core() {
+    wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+    sudo dpkg -i packages-microsoft-prod.deb
+    sudo apt-get update; \
+        sudo apt-get install -y apt-transport-https && \
+        sudo apt-get update && \
+        sudo apt-get install -y dotnet-sdk-5.0
+    rm packages-microsoft-prod.deb
+}
+
+
 function setup-work-repos() {
     dir="$HOME/work-repos"
     mkdir $dir && cd $dir
@@ -269,7 +280,6 @@ function setup-work-repos() {
     git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-func-scheduler/ppg-int-func-scheduler && cd ppg-int-func-scheduler && git checkout dev && cd ..
     git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-sql-db/ppg-int-sql-db
 }
-
 
 # Allow calling functions by name from command line
 "$@"
