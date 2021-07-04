@@ -8,15 +8,16 @@ call plug#begin()
         Plug 'junegunn/fzf.vim'
         if has('nvim')
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
-            " :CocInstall coc-css coc-eslint coc-html coc-tsserver 
-            " :CocInstall coc-json coc-xml coc-yaml
-            " :CocInstall coc-sh        # bash and shell
-            " :CocInstall coc-pyright
-            " :CocInstall coc-sql
-            " :CocInstall coc-texlab    # Latex
+            " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+            " :CocInstall 
+            "   Web:        coc-css coc-eslint coc-html coc-tsserver 
+            "   Markups:    coc-json coc-xml coc-yaml
+            "   Bash:       coc-sh
+            "   Python:     coc-pyright
+            "   SQL:        coc-sql
+            "   Latex:      coc-texlab
             " :CocUpdate to update all extensions to the latest version
             " :CocConfig to open coc-settings.json
-            " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
         endif
         " Colorschemes
         Plug 'tomasr/molokai'
