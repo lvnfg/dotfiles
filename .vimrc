@@ -22,6 +22,7 @@ call plug#begin()
         " Colorschemes
         Plug 'tomasr/molokai'
         Plug 'sonph/onehalf', { 'rtp': 'vim' }
+        Plug 'wojciechkepka/vim-github-dark'
     endif
 call plug#end()
 " vim-easy-align settings
@@ -76,7 +77,9 @@ if !exists('g:vscode')
 	let g:netrw_banner = 0    " remove netrw help banner
 	let g:netrw_liststyle = 3 " show tree view by default
 	
-    colorscheme molokai
+    " colorscheme molokai
+    colorscheme ghdark 
+     
     " Enable True color
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
