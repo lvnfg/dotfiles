@@ -284,6 +284,17 @@ function setup-azure-cli() {
     sudo apt-get install azure-cli -y
 }
 
+function setup-azure-function-core-tools() {
+    # Install the Microsoft package repository GPG key, to validate package integrity
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    # Set up the APT source list before doing an APT update
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    # Install the Core Tools package
+    sudo apt-get update
+    sudo apt-get install azure-functions-core-tools-3 -y
+}
+
 function setup-work-repos() {
     export WSLDIR="$HOME/repos" && mkdir $WSLDIR
     rpath="git@ssh.dev.azure.com:v3/ppg-dev"
