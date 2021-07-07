@@ -168,7 +168,7 @@ function setup-wsl() {
     sudo service ssh --full-restart
     sudo service ssh start
     vim ~/.ssh/authorized_keys  # Add pubkey here
-    # 5. Copy enable-ssh-to-wsl.ps1 and enable-ssh-to-wsl.cmd to C:\Users\van\Desktop\Apps\wsl and a task scheduler job with the following:
+    # 5. Copy enable-ssh-to-wsl.ps1 to C:\Users\van\Desktop\Apps\wsl and a task scheduler job with the following:
     '
         Name:             enable-ssh-to-wsl
         Trigger:          At system startup
