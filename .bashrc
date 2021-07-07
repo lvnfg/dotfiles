@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Repos aliases
+alias atm="python3 $REPOS/atm/main.py"
+alias azLoginDeviceCode="az login --use-device-code"
+
+
 # General
 set -o vi                                                                 # Use vim keybindings in bash prompts
 export TERM=screen-256color                                               # Let vim & tmux terminals use colors
@@ -9,9 +14,6 @@ getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get 
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
 defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi 
 export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set default editor to nvim if installed
-
-# Repos scripts aliases
-alias atm="python3 $REPOS/atm/main.py"
 
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
