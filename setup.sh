@@ -272,13 +272,17 @@ function setup-net-core() {
 
 
 function setup-work-repos() {
-    dir="$HOME/work-repos"
-    mkdir $dir && cd $dir
-    git clone git@ssh.dev.azure.com:v3/ppg-dev/dbHQ/dbHQ
-    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-dw-sql-db/ppg-dw-sql-db
-    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-func-api/ppg-int-func-api && cd ppg-int-func-api && git checkout dev && cd ..
-    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-func-scheduler/ppg-int-func-scheduler && cd ppg-int-func-scheduler && git checkout dev && cd ..
-    git clone git@ssh.dev.azure.com:v3/ppg-dev/ppg-int-sql-db/ppg-int-sql-db
+    export WSLDIR="$HOME/repos" && mkdir $WSLDIR
+    rpath="git@ssh.dev.azure.com:v3/ppg-dev"
+    rname="ppg-int-func-api"       && cd "$WSLDIR" && git clone "$rpath/$rname/$rname" && cd $rname && git checkout dev
+    rname="ppg-int-func-scheduler" && cd "$WSLDIR" && git clone "$rpath/$rname/$rname" && cd $rname && git checkout dev
+    export WINDIR="/mnt/c/Users/van/repos" && mkdir $WINDIR 
+    rname="dbHQ"              && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
+    rname="ppg-as-semantic"   && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
+    rname="ppg-dw-sql-db"     && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
+    rname="ppg-int-adf"       && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
+    rname="ppg-int-sql-db"    && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
+    cd $WSLDIR
 }
 
 # Allow calling functions by name from command line
