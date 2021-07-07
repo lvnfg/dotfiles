@@ -18,11 +18,13 @@ call plug#begin()
             "   Latex:      coc-texlab
             " :CocUpdate to update all extensions to the latest version
             " :CocConfig to open coc-settings.json
+            Plug 'nvim-treesitter/nvim-treesitter'
         endif
         " Colorschemes
         Plug 'tomasr/molokai'
         Plug 'sonph/onehalf', { 'rtp': 'vim' }
         Plug 'wojciechkepka/vim-github-dark'
+        Plug 'Mofiqul/vscode.nvim'
     endif
 call plug#end()
 " vim-easy-align settings
@@ -77,15 +79,25 @@ if !exists('g:vscode')
 	let g:netrw_banner = 0    " remove netrw help banner
 	let g:netrw_liststyle = 3 " show tree view by default
 	
-    " colorscheme molokai
-    colorscheme ghdark 
-     
     " Enable True color
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
+    " Color schemes must be set below true color settings
+    if 1                            " 1 = dark theme, 0 = light theme
+        let g:vscode_style = "dark" " light for white theme
+        colorscheme vscode          " dark themes: ghdark molokai vscode
+        highlight Normal guibg=black  
+    else
+        let g:vscode_style = "light" " light for white theme
+        colorscheme vscode           " light themes: vscode
+    endif
+    " Clearing highlight will use guibg -> compatibility with all themes
+    highlight clear SignColumn
+    highlight clear LineNr
+    highlight LineNr  guifg=grey
 
 	" Indenting
 	set autoindent
