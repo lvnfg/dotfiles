@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# dev aliases
-alias atm="python3 $REPOS/atm/main.py"
-alias az-login-device-code="az login --use-device-code"
-alias func-deploy-ppg-int-pro-sea-func-api="func azure functionapp publish ppg-int-pro-sea-func-api"
-
-
 # General
 set -o vi                                                                 # Use vim keybindings in bash prompts
 export TERM=screen-256color                                               # Let vim & tmux terminals use colors
 export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
 source "$DOTFILES/setup.sh" # 2> /dev/null                                # Make setup.sh functions autocomplete
-getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
 defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi 
 export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set default editor to nvim if installed
+
+# dev aliases
+alias atm="python3 $REPOS/atm/main.py"
+alias az-login-device-code="az login --use-device-code"
+alias func-deploy-ppg-int-pro-sea-func-api="cd $REPOS/ppg-int-func-api && func azure functionapp publish ppg-int-pro-sea-func-api"
+getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
 
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
