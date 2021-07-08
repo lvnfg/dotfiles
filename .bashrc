@@ -2,8 +2,8 @@
 
 # dev aliases
 alias atm="python3 $REPOS/atm/main.py"
-alias azLoginDeviceCode="az login --use-device-code"
-alias funcDeploy-ppg-int-pro-sea-func-api="func azure functionapp publish ppg-int-pro-sea-func-api"
+alias az-login-device-code="az login --use-device-code"
+alias func-deploy-ppg-int-pro-sea-func-api="func azure functionapp publish ppg-int-pro-sea-func-api"
 
 
 # General
