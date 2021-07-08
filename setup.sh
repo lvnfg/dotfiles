@@ -285,6 +285,8 @@ function setup-azure-cli() {
 }
 
 function setup-azure-function-core-tools() {
+    # Installing az func core tools on Debian 10 will fail if az-cli is not installed
+    setup-azure-cli
     # Install the Microsoft package repository GPG key, to validate package integrity
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
