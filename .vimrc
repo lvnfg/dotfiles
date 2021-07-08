@@ -61,6 +61,7 @@ if !exists('g:vscode')
     noremap <M-L> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
+	set nofoldenable          " Disable folding by default
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
     set mouse=a               " enable scrolling with mouse
