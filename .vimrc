@@ -13,7 +13,7 @@ call plug#begin()
         Plug 'junegunn/fzf.vim'
         " LSP & IDE
         if has('nvim')
-            " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            Plug 'neoclide/coc.nvim', {'branch': 'release'}
             " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
             " :CocInstall 
             "   Web:        coc-css coc-eslint coc-html coc-tsserver 
@@ -34,9 +34,6 @@ set ignorecase
 " Global keybindings
 let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
-noremap <M-s> :w<cr>
-noremap <M-w> :q<cr>
-noremap <M-Q> :q!<cr>
 noremap <leader>a ggVG
 
 " Standalone vim settings
