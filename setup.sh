@@ -35,7 +35,6 @@ function setup-linux-vm() {
 	setup-neovim
 	# scripts with install or make must be run 
 	# at end of to avoid messing with home repos
-	setup-fzf
 	setup-python
 }
 
@@ -153,7 +152,7 @@ function setup-wsl() {
         [username] ALL=(ALL) NOPASSWD:ALL   # Aside from convenience, also used to start ssh on startup without sudo password prompt.
     "
     # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
-    sudo apt update -y && sudo apt upgrade -y
+    sudo apt update && sudo apt upgrade -y
     sudo apt install openssh-server
     sudo vim /etc/ssh/sshd_config 
     "
@@ -177,12 +176,9 @@ function setup-wsl() {
         Program/script:   powershell
         Argument:         -File "C:\Users\van\OneDrive - Phuong Phat Group\Desktop\Apps\wsl\enable-ssh-to-wsl.ps1"
     '
-    # 6. Install git and clone repos. At this point ssh agent forwarding should work.
     sudo apt install git
     git clone git@github.com:lvnfg/dotfiles
-    # 7. Run setup-linux-vm()
-    # 8. Any project requiring Windows should be cloned in host and symlink entire repo directory to repos.
-    ln -s /mnt/c/Users/van/repos/ppg-bi-as-semantic/ $REPOS/ppg-bi-as-semantic
+    setup-linux-vm
 }
 
 function setup-linux-desktop-environment() {
