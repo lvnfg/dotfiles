@@ -4,30 +4,30 @@ call plug#begin()
 	Plug 'junegunn/vim-easy-align'
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
-    " Colorschemes
-    if !has('vscode')
-        Plug 'Mofiqul/vscode.nvim'
     endif
-    " Utilities
     if !has('vscode')
+        " Colorschemes
+        Plug 'Mofiqul/vscode.nvim'  " 
+        " Utilities
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
-    endif
-    if !has('vscode') && has('nvim')
-	    " Plug 'michaeljsmith/vim-indent-object'
-        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-        " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-        " :CocInstall 
-        "   Web:        coc-css coc-eslint coc-html coc-tsserver 
-        "   Markups:    coc-json coc-xml coc-yaml
-        "   Bash:       coc-sh
-        "   Python:     coc-pyright
-        "   SQL:        coc-sql
-        "   Latex:      coc-texlab
-        " :CocUpdate to update all extensions to the latest version
-        " :CocConfig to open coc-settings.json
-        " Plug 'nvim-treesitter/nvim-treesitter'
+        " LSP & IDE
+        if has('nvim')
+	        " Plug 'michaeljsmith/vim-indent-object'
+            " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+            " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+            " :CocInstall 
+            "   Web:        coc-css coc-eslint coc-html coc-tsserver 
+            "   Markups:    coc-json coc-xml coc-yaml
+            "   Bash:       coc-sh
+            "   Python:     coc-pyright
+            "   SQL:        coc-sql
+            "   Latex:      coc-texlab
+            " :CocUpdate to update all extensions to the latest version
+            " :CocConfig to open coc-settings.json
+            " Plug 'nvim-treesitter/nvim-treesitter'
+        endif
     endif
 call plug#end()
 
