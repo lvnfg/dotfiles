@@ -1,46 +1,50 @@
-" Plugin installation & settings
+" Install plugins
 call plug#begin()
+    " vim-easy-align & settings
 	Plug 'junegunn/vim-easy-align'
-	Plug 'michaeljsmith/vim-indent-object'
-    if !exists('g:vscode')
-        Plug 'airblade/vim-gitgutter'
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'junegunn/fzf.vim'
-        if has('nvim')
-            Plug 'neoclide/coc.nvim', {'branch': 'release'}
-            " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-            " :CocInstall 
-            "   Web:        coc-css coc-eslint coc-html coc-tsserver 
-            "   Markups:    coc-json coc-xml coc-yaml
-            "   Bash:       coc-sh
-            "   Python:     coc-pyright
-            "   SQL:        coc-sql
-            "   Latex:      coc-texlab
-            " :CocUpdate to update all extensions to the latest version
-            " :CocConfig to open coc-settings.json
-            Plug 'nvim-treesitter/nvim-treesitter'
-        endif
-        " Colorschemes
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+    " Colorschemes
+    if !has('vscode')
         Plug 'tomasr/molokai'
         Plug 'sonph/onehalf', { 'rtp': 'vim' }
         Plug 'wojciechkepka/vim-github-dark'
+    endif
+    " Utilities
+    if !has('vscode')
         Plug 'Mofiqul/vscode.nvim'
+        Plug 'airblade/vim-gitgutter'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+    endif
+    if !has('vscode') && has('nvim')
+	    " Plug 'michaeljsmith/vim-indent-object'
+        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
+        " :CocInstall 
+        "   Web:        coc-css coc-eslint coc-html coc-tsserver 
+        "   Markups:    coc-json coc-xml coc-yaml
+        "   Bash:       coc-sh
+        "   Python:     coc-pyright
+        "   SQL:        coc-sql
+        "   Latex:      coc-texlab
+        " :CocUpdate to update all extensions to the latest version
+        " :CocConfig to open coc-settings.json
+        " Plug 'nvim-treesitter/nvim-treesitter'
     endif
 call plug#end()
-" vim-easy-align settings
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
-let mapleader="\<Space>"      " Remap leader key
+" Case insensitive matching
+set ignorecase
+" Global keybindings
+let mapleader="\<Space>"
 noremap <Esc> :noh<cr>
 noremap <M-s> :w<cr>
 noremap <M-w> :q<cr>
 noremap <M-Q> :q!<cr>
 noremap <leader>a ggVG
 
-set ignorecase                " Case insensitive matching
+" Standalone vim settings
 if !exists('g:vscode')
 	" Keybindings
     noremap <M-d> :Lex<cr>
