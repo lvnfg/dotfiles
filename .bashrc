@@ -10,6 +10,7 @@ defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor=
 export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set default editor to nvim if installed
 
 # dev aliases
+alias vim="nvim"
 alias atm="python3 $REPOS/atm/main.py"
 alias az-login-device-code="az login --use-device-code"
 alias func-deploy-ppg-int-pro-sea-func-api="cd $REPOS/ppg-int-func-api && func azure functionapp publish ppg-int-pro-sea-func-api"
@@ -47,8 +48,8 @@ searchFile() {
 	if [[ ! -z "$result" ]]; then echo $result ; fi
 }
 openFileInVim() { result=$(searchFile) && if [[ ! -z "$result" ]]; then $defaultEditor "$result" ; fi ; }
-bind -x '"\ed":changeDirectory'   # Opt-c
-bind -x '"\ef":"openFileInVim"'
+bind -x '"∂":changeDirectory'   # Opt-d
+bind -x '"ƒ":"openFileInVim"'   # Opt-f
 
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
