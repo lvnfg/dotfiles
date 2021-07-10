@@ -6,13 +6,10 @@ call plug#begin()
     nmap ga <Plug>(EasyAlign)
     " Colorschemes
     if !has('vscode')
-        Plug 'tomasr/molokai'
-        Plug 'sonph/onehalf', { 'rtp': 'vim' }
-        Plug 'wojciechkepka/vim-github-dark'
+        Plug 'Mofiqul/vscode.nvim'
     endif
     " Utilities
     if !has('vscode')
-        Plug 'Mofiqul/vscode.nvim'
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
