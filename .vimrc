@@ -39,14 +39,22 @@ noremap <leader>a ggVG
 " Standalone vim settings
 if !exists('g:vscode')
 	" Keybindings
-    noremap <C-d> :Lex<cr>
-    noremap <C-f> :Files<cr>
+    noremap <M-d> :Lex<cr>
+    noremap <M-f> :Files<cr>
+    noremap <M-w> :q<cr>
     " Move between splits
-    noremap <C-e> <C-W>h
-    noremap <C-r> <C-W><C-W>
+    noremap <M-e> <C-W>h
+    noremap <M-r> <C-W><C-W>
     " Move between buffers
-    noremap <C-h> :bprevious<cr>
-    noremap <C-l> :bnext<cr>
+    noremap <M-t> :bnext<cr>
+    " Split windows
+    noremap <M-E> :split<cr>
+    noremap <M-R> :vsplit<cr>
+    " Reize split
+    noremap <M-h> :vertical resize -5<cr> 
+    noremap <M-j> :resize -5<cr>
+    noremap <M-k> :resize +5<cr>
+    noremap <M-l> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set nofoldenable          " Disable folding by default

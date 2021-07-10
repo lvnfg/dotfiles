@@ -48,8 +48,8 @@ searchFile() {
 	if [[ ! -z "$result" ]]; then echo $result ; fi
 }
 openFileInVim() { result=$(searchFile) && if [[ ! -z "$result" ]]; then $defaultEditor "$result" ; fi ; }
-bind -x '"∂":changeDirectory'   # Opt-d
-bind -x '"ƒ":"openFileInVim"'   # Opt-f
+bind -x '"\ed":changeDirectory'
+bind -x '"\ef":"openFileInVim"'
 
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
