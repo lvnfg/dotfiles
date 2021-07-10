@@ -29,19 +29,19 @@ function setup-linux-vm() {
 	sudo apt install -y wget
 	sudo apt install -y unzip
 	sudo apt install -y curl
-	sudo apt install -y neovim      # Check if 0.5+
 	sudo apt install -y bash-completion
 	setup-dotfiles
 	setup-git-configs
+	setup-neovim
 	# scripts with install or make must be run 
 	# at end of to avoid messing with home repos
 	setup-fzf
 	setup-python
 }
 
-function setup-neovim-manually() {
+function setup-neovim() {
     cd ~
-    wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
     rm nvim.appimage && rm -rf ~/neovim-nightly 
     mv squashfs-root ~/neovim-nightly
