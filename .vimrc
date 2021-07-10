@@ -4,7 +4,6 @@ call plug#begin()
 	Plug 'junegunn/vim-easy-align'
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
-    endif
     if !has('vscode')
         " Colorschemes
         Plug 'Mofiqul/vscode.nvim'  " 
