@@ -29,18 +29,17 @@ function setup-linux-vm() {
 	sudo apt install -y wget
 	sudo apt install -y unzip
 	sudo apt install -y curl
+	sudo apt install -y neovim      # Check if 0.5+
 	sudo apt install -y bash-completion
-	setup-nvim
 	setup-dotfiles
 	setup-git-configs
 	# scripts with install or make must be run 
 	# at end of to avoid messing with home repos
 	setup-fzf
-	setup-nodejs
 	setup-python
 }
 
-function setup-nvim() {
+function setup-neovim-manually() {
     cd ~
     wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
     chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
@@ -100,6 +99,7 @@ function setup-macos() {
     brew install jq
     brew install fzf
     brew install mas
+    brew install neovim     # Check if 0.5+, use setup-neovim-manually if not
     brew install azure-cli
     brew install coreutils
     brew install --HEAD neovim
