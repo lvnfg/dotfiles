@@ -13,7 +13,6 @@ call plug#begin()
         Plug 'junegunn/fzf.vim'
         " LSP & IDE
         if has('nvim')
-	        " Plug 'michaeljsmith/vim-indent-object'
             " Plug 'neoclide/coc.nvim', {'branch': 'release'}
             " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
             " :CocInstall 
