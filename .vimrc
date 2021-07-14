@@ -7,6 +7,7 @@ call plug#begin()
     if !has('vscode')
         " Colorschemes
         Plug 'Mofiqul/vscode.nvim'  " 
+        Plug 'wojciechkepka/vim-github-dark'
         " Utilities
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -85,7 +86,7 @@ if !exists('g:vscode')
     " Color schemes must be set below true color settings
     if 1                            " 1 = dark theme, 0 = light theme
         let g:vscode_style = "dark" " light for white theme
-        colorscheme vscode          " dark themes: ghdark molokai vscode
+        colorscheme ghdark
         highlight Normal guibg=black  
     else
         let g:vscode_style = "light" " light for white theme
