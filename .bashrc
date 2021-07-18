@@ -2,12 +2,12 @@
 
 export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
 source "$DOTFILES/setup.sh" 2> /dev/null                                  # Make setup.sh functions autocomplete
-for f in "$DOTFILES/scripts/*"; do source "$f" 2> /dev/null; done
+for f in "$DOTFILES/scripts/*"; do source "$f" 2> /dev/null; done         # Load project-dependent scipts
 
 # Key bindings
 bind -x '"\ed":changeDirectory'
 bind -x '"\ef":"openFileInVim"'
-bind -x '"\es":"dbHQ-execute"'
+bind -x '"\es":"dbHQ-execute"'                                            # in ppg-scripts.sh
 
 # General
 set -o vi                                                                 # Use vim keybindings in bash prompts
@@ -21,8 +21,7 @@ alias vim="nvim"
 alias atm="python3 $REPOS/atm/main.py"
 alias az-login-device-code="az login --use-device-code"
 
-# Get public ip to open access to cloud resources
-getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
+getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
 
 # Git
 if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
