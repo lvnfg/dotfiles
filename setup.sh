@@ -1,6 +1,4 @@
 #!/bin/bash
-export REPOS="$HOME/repos"
-export DOTFILES="$HOME/repos/dotfiles"
 
 function setup-passwordless-auth-for-linux-vm() {
     sudo vim /etc/ssh/sshd_config       # Disable password login. All this should be default on Azure VM Debian 10 Gen 1 image.
