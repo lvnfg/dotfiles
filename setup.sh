@@ -291,6 +291,11 @@ function setup-azure-function-core-tools() {
     sudo apt-get install azure-functions-core-tools-3 -y
 }
 
+function setup-mssql-cli() {
+    pip3 install mssql-cli
+    sudo ln -s -f ~/.local/bin/mssql-cli  /usr/local/bin/mssql-cli
+}
+
 function setup-work-repos() {
     export WSLDIR="$HOME/repos" && mkdir $WSLDIR
     rpath="git@ssh.dev.azure.com:v3/ppg-dev"

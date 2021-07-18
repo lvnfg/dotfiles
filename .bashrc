@@ -15,9 +15,23 @@ alias vim="nvim"
 alias atm="python3 $REPOS/atm/main.py"
 alias az-login-device-code="az login --use-device-code"
 
-# work aliases
+# Work: azure functions
 alias func-deploy-ppg-int-pro-sea-func-api="cd $REPOS/ppg-int-func-api && func azure functionapp publish ppg-int-pro-sea-func-api"
 alias func-deploy-ppg-int-pro-sea-func-scheduler="cd $REPOS/ppg-int-func-scheduler && func azure functionapp publish ppg-int-pro-sea-func-scheduler"
+# Work: dbHQ
+search-file-sql() {
+	result=$(find ~ -type f 2> /dev/null | grep ".sql$" | fzf)
+	if [[ ! -z "$result" ]]; then echo $result ; fi
+}
+function dbHQ-retrieve-password() {
+    pw="$DBHQPASSWORD"
+    if [[ -z "$pw" ]]; then pw="$(az keyvault secret show --vault-name dev-atm-pro-sea-keyvault --name dbhq-byod-password | jq -r '.value')"; fi
+    export DBHQPASSWORD="$pw"
+}
+# add \ prefix to expand variable at alias use time
+alias dbHQ-login="dbHQ-retrieve-password && mssql-cli -S phuongphatgroup.database.windows.net -d dbHQ -U byod -P \$DBHQPASSWORD"
+function dbHQ-execute() { result=$(search-file-sql) && if [[ ! -z "$result" ]]; then dbHQ-login -i "$result" ; fi ; }
+bind -x '"\es":"dbHQ-execute"'
 
 # Get public ip to open access to cloud resources
 getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }
