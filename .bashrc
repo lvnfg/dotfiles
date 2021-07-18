@@ -5,26 +5,24 @@ source "$DOTFILES/setup.sh" 2> /dev/null                                  # Make
 for f in "$DOTFILES/scripts/*"; do source "$f" 2> /dev/null; done         # Load project-dependent scipts
 
 # Key bindings
-bind -x '"\ed":changeDirectory'
-bind -x '"\ef":"openFileInVim"'
-bind -x '"\es":"dbHQ-execute"'                                            # in ppg-scripts.sh
+bind -x '"\ed": changeDirectory'
+bind -x '"\ef": "openFileInVim"'
+bind -x '"\es": "dbHQ-execute"'                                           # in ppg-scripts.sh
 
 # General
 set -o vi                                                                 # Use vim keybindings in bash prompts
 export TERM=screen-256color                                               # Let vim & tmux terminals use colors
+export VISUAL="nvim" && export EDITOR="nvim"                              # Set default editor to nvim if installed
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
-defaultEditor="$(which nvim)" && if [ -z "$defaultEditor" ]; then defaultEditor="vim"; fi 
-export VISUAL="$defaultEditor" && export EDITOR="$defaultEditor"          # Set default editor to nvim if installed
+getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
 
 # dev aliases
 alias vim="nvim"
 alias atm="python3 $REPOS/atm/main.py"
 alias az-login-device-code="az login --use-device-code"
 
-getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
-
 # Git
-if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable autocomple in bash
+if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable git autocomplion in bash
 alias gitppush="git pull && git push"                                                # Always pull before push
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 alias gitStatusAll="echo && find -L $REPOS $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
@@ -54,7 +52,7 @@ searchFile() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then echo $result ; fi
 }
-openFileInVim() { result=$(searchFile) && if [[ ! -z "$result" ]]; then $defaultEditor "$result" ; fi ; }
+openFileInVim() { result=$(searchFile) && if [[ ! -z "$result" ]]; then nvim "$result" ; fi ; }
 
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
