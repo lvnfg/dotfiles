@@ -84,40 +84,6 @@ function setup-fzf() {
     sudo ln -s -f ~/.fzf/bin/fzf  /usr/local/bin/fzf
 }
 
-function setup-ssh-config() {
-    if [[ "$hosttype" = mac ]]; then
-        ln -s -f $DOTFILES/.ssh/config ~/.ssh/config
-        chmod 600 ~/.ssh/config
-    fi
-}
-
-function setup-macos() {
-    xcode-select --install
-	setup-dotfiles
-	setup-git-configs
-    homebrewurl="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
-    /bin/bash -c "$(curl -fsSL $homebrewurl)" 
-    brew doctor
-    brew install jq
-    brew install fzf
-    brew install mas
-    brew install neovim     # Check if 0.5+, use setup-neovim-manually if not
-    brew install azure-cli
-    brew install coreutils
-    brew install --HEAD neovim
-    brew install bash-completion
-    mas install 1107421413  # 1Blocker
-    mas install 1333542190  # 1Password
-    mas install 405399194   # Kindle
-    mas install 1295203466  # Microsoft remote desktop
-    mas install 425424353   # The Unarchiver
-    brew cask install iterm2
-    brew cask install visual-studio-code
-    # vscode & azure data studio vim key repeat
-    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false 
-    defaults write com.azuredatastudio.oss ApplePressAndHoldEnabled -bool false
-}
-
 function setup-python() {
     # Install python
     version="3.9.5"
