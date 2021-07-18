@@ -43,11 +43,12 @@ if !exists('g:vscode')
     noremap <M-d> :Lex<cr>
     noremap <M-f> :Files<cr>
     noremap <M-w> :q<cr>
+    " Move between buffers
+    noremap <M-D> :bnext<cr>
+    noremap <M-F> :bprevious<cr>
     " Move between splits
     noremap <M-e> <C-W>h
     noremap <M-r> <C-W><C-W>
-    " Move between buffers
-    noremap <M-t> :bnext<cr>
     " Split windows
     noremap <M-E> :split<cr>
     noremap <M-R> :vsplit<cr>
