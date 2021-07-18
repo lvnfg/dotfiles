@@ -34,6 +34,12 @@ function setup-linux-vm() {
 	# scripts with install or make must be run 
 	# at end of to avoid messing with home repos
 	setup-python
+	setup-nodejs        # Required for coc.nvim
+	setup-fzf
+	setup-azure-cli
+	setup-net-core
+	setup-azure-function-core-tools
+	setup-mssql-cli
 }
 
 function setup-neovim() {
@@ -68,7 +74,6 @@ function setup-dotfiles() {
 }
 
 function setup-nodejs() {
-	# Install node.js for coc.nvim
 	curl -sL install-node.now.sh/lts | sudo bash
 }
 
@@ -296,20 +301,6 @@ function setup-mssql-cli() {
     # https://docs.microsoft.com/en-us/sql/tools/mssql-cli?view=sql-server-ver15
     pip3 install mssql-cli
     sudo ln -s -f ~/.local/bin/mssql-cli  /usr/local/bin/mssql-cli
-}
-
-function setup-work-repos() {
-    export WSLDIR="$HOME/repos" && mkdir $WSLDIR
-    rpath="git@ssh.dev.azure.com:v3/ppg-dev"
-    rname="ppg-int-func-api"       && cd "$WSLDIR" && git clone "$rpath/$rname/$rname" && cd $rname && git checkout dev
-    rname="ppg-int-func-scheduler" && cd "$WSLDIR" && git clone "$rpath/$rname/$rname" && cd $rname && git checkout dev
-    export WINDIR="/mnt/c/Users/van/repos" && mkdir $WINDIR 
-    rname="dbHQ"              && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
-    rname="ppg-as-semantic"   && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
-    rname="ppg-dw-sql-db"     && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
-    rname="ppg-int-adf"       && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
-    rname="ppg-int-sql-db"    && cd "$WINDIR" && git clone "$rpath/$rname/$rname" && ln -s -f "$WINDIR/$rname" "$WSLDIR/$rname"
-    cd $WSLDIR
 }
 
 # Allow calling functions by name from command line
