@@ -111,45 +111,6 @@ function setup-python() {
 	sudo apt install -y python3-pip
 }
 
-function setup-wsl() {
-    # 1. Choose a vm size that supports nested virtualization (marked ***): https://docs.microsoft.com/en-us/azure/virtual-machines/acu
-    # 2. Install WSL on windows: https://docs.microsoft.com/en-us/windows/wsl/install-win10
-    # 3. Disable sudo password
-    sudo visudo 
-    "
-        Add to END OF FILE: 
-        [username] ALL=(ALL) NOPASSWD:ALL   # Aside from convenience, also used to start ssh on startup without sudo password prompt.
-    "
-    # 4. Enable SSH direcly into WSL with agent forwarding without going through Windows host first
-    sudo apt update && sudo apt upgrade -y
-    sudo apt install openssh-server
-    sudo vim /etc/ssh/sshd_config 
-    "
-        Port 2222               # In case Windows host is listening to 22. Any other number is fine.
-        #AddressFamily any
-        ListenAddress 0.0.0.0
-        #ListenAddress ::
-        PubkeyAuthentication    yes
-        PasswordAuthentication  no
-        PermitEmptyPasswords    no
-    "
-    sudo service ssh --full-restart
-    sudo service ssh start
-    vim ~/.ssh/authorized_keys  # Add pubkey here
-    # 5. Copy enable-ssh-to-wsl.ps1 to C:\Users\van\Desktop\Apps\wsl and a task scheduler job with the following:
-    '
-        Name:             enable-ssh-to-wsl
-        Trigger:          At system startup
-        Security options: Run whether the user is logged on or not
-        Action:           Start a program
-        Program/script:   powershell
-        Argument:         -File "C:\Users\van\OneDrive - Phuong Phat Group\Desktop\Apps\wsl\enable-ssh-to-wsl.ps1"
-    '
-    sudo apt install git
-    git clone git@github.com:lvnfg/dotfiles
-    setup-linux-vm
-}
-
 function setup-linux-desktop-environment() {
     # Skip this part if restoring from a snapshot marked as -fresh-desktop
     # Install a desktop environment and configure remote desktop access. https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop
@@ -171,58 +132,6 @@ function setup-git-configs() {
     gitFormatShort="%C(auto)%h %d%Creset %s>"
     gitFormatString="$gitFormatShort"
     git config --global format.pretty format:"$gitFormatString"
-}
-
-function setup-bash-upgrade() {
-    # For macos only
-    brew install bash                               # Must install homebrew first
-    sudo echo "/usr/local/bin/bash" >> /etc/shells  # Add to list of available shells
-    chsh -s /usr/local/bin/bash                     # Set new bash as default shell
-}
-
-function setup-docker() {
-    # Uninstall old versions
-    sudo apt-get remove docker docker-engine docker.io containerd runc
-    sudo apt-get update
-    sudo apt-get install -y \
-        apt-transport-https \
-        ca-certificates     \
-        curl                \
-        gnupg-agent         \
-        software-properties-common
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88   # Verify key downloaded with correct fingerprint
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-    sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
-    # Use docker cli without sudo
-    sudo groupadd -f docker
-    sudo usermod -aG docker $USER
-    newgrp docker
-}
-
-function setup-docker-build-dev-image() {
-    docker build -t dev:latest .
-}
-
-function setup-vpn-certificates() {
-    # Setup vnet and vpn gateway for Azure P2S: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
-    # Generate certificates in linux: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-certificates-point-to-site-linux
-    echo "Enter cert name: "        && read certname            # ex: "dev-atm-vpn-iphone"
-    echo "Enter client password: "  && read clientpassword
-    sudo apt install strongswan
-    sudo apt install strongswan-pki
-    sudo apt install libstrongswan-extra-plugins
-    # Generate root certificate
-    sudo ipsec pki --gen --outform pem > "${certname}-root-key.pem"
-    sudo ipsec pki --self --in "${certname}-root-key.pem" --dn "CN=${certname}-root" --ca --outform pem > "${certname}-root-cert.pem"
-    openssl x509 -in "${certname}-root-cert.pem" -outform der | base64 -w0 ; echo
-    # Generate client certificate
-    sudo ipsec pki --gen --outform pem > "${certname}-client-key.pem"
-    sudo ipsec pki --pub --in "${certname}-client-key.pem" | sudo ipsec pki --issue --cacert "${certname}-root-cert.pem" --cakey "${certname}-root-key.pem" --dn "CN=${certname}" --san "${certname}" --flag clientAuth --outform pem > "${certname}-client-cert.pem"
-    # Generate p12 bundle
-    openssl pkcs12 -in "${certname}-client-cert.pem" -inkey "${certname}-client-key.pem" -certfile "${certname}-root-cert.pem" -export -out "${certname}.p12" -password "pass:${clientpassword}"
-    # Install certificates for macos: https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac
 }
 
 function setup-net-core() {
