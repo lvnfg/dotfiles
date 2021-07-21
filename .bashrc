@@ -2,7 +2,7 @@
 
 export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
 source "$DOTFILES/setup.sh" 2> /dev/null                                  # Make setup.sh functions autocomplete
-for f in $DOTFILES/scripts/* ; do echo "$f" && source "$f" 2> /dev/null; done         # Load project-dependent scipts
+for f in $DOTFILES/scripts/* ; do source "$f" 2> /dev/null; done         # Load project-dependent scipts
 
 # Key bindings
 bind -x '"\ed": changeDirectory'
