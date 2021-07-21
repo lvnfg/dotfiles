@@ -3,10 +3,10 @@
 # Azure Functions
 # -----------------------------
 function func-deploy-ppg-int-pro-sea-func-api() {
-    cd $REPOS/ppg-int-func-api && func azure functionapp publish ppg-int-pro-sea-func-api
+    cd $REPOS/ppg-int-func-api && func azure functionapp publish ppg-int-pro-sea-func-api --python
 }
 function func-deploy-ppg-int-pro-sea-func-scheduler() {
-    cd $REPOS/ppg-int-func-scheduler && func azure functionapp publish ppg-int-pro-sea-func-scheduler
+    cd $REPOS/ppg-int-func-scheduler && func azure functionapp publish ppg-int-pro-sea-func-scheduler --python
 }
 
 # Azure SQL, dbHQ
