@@ -6,10 +6,7 @@ call plug#begin()
     nmap ga <Plug>(EasyAlign)
     if !has('vscode')
         " Colorschemes
-        Plug 'Mofiqul/vscode.nvim'  " 
-        Plug 'wojciechkepka/vim-github-dark'
         Plug 'tomasr/molokai'
-        Plug 'sonph/onehalf', { 'rtp': 'vim' }
         " Utilities
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -100,7 +97,7 @@ if !exists('g:vscode')
       set termguicolors
     endif
     " Color schemes must be set below true color settings
-    colorscheme molokai          " light themes: vscode
+    colorscheme molokai
 
 	" Indenting
 	set autoindent
