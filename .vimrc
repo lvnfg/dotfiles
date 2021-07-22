@@ -8,10 +8,15 @@ call plug#begin()
         " Colorschemes
         Plug 'Mofiqul/vscode.nvim'  " 
         Plug 'wojciechkepka/vim-github-dark'
+        Plug 'tomasr/molokai'
+        Plug 'sonph/onehalf', { 'rtp': 'vim' }
         " Utilities
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
+        " Tabline
+        Plug 'pacha/vem-tabline'
+	    let g:vem_tabline_show = 2  " Always show even with 1 buffer
         " LSP & IDE
         if has('nvim')
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -40,10 +45,14 @@ noremap <leader>a ggVG
 " Standalone vim settings
 if !exists('g:vscode')
 	" Keybindings
-    noremap <M-d> :Lex<cr>
-    noremap <M-f> :Files<cr>
     noremap <M-q> :q<cr>
-    noremap <M-w> :bdelete<cr>
+    noremap <M-s> :w<cr>
+    " toggle netrw
+    noremap <M-d> :Lex<cr>
+    " close buffer without closing split
+    noremap <M-w> :bp<bar>sp<bar>bn<bar>bd<CR>
+    " fzf
+    noremap <M-f> :Files<cr>
     " Move between splits
     noremap <M-e> <C-W>h
     noremap <M-r> <C-W><C-W>
@@ -60,6 +69,7 @@ if !exists('g:vscode')
     noremap <M-L> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
+	set hidden                " Let fzf open file in window even if current buffer has unsaved changes
 	set nofoldenable          " Disable folding by default
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
@@ -69,20 +79,20 @@ if !exists('g:vscode')
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
 	set noruler               " Disable ruler in command line
+	set hlsearch              " Highlight search term
+    set laststatus=0          " Hide status line
 	set updatetime=100        " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes        " Always show the sign gutter
-	set hlsearch              " Highlight search term
+	set encoding=UTF-8        " Always use UTF8 encoding
     let &t_SI.="\e[5 q"       " Thin cursor for insert mode mode
     let &t_RI.="\e[4 q"       " Underline cursor for replace mode 
     let &t_EI.="\e[2 q"       " Thick cursor for all other modes (EI = ELSE)
+
+    " netrw
 	let g:netrw_banner = 0    " remove netrw help banner
+	let g:netrw_winsize = 25  " Set default width
 	let g:netrw_liststyle = 3 " show tree view by default
 	
-	" Statusline
-	set laststatus=2          " 2 to show, 0 to hide
-	set noshowmode            " Hide mode indicator
-	set statusline+=%F        " Show full filepath
-
     " Enable True color
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -90,20 +100,7 @@ if !exists('g:vscode')
       set termguicolors
     endif
     " Color schemes must be set below true color settings
-    if 1                            " 1 = dark theme, 0 = light theme
-        let g:vscode_style = "dark" " light for white theme
-        colorscheme ghdark
-        highlight Normal guibg=black  
-    else
-        let g:vscode_style = "light" " light for white theme
-        colorscheme vscode           " light themes: vscode
-    endif
-    " Clearing highlight will use guibg -> compatibility with all themes
-    highlight clear SignColumn
-    highlight clear LineNr
-    highlight clear StatusLine
-    highlight LineNr  guifg=grey
-    highlight StatusLine guifg=grey
+    colorscheme molokai          " light themes: vscode
 
 	" Indenting
 	set autoindent
