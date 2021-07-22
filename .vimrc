@@ -42,7 +42,8 @@ if !exists('g:vscode')
 	" Keybindings
     noremap <M-d> :Lex<cr>
     noremap <M-f> :Files<cr>
-    noremap <M-w> :q<cr>
+    noremap <M-q> :q<cr>
+    noremap <M-w> :bdelete<cr>
     " Move between splits
     noremap <M-e> <C-W>h
     noremap <M-r> <C-W><C-W>
@@ -50,13 +51,13 @@ if !exists('g:vscode')
     noremap <M-E> :split<cr>
     noremap <M-R> :vsplit<cr>
     " Move between buffers
-    noremap <M-H> :bnext<cr>
-    noremap <M-L> :bprevious<cr>
+    noremap <M-h> :bnext<cr>
+    noremap <M-l> :bprevious<cr>
     " Reize split
-    noremap <M-h> :vertical resize -5<cr> 
-    noremap <M-j> :resize -5<cr>
-    noremap <M-k> :resize +5<cr>
-    noremap <M-l> :vertical resize +5<cr>
+    noremap <M-H> :vertical resize -5<cr> 
+    noremap <M-J> :resize -5<cr>
+    noremap <M-K> :resize +5<cr>
+    noremap <M-L> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set nofoldenable          " Disable folding by default
@@ -67,7 +68,6 @@ if !exists('g:vscode')
 	set number                " Show line numbers
 	set splitbelow            " Always split below
 	set splitright            " Always split to the right
-	set laststatus=0          " Enable status line
 	set noruler               " Disable ruler in command line
 	set updatetime=100        " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes        " Always show the sign gutter
@@ -78,6 +78,11 @@ if !exists('g:vscode')
 	let g:netrw_banner = 0    " remove netrw help banner
 	let g:netrw_liststyle = 3 " show tree view by default
 	
+	" Statusline
+	set laststatus=2          " 2 to show, 0 to hide
+	set noshowmode            " Hide mode indicator
+	set statusline+=%F        " Show full filepath
+
     " Enable True color
     if exists('+termguicolors')
       let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -96,7 +101,9 @@ if !exists('g:vscode')
     " Clearing highlight will use guibg -> compatibility with all themes
     highlight clear SignColumn
     highlight clear LineNr
+    highlight clear StatusLine
     highlight LineNr  guifg=grey
+    highlight StatusLine guifg=grey
 
 	" Indenting
 	set autoindent
