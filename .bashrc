@@ -1,33 +1,35 @@
 #!/bin/bash
 
-export REPOS="$HOME/repos" && export DOTFILES="$REPOS/dotfiles"           # Core directories
-source "$DOTFILES/setup.sh" 2> /dev/null                                  # Make setup.sh functions autocomplete
-for f in $DOTFILES/scripts/* ; do source "$f" 2> /dev/null; done         # Load project-dependent scipts
+# Core directories
+export REPOS="$HOME/repos" 
+export DOTFILES="$REPOS/dotfiles" 
 
-# Key bindings
-bind -x '"\ed": changeDirectory'
-bind -x '"\ef": "openFileInVim"'
-bind -x '"\es": "dbHQ-execute"'                                           # in ppg-scripts.sh
+# Let vim & tmux terminals use colors
+export TERM=screen-256color 
 
-# General
-set -o vi                                                                 # Use vim keybindings in bash prompts
-export TERM=screen-256color                                               # Let vim & tmux terminals use colors
-export VISUAL="nvim" && export EDITOR="nvim"                              # Set default editor to nvim if installed
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion # Enable bash completion
-getPublicIP() { publicIP="$(curl ipecho.net/plain)" && echo $publicIP; }  # Get public ip to open access to cloud resources
+# Enable bash completion
+[ -f /usr/local/etc/bash_completion ] 
+source /usr/local/etc/bash_completion 
+
+# Use vim keybindings in bash prompts
+set -o vi
+# nvim
+alias vim="nvim"
+export VISUAL="nvim" 
+export EDITOR="nvim"
 
 # dev aliases
-alias vim="nvim"
 alias atm="python3 $REPOS/atm/main.py"
-alias az-login-device-code="az login --use-device-code"
 
-# Git
-if [ -f $DOTFILES/.git-completion.bash ]; then . $DOTFILES/.git-completion.bash ; fi # Enable git autocomplion in bash
-alias gitppush="git pull && git push"                                                # Always pull before push
+# Enable git autocomplion in bash
+if [ -f $DOTFILES/.git-completion.bash ]; then 
+    source $DOTFILES/.git-completion.bash 
+fi 
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
-alias gitStatusAll="echo && find -L $REPOS $gitFindParams    -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git status --short --branch  && echo; fi)' \;"
-alias gitPushAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git push --all               && echo; fi)' \;"
-alias gitPullAll="echo && find -L $REPOS $gitFindParams      -exec sh -c '(cd {} && if [ -d .git ]; then echo {} && git pull                     && echo; fi)' \;"
+gitCDInto="-exec sh -c '(cd {} && if [ -d .git ]; then echo {}"
+alias gitStatusAll="echo && find -L $REPOS $gitFindParams $gitCDInto && git status --short --branch  && echo; fi)' \;"
+alias gitPushAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git push --all               && echo; fi)' \;"
+alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull                     && echo; fi)' \;"
 
 # Tmux
 alias tmux="tmux -u"
@@ -40,19 +42,34 @@ alias t4="tmux attach-session -t 4"
 # fzf
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"     # Find all including hiddens but ignore .git
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-searchDirectory() {
+function search-directory() {
 	result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then echo $result ; fi
 }
-changeDirectory() {
-	result=$(searchDirectory)
+function change-directory() {
+	result=$(search-directory)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 } 
-searchFile() {
+function search-all-files() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then echo $result ; fi
 }
-openFileInVim() { result=$(searchFile) && if [[ ! -z "$result" ]]; then nvim "$result" ; fi ; }
+function open-file-in-vim() { 
+    result=$(search-all-files) 
+    if [[ ! -z "$result" ]]; then nvim "$result" ; fi
+}
+function search-sh-scripts() {
+    result=$(find ~ -type f 2> /dev/null | grep ".sh$" | fzf)
+    if [[ ! -z "$result" ]]; then echo $result ; fi
+}
+function execute-sh-scripts() {
+    result=$(search-sh-scripts) 
+    if [[ ! -z "$result" ]]; then bash "$result" ; fi
+}
+# Key bindings
+bind -x '"\ed": "change-directory"'
+bind -x '"\ef": "open-file-in-vim"'
+bind -x '"\eg": "execute-sh-scripts"' 
 
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }

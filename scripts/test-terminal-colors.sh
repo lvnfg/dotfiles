@@ -62,7 +62,7 @@ rainbowColor()
     fi
 }
 
-function runColorTest() {
+function run-color-test() {
     for i in `seq 0 127`; do
         setBackgroundColor $i 0 0
         echo -en " "
@@ -143,5 +143,7 @@ function runColorTest() {
 
     exit 0
 }
+
+run-color-test
 
 "$@"
