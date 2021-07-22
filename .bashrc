@@ -6,13 +6,13 @@ export DOTFILES="$REPOS/dotfiles"
 
 # Let vim & tmux terminals use colors
 export TERM=screen-256color 
+alias ls="ls -al -h --color=auto --group-directories-first"
 
 # Enable bash completion
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion 
 
-# Use vim keybindings in bash prompts
-set -o vi
 # nvim
+set -o vi   # Use vim keybindings in bash prompts
 alias vim="nvim"
 export VISUAL="nvim" 
 export EDITOR="nvim"
