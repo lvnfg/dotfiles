@@ -17,9 +17,6 @@ alias vim="nvim"
 export VISUAL="nvim" 
 export EDITOR="nvim"
 
-# dev aliases
-alias atm="python3 $REPOS/atm/main.py"
-
 # Enable git autocomplion in bash
 if [ -f $DOTFILES/.git-completion.bash ]; then 
     source $DOTFILES/.git-completion.bash 
