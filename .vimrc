@@ -57,8 +57,8 @@ if !exists('g:vscode')
     noremap <M-E> :split<cr>
     noremap <M-R> :vsplit<cr>
     " Move between buffers
-    noremap <M-h> :bnext<cr>
-    noremap <M-l> :bprevious<cr>
+    noremap <M-h> :bprevious<cr>
+    noremap <M-l> :bnext<cr>
     " Reize split
     noremap <M-H> :vertical resize -5<cr> 
     noremap <M-J> :resize -5<cr>
