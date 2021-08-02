@@ -8,6 +8,7 @@ call plug#begin()
         " Colorschemes
         Plug 'tomasr/molokai'
         " Utilities
+        Plug 'tpope/vim-vinegar'
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
@@ -47,7 +48,7 @@ if !exists('g:vscode')
     " toggle netrw
     noremap <M-d> :Lex<cr>
     " close buffer without closing split
-    noremap <M-w> :bp<bar>sp<bar>bn<bar>bd<CR>
+    noremap <M-w> :bd<CR>
     " fzf
     noremap <M-f> :Files<cr>
     " Move between splits
@@ -87,7 +88,7 @@ if !exists('g:vscode')
 
     " netrw
 	let g:netrw_banner = 0    " remove netrw help banner
-	let g:netrw_winsize = 25  " Set default width
+	let g:netrw_winsize = 20  " Set default width
 	let g:netrw_liststyle = 3 " show tree view by default
 	
     " Enable True color
