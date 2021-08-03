@@ -7,6 +7,7 @@ call plug#begin()
     if !has('vscode')
         " Colorschemes
         Plug 'tomasr/molokai'
+        Plug 'tomasiser/vim-code-dark'
         " Utilities
         Plug 'tpope/vim-vinegar'
         Plug 'airblade/vim-gitgutter'
@@ -99,6 +100,13 @@ if !exists('g:vscode')
     endif
     " Color schemes must be set below true color settings
     colorscheme molokai
+    " colorscheme codedark
+    " highlight clear SignColumn
+    " highlight clear LineNr
+    " use bla and not black for a light black
+    highlight SignColumn guibg=bla
+    highlight LineNr guibg=bla
+    highlight Normal guibg=bla      
 
 	" Indenting
 	set autoindent
