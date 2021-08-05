@@ -12,20 +12,16 @@ call plug#begin()
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
-        " Tabline
-        Plug 'pacha/vem-tabline'
-	    let g:vem_tabline_show = 2  " Always show even with 1 buffer
-        " LSP & IDE
         if has('nvim')
             Plug 'neoclide/coc.nvim', {'branch': 'release'}
             " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
             " :CocInstall 
-            "   Web:        coc-css coc-eslint coc-html coc-tsserver 
-            "   Markups:    coc-json coc-xml coc-yaml
-            "   Bash:       coc-sh
-            "   Python:     coc-pyright
-            "   SQL:        coc-sql
-            "   Latex:      coc-texlab
+            "   Web        coc-css coc-eslint coc-html coc-tsserver 
+            "   Markups    coc-json coc-xml coc-yaml
+            "   Bash       coc-sh
+            "   Python     coc-pyright
+            "   SQL        coc-sql
+            "   Latex      coc-texlab
             " :CocUpdate to update all extensions to the latest version
             " :CocConfig to open coc-settings.json
             " Plug 'nvim-treesitter/nvim-treesitter'
@@ -78,7 +74,6 @@ if !exists('g:vscode')
 	set splitright            " Always split to the right
 	set noruler               " Disable ruler in command line
 	set hlsearch              " Highlight search term
-    set laststatus=0          " Hide status line
 	set updatetime=100        " Reduce vim-gitgutter update time (affect nvim's swap update)
 	set signcolumn=yes        " Always show the sign gutter
 	set encoding=UTF-8        " Always use UTF8 encoding
@@ -107,6 +102,15 @@ if !exists('g:vscode')
     highlight LineNr guibg=bla
     highlight Normal guibg=bla      
 
+    " Statusline
+    set laststatus=2            " 0 = hide, 2 = show statusline
+    set noshowmode              " Hide mode indicator
+    set statusline=             " Prevent duplicating info when sourcing in place
+    set statusline+=%1*\ %<%F   " Full file path, set background color
+    set statusline+=%2*
+    highlight User1 guifg=#000000 guibg=#00afff cterm=bold
+    highlight User2 guifg=#5fff00 guibg=#080808
+	
 	" Indenting
 	set autoindent
 	set expandtab       " Expand tab as spaces
