@@ -9,7 +9,6 @@ call plug#begin()
         Plug 'tomasr/molokai'
         Plug 'tomasiser/vim-code-dark'
         " Utilities
-        Plug 'tpope/vim-vinegar'
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
