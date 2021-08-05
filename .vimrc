@@ -108,7 +108,7 @@ if !exists('g:vscode')
     set statusline=             " Prevent duplicating info when sourcing in place
     set statusline+=%1*\ %<%F   " Full file path, set background color
     set statusline+=%2*
-    highlight User1 guifg=#000000 guibg=#00afff cterm=bold
+    highlight User1 guifg=#000000 guibg=#5fff00
     highlight User2 guifg=#5fff00 guibg=#080808
 	
 	" Indenting
