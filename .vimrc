@@ -97,6 +97,7 @@ if !exists('g:vscode')
     
     " Predefined colors
     let pure_black   = "#000000"
+    let black        = "#101010"
     let gray         = "#303030"
     let blue         = "#00afff"
     let white        = "#e4e4e4"
@@ -110,19 +111,19 @@ if !exists('g:vscode')
     let white        = "#e4e4e4"
     let light_blue   = "#66d9ef"
 
-    highlight SignColumn guibg=bla
-    highlight LineNr guibg=bla
-    highlight Normal guibg=bla      
+    exe 'highlight SignColumn guibg=' . black
+    exe 'highlight LineNr guibg=' . black
+    exe 'highlight Normal guibg=' . black
 
     " Statusline
     set laststatus=2            " 0 = hide, 2 = show statusline
     set noshowmode              " Hide mode indicator
     set statusline=             " Prevent duplicating info when sourcing in place
     set statusline+=%1*\ %<%F   " %F for full file path, set background color
+    set statusline+=%1*\        " Add a space to end of filename
     set statusline+=%2*
-    " Using color variables require exe syntax instead of highlight
-    exe 'highlight User1 guibg=' . pure_black . ' guifg=' . blue
-    exe 'highlight User2 guibg=' . dark_gray . ' guifg=' . bright_green
+    exe 'highlight User1 guibg=' . gray . ' guifg=' . light_gray
+    exe 'highlight User2 guibg=' . black . ' guifg=' . bright_green
 	
 	" Indenting
 	set autoindent
