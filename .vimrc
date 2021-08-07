@@ -47,20 +47,20 @@ if !exists('g:vscode')
     noremap <M-w> :bd<CR>
     " fzf
     noremap <M-f> :Files<cr>
-    " Move between splits
-    noremap <M-e> <C-W>h
-    noremap <M-r> <C-W><C-W>
     " Split windows
     noremap <M-E> :split<cr>
     noremap <M-R> :vsplit<cr>
     " Move between buffers
-    noremap <M-h> :bprevious<cr>
-    noremap <M-l> :bnext<cr>
+    noremap <M-e> :bprevious<cr>
+    noremap <M-r> :bnext<cr>
+    " Move between splits
+    noremap <M-H> <C-W>h
+    noremap <M-L> <C-W><C-W>
     " Reize split
-    noremap <M-H> :vertical resize -5<cr> 
-    noremap <M-J> :resize -5<cr>
-    noremap <M-K> :resize +5<cr>
-    noremap <M-L> :vertical resize +5<cr>
+    noremap <M-h> :vertical resize -5<cr> 
+    noremap <M-j> :resize -5<cr>
+    noremap <M-k> :resize +5<cr>
+    noremap <M-l> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set hidden                " Let fzf open file in window even if current buffer has unsaved changes
