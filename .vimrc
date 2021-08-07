@@ -94,10 +94,22 @@ if !exists('g:vscode')
     endif
     " Color schemes must be set below true color settings
     colorscheme molokai
-    " colorscheme codedark
-    " highlight clear SignColumn
-    " highlight clear LineNr
-    " use bla and not black for a light black
+    
+    " Predefined colors
+    let pure_black   = "#000000"
+    let gray         = "#303030"
+    let blue         = "#00afff"
+    let white        = "#e4e4e4"
+    let yellow       = "#ffff00"
+    let pink         = "#ff00af"
+    let bright_green = "#5fff00"
+    let light_gray   = "#8a8a8a"
+    let white        = "#e4e4e4"
+    let dark_gray    = "#080808"
+    let red          = "#d70000"
+    let white        = "#e4e4e4"
+    let light_blue   = "#66d9ef"
+
     highlight SignColumn guibg=bla
     highlight LineNr guibg=bla
     highlight Normal guibg=bla      
@@ -106,10 +118,11 @@ if !exists('g:vscode')
     set laststatus=2            " 0 = hide, 2 = show statusline
     set noshowmode              " Hide mode indicator
     set statusline=             " Prevent duplicating info when sourcing in place
-    set statusline+=%1*\ %<%F   " Full file path, set background color
+    set statusline+=%1*\ %<%F   " %F for full file path, set background color
     set statusline+=%2*
-    highlight User1 guibg=#000000 guifg=#5fff00
-    highlight User2 guifg=#5fff00 guibg=#080808
+    " Using color variables require exe syntax instead of highlight
+    exe 'highlight User1 guibg=' . pure_black . ' guifg=' . blue
+    exe 'highlight User2 guibg=' . dark_gray . ' guifg=' . bright_green
 	
 	" Indenting
 	set autoindent

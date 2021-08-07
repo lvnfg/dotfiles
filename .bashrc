@@ -75,6 +75,3 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then debian_chroot=
 # Set default prompt info & colors
 PS1='${debian_chroot:+($debian_chroot)}\[\033[00;90m\]\u@\h\[\033[00m\] \[\033[00;32m\]\w\[\033[00m\] \[\033[00;90m\]`getGitBranchStatus`\[\033[00m\] `getGitFileStatus`
 \[\033[00;90m\]\$\[\033[00m\] '
-
-
-# alias ls="ls -al -h --color=auto --group-directories-first"
