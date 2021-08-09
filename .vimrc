@@ -51,18 +51,20 @@ if !exists('g:vscode')
     noremap <M-E> :bprevious<cr>
     noremap <M-R> :bnext<cr>
     " Move between splits
-    noremap <M-e> <C-W>h
-    noremap <M-r> <C-W><C-W>
+    noremap <M-h> <C-W>h
+    noremap <M-j> <C-W>j
+    noremap <M-k> <C-W>k
+    noremap <M-l> <C-W>l
     " Split windows
     noremap <M-H> :aboveleft vsplit<cr>
     noremap <M-J> :split<cr>
     noremap <M-K> :leftabove split<cr>
     noremap <M-L> :belowright vsplit<cr>
     " Reize split
-    noremap <M-h> :vertical resize -5<cr> 
-    noremap <M-j> :resize -5<cr>
-    noremap <M-k> :resize +5<cr>
-    noremap <M-l> :vertical resize +5<cr>
+    "noremap <M-h> :vertical resize -5<cr> 
+    "noremap <M-j> :resize -5<cr>
+    "noremap <M-k> :resize +5<cr>
+    "noremap <M-l> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set hidden                " Let fzf open file in window even if current buffer has unsaved changes
@@ -123,9 +125,8 @@ if !exists('g:vscode')
     set statusline=             " Prevent duplicating info when sourcing in place
     set statusline+=%1*\ %<%F   " %F for full file path, set background color
     set statusline+=%1*\        " Add a space to end of filename
-    set statusline+=%2*
-    exe 'highlight User1 guibg=' . gray . ' guifg=' . light_gray
-    exe 'highlight User2 guibg=' . black . ' guifg=' . bright_green
+    exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
+    exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
 	
 	" Indenting
 	set autoindent
