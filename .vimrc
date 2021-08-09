@@ -45,17 +45,19 @@ if !exists('g:vscode')
     noremap <M-d> :Lex<cr>
     " close buffer without closing split
     noremap <M-w> :bd<CR>
-    " fzf
+    " invoke fzf search
     noremap <M-f> :Files<cr>
-    " Split windows
-    noremap <M-E> :split<cr>
-    noremap <M-R> :vsplit<cr>
     " Move between buffers
-    noremap <M-e> :bprevious<cr>
-    noremap <M-r> :bnext<cr>
+    noremap <M-E> :bprevious<cr>
+    noremap <M-R> :bnext<cr>
     " Move between splits
-    noremap <M-H> <C-W>h
-    noremap <M-L> <C-W><C-W>
+    noremap <M-e> <C-W>h
+    noremap <M-r> <C-W><C-W>
+    " Split windows
+    noremap <M-H> :aboveleft vsplit<cr>
+    noremap <M-J> :split<cr>
+    noremap <M-K> :leftabove split<cr>
+    noremap <M-L> :belowright vsplit<cr>
     " Reize split
     noremap <M-h> :vertical resize -5<cr> 
     noremap <M-j> :resize -5<cr>
