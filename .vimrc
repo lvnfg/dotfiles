@@ -58,10 +58,10 @@ if !exists('g:vscode')
     noremap <M-K> :leftabove split<cr>
     noremap <M-L> :belowright vsplit<cr>
     " Resize split
-    " noremap <M-Left> :vertical resize -5<cr> 
-    " noremap <M-Down> :resize -5<cr>
-    " noremap <M-Up> :resize +5<cr>
-    " noremap <M-Right> :vertical resize +5<cr>
+    noremap <C-h> :vertical resize -5<cr> 
+    noremap <C-j> :resize -5<cr>
+    noremap <C-k> :resize +5<cr>
+    noremap <C-l> :vertical resize +5<cr>
 
 	syntax on                 " Enable syntax highlighting
 	set hidden                " Let fzf open file in window even if current buffer has unsaved changes
