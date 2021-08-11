@@ -66,6 +66,7 @@ function execute-sh-scripts() {
 bind -x '"\ed": "change-directory"'
 bind -x '"\ef": "open-file-in-vim"'
 bind -x '"\eg": "execute-sh-scripts"' 
+bind -x '"\eF": "ranger"' 
 
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }

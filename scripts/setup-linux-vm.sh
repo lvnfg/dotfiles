@@ -6,13 +6,6 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Source .bashrc to get core directories' location
 source ~/repos/dotfiles/.bashrc
 
-# Symlink dotfiles
-ln -s -f $DOTFILES/.bashrc	    ~/.bashrc
-ln -s -f $DOTFILES/.bashrc	    ~/.profile
-ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
-ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
-ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
-
 # Install apps from packages managers
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y jq
@@ -22,6 +15,14 @@ sudo apt install -y unzip
 sudo apt install -y curl
 sudo apt install -y bash-completion
 sudo apt install -y tree
+
+# Symlink dotfiles
+ln -s -f $DOTFILES/.bashrc	    ~/.bashrc
+ln -s -f $DOTFILES/.bashrc	    ~/.profile
+ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
+ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
+ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
+ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 
 # Install apps not available from apt
 # Use source to use the same bash process and share variables

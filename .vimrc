@@ -8,6 +8,8 @@ call plug#begin()
         " Colorschemes
         Plug 'tomasr/molokai'
         Plug 'tomasiser/vim-code-dark'
+        " Ranger
+        Plug 'francoiscabrol/ranger.vim'
         " Utilities
         Plug 'airblade/vim-gitgutter'
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -45,8 +47,11 @@ if !exists('g:vscode')
     noremap <M-d> :Lex<cr>
     " close buffer without closing split
     noremap <M-w> :bd<CR>
-    " invoke fzf search
+    " Invoke FZF
     noremap <M-f> :Files<cr>
+    " Invoke Ranger
+    let g:ranger_map_keys = 0 " Diable default invocation
+    noremap <M-F> :RangerWorkingDirectory<cr>
     " Move between splits
     noremap <M-h> <C-W>h
     noremap <M-j> <C-W>j
