@@ -21,6 +21,7 @@ sudo apt install -y wget
 sudo apt install -y unzip
 sudo apt install -y curl
 sudo apt install -y bash-completion
+sudo apt install -y tree
 
 # Install apps not available from apt
 # Use source to use the same bash process and share variables
