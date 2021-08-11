@@ -13,6 +13,16 @@ ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
 ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
 ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
 
+# Install apps from packages managers
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y jq
+sudo apt install -y tmux
+sudo apt install -y wget
+sudo apt install -y unzip
+sudo apt install -y curl
+sudo apt install -y bash-completion
+
+# Install apps not available from apt
 # Use source to use the same bash process and share variables
 source "$path/install-git.sh"
 source "$path/install-utilities.sh"
