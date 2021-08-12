@@ -10,8 +10,9 @@ call plug#begin()
         Plug 'tomasiser/vim-code-dark'
         " Ranger
         Plug 'francoiscabrol/ranger.vim'
-        " Utilities
+        " Git
         Plug 'airblade/vim-gitgutter'
+        " Fzf
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
         if has('nvim')
@@ -28,6 +29,8 @@ call plug#begin()
             " :CocConfig to open coc-settings.json
             " Plug 'nvim-treesitter/nvim-treesitter'
         endif
+        " Use fzf floating window for coc
+        Plug 'antoinemadec/coc-fzf'
     endif
 call plug#end()
 
@@ -67,6 +70,12 @@ if !exists('g:vscode')
     noremap <M-Down>  :resize -5<cr>
     noremap <M-Up>    :resize +5<cr>
     noremap <M-Right> :vertical resize +5<cr>
+
+    " GoTo code navigation
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
 
 	syntax on                 " Enable syntax highlighting
 	set hidden                " Let fzf open file in window even if current buffer has unsaved changes
