@@ -51,7 +51,7 @@ if !exists('g:vscode')
     noremap <M-f> :Files<cr>
     " Invoke Ranger
     let g:ranger_map_keys = 0 " Diable default invocation
-    noremap <M-F> :RangerWorkingDirectory<cr>
+    noremap <M-r> :RangerWorkingDirectory<cr>
     " Move between splits
     noremap <M-h> <C-W>h
     noremap <M-j> <C-W>j
