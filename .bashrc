@@ -68,6 +68,16 @@ bind -x '"\ef": "open-file-in-vim"'
 bind -x '"\ee": "execute-sh-scripts"' 
 bind -x '"\er": "ranger"' 
 
+function search-all-files-and-paste-to-prompt() {
+	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
+	if [[ ! -z "$result" ]]; then 
+	    tmux set-buffer "$result"
+	    tmux paste-buffer & 
+    fi
+}
+bind -x '"\eg": "search-all-files-and-paste-to-prompt"' 
+
+
 # Prompt
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
 getGitFileStatus() { git -c color.status=always status --short 2> /dev/null | tr '\n' " " ; }
