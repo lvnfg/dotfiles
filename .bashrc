@@ -65,7 +65,7 @@ function execute-sh-scripts() {
 # Key bindings
 bind -x '"\ed": "change-directory"'
 bind -x '"\ef": "open-file-in-vim"'
-bind -x '"\eg": "execute-sh-scripts"' 
+bind -x '"\ee": "execute-sh-scripts"' 
 bind -x '"\er": "ranger"' 
 
 # Prompt
