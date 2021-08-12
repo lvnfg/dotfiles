@@ -7,7 +7,7 @@ call plug#begin()
     if !has('vscode')
         " Colorschemes
         Plug 'tomasr/molokai'
-        Plug 'tomasiser/vim-code-dark'
+        Plug 'joshdick/onedark.vim'
         " Ranger
         Plug 'francoiscabrol/ranger.vim'
         " Git
@@ -27,12 +27,16 @@ call plug#begin()
             "   Latex      coc-texlab
             " :CocUpdate to update all extensions to the latest version
             " :CocConfig to open coc-settings.json
-            " Plug 'nvim-treesitter/nvim-treesitter'
+
+            " Python
+            Plug 'vim-python/python-syntax'
+            let g:python_highlight_all = 1
         endif
         " Use fzf floating window for coc
         Plug 'antoinemadec/coc-fzf'
     endif
 call plug#end()
+
 
 " Case insensitive matching
 set ignorecase
@@ -108,7 +112,8 @@ if !exists('g:vscode')
       set termguicolors
     endif
     " Color schemes must be set below true color settings
-    colorscheme molokai
+    " colorscheme molokai
+    colorscheme onedark
     
     " Predefined colors
     let pure_black   = "#000000"
