@@ -1,7 +1,21 @@
 " --------------------------------------------------------------------------
+" Enable True color
+" --------------------------------------------------------------------------
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+"
+" Enable syntax highlighting. Must put here otherwise colorscheme
+" customization does not work.
+syntax on 
+
+" --------------------------------------------------------------------------
 " Plugins
 " --------------------------------------------------------------------------
 call plug#begin()
+
     " LSP support
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
@@ -40,10 +54,44 @@ call plug#begin()
     " Colorschemes
     Plug 'tomasr/molokai'
     Plug 'joshdick/onedark.vim'
+    Plug 'christianchiarulli/nvcode-color-schemes.vim'
+    Plug 'ayu-theme/ayu-vim'
+    Plug 'vimoxide/vim-cinnabar'
+    Plug 'mhartington/oceanic-next'
+    
 call plug#end()
 
+" --------------------------------------------------------------------------
+" Colorscheme customization
+" --------------------------------------------------------------------------
+" Set colorscheme
+colorscheme cinnabar
 
-" Global keybindings
+" Predefined colors
+let pure_black   = "#000000"
+let black        = "#101010"
+let gray         = "#303030"
+let blue         = "#00afff"
+let white        = "#e4e4e4"
+let yellow       = "#ffff00"
+let pink         = "#ff00af"
+let bright_green = "#5fff00"
+let light_gray   = "#8a8a8a"
+let white        = "#e4e4e4"
+let dark_gray    = "#080808"
+let red          = "#d70000"
+let white        = "#e4e4e4"
+let light_blue   = "#66d9ef"
+" Override colorscheme
+let scheme = get(g:, 'colors_name', 'default')
+if scheme == 'cinnabar'
+    exe 'highlight VertSplit  guifg=' . black
+endif
+if 0
+    exe 'highlight Normal     guibg=' . black
+    exe 'highlight SignColumn guibg=' . black
+    exe 'highlight LineNr     guibg=' . black
+endif
 
 " --------------------------------------------------------------------------
 " Keybindings
@@ -88,11 +136,9 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
 " --------------------------------------------------------------------------
 " Editor
 " --------------------------------------------------------------------------
-syntax on                           " Enable syntax highlighting
 set hidden                          " Let fzf open file in window even if current buffer has unsaved changes
 set ignorecase                      " Case insensitive matching
 set nofoldenable                    " Disable folding by default
@@ -140,39 +186,6 @@ let g:pyindent_open_paren = '&sw'   " Fix double indentation
 let g:netrw_banner = 0    " remove netrw help banner
 let g:netrw_winsize = 20  " Set default width
 let g:netrw_liststyle = 3 " show tree view by default
-
-" --------------------------------------------------------------------------
-" Colorscheme
-" --------------------------------------------------------------------------
-" Enable True color
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-" Color schemes must be set below true color settings
-colorscheme molokai
-" colorscheme onedark
-" Predefined colors
-let pure_black   = "#000000"
-let black        = "#101010"
-let gray         = "#303030"
-let blue         = "#00afff"
-let white        = "#e4e4e4"
-let yellow       = "#ffff00"
-let pink         = "#ff00af"
-let bright_green = "#5fff00"
-let light_gray   = "#8a8a8a"
-let white        = "#e4e4e4"
-let dark_gray    = "#080808"
-let red          = "#d70000"
-let white        = "#e4e4e4"
-let light_blue   = "#66d9ef"
-" Text back ground always black
-exe 'highlight Normal guibg=' . black
-" Make sign column and sign number standout less
-exe 'highlight SignColumn guibg=' . black
-exe 'highlight LineNr guibg=' . black
 
 " --------------------------------------------------------------------------
 " Status line
