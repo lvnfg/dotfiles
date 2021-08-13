@@ -65,7 +65,7 @@ call plug#end()
 " Colorscheme customization
 " --------------------------------------------------------------------------
 " Set colorscheme
-colorscheme cinnabar
+colorscheme molokai
 
 " Predefined colors
 let pure_black   = "#000000"
@@ -86,8 +86,11 @@ let light_blue   = "#66d9ef"
 let scheme = get(g:, 'colors_name', 'default')
 if scheme == 'cinnabar'
     exe 'highlight VertSplit  guifg=' . black
-endif
-if 0
+elseif scheme == 'molokai'
+    exe 'highlight Normal     guibg=' . black
+    exe 'highlight SignColumn guibg=' . black
+    exe 'highlight LineNr     guibg=' . black
+elseif 0
     exe 'highlight Normal     guibg=' . black
     exe 'highlight SignColumn guibg=' . black
     exe 'highlight LineNr     guibg=' . black
