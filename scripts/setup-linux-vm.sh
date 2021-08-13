@@ -27,8 +27,8 @@ ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 # Install apps not available from apt
 # Use source to use the same bash process and share variables
 source "$path/install-git.sh"
-source "$path/install-utilities.sh"
 source "$path/install-fzf.sh"
+source "$path/install-bat.sh"       # Switch to using apt when available for Debian
 source "$path/install-neovim.sh"
 source "$path/install-nodejs.sh"
 source "$path/install-python.sh"
