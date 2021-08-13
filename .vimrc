@@ -45,9 +45,6 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     
-    " Use fzf floating window for coc
-    Plug 'antoinemadec/coc-fzf'
-    
     " Git integration
     Plug 'airblade/vim-gitgutter'
 
@@ -60,6 +57,16 @@ call plug#begin()
     Plug 'mhartington/oceanic-next'
     
 call plug#end()
+
+" --------------------------------------------------------------------------
+" Coc-nvim
+" --------------------------------------------------------------------------
+let g:coc_user_config = {}
+let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsp'
+let g:coc_user_config['python.pythonPath'] = '/usr/local/bin/python3.9'
+"{
+    "python.pythonPath": '"/usr/local/bin/python3.9"
+"}
 
 " --------------------------------------------------------------------------
 " Colorscheme customization
