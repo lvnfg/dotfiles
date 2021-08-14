@@ -35,6 +35,8 @@ alias t4="tmux attach-session -t 4"
 alias bat='bat --paging=never'
 # Replace cat with bat (make highlighting available to any tools using cat)
 alias cat='bat --paging=never'
+# FZF preview option
+bat_fzf_preview="bat --style=numbers --colors=always --line-range :500 {}"
 # Use bat as colorizing pageer for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
@@ -62,15 +64,15 @@ function fzf-change-directory() {
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 } 
 function fzf-open-file-in-vim() { 
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
+	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 function fzf-execute-sh-scripts() {
-    result=$(find ~ -type f 2> /dev/null | grep ".sh$" | fzf)
+    result=$(find ~ -type f 2> /dev/null | grep ".sh$" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then bash "$result" ; fi
 }
 function fzf-search-all-files-and-paste-to-prompt() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf)
+	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
 	if [[ ! -z "$result" ]]; then 
 	    tmux set-buffer "$result"
 	    tmux paste-buffer & 
