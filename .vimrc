@@ -38,10 +38,10 @@ call plug#begin()
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
-    " Ranger
-    Plug 'francoiscabrol/ranger.vim'
+    " Ranger integration
+    Plug 'kevinhwang91/rnvimr'
 
-    " FZF
+    " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     
@@ -123,8 +123,7 @@ noremap <M-d> :Lex<cr>
 " Invoke FZF
 noremap <M-f> :Files<cr>
 " Invoke Ranger
-let g:ranger_map_keys = 0 " Diable default invocation
-noremap <M-r> :RangerWorkingDirectory<cr>
+noremap <M-r> :RnvimrToggle<cr>
 " Move between splits
 noremap <M-h> <C-W>h
 noremap <M-j> <C-W>j

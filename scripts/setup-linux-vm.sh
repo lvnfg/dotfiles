@@ -22,6 +22,9 @@ ln -s -f $DOTFILES/.bashrc	    ~/.profile
 ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
 ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
 ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
+
+# Symlink ranger config
+mkdir ~/.config/ranger
 ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 
@@ -36,6 +39,7 @@ source "$path/install-bat.sh"       # Switch to using apt when available for Deb
 source "$path/install-neovim.sh"
 source "$path/install-nodejs.sh"
 source "$path/install-python.sh"
+source "$path/install-ranger.sh"
 source "$path/install-netcore.sh"
 source "$path/install-azure-cli.sh"
 source "$path/install-azure-functions.sh"
