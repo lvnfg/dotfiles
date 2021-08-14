@@ -33,7 +33,7 @@ alias t4="tmux attach-session -t 4"
 # --------------------------------------------------------------------------
 # Turn off paging
 alias bat='bat --paging=never'
-# Replace cat with bat (make highlighting available to any tools using cat)
+# Replace cat with bat (make highlighting available to fzf in vim, don't know why)
 alias cat='bat --paging=never'
 # FZF preview option
 bat_fzf_preview="bat --style=numbers --colors=always --line-range :500 {}"

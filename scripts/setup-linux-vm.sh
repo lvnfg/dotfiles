@@ -23,6 +23,10 @@ ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
 ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
 ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
 ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
+ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
+
+# Make scope.sh executable for ranger
+chmod $DOTFILES/scope.sh
 
 # Install apps not available from apt
 # Use source to use the same bash process and share variables
