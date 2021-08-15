@@ -44,5 +44,8 @@ source "$path/install-netcore.sh"
 source "$path/install-azure-cli.sh"
 source "$path/install-azure-functions.sh"
 
+# Install pip packages
+pip3 install ptpython
+
 # Allow calling functions by name from command line
 "$@"
