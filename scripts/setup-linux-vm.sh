@@ -34,7 +34,6 @@ chmod $DOTFILES/scope.sh
 # Install python
 source "$path/install-python.sh"
 # Install pip packages
-pip3 install ptpython
 pip3 install mssql-cli
 
 # Install apps not available from apt or pip
