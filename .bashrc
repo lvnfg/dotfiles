@@ -16,8 +16,9 @@ export EDITOR="nvim"
 alias ls="ls -al -h --color=auto --group-directories-first"
 # Enable bash completion
 [ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion 
-# Add ~/.local/bin to path for mssql-cli, ptpython, and other pip executatbles
-PATH=$PATH:"$HOME/.local/bin"
+# Add ~/.local/bin to path for mssql-cli, ptpython, and other pip executatbles.
+# Add at beginning since often local packages are meant to replace system defaults.
+PATH="$HOME/.local/bin":$PATH
 
 # --------------------------------------------------------------------------
 # Tmux
