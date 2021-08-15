@@ -31,21 +31,24 @@ ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
 chmod $DOTFILES/scope.sh
 
-# Install apps not available from apt
+# Install python
+source "$path/install-python.sh"
+# Install pip packages
+pip3 install ptpython
+pip3 install mssql-cli
+
+# Install apps not available from apt or pip
 # Use source to use the same bash process and share variables
 source "$path/install-git.sh"
 source "$path/install-fzf.sh"
 source "$path/install-bat.sh"       # Switch to using apt when available for Debian
 source "$path/install-neovim.sh"
 source "$path/install-nodejs.sh"
-source "$path/install-python.sh"
 source "$path/install-ranger.sh"
 source "$path/install-netcore.sh"
 source "$path/install-azure-cli.sh"
 source "$path/install-azure-functions.sh"
 
-# Install pip packages
-pip3 install ptpython
 
 # Allow calling functions by name from command line
 "$@"
