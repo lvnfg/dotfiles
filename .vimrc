@@ -45,6 +45,9 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     
+    " Use fzf floating window for coc
+    Plug 'antoinemadec/coc-fzf'
+    
     " Git integration
     Plug 'airblade/vim-gitgutter'
 
