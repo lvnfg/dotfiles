@@ -47,9 +47,14 @@ call plug#begin()
     
     " Use fzf floating window for coc
     Plug 'antoinemadec/coc-fzf'
+
+    " Move between vim splits and tmux panes
+    Plug 'christoomey/vim-tmux-navigator'
+    let g:tmux_navigator_no_mappings = 1
     
     " Git integration
     Plug 'airblade/vim-gitgutter'
+    let g:gitgutter_map_keys = 0    " Disable all key mappings
 
     " Colorschemes
     Plug 'tomasr/molokai'
@@ -128,20 +133,24 @@ noremap <M-f> :Files<cr>
 " Invoke Ranger
 noremap <M-r> :RnvimrToggle<cr>
 " Move between splits
-noremap <M-h> <C-W>h
-noremap <M-j> <C-W>j
-noremap <M-k> <C-W>k
-noremap <M-l> <C-W>l
+noremap <leader>h <C-W>h
+noremap <leader>j <C-W>j
+noremap <leader>k <C-W>k
+noremap <leader>l <C-W>l
+nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 " Split windows
-noremap <M-H> :aboveleft vsplit<cr>
-noremap <M-J> :split<cr>
-noremap <M-K> :leftabove split<cr>
-noremap <M-L> :belowright vsplit<cr>
+noremap <leader>H :aboveleft vsplit<cr>
+noremap <leader>J :split<cr>
+noremap <leader>K :leftabove split<cr>
+noremap <leader>L :belowright vsplit<cr>
 " Resize split
-noremap <M-Left>  :vertical resize -5<cr>
-noremap <M-Down>  :resize -5<cr>
-noremap <M-Up>    :resize +5<cr>
-noremap <M-Right> :vertical resize +5<cr>
+noremap <C-Left>  :vertical resize -5<cr>
+noremap <C-Down>  :resize -5<cr>
+noremap <C-Up>    :resize +5<cr>
+noremap <C-Right> :vertical resize +5<cr>
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
