@@ -132,7 +132,7 @@ noremap <M-d> :Lex<cr>
 noremap <M-f> :Files<cr>
 " Invoke Ranger
 noremap <M-r> :RnvimrToggle<cr>
-" Move between splits
+" Move between splits and tmux panes
 noremap <leader>h <C-W>h
 noremap <leader>j <C-W>j
 noremap <leader>k <C-W>k
