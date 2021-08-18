@@ -33,7 +33,17 @@ chmod $DOTFILES/scope.sh
 
 # Install python
 source "$path/install-python.sh"
-# Install pip packages
+# Install ipython
+# To enable case-insensitive tab completion in ipython shell,
+# open IPython/core/completer.py:
+# try:
+#    import jedi
+#    jedi.settings.case_insensitive_completion = True <-- Set to True
+#    import jedi.api.helpers
+#    import jedi.api.classes
+#    JEDI_INSTALLED = True
+pip3 install ipython
+# Install other pip packages
 pip3 install mssql-cli
 
 # Install apps not available from apt or pip
