@@ -135,11 +135,6 @@ noremap <M-d> :Lex<cr>
 noremap <M-f> :Files<cr>
 " Invoke Ranger
 noremap <M-r> :RnvimrToggle<cr>
-" Move between splits
-noremap <leader>h <C-W>h
-noremap <leader>j <C-W>j
-noremap <leader>k <C-W>k
-noremap <leader>l <C-W>l
 " Tmux integrated move between splits
 nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
