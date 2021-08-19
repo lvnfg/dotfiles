@@ -40,6 +40,9 @@ call plug#begin()
 
     " Ranger integration
     Plug 'kevinhwang91/rnvimr'
+    " rnvimr cannot open file in vim because it keeps looking for 
+    " old ranger version installed with pip. Maybe the issue will
+    " go away on Debian 11. To check.
 
     " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
