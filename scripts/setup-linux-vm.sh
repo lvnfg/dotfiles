@@ -34,6 +34,10 @@ chmod $DOTFILES/scope.sh
 # Install python
 source "$path/install-python.sh"
 # Install ipython
+# To enable vim mode, create profile with
+#   ipython profile create
+# Then open ~/.ipython/profile_default/ipython_config.py and set
+#   c.TerminalInteractiveShell.editing_mode = 'vi'  <-- Set to vi
 # To enable case-insensitive tab completion in ipython shell,
 # open IPython/core/completer.py:
 # try:
