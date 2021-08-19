@@ -135,20 +135,21 @@ noremap <M-d> :Lex<cr>
 noremap <M-f> :Files<cr>
 " Invoke Ranger
 noremap <M-r> :RnvimrToggle<cr>
-" Move between splits and tmux panes
+" Move between splits
 noremap <leader>h <C-W>h
 noremap <leader>j <C-W>j
 noremap <leader>k <C-W>k
 noremap <leader>l <C-W>l
+" Tmux integrated move between splits
 nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 " Split windows
-noremap <leader>H :aboveleft vsplit<cr>
-noremap <leader>J :split<cr>
-noremap <leader>K :leftabove split<cr>
-noremap <leader>L :belowright vsplit<cr>
+noremap <M-H> :aboveleft vsplit<cr>
+noremap <M-J> :split<cr>
+noremap <M-K> :leftabove split<cr>
+noremap <M-L> :belowright vsplit<cr>
 " Resize split
 noremap <C-Left>  :vertical resize -5<cr>
 noremap <C-Down>  :resize -5<cr>
