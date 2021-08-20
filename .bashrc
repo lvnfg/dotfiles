@@ -48,7 +48,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # --------------------------------------------------------------------------
 # Enable git autocomplion in bash
 if [ -f $DOTFILES/.git-completion.bash ]; then 
-    source $DOTFILES/.git-completion.bash 
+    bash $DOTFILES/.git-completion.bash 
 fi 
 # Convenience git alias
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
