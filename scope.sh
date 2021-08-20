@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/bash
 
 # -----------------------------------------------------------------------------------
 # CONFIGURE PREVIEW & SYNTAX HIGHLIGHTING FOR RANGER

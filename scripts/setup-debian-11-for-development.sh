@@ -30,13 +30,13 @@ ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
 source "$path/install-neovim.sh"
 
 # Install ranger
-sudp apt install ranger
+sudo apt install ranger
 # Symlink ranger config
 mkdir ~/.config/ranger
 ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
-chmod $DOTFILES/scope.sh
+chmod +x $DOTFILES/scope.sh
 
 # Install python
 # source "$path/install-python.sh"
