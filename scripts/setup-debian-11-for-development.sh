@@ -72,7 +72,7 @@ sudo apt install azure-cli
 # Debian 11 required this specific keyvault package from pip
 # and cannot use the version included in the azure-cli apt
 pip3 install azure-keyvault==1.1.0  
-# source "$path/install-azure-functions.sh"
+bash "$path/install-azure-functions.sh"
 
 
 # Allow calling functions by name from command line
