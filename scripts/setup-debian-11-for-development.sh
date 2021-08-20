@@ -67,8 +67,8 @@ ipython profile create
 pip3 install mssql-cli
 
 # Install Azure tools and services
-source "$path/install-netcore.sh"
-# source "$path/install-azure-cli.sh"
+bash "$path/install-netcore.sh"
+bash "$path/install-azure-cli.sh"
 # source "$path/install-azure-functions.sh"
 
 
