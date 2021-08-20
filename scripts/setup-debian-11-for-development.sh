@@ -24,6 +24,9 @@ ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
 ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
 ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
 
+# Install & setup git
+source "$path/install-git.sh"
+
 # Install neovim
 source "$path/install-neovim.sh"
 
