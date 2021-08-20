@@ -46,10 +46,11 @@ source "$path/install-bat.sh"
 
 # Install python and dependent packages
 source "$path/install-python.sh"
+sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
 # IPython
 pip3 install ipython
-ipython profile create
 # To enable vim mode, create profile with
+ipython profile create
 # Then open ~/.ipython/profile_default/ipython_config.py and set
 #   c.TerminalInteractiveShell.editing_mode = 'vi'  <-- Set to vi
 # To enable case-insensitive tab completion in ipython shell,
@@ -60,7 +61,9 @@ ipython profile create
 #    import jedi.api.helpers
 #    import jedi.api.classes
 #    JEDI_INSTALLED = True
-# pip3 install mssql-cli
+
+# MSSQL-CLI. Require /usr/bin/python symlinked as python3
+pip3 install mssql-cli
 
 # Install apps not available from apt or pip
 # Use source to use the same bash process and share variables
