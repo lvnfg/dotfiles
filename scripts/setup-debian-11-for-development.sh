@@ -25,10 +25,10 @@ ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
 ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
 
 # Install & setup git
-source "$path/install-git.sh"
+bash "$path/install-git.sh"
 
 # Install neovim
-source "$path/install-neovim.sh"
+bash "$path/install-neovim.sh"
 bash "$path/install-nodejs.sh"
 
 # Install ranger
@@ -43,10 +43,10 @@ chmod +x $DOTFILES/scope.sh
 # Install bat for syntax highlighting. Last version is 0.18.2 
 # while Debian only has 0.12.1 even in testing. Switch to apt 
 # later when available.
-source "$path/install-bat.sh"
+bash "$path/install-bat.sh"
 
 # Install python and dependent packages
-source "$path/install-python.sh"
+bash "$path/install-python.sh"
 sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
 # IPython
 pip3 install ipython
