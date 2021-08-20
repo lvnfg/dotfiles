@@ -66,9 +66,8 @@ ipython profile create
 # MSSQL-CLI. Require /usr/bin/python symlinked as python3
 pip3 install mssql-cli
 
-# Install apps not available from apt or pip
-# Use source to use the same bash process and share variables
-# source "$path/install-netcore.sh"
+# Install Azure tools and services
+source "$path/install-netcore.sh"
 # source "$path/install-azure-cli.sh"
 # source "$path/install-azure-functions.sh"
 
