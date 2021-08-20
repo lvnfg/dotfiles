@@ -7,7 +7,7 @@ dir="Python-$version"
 tarball="$dir.tar.xz"
 url="https://www.python.org/ftp/python/$version/$tarball"
 sudo apt update
-sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
 curl -O $url
 tar -xf $tarball
 rm $tarball

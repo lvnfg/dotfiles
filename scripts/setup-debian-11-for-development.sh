@@ -44,11 +44,12 @@ chmod +x $DOTFILES/scope.sh
 # later when available.
 source "$path/install-bat.sh"
 
-# Install python
-# source "$path/install-python.sh"
-# Install ipython
+# Install python and dependent packages
+source "$path/install-python.sh"
+# IPython
+pip3 install ipython
+ipython profile create
 # To enable vim mode, create profile with
-#   ipython profile create
 # Then open ~/.ipython/profile_default/ipython_config.py and set
 #   c.TerminalInteractiveShell.editing_mode = 'vi'  <-- Set to vi
 # To enable case-insensitive tab completion in ipython shell,
@@ -59,15 +60,11 @@ source "$path/install-bat.sh"
 #    import jedi.api.helpers
 #    import jedi.api.classes
 #    JEDI_INSTALLED = True
-# pip3 install ipython
-# Install other pip packages
 # pip3 install mssql-cli
 
 # Install apps not available from apt or pip
 # Use source to use the same bash process and share variables
-# source "$path/install-fzf.sh"
 # source "$path/install-nodejs.sh"
-# source "$path/install-ranger.sh"
 # source "$path/install-netcore.sh"
 # source "$path/install-azure-cli.sh"
 # source "$path/install-azure-functions.sh"
