@@ -29,6 +29,7 @@ source "$path/install-git.sh"
 
 # Install neovim
 source "$path/install-neovim.sh"
+bash "$path/install-nodejs.sh"
 
 # Install ranger
 sudo apt install ranger
@@ -67,7 +68,6 @@ pip3 install mssql-cli
 
 # Install apps not available from apt or pip
 # Use source to use the same bash process and share variables
-# source "$path/install-nodejs.sh"
 # source "$path/install-netcore.sh"
 # source "$path/install-azure-cli.sh"
 # source "$path/install-azure-functions.sh"
