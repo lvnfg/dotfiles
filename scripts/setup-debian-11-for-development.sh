@@ -16,8 +16,6 @@ sudo apt install -y curl
 sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
-sudo apt install -y ranger
-sudo apt install -y bat
 
 # Symlink dotfiles
 ln -s -f $DOTFILES/.bashrc	    ~/.bashrc
@@ -37,6 +35,11 @@ ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
 chmod +x $DOTFILES/scope.sh
+
+# Install bat for syntax highlighting. Last version is 0.18.2 
+# while Debian only has 0.12.1 even in testing. Switch to apt 
+# later when available.
+source "$path/install-bat.sh"
 
 # Install python
 # source "$path/install-python.sh"
@@ -59,9 +62,7 @@ chmod +x $DOTFILES/scope.sh
 
 # Install apps not available from apt or pip
 # Use source to use the same bash process and share variables
-# source "$path/install-git.sh"
 # source "$path/install-fzf.sh"
-# source "$path/install-bat.sh"       # Switch to using apt when available for Debian
 # source "$path/install-nodejs.sh"
 # source "$path/install-ranger.sh"
 # source "$path/install-netcore.sh"
