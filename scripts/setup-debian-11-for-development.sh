@@ -68,7 +68,10 @@ pip3 install mssql-cli
 
 # Install Azure tools and services
 bash "$path/install-netcore.sh"
-bash "$path/install-azure-cli.sh"
+sudo apt install azure-cli
+# Debian 11 required this specific keyvault package from pip
+# and cannot use the version included in the azure-cli apt
+pip3 install azure-keyvault==1.1.0  
 # source "$path/install-azure-functions.sh"
 
 
