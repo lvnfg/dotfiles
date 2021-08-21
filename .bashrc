@@ -70,9 +70,15 @@ function fzf-open-file-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
-function fzf-execute-sh-scripts() {
-    result=$(find ~ -type f 2> /dev/null | grep ".sh$" | fzf --preview 'bat --color=always {}')
-    if [[ ! -z "$result" ]]; then bash "$result" ; fi
+function fzf-execute-script() {
+    result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}')
+    if [[ -z "$result" ]]; then return ; fi
+    extension="${result##*.}"
+    if [[ "$extension" = "sh" ]]; then
+        bash "$result"
+    elif [[ "$extension" = "py" ]]; then
+        python3 "$result"
+    fi
 }
 function fzf-search-all-files-and-paste-to-prompt() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
@@ -84,7 +90,7 @@ function fzf-search-all-files-and-paste-to-prompt() {
 # Key bindings
 bind -x '"\ed": "fzf-change-directory"'
 bind -x '"\ef": "fzf-open-file-in-vim"'
-bind -x '"\ee": "fzf-execute-sh-scripts"' 
+bind -x '"\ee": "fzf-execute-script"' 
 bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"' 
 
 # --------------------------------------------------------------------------
