@@ -100,9 +100,15 @@ let dark_gray    = "#080808"
 let red          = "#d70000"
 let white        = "#e4e4e4"
 let light_blue   = "#66d9ef"
+let deep_blue    = "#070319"
+let deep_green   = "#020C05"
 " Override colorscheme
 let scheme = get(g:, 'colors_name', 'default')
-if scheme == 'cinnabar'
+if scheme == 'onedark'
+    exe 'highlight Normal     guibg=' . pure_black
+    exe 'highlight SignColumn guibg=' . pure_black
+    exe 'highlight LineNr     guibg=' . pure_black
+elseif scheme == 'cinnabar'
     exe 'highlight VertSplit  guifg=' . black
 elseif scheme == 'molokai'
     exe 'highlight Normal     guibg=' . black
