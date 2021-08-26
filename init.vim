@@ -136,7 +136,7 @@ noremap <M-w> :bd<CR>
 " Save buffer
 noremap <M-s> :w<cr>
 " toggle netrw
-noremap <M-d> :Vexplore<cr>
+noremap <M-d> :Lexplore<cr>
 " Invoke FZF
 noremap <M-f> :Files<cr>
 " Invoke Ranger
