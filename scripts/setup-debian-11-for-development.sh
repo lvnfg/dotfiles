@@ -48,6 +48,8 @@ bash "$path/install-bat.sh"
 # Install python and dependent packages
 bash "$path/install-python.sh"
 sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
+# Pynvim for nvim's python plugins
+pip3 install pynvim
 # IPython
 pip3 install ipython
 # To enable vim mode, create profile with
