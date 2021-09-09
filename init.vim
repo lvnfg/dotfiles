@@ -66,6 +66,7 @@ call plug#begin()
     Plug 'ayu-theme/ayu-vim'
     Plug 'vimoxide/vim-cinnabar'
     Plug 'mhartington/oceanic-next'
+    Plug 'EdenEast/nightfox.nvim'
     
 call plug#end()
 
