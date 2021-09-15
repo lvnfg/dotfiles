@@ -38,11 +38,6 @@ call plug#begin()
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
-    " Status and tab line
-    " Plug 'hoob3rt/lualine.nvim'
-    Plug 'vim-airline/vim-airline'
-    let g:airline#extensions#tabline#enabled = 1
-
     " Ranger integration
     Plug 'kevinhwang91/rnvimr'
     " rnvimr cannot open file in vim because it keeps looking for 
@@ -222,7 +217,7 @@ let g:netrw_liststyle = 3 " show tree view by default
 " --------------------------------------------------------------------------
 " Status line
 " --------------------------------------------------------------------------
-set laststatus=0            " 0 = hide, 2 = show statusline
+set laststatus=2            " 0 = hide, 2 = show statusline
 set noshowmode              " Hide mode indicator
 set statusline=             " Prevent duplicating info when sourcing in place
 set statusline+=%1*\ %<%F   " %F for full file path, set background color
