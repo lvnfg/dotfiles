@@ -40,6 +40,7 @@ call plug#begin()
 
     " Ranger integration
     Plug 'kevinhwang91/rnvimr'
+    let g:rnvimr_enable_ex = 1      " Replace netrw
 
     " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
