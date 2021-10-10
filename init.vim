@@ -40,7 +40,14 @@ call plug#begin()
 
     " Ranger integration
     Plug 'kevinhwang91/rnvimr'
-    let g:rnvimr_enable_ex = 1      " Replace netrw
+    " Replace netrw with ranger
+    let g:rnvimr_enable_ex = 1
+    " Hide the files included in gitignore
+    let g:rnvimr_hide_gitignore = 1
+    " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+    let g:rnvimr_enable_bw = 1
+    " Make Ranger to be hidden after picking a file
+    let g:rnvimr_enable_picker = 1
 
     " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
