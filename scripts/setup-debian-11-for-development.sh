@@ -8,7 +8,6 @@ source ~/repos/dotfiles/.bashrc
 
 # Install apps from packages managers
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y mc
 sudo apt install -y jq
 sudo apt install -y tmux
 sudo apt install -y wget
