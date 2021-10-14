@@ -9,7 +9,7 @@ endif
 "
 " Enable syntax highlighting. Must put here otherwise colorscheme
 " customization does not work.
-syntax on 
+syntax on
 
 " --------------------------------------------------------------------------
 " Plugins
@@ -19,8 +19,8 @@ call plug#begin()
     " LSP support
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-    " :CocInstall 
-    "   Web        coc-css coc-eslint coc-html coc-tsserver 
+    " :CocInstall
+    "   Web        coc-css coc-eslint coc-html coc-tsserver
     "   Markups    coc-json coc-xml coc-yaml
     "   Bash       coc-sh
     "   Python     coc-pyright
@@ -28,7 +28,7 @@ call plug#begin()
     "   Latex      coc-texlab
     " :CocUpdate to update all extensions to the latest version
     " :CocConfig to open coc-settings.json
-    
+
     " Python syntax highlighting
     Plug 'vim-python/python-syntax'
     let g:python_highlight_all = 1
@@ -52,17 +52,23 @@ call plug#begin()
     " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    
+
     " Use fzf floating window for coc
     " Plug 'antoinemadec/coc-fzf'
 
     " Move between vim splits and tmux panes
     Plug 'christoomey/vim-tmux-navigator'
     let g:tmux_navigator_no_mappings = 1
-    
+
     " Git integration
     Plug 'airblade/vim-gitgutter'
     let g:gitgutter_map_keys = 0    " Disable all key mappings
+
+    " Manage trailing whitespace
+    Plug 'ntpeters/vim-better-whitespace'
+    let g:better_whitespace_enabled=1
+    let g:strip_whitespace_on_save=1
+    let g:strip_whitespace_confirm=0
 
     " Colorschemes
     Plug 'tomasr/molokai'
@@ -72,7 +78,7 @@ call plug#begin()
     Plug 'vimoxide/vim-cinnabar'
     Plug 'mhartington/oceanic-next'
     Plug 'EdenEast/nightfox.nvim'
-    
+
 call plug#end()
 
 " --------------------------------------------------------------------------
