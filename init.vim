@@ -63,6 +63,7 @@ call plug#begin()
     " Git integration
     Plug 'airblade/vim-gitgutter'
     let g:gitgutter_map_keys = 0    " Disable all key mappings
+    Plug 'tpope/vim-fugitive'
 
     " Manage trailing whitespace
     Plug 'ntpeters/vim-better-whitespace'
