@@ -178,26 +178,27 @@ nmap <silent> gr <Plug>(coc-references)
 " --------------------------------------------------------------------------
 " Editor
 " --------------------------------------------------------------------------
-set hidden                          " Let fzf open file in window even if current buffer has unsaved changes
-set ignorecase                      " Case insensitive matching
-set nofoldenable                    " Disable folding by default
-set splitbelow                      " Always split below
-set splitright                      " Always split to the right
-set mouse=a                         " enable scrolling with mouse
-set nocompatible                    " disable vi compatibility and enable advanced vim features
-set number                          " Show line numbers
-set splitbelow                      " Always split below
-set splitright                      " Always split to the right
-set noruler                         " Disable ruler in command line
-set hlsearch                        " Highlight search term
-set updatetime=100                  " Reduce vim-gitgutter update time (affect nvim's swap update)
-set signcolumn=yes                  " Always show the sign gutter
-set encoding=UTF-8                  " Always use UTF8 encoding
-let &t_SI.="\e[5 q"                 " Thin cursor for insert mode mode
-let &t_RI.="\e[4 q"                 " Underline cursor for replace mode
-let &t_EI.="\e[2 q"                 " Thick cursor for all other modes (EI = ELSE)
-set clipboard+=unnamedplus          " Always use + register as clipboard
-set backspace=indent,eol,start      " Let backspace delete
+set nowrap                     " Do not wrap long line
+set hidden                     " Let fzf open file in window even if current buffer has unsaved changes
+set ignorecase                 " Case insensitive matching
+set nofoldenable               " Disable folding by default
+set splitbelow                 " Always split below
+set splitright                 " Always split to the right
+set mouse=a                    " enable scrolling with mouse
+set nocompatible               " disable vi compatibility and enable advanced vim features
+set number                     " Show line numbers
+set splitbelow                 " Always split below
+set splitright                 " Always split to the right
+set noruler                    " Disable ruler in command line
+set hlsearch                   " Highlight search term
+set updatetime=100             " Reduce vim-gitgutter update time (affect nvim's swap update)
+set signcolumn=yes             " Always show the sign gutter
+set encoding=UTF-8             " Always use UTF8 encoding
+let &t_SI.="\e[5 q"            " Thin cursor for insert mode mode
+let &t_RI.="\e[4 q"            " Underline cursor for replace mode
+let &t_EI.="\e[2 q"            " Thick cursor for all other modes (EI = ELSE)
+set clipboard+=unnamedplus     " Always use + register as clipboard
+set backspace=indent,eol,start " Let backspace delete
 
 " --------------------------------------------------------------------------
 " Tab completion
