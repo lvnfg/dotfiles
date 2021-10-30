@@ -53,9 +53,6 @@ call plug#begin()
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
-    " Use fzf floating window for coc
-    " Plug 'antoinemadec/coc-fzf'
-
     " Move between vim splits and tmux panes
     Plug 'christoomey/vim-tmux-navigator'
     let g:tmux_navigator_no_mappings = 1
@@ -64,6 +61,10 @@ call plug#begin()
     Plug 'airblade/vim-gitgutter'
     let g:gitgutter_map_keys = 0    " Disable all key mappings
     Plug 'tpope/vim-fugitive'
+
+    " Airline
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
 
     " Manage trailing whitespace
     Plug 'ntpeters/vim-better-whitespace'
@@ -232,11 +233,26 @@ let g:netrw_liststyle = 3 " show tree view by default
 " --------------------------------------------------------------------------
 set laststatus=2            " 0 = hide, 2 = show statusline
 set noshowmode              " Hide mode indicator
-set statusline=             " Prevent duplicating info when sourcing in place
-set statusline+=%1*\ %<%F   " %F for full file path, set background color
-set statusline+=%1*\        " Add a space to end of filename
-exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
-exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
+" set statusline=             " Prevent duplicating info when sourcing in place
+" set statusline+=%1*\ %<%F   " %F for full file path, set background color
+" set statusline+=%1*\        " Add a space to end of filename
+" exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
+" exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
+"
+" Airlineconfiguration
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+" File name formatter: default / jsformatter / unique_tail / unique_tail_improved
+let g:airline#extensions#tabline#formatter = 'default'
+" Colorscheme
+let g:airline_theme='tomorrow'
+" Configure statusline section
+let g:airline_section_a = airline#section#create(['%F'])
+let g:airline_section_b = airline#section#create([])
+let g:airline_section_c = airline#section#create([])
+let g:airline_section_x = airline#section#create([])
+let g:airline_section_y = airline#section#create([])
+let g:airline_section_z = airline#section#create(['branch'])
 
 packloadall          " load all plugins at the end
 silent! helptags ALL " load all helptags after plugins and ignore errors
