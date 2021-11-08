@@ -38,17 +38,6 @@ call plug#begin()
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
 
-    " Ranger integration
-    Plug 'kevinhwang91/rnvimr'
-    " Replace netrw with ranger
-    let g:rnvimr_enable_ex = 1
-    " Hide the files included in gitignore
-    let g:rnvimr_hide_gitignore = 1
-    " Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-    let g:rnvimr_enable_bw = 1
-    " Make Ranger to be hidden after picking a file
-    let g:rnvimr_enable_picker = 1
-
     " FZF integration
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -153,8 +142,6 @@ noremap <M-s> :w<cr>
 noremap <M-d> :Lexplore<cr>
 " Invoke FZF
 noremap <M-f> :Files<cr>
-" Invoke Ranger
-noremap <M-r> :RnvimrToggle<cr>
 " Tmux integrated move between splits
 nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
