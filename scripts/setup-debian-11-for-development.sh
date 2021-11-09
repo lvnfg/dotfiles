@@ -18,11 +18,12 @@ sudo apt install -y tree
 sudo apt install -y fzf
 
 # Symlink dotfiles
-ln -s -f $DOTFILES/.bashrc	    ~/.bashrc
-ln -s -f $DOTFILES/.bashrc	    ~/.profile
-ln -s -f $DOTFILES/.inputrc	    ~/.inputrc
-ln -s -f $DOTFILES/.tmux.conf   ~/.tmux.conf
-ln -s -f $DOTFILES/.vimrc	    ~/.vimrc
+ln -s -f $DOTFILES/.bashrc        ~/.bashrc
+ln -s -f $DOTFILES/.bashrc        ~/.profile
+ln -s -f $DOTFILES/.inputrc       ~/.inputrc
+ln -s -f $DOTFILES/.tmux.conf     ~/.tmux.conf
+ln -s -f $DOTFILES/.vimrc         ~/.vimrc
+ln -s -f $DOTFILES/litecli/config ~/.config/litecli/config
 
 # Install & setup git
 bash "$path/install-git.sh"
@@ -40,8 +41,8 @@ ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
 chmod +x $DOTFILES/scope.sh
 
-# Install bat for syntax highlighting. Last version is 0.18.2 
-# while Debian only has 0.12.1 even in testing. Switch to apt 
+# Install bat for syntax highlighting. Last version is 0.18.2
+# while Debian only has 0.12.1 even in testing. Switch to apt
 # later when available.
 bash "$path/install-bat.sh"
 
@@ -68,12 +69,15 @@ ipython profile create
 # MSSQL-CLI. Require /usr/bin/python symlinked as python3
 pip3 install mssql-cli
 
+# SQLITE CLI
+pip3 instlal litecli
+
 # Install Azure tools and services
 bash "$path/install-netcore.sh"
 sudo apt install azure-cli
 # Debian 11 required this specific keyvault package from pip
 # and cannot use the version included in the azure-cli apt
-pip3 install azure-keyvault==1.1.0  
+pip3 install azure-keyvault==1.1.0
 bash "$path/install-azure-functions.sh"
 
 
