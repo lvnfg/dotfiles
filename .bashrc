@@ -4,21 +4,29 @@
 # Bash shell
 # --------------------------------------------------------------------------
 # Core directories
-export REPOS="$HOME/repos" 
-export DOTFILES="$REPOS/dotfiles" 
+export REPOS="$HOME/repos"
+export DOTFILES="$REPOS/dotfiles"
 # Use vim keybindings in bash prompts
 set -o vi
 # Set default editor
 alias vim="nvim"
-export VISUAL="nvim" 
+export VISUAL="nvim"
 export EDITOR="nvim"
 # Always run ls -al
 alias ls="ls -al -h --color=auto --group-directories-first"
 # Enable bash completion
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion 
+[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 # Add ~/.local/bin to path for mssql-cli, ptpython, and other pip executatbles.
 # Add at beginning since often local packages are meant to replace system defaults.
 PATH="$HOME/.local/bin":$PATH
+
+# --------------------------------------------------------------------------
+# Less pager
+# --------------------------------------------------------------------------
+# litecli uses this
+# Disable line wrap
+export LESS="S"
+
 
 # --------------------------------------------------------------------------
 # Tmux
@@ -47,9 +55,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Git
 # --------------------------------------------------------------------------
 # Enable git autocomplion in bash
-if [ -f $DOTFILES/.git-completion.bash ]; then 
-    bash $DOTFILES/.git-completion.bash 
-fi 
+if [ -f $DOTFILES/.git-completion.bash ]; then
+    bash $DOTFILES/.git-completion.bash
+fi
 # Convenience git alias
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 gitCDInto="-exec sh -c '(cd {} && if [ -d .git ]; then echo {}"
@@ -65,8 +73,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 function fzf-change-directory() {
 	result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
-} 
-function fzf-open-file-in-vim() { 
+}
+function fzf-open-file-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
@@ -82,21 +90,21 @@ function fzf-execute-script() {
 }
 function fzf-search-all-files-and-paste-to-prompt() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
-	if [[ ! -z "$result" ]]; then 
+	if [[ ! -z "$result" ]]; then
 	    tmux set-buffer "$result"
-	    tmux paste-buffer & 
+	    tmux paste-buffer &
     fi
 }
 # Key bindings
 bind -x '"\ed": "fzf-change-directory"'
 bind -x '"\ef": "fzf-open-file-in-vim"'
-bind -x '"\ee": "fzf-execute-script"' 
-bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"' 
+bind -x '"\ee": "fzf-execute-script"'
+bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"'
 
 # --------------------------------------------------------------------------
 # Ranger
 # --------------------------------------------------------------------------
-bind -x '"\er": "ranger"' 
+bind -x '"\er": "ranger"'
 
 # --------------------------------------------------------------------------
 # Prompt
