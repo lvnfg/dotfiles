@@ -72,6 +72,9 @@ pip3 install mssql-cli
 # SQLITE CLI
 pip3 instlal litecli
 
+# Install pyodbc
+bash "$path/install-pyodbc.sh"
+
 # Install Azure tools and services
 bash "$path/install-netcore.sh"
 sudo apt install azure-cli
