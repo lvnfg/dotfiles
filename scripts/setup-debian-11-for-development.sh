@@ -75,6 +75,9 @@ pip3 instlal litecli
 # Install pyodbc
 bash "$path/install-pyodbc.sh"
 
+# Install msodbcsql driver for SQL server
+bash "$path/install-msodbcsql.sh"
+
 # Install Azure tools and services
 bash "$path/install-netcore.sh"
 sudo apt install azure-cli
