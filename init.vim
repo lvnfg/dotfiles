@@ -170,6 +170,7 @@ set nowrap                     " Do not wrap long line
 set hidden                     " Let fzf open file in window even if current buffer has unsaved changes
 set ignorecase                 " Case insensitive matching
 set nofoldenable               " Disable folding by default
+set noequalalways              " Close a split without resizing the other splits
 set splitbelow                 " Always split below
 set splitright                 " Always split to the right
 set mouse=a                    " enable scrolling with mouse
