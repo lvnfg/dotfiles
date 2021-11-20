@@ -1,23 +1,19 @@
 #!/bin/bash
 
-if [[ "$hosttype" = "mac" ]]; then
-    brew install neovim
-else
-    cd ~
-    wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
-    rm nvim.appimage && rm -rf ~/neovim-nightly
-    mv squashfs-root ~/neovim-nightly
+cd ~
+wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
+rm nvim.appimage && rm -rf ~/neovim-nightly
+mv squashfs-root ~/neovim-nightly
 
-    # remove preinstalled neovim if any
-    echo "removing neovim"
-    sudo apt remove neovim
-    sudo rm -f /usr/bin/nvim
+# remove preinstalled neovim if any
+echo "removing neovim"
+sudo apt remove neovim
+sudo rm -f /usr/bin/nvim
 
-    # Must use /usr/local/bin for macos compatibility
-    echo "creating neovim symlink"
-    sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
-fi
+# Must use /usr/local/bin for macos compatibility
+echo "creating neovim symlink"
+sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 
 # install vim-plug
 echo "installing vim plug"
