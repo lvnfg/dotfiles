@@ -1,6 +1,19 @@
 #!/bin/bash
 
 # --------------------------------------------------------------------------
+# Check host type
+# --------------------------------------------------------------------------
+hosttype=""
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     hosttype=linux;;
+    Darwin*)    hosttype=mac;;
+    CYGWIN*)    hosttype=cygwin;;
+    MINGW*)     hosttype=MinGw;;
+    *)          hosttype="UNKNOWN:${unameOut}"
+esac
+
+# --------------------------------------------------------------------------
 # Bash shell
 # --------------------------------------------------------------------------
 # Core directories
