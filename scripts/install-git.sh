@@ -1,7 +1,9 @@
 #!/bin/bash
 
-sudo apt update && sudo apt update -y
-sudo apt install git -y
+if [[ "$hosttype" != "mac" ]]; then
+    sudo apt update && sudo apt update -y
+    sudo apt install git -y
+fi
 
 git config --global core.editor     "nvim"
 git config --global user.name       "van"
