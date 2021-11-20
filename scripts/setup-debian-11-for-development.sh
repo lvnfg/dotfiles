@@ -17,13 +17,8 @@ sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
 
-# Symlink dotfiles
-ln -s -f $DOTFILES/.bashrc        ~/.bashrc
-ln -s -f $DOTFILES/.bashrc        ~/.profile
-ln -s -f $DOTFILES/.inputrc       ~/.inputrc
-ln -s -f $DOTFILES/.tmux.conf     ~/.tmux.conf
-ln -s -f $DOTFILES/.vimrc         ~/.vimrc
-ln -s -f $DOTFILES/litecli/config ~/.config/litecli/config
+# Install dotfiles symlinks
+bash "$path/install-dotfiles-symlinks.sh"
 
 # Install & setup git
 bash "$path/install-git.sh"
