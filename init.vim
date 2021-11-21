@@ -140,10 +140,12 @@ noremap <M-J> :split<cr>
 noremap <M-K> :leftabove split<cr>
 noremap <M-L> :belowright vsplit<cr>
 " Resize split
-noremap <C-h> :vertical resize -5<cr>
-noremap <C-j> :resize -5<cr>
-noremap <C-k> :resize +5<cr>
-noremap <C-l> :vertical resize +5<cr>
+noremap <C-h> :bprevious<cr>
+noremap <C-l> :bnext<cr>
+" noremap <C-h> :vertical resize -5<cr>
+" noremap <C-j> :resize -5<cr>
+" noremap <C-k> :resize +5<cr>
+" noremap <C-l> :vertical resize +5<cr>
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
