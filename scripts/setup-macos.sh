@@ -22,4 +22,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 # symlink nvim config
 echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-ln -s -f ~/repos/dotfiles/init-macos.vim $wdir/init.vim
+ln -s -f ~/repos/dotfiles/init.vim $wdir/init.vim
