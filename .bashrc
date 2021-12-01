@@ -32,12 +32,8 @@ export LESS="S"
 # Tmux
 # --------------------------------------------------------------------------
 export TERM=screen-256color             # Let vim & tmux terminals use colors
-alias tmux="tmux -u"
-alias t0="tmux attach-session -t 0"
-alias t1="tmux attach-session -t 1"
-alias t2="tmux attach-session -t 2"
-alias t3="tmux attach-session -t 3"
-alias t4="tmux attach-session -t 4"
+alias tmux="tmux -u"                    # Force UTF-8 output
+alias ta="tmux attach-session -t"
 
 # --------------------------------------------------------------------------
 # Bat syntax highlighting
