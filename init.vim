@@ -53,6 +53,8 @@ call plug#begin()
         " Airline
         Plug 'vim-airline/vim-airline'
         Plug 'vim-airline/vim-airline-themes'
+        " Enable tabline
+        " let g:airline#extensions#tabline#enabled = 1
 
         " Colorschemes
         Plug 'tomasr/molokai'
@@ -225,10 +227,6 @@ if !exists('g:vscode')
     " set statusline+=%1*\        " Add a space to end of filename
     " exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
     " exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
-    "
-    " Airlineconfiguration
-    " Enable tabline
-    let g:airline#extensions#tabline#enabled = 1
     " File name formatter: default / jsformatter / unique_tail / unique_tail_improved
     let g:airline#extensions#tabline#formatter = 'default'
     " Show buffer number in tabline
