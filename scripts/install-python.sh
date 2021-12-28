@@ -15,7 +15,7 @@ cd $dir
 ./configure --enable-optimizations --enable-loadable-sqlite-extensions
 
 # Required to fix error when importing pandas after building Python from source
-sudo apt-get install -y lzma 
+sudo apt-get install -y lzma
 sudo apt-get install -y liblzma-dev
 sudo configure
 
@@ -25,3 +25,5 @@ sudo make install    # will overwrite system's python3. To install side by side:
 cd ..
 sudo rm -rf $dir
 sudo apt install -y python3-pip
+
+sudo ln -s -f /usr/local/bin/python3 /usr/bin/python

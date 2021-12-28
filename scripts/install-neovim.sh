@@ -20,3 +20,6 @@ echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
 ln -s -f $DOTFILES/init.vim $wdir/init.vim
 ln -s -f ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+
+# Pynvim for nvim's python plugins
+# pip3 install pynvim

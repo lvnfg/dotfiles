@@ -51,15 +51,5 @@ chmod +x $DOTFILES/scope.sh
 # later when available.
 bash "$path/install-bat.sh"
 
-# ----------------------------------------------
-# PYTHON AND DEPENDENT PACKAGES
-# ----------------------------------------------
-# Install python and dependent packages
-bash "$path/install-python.sh"
-sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
-
-# Pynvim for nvim's python plugins
-# pip3 install pynvim
-
 # Allow calling functions by name from command line
 "$@"
