@@ -65,12 +65,6 @@ sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
 # bash "$path/install-ipython.sh"
 
 # ----------------------------------------------
-# SQLITE
-# ----------------------------------------------
-# SQLITE CLI
-pip3 install litecli
-
-# ----------------------------------------------
 # MSSQL
 # ----------------------------------------------
 # Install pyodbc
