@@ -6,7 +6,9 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Source .bashrc to get core directories' location
 source ~/repos/dotfiles/.bashrc
 
-# Install apps from packages managers
+# ----------------------------------------------
+# PACKAGED UTILITIES
+# ----------------------------------------------
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y jq
 sudo apt install -y tmux
@@ -17,17 +19,25 @@ sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
 
-# Install dotfiles symlinks
+# ----------------------------------------------
+# DOTFILES SYMLINKS
+# ----------------------------------------------
 bash "$path/install-dotfiles-symlinks.sh"
 
-# Install & setup git
+# ----------------------------------------------
+# GIT
+# ----------------------------------------------
 bash "$path/install-git.sh"
 
-# Install neovim
-bash "$path/install-neovim.sh"
-bash "$path/install-nodejs.sh"
+# ----------------------------------------------
+# NEOVIM
+# ----------------------------------------------
+# bash "$path/install-neovim.sh"
+# bash "$path/install-nodejs.sh"
 
-# Install ranger
+# ----------------------------------------------
+# RANGER
+# ----------------------------------------------
 sudo apt install ranger
 # Symlink ranger config
 mkdir ~/.config/ranger
@@ -41,45 +51,47 @@ chmod +x $DOTFILES/scope.sh
 # later when available.
 bash "$path/install-bat.sh"
 
+# ----------------------------------------------
+# PYTHON AND DEPENDENT PACKAGES
+# ----------------------------------------------
 # Install python and dependent packages
 bash "$path/install-python.sh"
 sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
+
 # Pynvim for nvim's python plugins
-pip3 install pynvim
+# pip3 install pynvim
+
 # IPython
-pip3 install ipython
-# To enable vim mode, create profile with
-ipython profile create
-# Then open ~/.ipython/profile_default/ipython_config.py and set
-#   c.TerminalInteractiveShell.editing_mode = 'vi'  <-- Set to vi
-# To enable case-insensitive tab completion in ipython shell,
-# open IPython/core/completer.py:
-# try:
-#    import jedi
-#    jedi.settings.case_insensitive_completion = True <-- Set to True
-#    import jedi.api.helpers
-#    import jedi.api.classes
-#    JEDI_INSTALLED = True
+# bash "$path/install-ipython.sh"
 
-# MSSQL-CLI. Require /usr/bin/python symlinked as python3
-pip3 install mssql-cli
-
+# ----------------------------------------------
+# SQLITE
+# ----------------------------------------------
 # SQLITE CLI
-pip3 instlal litecli
+pip3 install litecli
 
+# ----------------------------------------------
+# MSSQL
+# ----------------------------------------------
 # Install pyodbc
-bash "$path/install-pyodbc.sh"
+# bash "$path/install-pyodbc.sh"
 
 # Install msodbcsql driver for SQL server
-bash "$path/install-msodbcsql.sh"
+# bash "$path/install-msodbcsql.sh"
 
+# MSSQL-CLI. Require /usr/bin/python symlinked as python3
+# pip3 install mssql-cli
+
+# ----------------------------------------------
+# AZURE TOOLS AND SERVICES
+# ----------------------------------------------
 # Install Azure tools and services
-bash "$path/install-netcore.sh"
-sudo apt install azure-cli
+# bash "$path/install-netcore.sh"
+# sudo apt install azure-cli
 # Debian 11 required this specific keyvault package from pip
 # and cannot use the version included in the azure-cli apt
-pip3 install azure-keyvault==1.1.0
-bash "$path/install-azure-functions.sh"
+# pip3 install azure-keyvault==1.1.0
+# bash "$path/install-azure-functions.sh"
 
 
 # Allow calling functions by name from command line
