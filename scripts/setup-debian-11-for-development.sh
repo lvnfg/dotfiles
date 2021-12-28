@@ -61,9 +61,6 @@ sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
 
-# IPython
-# bash "$path/install-ipython.sh"
-
 # ----------------------------------------------
 # AZURE TOOLS AND SERVICES
 # ----------------------------------------------
