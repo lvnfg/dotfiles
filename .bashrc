@@ -9,7 +9,8 @@ export DOTFILES="$REPOS/dotfiles"
 # Use vim keybindings in bash prompts
 set -o vi
 # Set default editor
-export VISUAL="vim"
+alias vim="nvim"
+export VISUAL="nvim"
 export EDITOR="vim"
 # Always run ls -al
 alias ls="ls -al -h --color=auto --group-directories-first"
@@ -72,7 +73,7 @@ function fzf-change-directory() {
 }
 function fzf-open-file-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
-    if [[ ! -z "$result" ]]; then vim "$result" ; fi
+    if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 function fzf-execute-script() {
     result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}')

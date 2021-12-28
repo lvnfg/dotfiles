@@ -32,7 +32,7 @@ bash "$path/install-git.sh"
 # ----------------------------------------------
 # NEOVIM
 # ----------------------------------------------
-# bash "$path/install-neovim.sh"
+bash "$path/install-neovim.sh"
 # bash "$path/install-nodejs.sh"
 
 # ----------------------------------------------
