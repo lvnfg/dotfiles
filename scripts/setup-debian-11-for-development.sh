@@ -19,37 +19,12 @@ sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
 
-# ----------------------------------------------
-# DOTFILES SYMLINKS
-# ----------------------------------------------
-bash "$path/install-dotfiles-symlinks.sh"
+source "$path/install-dotfiles-symlinks.sh"
 
-# ----------------------------------------------
-# GIT
-# ----------------------------------------------
-bash "$path/install-git.sh"
-
-# ----------------------------------------------
-# NEOVIM
-# ----------------------------------------------
-bash "$path/install-neovim.sh"
-# bash "$path/install-nodejs.sh"
-
-# ----------------------------------------------
-# RANGER
-# ----------------------------------------------
-sudo apt install ranger
-# Symlink ranger config
-mkdir ~/.config/ranger
-ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
-ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
-# Make scope.sh executable for ranger
-chmod +x $DOTFILES/scope.sh
-
-# Install bat for syntax highlighting. Last version is 0.18.2
-# while Debian only has 0.12.1 even in testing. Switch to apt
-# later when available.
-bash "$path/install-bat.sh"
+source "$path/install-git.sh"
+source "$path/install-neovim.sh"
+source "$path/install-ranger.sh"
+source "$path/install-bat.sh"
 
 # Allow calling functions by name from command line
 "$@"

@@ -23,3 +23,6 @@ ln -s -f ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
+
+# Node js if using nvim as IDE
+# bash "$path/install-nodejs.sh"
