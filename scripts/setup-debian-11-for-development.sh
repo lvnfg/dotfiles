@@ -65,18 +65,6 @@ sudo ln -s -f /usr/local/bin/python3 /usr/bin/python
 # bash "$path/install-ipython.sh"
 
 # ----------------------------------------------
-# MSSQL
-# ----------------------------------------------
-# Install pyodbc
-# bash "$path/install-pyodbc.sh"
-
-# Install msodbcsql driver for SQL server
-# bash "$path/install-msodbcsql.sh"
-
-# MSSQL-CLI. Require /usr/bin/python symlinked as python3
-# pip3 install mssql-cli
-
-# ----------------------------------------------
 # AZURE TOOLS AND SERVICES
 # ----------------------------------------------
 # Install Azure tools and services
