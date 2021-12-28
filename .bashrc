@@ -23,8 +23,9 @@ PATH="$HOME/.local/bin":$PATH
 # Less pager
 # --------------------------------------------------------------------------
 # litecli uses this
-# Disable line wrap
-export LESS="S"
+# S = Disable line wrap
+# R = Allow colors through (fix git diff)
+export LESS="RS"
 
 
 # --------------------------------------------------------------------------
