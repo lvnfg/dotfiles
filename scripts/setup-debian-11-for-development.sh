@@ -6,6 +6,8 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Source .bashrc to get core directories' location
 source ~/repos/dotfiles/.bashrc
 
+source "$path/install-dotfiles-symlinks.sh"
+
 # ----------------------------------------------
 # PACKAGED UTILITIES
 # ----------------------------------------------
@@ -18,8 +20,6 @@ sudo apt install -y curl
 sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
-
-source "$path/install-dotfiles-symlinks.sh"
 
 source "$path/install-git.sh"
 source "$path/install-neovim.sh"
