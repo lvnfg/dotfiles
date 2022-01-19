@@ -23,7 +23,6 @@ sudo apt install -y fzf
 
 source "$path/install-git.sh"
 source "$path/install-neovim.sh"
-source "$path/install-ranger.sh"
 source "$path/install-bat.sh"
 
 # Allow calling functions by name from command line
