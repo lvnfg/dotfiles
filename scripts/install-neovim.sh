@@ -26,3 +26,6 @@ ln -s -f ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Node js if using nvim as IDE
 # bash "$path/install-nodejs.sh"
+
+# For mac
+# brew install neovim
