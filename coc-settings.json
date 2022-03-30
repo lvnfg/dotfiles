@@ -1,0 +1,8 @@
+{
+    "coc.preferences.jumpCommand": ":vsp",
+    "python.pythonPath": "/usr/local/bin/python3.9",
+    "python.analysis.diagnosticSeverityOverrides": {
+           "reportGeneralTypeIssues": "none",
+           "reportOptionalMemberAccess": "none"
+    }
+}

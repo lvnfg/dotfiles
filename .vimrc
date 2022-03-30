@@ -28,12 +28,6 @@ call plug#begin()
         "   Latex      coc-texlab
         " :CocUpdate to update all extensions to the latest version
         " :CocConfig to open coc-settings.json
-        let g:coc_user_config = {}
-        let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsp'
-        let g:coc_user_config['python.pythonPath'] = '/usr/local/bin/python3.9'
-        "{
-            "python.pythonPath": '"/usr/local/bin/python3.9"
-        "}
 
         " Python syntax highlighting
         Plug 'vim-python/python-syntax'
