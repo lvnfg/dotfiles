@@ -16,7 +16,8 @@ call plug#begin()
 
     if !exists('g:vscode') && !has("macunix")
         " coc-nvim
-        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " run install-nodejs.sh for coc-nvim to work
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
         " :CocInstall
         "   Web        coc-css coc-eslint coc-html coc-tsserver
@@ -27,9 +28,9 @@ call plug#begin()
         "   Latex      coc-texlab
         " :CocUpdate to update all extensions to the latest version
         " :CocConfig to open coc-settings.json
-        " let g:coc_user_config = {}
-        " let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsp'
-        " let g:coc_user_config['python.pythonPath'] = '/usr/local/bin/python3.9'
+        let g:coc_user_config = {}
+        let g:coc_user_config['coc.preferences.jumpCommand'] = ':vsp'
+        let g:coc_user_config['python.pythonPath'] = '/usr/local/bin/python3.9'
         "{
             "python.pythonPath": '"/usr/local/bin/python3.9"
         "}
