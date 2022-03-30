@@ -1,12 +1,12 @@
 #!/bin/bash
 
-sudo apt install ranger
 # Symlink ranger config
 mkdir ~/.config/ranger
 ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
 chmod +x $DOTFILES/scope.sh
+sudo apt install ranger -y
 
 # ---------------------------------------------
 # This script is only needed because rnvimr plugin requires Ranger 1.9.3
