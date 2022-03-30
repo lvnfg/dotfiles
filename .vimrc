@@ -49,6 +49,8 @@ call plug#begin()
         " Git integration
         Plug 'airblade/vim-gitgutter'
         let g:gitgutter_map_keys = 0    " Disable all key mappings
+        let g:gitgutter_realtime = 1
+        let g:gitgutter_eager = 1
         "
         " Manage trailing whitespace
         Plug 'ntpeters/vim-better-whitespace'
