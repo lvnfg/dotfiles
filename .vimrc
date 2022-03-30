@@ -130,14 +130,28 @@ if !exists('g:vscode')
     endif
 
     " --------------------------------------------------------------------------
+    " CloseBufferOrWindow
+    " --------------------------------------------------------------------------
+    func CloseBufferOrWindow()
+        let win_count = win_findbuf(bufnr('%'))
+        if len(win_count) > 1
+            call feedkeys(":q\<CR>")
+        else
+            call feedkeys(":bd\<CR>")
+        endif
+    endfunction
+
+    " --------------------------------------------------------------------------
     " Keybindings
     " --------------------------------------------------------------------------
     " Select all
     noremap <leader>a ggVG
     " Close window
-    noremap <M-q> :q<cr>
+    " noremap <M-q> :q<cr>
+    noremap <M-q> :call CloseBufferOrWindow()<cr>
     " close buffer without closing split
-    noremap <M-w> :bd<CR>
+    " noremap <M-w> :bd<CR>
+    noremap <M-w> :call CloseBufferOrWindow()<cr>
     " Save buffer
     noremap <M-s> :w<cr>
     " toggle netrw
