@@ -19,7 +19,8 @@ sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
 ln -s -f $DOTFILES/init.vim $wdir/init.vim
-ln -s -f ~/repos/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+# ln -s -f $DOTFILES/init.lua $wdir/init.lua
+ln -s -f $DOTFILES/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
