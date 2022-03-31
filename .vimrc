@@ -17,7 +17,7 @@ call plug#begin()
     if !exists('g:vscode') && !has("macunix")
         " coc-nvim
         " run install-nodejs.sh for coc-nvim to work
-        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
         " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
         " :CocInstall
         "   Web        coc-css coc-eslint coc-html coc-tsserver
@@ -257,6 +257,7 @@ if !exists('g:vscode')
     noremap <M-Up> :resize +5<cr>
     noremap <M-Right> :vertical resize +5<cr>
     " GoTo code navigation
+    nmap <silent> gR <Plug>(coc-rename)
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
