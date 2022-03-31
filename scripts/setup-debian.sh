@@ -20,6 +20,7 @@ sudo apt install -y curl
 sudo apt install -y bash-completion
 sudo apt install -y tree
 sudo apt install -y fzf
+sudo apt install -y rsync
 
 source "$path/install-git.sh"
 source "$path/install-neovim.sh"
