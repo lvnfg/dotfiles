@@ -129,12 +129,12 @@ call plug#begin()
         " -----------------------------------------------------------------
         " a list of groups can be found at `:help nvim_tree_highlight`
         highlight NvimTreeFolderIcon guibg=blue
-        "highlight NvimTreeGitDirty
-        "highlight NvimTreeGitStaged
-        "highlight NvimTreeGitMerge
-        "highlight NvimTreeGitRenamed
-        "highlight NvimTreeGitNew
-        "highlight NvimTreeGitDeleted
+        " highlight NvimTreeGitDirty
+        " highlight NvimTreeGitStaged
+        " highlight NvimTreeGitMerge
+        " highlight NvimTreeGitRenamed
+        " highlight NvimTreeGitNew
+        " highlight NvimTreeGitDeleted
 
     endif
 
@@ -226,7 +226,7 @@ if !exists('g:vscode')
     " Select all
     noremap <leader>a ggVG
     " Close window
-    noremap <M-q> :q<crr
+    noremap <M-q> :q<cr>
     " close buffer without closing split
     " noremap <M-w> :bd<CR>
     noremap <M-w> :call CloseBufferOrWindow()<cr>
