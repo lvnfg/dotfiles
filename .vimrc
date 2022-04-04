@@ -60,18 +60,6 @@ call plug#begin()
         let g:airline#extensions#tabline#enabled = 1
         " File name formatter: default / jsformatter / unique_tail / unique_tail_improved
         let g:airline#extensions#tabline#formatter = 'unique_tail'
-        " Show buffer number in tabline
-        let g:airline#extensions#tabline#buffer_nr_show = 1
-        " Colorscheme
-        let g:airline_theme='tomorrow'
-        " Configure statusline section
-        let g:airline_section_a = airline#section#create(['%F'])
-        let g:airline_section_b = airline#section#create([])
-        let g:airline_section_c = airline#section#create([])
-        let g:airline_section_x = airline#section#create([])
-        let g:airline_section_y = airline#section#create([])
-        let g:airline_section_z = airline#section#create(['branch'])
-
         " File manager
         Plug 'kyazdani42/nvim-web-devicons'
         Plug 'kyazdani42/nvim-tree.lua'
@@ -151,10 +139,6 @@ call plug#begin()
         " Cobalt 2: https://github.com/lalitmee/cobalt2.nvim
         " One Monokai: https://github.com/cpea2506/one_monokai.nvim
         Plug 'tomasr/molokai'
-
-        " Set colorscheme
-        colorscheme molokai
-
     endif
 
 call plug#end()
@@ -189,6 +173,9 @@ if !exists('g:vscode')
       let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       set termguicolors
     endif
+
+    " Set colorscheme
+    colorscheme molokai
 
     " Predefined colors
     let pure_black   = "#000000"
@@ -331,6 +318,18 @@ if !exists('g:vscode')
     " set statusline+=%1*\        " Add a space to end of filename
     " exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
     " exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
+    " Show buffer number in tabline
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+    " Colorscheme
+    let g:airline_theme='tomorrow'
+    " Configure statusline section
+    let g:airline_section_a = airline#section#create(['%F'])
+    let g:airline_section_b = airline#section#create([])
+    let g:airline_section_c = airline#section#create([])
+    let g:airline_section_x = airline#section#create([])
+    let g:airline_section_y = airline#section#create([])
+    let g:airline_section_z = airline#section#create(['branch'])
+
 
 endif
 
