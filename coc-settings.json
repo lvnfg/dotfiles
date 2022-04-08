@@ -2,6 +2,8 @@
     "coc.preferences.jumpCommand": ":vsp",
     "python.pythonPath": "/usr/local/bin/python3.9",
     "python.analysis.diagnosticSeverityOverrides": {
+           "reportUnboundVariable": "none",
+           "reportOptionalSubscript": "none",
            "reportGeneralTypeIssues": "none",
            "reportOptionalMemberAccess": "none"
     }
