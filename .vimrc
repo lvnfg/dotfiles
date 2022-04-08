@@ -15,9 +15,9 @@ call plug#begin()
     nmap ga <Plug>(EasyAlign)
 
     if !exists('g:vscode') && !has("macunix")
-        " coc-nvim
-        " run install-nodejs.sh for coc-nvim to work
-        " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+        " Run install-nodejs.sh for coc-nvim to work
         " https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
         " :CocInstall
         "   Web        coc-css coc-eslint coc-html coc-tsserver
