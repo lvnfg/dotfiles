@@ -75,6 +75,10 @@ function fzf-open-file-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
+function fzf-git-diff-file-in-vim() {
+	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+    if [[ ! -z "$result" ]]; then git difftool "$result" ; fi
+}
 function fzf-execute-script() {
     result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}')
     if [[ -z "$result" ]]; then return ; fi
@@ -94,6 +98,7 @@ function fzf-search-all-files-and-paste-to-prompt() {
 }
 # Key bindings
 bind -x '"\ed": "fzf-change-directory"'
+bind -x '"\eD": "fzf-git-diff-file-in-vim"'
 bind -x '"\ef": "fzf-open-file-in-vim"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"'
