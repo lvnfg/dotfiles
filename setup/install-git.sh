@@ -10,4 +10,10 @@ git config --global format.graph
 gitFormatFull="%C(auto)%h %d%Creset %s - %Cgreen%ad%Creset %aN <%aE>"
 gitFormatShort="%C(auto)%h %d%Creset %s>"
 gitFormatString="$gitFormatShort"
-git config --global format.pretty format:"$gitFormatString"
+git config format.pretty format:"$gitFormatString"
+
+# Merge tool
+git config --global diff.tool "nvimdiff"
+git config --global difftool.prompt false
+git config --global difftool.nvimdiff.cmd "nvim -d \"\$LOCAL\" \"\$REMOTE\""
+git config --global alias.d difftool
