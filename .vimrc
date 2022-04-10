@@ -208,7 +208,7 @@ if !exists('g:vscode')
         if len(win_count) > 1
             call feedkeys(":q\<CR>")
         else
-            call feedkeys(":bd\<CR>")
+            call feedkeys(":bp|bd#\<CR>")
         endif
     endfunction
 
