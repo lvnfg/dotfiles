@@ -63,12 +63,10 @@ call plug#begin()
         " File manager
         Plug 'kyazdani42/nvim-web-devicons'
         Plug 'kyazdani42/nvim-tree.lua'
-        let g:nvim_tree_gitignore = 0   " TODO: moved to setup. Source .vimrc in vim to see warning and follow the steps there.
-        let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
         let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-        let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+        let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
         let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-        let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
+        let g:nvim_tree_add_trailing = 0 "0 by default, append a trailing slash to folder names
         let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
         let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
         let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
@@ -77,7 +75,7 @@ call plug#begin()
         let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
         let g:nvim_tree_show_icons = {
             \ 'git': 1,
-            \ 'folders': 0,
+            \ 'folders': 1,
             \ 'files': 1,
             \ 'folder_arrows': 0,
             \ }
@@ -146,7 +144,27 @@ call plug#end()
 " Call lua scripts here
 lua <<EOF
     require'nvim-web-devicons'.setup()
-    require'nvim-tree'.setup()
+    require'nvim-tree'.setup {
+        git = {
+            enable = true,
+            ignore = false,
+            timeout = 400,
+        },
+        renderer = {
+            indent_markers = {enable = true, icons = {
+                corner = "└ ",
+                edge = "│ ",
+                none = "  ",
+            },},
+        },
+        view = {
+            width = 50,
+            height = 30,
+            side = "left",
+            preserve_window_proportions = false,
+            number = false,
+        }
+    }
 EOF
 
 " --------------------------------------------------------------------------
