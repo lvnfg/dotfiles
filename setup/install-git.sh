@@ -17,3 +17,6 @@ git config --global diff.tool "nvimdiff"
 git config --global difftool.prompt false
 git config --global difftool.nvimdiff.cmd "nvim -d \"\$LOCAL\" \"\$REMOTE\""
 git config --global alias.d difftool
+
+# Pull
+git config --global pull.ff only
