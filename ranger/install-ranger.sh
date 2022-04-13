@@ -2,10 +2,10 @@
 
 # Symlink ranger config
 mkdir ~/.config/ranger
-ln -s -f $DOTFILES/rc.conf	    ~/.config/ranger/rc.conf
-ln -s -f $DOTFILES/scope.sh	    ~/.config/ranger/scope.sh
+ln -s -f $DOTFILES/ranger/rc.conf	    ~/.config/ranger/rc.conf
+ln -s -f $DOTFILES/ranger/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
-chmod +x $DOTFILES/scope.sh
+chmod +x $DOTFILES/ranger/scope.sh
 sudo apt install ranger -y
 
 # Install devicons
