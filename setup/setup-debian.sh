@@ -22,8 +22,11 @@ sudo apt install -y tree
 sudo apt install -y fzf
 sudo apt install -y rsync
 
+# Install bat
+
 source "$path/install-git.sh"
 source "$path/install-neovim.sh"
+source "$path/install-bat.sh"
 
 # Allow calling functions by name from command line
 "$@"
