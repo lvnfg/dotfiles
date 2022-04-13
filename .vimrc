@@ -1,5 +1,33 @@
 " --------------------------------------------------------------------------
-" Plugins
+" Enable true colors
+" --------------------------------------------------------------------------
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" Predefined color values
+let pure_black   = "#000000"
+let black        = "#101010"
+let gray         = "#303030"
+let blue         = "#00afff"
+let white        = "#e4e4e4"
+let yellow       = "#ffff00"
+let pink         = "#ff00af"
+let bright_green = "#5fff00"
+let light_gray   = "#8a8a8a"
+let white        = "#e4e4e4"
+let dark_gray    = "#080808"
+let red          = "#d70000"
+let white        = "#e4e4e4"
+let light_blue   = "#66d9ef"
+let deep_blue    = "#070319"
+let deep_green   = "#020C05"
+
+
+" --------------------------------------------------------------------------
+" Install Plug and plugins automatically on first boot
 " --------------------------------------------------------------------------
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -60,6 +88,8 @@ call plug#begin()
         let g:airline#extensions#tabline#enabled = 1
         " File name formatter: default / jsformatter / unique_tail / unique_tail_improved
         let g:airline#extensions#tabline#formatter = 'unique_tail'
+        let g:airline#extensions#tabline#buffer_nr_show = 1
+
         " File manager
         Plug 'kyazdani42/nvim-web-devicons'
         Plug 'kyazdani42/nvim-tree.lua'
@@ -124,7 +154,7 @@ call plug#begin()
         " NvimTreeCollapseKeepBuffers
         " -----------------------------------------------------------------
         " a list of groups can be found at `:help nvim_tree_highlight`
-        highlight NvimTreeFolderIcon guibg=blue
+
         " highlight NvimTreeGitDirty
         " highlight NvimTreeGitStaged
         " highlight NvimTreeGitMerge
@@ -137,11 +167,15 @@ call plug#begin()
         " Cobalt 2: https://github.com/lalitmee/cobalt2.nvim
         " One Monokai: https://github.com/cpea2506/one_monokai.nvim
         Plug 'tomasr/molokai'
+
     endif
 
 call plug#end()
 
-" Call lua scripts here
+
+" --------------------------------------------------------------------------
+" Call lua scripts
+" --------------------------------------------------------------------------
 lua <<EOF
     require'nvim-web-devicons'.setup()
     require'nvim-tree'.setup {
@@ -158,7 +192,7 @@ lua <<EOF
             },},
         },
         view = {
-            width = 50,
+            width = 40,
             height = 30,
             side = "left",
             preserve_window_proportions = false,
@@ -166,6 +200,24 @@ lua <<EOF
         }
     }
 EOF
+
+" --------------------------------------------------------------------------
+" Set colorscheme
+" --------------------------------------------------------------------------
+colorscheme molokai
+
+" Override colorscheme
+let scheme = get(g:, 'colors_name', 'default')
+exe 'highlight Normal     guibg=' . pure_black
+exe 'highlight SignColumn guibg=' . pure_black
+exe 'highlight LineNr     guibg=' . pure_black
+
+" Nvim-tree.lua plugin color override
+highlight NvimTreeFolderName gui=italic
+highlight NvimTreeRootFolder gui=italic
+highlight NvimTreeEmptyFolderName gui=italic
+highlight NvimTreeOpenedFolderName gui=italic
+
 
 " --------------------------------------------------------------------------
 " Common settings for both vscode and vim/nvim
@@ -182,41 +234,6 @@ noremap <Esc> :noh<cr>
 " VIM/NVIM only settings
 " --------------------------------------------------------------------------
 if !exists('g:vscode')
-    " --------------------------------------------------------------------------
-    " Colorscheme customization
-    " --------------------------------------------------------------------------
-    " Enable true colors
-    if exists('+termguicolors')
-      let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-      let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-      set termguicolors
-    endif
-
-    " Set colorscheme
-    colorscheme molokai
-
-    " Predefined colors
-    let pure_black   = "#000000"
-    let black        = "#101010"
-    let gray         = "#303030"
-    let blue         = "#00afff"
-    let white        = "#e4e4e4"
-    let yellow       = "#ffff00"
-    let pink         = "#ff00af"
-    let bright_green = "#5fff00"
-    let light_gray   = "#8a8a8a"
-    let white        = "#e4e4e4"
-    let dark_gray    = "#080808"
-    let red          = "#d70000"
-    let white        = "#e4e4e4"
-    let light_blue   = "#66d9ef"
-    let deep_blue    = "#070319"
-    let deep_green   = "#020C05"
-    " Override colorscheme
-    let scheme = get(g:, 'colors_name', 'default')
-    exe 'highlight Normal     guibg=' . pure_black
-    exe 'highlight SignColumn guibg=' . pure_black
-    exe 'highlight LineNr     guibg=' . pure_black
 
     " --------------------------------------------------------------------------
     " CloseBufferOrWindow
@@ -337,17 +354,15 @@ if !exists('g:vscode')
     " exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
     " exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
     " Show buffer number in tabline
-    let g:airline#extensions#tabline#buffer_nr_show = 1
-    " Colorscheme
+    " Arilne Colorscheme
     let g:airline_theme='tomorrow'
-    " Configure statusline section
+    " Airline Configure statusline section
     let g:airline_section_a = airline#section#create(['%F'])
     let g:airline_section_b = airline#section#create([])
     let g:airline_section_c = airline#section#create([])
     let g:airline_section_x = airline#section#create([])
     let g:airline_section_y = airline#section#create([])
     let g:airline_section_z = airline#section#create(['branch'])
-
 
 endif
 
