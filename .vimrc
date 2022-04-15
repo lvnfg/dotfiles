@@ -127,7 +127,7 @@ call plug#begin()
             \   'renamed': "R",
             \   'untracked': "?",
             \   'deleted': "D",
-            \   'ignored': "◌"
+            \   'ignored': ""
             \   },
             \ 'folder': {
             \   'arrow_open': "",
