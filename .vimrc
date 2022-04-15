@@ -82,13 +82,13 @@ call plug#begin()
         let g:strip_whitespace_confirm=0
 
         " Airline
-        Plug 'vim-airline/vim-airline'
-        Plug 'vim-airline/vim-airline-themes'
+        " Plug 'vim-airline/vim-airline'
+        " Plug 'vim-airline/vim-airline-themes'
         " Enable tabline
-        let g:airline#extensions#tabline#enabled = 1
+        " let g:airline#extensions#tabline#enabled = 1
         " File name formatter: default / jsformatter / unique_tail / unique_tail_improved
-        let g:airline#extensions#tabline#formatter = 'unique_tail'
-        let g:airline#extensions#tabline#buffer_nr_show = 1
+        " let g:airline#extensions#tabline#formatter = 'unique_tail'
+        " let g:airline#extensions#tabline#buffer_nr_show = 1
 
         " File manager
         Plug 'kyazdani42/nvim-web-devicons'
@@ -348,21 +348,15 @@ if !exists('g:vscode')
     " --------------------------------------------------------------------------
     set laststatus=2            " 0 = hide, 2 = show statusline
     set noshowmode              " Hide mode indicator
-    " set statusline=             " Prevent duplicating info when sourcing in place
-    " set statusline+=%1*\ %<%F   " %F for full file path, set background color
-    " set statusline+=%1*\        " Add a space to end of filename
+    set statusline=             " Prevent duplicating info when sourcing in place
+    set statusline+=%1*\ %<%F   " %F for full file path, set background color
+    set statusline+=%1*\        " Add a space to end of filename
+    " Simple colored file name:
+    exe 'highlight User1 guifg=' . blue . ' cterm=bold gui=bold'
+    " Colored status bar:
     " exe 'highlight User1 guibg=' . blue . ' guifg=' . pure_black . ' cterm=bold gui=bold'
     " exe 'highlight StatusLineNC guibg=' . black . 'guifg=' . light_gray . ' cterm=None gui=None'
-    " Show buffer number in tabline
-    " Arilne Colorscheme
-    let g:airline_theme='tomorrow'
-    " Airline Configure statusline section
-    let g:airline_section_a = airline#section#create(['%F'])
-    let g:airline_section_b = airline#section#create([])
-    let g:airline_section_c = airline#section#create([])
-    let g:airline_section_x = airline#section#create([])
-    let g:airline_section_y = airline#section#create([])
-    let g:airline_section_z = airline#section#create(['branch'])
+
 
 endif
 
