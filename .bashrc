@@ -68,15 +68,15 @@ alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull
 export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 function fzf-change-directory() {
-	result=$(find ~ -type d 2> /dev/null | grep -v -e ".git" | fzf)
+	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
 function fzf-open-file-in-vim() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 function fzf-git-diff-file-in-vim() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then git difftool "$result" ; fi
 }
 function fzf-execute-script() {
