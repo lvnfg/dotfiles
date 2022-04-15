@@ -9,4 +9,4 @@ ln -s -f "$path/.tmux.conf" ~/.tmux.conf
 # sudo apt install tmux -y
 
 # Install script for tmux
-
+sudo apt install tmux/bullseye-backports -y
