@@ -271,11 +271,10 @@ if !exists('g:vscode')
     noremap <M-f> :Files<cr>
     " Git
     noremap <M-g> :GFiles?<cr>
-    noremap <M-G> :!git<Space>
     noremap <M-c> :BCommits<cr>
     noremap <M-C> :Commits<cr>
     " Buffer management
-    noremap <M-F> :Buffers<cr>
+    noremap <M-b> :Buffers<cr>
     noremap <C-h> :bprevious<cr>
     noremap <C-l> :bnext<cr>
     " Tmux integrated move between splits
