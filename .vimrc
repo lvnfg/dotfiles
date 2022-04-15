@@ -275,9 +275,11 @@ if !exists('g:vscode')
     noremap <M-J> :split<cr>
     noremap <M-K> :leftabove split<cr>
     noremap <M-L> :belowright vsplit<cr>
-    " Resize split
+    " Buffer management
+    noremap <M-F> :Buffers<cr>
     noremap <C-h> :bprevious<cr>
     noremap <C-l> :bnext<cr>
+    " Resize split
     noremap <M-Left> :vertical resize -5<cr>
     noremap <M-Down> :resize -5<cr>
     noremap <M-Up> :resize +5<cr>
