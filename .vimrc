@@ -265,6 +265,15 @@ if !exists('g:vscode')
     noremap <M-r> :NvimTreeRefresh<cr>
     " Invoke FZF
     noremap <M-f> :Files<cr>
+    " Git
+    noremap <M-g> :GFiles?<cr>
+    noremap <M-G> :!git<Space>
+    noremap <M-c> :BCommits<cr>
+    noremap <M-C> :Commits<cr>
+    " Buffer management
+    noremap <M-F> :Buffers<cr>
+    noremap <C-h> :bprevious<cr>
+    noremap <C-l> :bnext<cr>
     " Tmux integrated move between splits
     nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
     nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
@@ -275,10 +284,6 @@ if !exists('g:vscode')
     noremap <M-J> :split<cr>
     noremap <M-K> :leftabove split<cr>
     noremap <M-L> :belowright vsplit<cr>
-    " Buffer management
-    noremap <M-F> :Buffers<cr>
-    noremap <C-h> :bprevious<cr>
-    noremap <C-l> :bnext<cr>
     " Resize split
     noremap <M-Left> :vertical resize -5<cr>
     noremap <M-Down> :resize -5<cr>
