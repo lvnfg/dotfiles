@@ -247,6 +247,10 @@ if !exists('g:vscode')
         endif
     endfunction
 
+    func RefreshAll()
+        call feedkeys(":NvimTreeRefresh\<CR>")
+    endfunction
+
     " --------------------------------------------------------------------------
     " Keybindings
     " --------------------------------------------------------------------------
@@ -262,7 +266,7 @@ if !exists('g:vscode')
     " Toggle file explorer
     " toggle netrw: noremap <M-d> :Lexplore<cr>
     noremap <M-d> :NvimTreeToggle<cr>
-    noremap <M-r> :NvimTreeRefresh<cr>
+    noremap <M-r> :call RefreshAll()<cr>
     " Invoke FZF
     noremap <M-f> :Files<cr>
     " Git
