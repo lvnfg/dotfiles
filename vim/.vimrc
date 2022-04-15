@@ -229,7 +229,6 @@ let mapleader="\<Space>"
 " Toggle nohighlight with Esc
 noremap <Esc> :noh<cr>
 
-"
 " --------------------------------------------------------------------------
 " VIM/NVIM only settings
 " --------------------------------------------------------------------------
@@ -298,6 +297,11 @@ if !exists('g:vscode')
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
+
+    " --------------------------------------------------------------------------
+    " Terminal
+    " --------------------------------------------------------------------------
+    autocmd TermOpen * setlocal nonumber norelativenumber   " Hide number
 
     " --------------------------------------------------------------------------
     " Editor
