@@ -1,8 +1,11 @@
 #!/bin/bash
 
+path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 pip3 install ipython
 ipython profile create
-ln -s -f $DOTFILES/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+ln -s -f $path/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
 # To enable vim mode
 # Then open ~/.ipython/profile_default/ipython_config.py and set
 #   c.TerminalInteractiveShell.editing_mode = 'vi'  <-- Set to vi

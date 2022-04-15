@@ -1,5 +1,8 @@
 #!/bin/bash
 
+path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ln -s -f $path/.vimrc ~/.vimrc
+
 cd ~
 wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
 chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
@@ -18,9 +21,9 @@ sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 # symlink nvim config
 echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-ln -s -f $DOTFILES/vim/init.vim $wdir/init.vim
+ln -s -f $path/init.vim $wdir/init.vim
 # ln -s -f $DOTFILES/init.lua $wdir/init.lua
-ln -s -f $DOTFILES/vim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s -f $path/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Pynvim for nvim's python plugins
 # pip3 install pynvim

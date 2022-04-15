@@ -5,7 +5,6 @@
 # --------------------------------------------------------------------------
 # Core directories
 export REPOS="$HOME/repos"
-export DOTFILES="$REPOS/dotfiles"
 # Use vim keybindings in bash prompts
 set -o vi
 # Set default editor
@@ -14,8 +13,6 @@ export VISUAL="nvim"
 export EDITOR="vim"
 # Always run ls -al
 alias ls="ls -al -h --color=auto --group-directories-first"
-# Enable bash completion
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
 # Add ~/.local/bin to path for mssql-cli, ptpython, and other pip executatbles.
 # Add at beginning since often local packages are meant to replace system defaults.
 PATH="$HOME/.local/bin":$PATH
@@ -51,10 +48,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # --------------------------------------------------------------------------
 # Git
 # --------------------------------------------------------------------------
-# Enable git autocomplion in bash
-if [ -f $DOTFILES/.git-completion.bash ]; then
-    bash $DOTFILES/.git-completion.bash
-fi
 # Convenience git alias
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
 gitCDInto="-exec sh -c '(cd {} && if [ -d .git ]; then echo {}"
