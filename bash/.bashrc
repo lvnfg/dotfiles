@@ -68,10 +68,6 @@ function fzf-open-file-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
-function fzf-git-diff-file-in-vim() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
-    if [[ ! -z "$result" ]]; then git difftool "$result" ; fi
-}
 function fzf-execute-script() {
     result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}')
     if [[ -z "$result" ]]; then return ; fi
@@ -89,19 +85,22 @@ function fzf-search-all-files-and-paste-to-prompt() {
 	    tmux paste-buffer &
     fi
 }
-function fzf-compare-2-files-in-vim() {
+function fzf-difftool() {
 	file1=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
 	if [[ ! -z "$file1" ]]; then
 	    file2=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	    if [[ ! -z "$file1" && ! -z "$file2" ]]; then
+	        nvim -d "$file1" "$file2"
+	    elif [[ ! -z "$file1" && -z "$file2" ]]; then
+            path="$(cd "$(dirname "$file1")" && pwd)"
+            cd "$path"
+            git difftool "$file1"
+        fi
 	fi
-	if [[ ! -z "$file1" && ! -z "$file2" ]]; then
-	    nvim -d "$file1" "$file2"
-    fi
 }
 # Key bindings
 bind -x '"\ed": "fzf-change-directory"'
-bind -x '"\eD": "fzf-git-diff-file-in-vim"'
-bind -x '"\eC": "fzf-compare-2-files-in-vim"'
+bind -x '"\eD": "fzf-difftool"'
 bind -x '"\ef": "fzf-open-file-in-vim"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"'
