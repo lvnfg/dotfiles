@@ -89,9 +89,19 @@ function fzf-search-all-files-and-paste-to-prompt() {
 	    tmux paste-buffer &
     fi
 }
+function fzf-compare-2-files-in-vim() {
+	file1=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	if [[ ! -z "$file1" ]]; then
+	    file2=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	fi
+	if [[ ! -z "$file1" && ! -z "$file2" ]]; then
+	    nvim -d "$file1" "$file2"
+    fi
+}
 # Key bindings
 bind -x '"\ed": "fzf-change-directory"'
 bind -x '"\eD": "fzf-git-diff-file-in-vim"'
+bind -x '"\eC": "fzf-compare-2-files-in-vim"'
 bind -x '"\ef": "fzf-open-file-in-vim"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"'
