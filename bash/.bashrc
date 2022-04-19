@@ -60,11 +60,11 @@ alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull
 # --------------------------------------------------------------------------
 export FZF_DEFAULT_COMMAND="find ~ -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-function fzf-change-directory() {
+function fzf-directory-change() {
 	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
-function fzf-open-file-in-vim() {
+function fzf-file-open-in-vim() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
@@ -78,7 +78,7 @@ function fzf-execute-script() {
         python3 "$result"
     fi
 }
-function fzf-search-all-files-and-paste-to-prompt() {
+function fzf-paste-file-path-to-prompt() {
 	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
 	if [[ ! -z "$result" ]]; then
 	    tmux set-buffer "$result"
@@ -98,12 +98,19 @@ function fzf-difftool() {
         fi
 	fi
 }
+function fzf-git-status() {
+    git status -s | fzf --preview 'git diff --color=always {+2}'
+    # Note: since git status ouput [M {filename}], the {+2} option is needed to tell fzf
+    # to split the filename into 2 parts, then use the 2nd part to use with git diff
+}
+
 # Key bindings
-bind -x '"\ed": "fzf-change-directory"'
+bind -x '"\ed": "fzf-directory-change"'
 bind -x '"\eD": "fzf-difftool"'
-bind -x '"\ef": "fzf-open-file-in-vim"'
 bind -x '"\ee": "fzf-execute-script"'
-bind -x '"\eg": "fzf-search-all-files-and-paste-to-prompt"'
+bind -x '"\ef": "fzf-file-open-in-vim"'
+bind -x '"\eg": "fzf-git-status"'
+bind -x '"\ep": "fzf-paste-file-path-to-prompt"'
 
 # --------------------------------------------------------------------------
 # Ranger
