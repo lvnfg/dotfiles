@@ -58,7 +58,7 @@ alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull
 # --------------------------------------------------------------------------
 # FZF
 # --------------------------------------------------------------------------
-export FZF_DEFAULT_COMMAND="find ~ | grep -v -e '\.git' -e '\.swp'"
+export FZF_DEFAULT_COMMAND="find ~ -type d 2> | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 function fzf-change-directory() {
 	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf)
