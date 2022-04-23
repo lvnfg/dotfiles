@@ -25,6 +25,23 @@ let light_blue   = "#66d9ef"
 let deep_blue    = "#070319"
 let deep_green   = "#020C05"
 
+" TODO: Install nvim 0.7
+" TODO: Transition to lua:
+"   https://github.com/wbthomason/packer.nvim
+"   https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
+" TODO: Find a lua plugin manager or implement myself
+"   https://github.com/savq/paq-nvim/           <-- Extremely simple with less than 300 lines of code
+"   https://github.com/wbthomason/packer.nvim   <--- Everyone uses it
+" TODO: Find a good colorscheme with treesitter support, clone and customize
+"   https://github.com/catppuccin/nvim
+"   https://github.com/srcery-colors/srcery-vim
+"   https://www.nordtheme.com
+"   https://github.com/ful1e5/onedark.nvim
+"   https://github.com/EdenEast/nightfox.nvim
+"   https://rigel.netlify.app/#terminal
+"   https://github.com/andreypopp/vim-colors-plain      <-- Pretty interesting
+"   https://github.com/mcchrish/zenbones.nvim
+"   https://github.com/romgrk/doom-one.vim
 
 " --------------------------------------------------------------------------
 " Install Plug and plugins automatically on first boot
