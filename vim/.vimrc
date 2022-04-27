@@ -161,11 +161,17 @@ if !exists('g:vscode')
     " CloseBufferOrWindow
     " --------------------------------------------------------------------------
     func CloseBufferOrWindow()
-        let win_count = win_findbuf(bufnr('%'))
-        if len(win_count) > 1
-            call feedkeys(":q\<CR>")
-        else
+        "let window_count = win_findbuf(bufnr('%'))
+        "if len(window_count) > 1
+        "    call feedkeys(":q\<CR>")
+        "else
+        "    call feedkeys(":bp|bd#\<CR>")
+        "endif
+        let buffer_count = len(getbufinfo({'buflisted':1}))
+        if buffer_count > 1
             call feedkeys(":bp|bd#\<CR>")
+        else
+            call feedkeys(":q\<CR>")
         endif
     endfunction
 
