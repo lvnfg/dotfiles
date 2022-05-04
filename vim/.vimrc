@@ -98,15 +98,6 @@ call plug#begin()
         let g:strip_whitespace_on_save=1
         let g:strip_whitespace_confirm=0
 
-        " Airline
-        " Plug 'vim-airline/vim-airline'
-        " Plug 'vim-airline/vim-airline-themes'
-        " Enable tabline
-        " let g:airline#extensions#tabline#enabled = 1
-        " File name formatter: default / jsformatter / unique_tail / unique_tail_improved
-        " let g:airline#extensions#tabline#formatter = 'unique_tail'
-        " let g:airline#extensions#tabline#buffer_nr_show = 1
-
         " Colorschemes
         " Notable schemes: https://github.com/rockerBOO/awesome-neovim#tree-sitter-supported-colorscheme
         " Cobalt 2: https://github.com/lalitmee/cobalt2.nvim
@@ -134,13 +125,6 @@ let scheme = get(g:, 'colors_name', 'default')
 exe 'highlight Normal     guibg=' . pure_black
 exe 'highlight SignColumn guibg=' . pure_black
 exe 'highlight LineNr     guibg=' . pure_black
-
-" Nvim-tree.lua plugin color override
-highlight NvimTreeFolderName gui=italic
-highlight NvimTreeRootFolder gui=italic
-highlight NvimTreeEmptyFolderName gui=italic
-highlight NvimTreeOpenedFolderName gui=italic
-
 
 " --------------------------------------------------------------------------
 " Common settings for both vscode and vim/nvim
@@ -182,7 +166,7 @@ if !exists('g:vscode')
     endfunction
 
     func RefreshAll()
-        call feedkeys(":NvimTreeRefresh\<CR>")
+        call feedkeys(":GitGutterAll\<CR>")
     endfunction
 
     " --------------------------------------------------------------------------
