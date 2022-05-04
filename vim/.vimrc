@@ -168,7 +168,8 @@ if !exists('g:vscode')
         "    call feedkeys(":bp|bd#\<CR>")
         "endif
         let buffer_count = len(getbufinfo({'buflisted':1}))
-        if buffer_count > 1
+        let buffer_opened_split_count = len(win_findbuf(bufnr('%')))
+        if buffer_count > 1 && buffer_opened_split_count == 1
             call feedkeys(":bp|bd#\<CR>")
         else
             call feedkeys(":q\<CR>")
