@@ -160,18 +160,23 @@ if !exists('g:vscode')
     " --------------------------------------------------------------------------
     " CloseBufferOrWindow
     " --------------------------------------------------------------------------
-    func CloseBufferOrWindow()
-        "let window_count = win_findbuf(bufnr('%'))
-        "if len(window_count) > 1
-        "    call feedkeys(":q\<CR>")
-        "else
-        "    call feedkeys(":bp|bd#\<CR>")
-        "endif
+    func CloseBuffer()
         let buffer_count = len(getbufinfo({'buflisted':1}))
-        let buffer_opened_split_count = len(win_findbuf(bufnr('%')))
-        if buffer_count > 1 && buffer_opened_split_count == 1
-            call feedkeys(":bp|bd#\<CR>")
+        " If more than 1 buffers are open
+        if buffer_count > 1
+            let number_of_split_current_buffer_is_opened_in = len(win_findbuf(bufnr('%')))
+            " If current buffer is opened in another split
+            if number_of_split_current_buffer_is_opened_in > 1
+                " Close the split
+                call feedkeys(":q\<CR>")
+            " If current buffer is only opened in this split
+            else
+                " Delete current buffer and populate the split with another
+                call feedkeys(":bp|bd#\<CR>")
+            endif
+        " If only 1 buffer is open
         else
+            " Close the split
             call feedkeys(":q\<CR>")
         endif
     endfunction
@@ -189,7 +194,7 @@ if !exists('g:vscode')
     noremap <M-q> :q<cr>
     " close buffer without closing split
     " noremap <M-w> :bd<CR>
-    noremap <M-w> :call CloseBufferOrWindow()<cr>
+    noremap <M-w> :call CloseBuffer()<cr>
     " Save buffer
     noremap <M-s> :w<cr>
     " Toggle file explorer
