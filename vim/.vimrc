@@ -150,27 +150,26 @@ if !exists('g:vscode')
     " --------------------------------------------------------------------------
     func CloseBuffer()
         let buffer_count = len(getbufinfo({'buflisted':1}))
+        let number_of_split_current_buffer_is_opened_in = len(win_findbuf(bufnr('%')))
         " If more than 1 buffers are open
         if buffer_count > 1
-            let number_of_split_current_buffer_is_opened_in = len(win_findbuf(bufnr('%')))
-            " If current buffer is opened in another split
             if number_of_split_current_buffer_is_opened_in > 1
-                " Close the split
-                call feedkeys(":q\<CR>")
-            " If current buffer is only opened in this split
+                :q      " Quit f current buffer is opened in another split
             else
-                " Delete current buffer and populate the split with another
-                call feedkeys(":bp|bd#\<CR>")
+                :bp|bd# " Delete current buffer and populate the split with another if current buffer is only opened in this split
             endif
-        " If only 1 buffer is open
         else
-            " Close the split
-            call feedkeys(":q\<CR>")
+            :q          " Quit if only 1 buffer is open
         endif
     endfunction
 
+    func SaveAs()
+        let dir = expand('%:p:h')
+        call feedkeys(':saveas ' . dir . '/')
+    endfunction
+
     func RefreshAll()
-        call feedkeys(":GitGutterAll\<CR>")
+        :GitGutterAll
     endfunction
 
     " --------------------------------------------------------------------------
@@ -185,6 +184,7 @@ if !exists('g:vscode')
     noremap <M-w> :call CloseBuffer()<cr>
     " Save buffer
     noremap <M-s> :w<cr>
+    noremap <M-S> :call SaveAs()<cr>
     " Toggle file explorer
     " toggle netrw: noremap <M-d> :Lexplore<cr>
     noremap <M-d> :NvimTreeToggle<cr>
