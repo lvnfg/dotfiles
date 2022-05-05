@@ -154,7 +154,7 @@ if !exists('g:vscode')
         " If more than 1 buffers are open
         if buffer_count > 1
             if number_of_split_current_buffer_is_opened_in > 1
-                :q      " Quit f current buffer is opened in another split
+                :bp
             else
                 :bp|bd# " Delete current buffer and populate the split with another if current buffer is only opened in this split
             endif
