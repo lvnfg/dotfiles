@@ -1,9 +1,3 @@
-# Quick config: zxcVm1t0
-# Z to change color
-# W to save config to toprc
-# M to sort by memory
-# O to sort by arbitrary column
-
 top's Config File (Linux processes with windows)
 Id:j, Mode_altscr=0, Mode_irixps=1, Delay_time=3.0, Curwin=0
 Def	fieldscur=¥¨³´»½ÀÄ·º¹Å&')*+,-./012568<>?ABCFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz
