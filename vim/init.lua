@@ -18,7 +18,7 @@ o.mouse         = 'a'
 o.syntax        = 'on'
 o.termguicolors = true
 o.wrap          = false
-o.hidden        = true	-- Allow changing buffer before saving
+o.hidden        = true	  -- Allow changing buffer before saving
 o.ignorecase    = true    -- Case insensitive search
 o.foldenable    = false   -- Disable folding
 o.equalalways   = false   -- Close a split without resizing other split
@@ -44,7 +44,7 @@ o.showmode = False          -- Hide mode indicator
 function s_line()
     local sline = ''
     sline = sline .. '%1*%<%F'   -- %F for full file path, set background color
-    sline = sline .. '%1*'        -- Add a space to end of filename
+    sline = sline .. '%1*'       -- Add a space to end of filename
     return sline
 end
 vim.cmd[[ set statusline=%!luaeval('s_line()') ]]
