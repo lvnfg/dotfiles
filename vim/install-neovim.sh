@@ -1,7 +1,6 @@
 #!/bin/bash
 
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ln -s -f $path/.vimrc ~/.vimrc
 
 cd ~
 wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
@@ -21,15 +20,17 @@ sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 # symlink nvim config
 echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-ln -s -f $path/init.vim $wdir/init.vim
-# ln -s -f $DOTFILES/init.lua $wdir/init.lua
+# ln -s -f $path/init.vim $wdir/init.vim
+# ln -s -f $path/.vimrc ~/.vimrc
+ln -s -f $path/init.lua $wdir/init.lua
+ln -s -f $path/lua $wdir/lua
 ln -s -f $path/coc-settings.json ~/.config/nvim/coc-settings.json
+
+# Install Paq package manager
+git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
 
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
-
-# Node js if using nvim as IDE
-# bash "$path/install-nodejs.sh"
 
 # For mac
 # brew install neovim
