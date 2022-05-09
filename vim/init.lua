@@ -17,31 +17,36 @@ o.syntax = 'on'
 -- Plugins
 ------------------------------------------------
 local plugins = {}
+local function add(p)
+    table.insert(plugins, p)
+end
 
 -- Let Paq manage itself
-table.insert(plugins, 'savq/paq-nvim')
+add 'savq/paq-nvim'
 
 -- colorscheme
 -- TODO: Find a good colorscheme with treesitter support, clone and customize
-table.insert(plugins, {"catppuccin/nvim", as = "catppuccin"})       -- https://github.com/catppuccin/nvim
-table.insert(plugins, {'srcery-colors/srcery-vim', as = 'srcery'})  -- https://github.com/srcery-colors/srcery-vim
-table.insert(plugins, 'Rigellute/rigel')                            -- https://rigel.netlify.app/#vim
-table.insert(plugins, 'andreypopp/vim-colors-plain')                -- https://github.com/andreypopp/vim-colors-plain
-table.insert(plugins, 'ful1e5/onedark.nvim')                        -- https://github.com/ful1e5/onedark.nvim
-table.insert(plugins, 'EdenEast/nightfox.nvim')                     -- https://github.com/EdenEast/nightfox.nvim
-table.insert(plugins, 'Mofiqul/dracula.nvim')                       -- https://github.com/Mofiqul/dracula.nvim
+add {"catppuccin/nvim", as = "catppuccin"}       -- https://github.com/catppuccin/nvim
+add {'srcery-colors/srcery-vim', as = 'srcery'}  -- https://github.com/srcery-colors/srcery-vim
+add 'Rigellute/rigel'                            -- https://rigel.netlify.app/#vim
+add 'andreypopp/vim-colors-plain'                -- https://github.com/andreypopp/vim-colors-plain
+add 'ful1e5/onedark.nvim'                        -- https://github.com/ful1e5/onedark.nvim
+add 'EdenEast/nightfox.nvim'                     -- https://github.com/EdenEast/nightfox.nvim
+add 'Mofiqul/dracula.nvim'                       -- https://github.com/Mofiqul/dracula.nvim
 vim.cmd[[colorscheme rigel]]
 
+-- coc-nvim
+-- table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
+-- map('n', 'gR', '<Plug>(coc-rename)')
+-- map('n', 'gd', '<Plug>(coc-definition)')
+-- map('n', 'gy', '<Plug>(coc-type-definition)')
+-- map('n', 'gi', '<Plug>(coc-implementation)')
+-- map('n', 'gr', '<Plug>(coc-references)')
+
 -- LSP
-table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
-map('n', 'gR', '<Plug>(coc-rename)')
-map('n', 'gd', '<Plug>(coc-definition)')
-map('n', 'gy', '<Plug>(coc-type-definition)')
-map('n', 'gi', '<Plug>(coc-implementation)')
-map('n', 'gr', '<Plug>(coc-references)')
 
 -- Treesitter
-table.insert(plugins, 'nvim-treesitter/nvim-treesitter')
+add 'nvim-treesitter/nvim-treesitter'
 -- TSInstall python bash lua
 -- Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 local tsconfig = require('nvim-treesitter.configs')
@@ -52,27 +57,27 @@ tsconfig.setup {
 }
 
 -- Manage trailing whitespaces
-table.insert(plugins, 'ntpeters/vim-better-whitespace')
+add 'ntpeters/vim-better-whitespace'
 g.better_whitespace_enabled = 1
 g.strip_whitespace_on_save = 1
 g.strip_whitespace_confirm = 0
 
 -- Fzf integration
-table.insert(plugins, 'junegunn/fzf')
-table.insert(plugins, 'junegunn/fzf.vim')
+add 'junegunn/fzf'
+add 'junegunn/fzf.vim'
 
 -- Tmux integrated navigation
-table.insert(plugins, 'christoomey/vim-tmux-navigator')
+add 'christoomey/vim-tmux-navigator'
 g.tmux_navigator_no_mappings = 1
 
 -- Git status
-table.insert(plugins, 'airblade/vim-gitgutter')
+add 'airblade/vim-gitgutter'
 g.gitgutter_map_keys = 0    -- Disable all key mappings
 g.gitgutter_realtime = 1
 g.gitgutter_eager = 1
 
 -- Text alignment
-table.insert(plugins, 'junegunn/vim-easy-align')
+add 'junegunn/vim-easy-align'
 map('x', 'ga', '<Plug>(EasyAlign)')
 map('n', 'ga', '<Plug>(EasyAlign)')
 g.easy_align_ignore_groups = '[]'     -- Align everything. C-g to cycle through options interactively.
