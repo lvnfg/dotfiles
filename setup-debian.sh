@@ -20,10 +20,10 @@ sudo apt install -y curl
 sudo apt install -y fzf
 sudo apt install -y rsync
 
-source "$path/tmux/install-tmux.sh"
-source "$path/setup/install-git.sh"
-source "$path/setup/install-bat.sh"
-source "$path/vim/install-neovim.sh"
+bash "$path/tmux/install-tmux.sh"
+bash "$path/setup/install-git.sh"
+bash "$path/setup/install-bat.sh"
+bash "$path/vim/install-neovim.sh"
 
 # Allow calling functions by name from command line
 "$@"
