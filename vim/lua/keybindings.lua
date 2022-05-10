@@ -1,5 +1,7 @@
 local map = vim.keymap.set
 
+-- Remap leader key
+vim.g.mapleader = ' '
 
 -- Tab completion
 map('i', '<Tab>', function()
