@@ -40,8 +40,8 @@ o.shiftwidth     = 4    -- Insert 4 spaces when indenting with > and new line
 
 -- Statusline
 o.laststatus = 2            -- 0 = hide, 2 = show statusline
-o.showmode = False          -- Hide mode indicator
-function s_line()
+o.showmode = false          -- Hide mode indicator
+local function s_line()
     local sline = ''
     sline = sline .. '%1*%<%F'   -- %F for full file path, set background color
     sline = sline .. '%1*'       -- Add a space to end of filename
