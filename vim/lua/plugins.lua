@@ -8,6 +8,22 @@ local function add(p)
     table.insert(plugins, p)
 end
 
+-- Check if module exists
+function exists(name)
+    if package.loaded[name] then
+        return true
+    else
+        for _, searcher in ipairs(package.searchers or package.loaders) do
+            local loader = searcher(name)
+            if type(loader) == 'function' then
+                package.preload[name] = loader
+                return true
+             end
+        end
+        return false
+    end
+end
+
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- add 'neovim/nvim-lspconfig'
@@ -19,12 +35,14 @@ end
 add 'nvim-treesitter/nvim-treesitter'
 -- TSInstall python bash lua
 -- Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-local tsconfig = require('nvim-treesitter.configs')
-tsconfig.setup {
-  highlight = {
-    enable = true,
-  }
-}
+if exists('nvim-treesitter.configs') then
+    local tsconfig = require('nvim-treesitter.configs')
+    tsconfig.setup {
+      highlight = {
+        enable = true,
+      }
+    }
+end
 
 -- https://github.com/neoclide/coc.nvim
 table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
@@ -69,7 +87,7 @@ add 'andreypopp/vim-colors-plain'                -- https://github.com/andreypop
 add 'ful1e5/onedark.nvim'                        -- https://github.com/ful1e5/onedark.nvim
 add 'EdenEast/nightfox.nvim'                     -- https://github.com/EdenEast/nightfox.nvim
 add 'Mofiqul/dracula.nvim'                       -- https://github.com/Mofiqul/dracula.nvim
-vim.cmd[[colorscheme rigel]]
+vim.cmd [[ silent! colorscheme rigel ]]
 
 -- Let Paq manage itself
 add 'savq/paq-nvim'
