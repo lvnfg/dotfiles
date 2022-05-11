@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 sudo apt install -y bat
 mkdir -p ~/.local/bin

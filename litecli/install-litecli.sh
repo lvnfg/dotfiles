@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 pip3 install litecli
 mkdir -p ~/.config/litecli

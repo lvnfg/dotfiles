@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 # Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
 

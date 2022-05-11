@@ -1,4 +1,4 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 sudo npm install -g pyright

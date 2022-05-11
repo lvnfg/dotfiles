@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install git -y

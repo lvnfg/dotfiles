@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euox pipefail
+set -euo pipefail
 
 script_name=$0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -19,5 +19,6 @@ bash "$path/setup/install-git.sh"
 bash "$path/setup/install-bat.sh"
 bash "$path/vim/install-neovim.sh"
 
+echo "Setup successful"
 # Allow calling functions by name from command line
 "$@"
