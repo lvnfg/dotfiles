@@ -7,7 +7,6 @@ ln -s -f $path/bash/.bashrc       ~/.bashrc
 ln -s -f $path/bash/.inputrc      ~/.inputrc
 ln -s -f $path/bash/.bash_profile ~/.bash_profile
 # ln -s -f $path/bash/.bashrc     ~/.profile       # .profile is reserved for env var, do not use
-ln -s -f $path/bash/toprc         ~/.config/procps/toprc
 
 # ----------------------------------------------
 # PACKAGED UTILITIES
@@ -20,6 +19,7 @@ sudo apt install -y curl
 sudo apt install -y fzf
 sudo apt install -y rsync
 
+bash "$path/top/install-top.sh"
 bash "$path/tmux/install-tmux.sh"
 bash "$path/setup/install-git.sh"
 bash "$path/setup/install-bat.sh"
