@@ -1,3 +1,6 @@
+#!/bin/bash
+set -euox pipefail
+
 # The needed version is 3.2 for floating window.
 # Current tmux version in Debian 11 is 3.1.c.
 

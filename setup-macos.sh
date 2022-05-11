@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euox pipefail
 
 script_name=$0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

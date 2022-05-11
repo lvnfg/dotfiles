@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euox pipefail
 
 sudo apt install -y bat
 mkdir -p ~/.local/bin

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euox pipefail
 
 version="3.10.4"
 
