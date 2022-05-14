@@ -97,11 +97,10 @@ map('n', 'ga', '<Plug>(EasyAlign)')
 -- add 'fenetikm/falcon'                           -- https://github.com/fenetikm/falcon
 -- add 'marko-cerovac/material.nvim'               -- https://github.com/marko-cerovac/material.nvim
 -- add 'shaunsingh/nord.nvim'                      -- https://github.com/shaunsingh/nord.nvim
--- add 'rebelot/kanagawa.nvim'                     -- https://github.com/rebelot/kanagawa.nvim
--- add 'ful1e5/onedark'                            -- https://github.com/ful1e5/onedark.nvim
-add 'navarasu/onedark.nvim'                        -- https://github.com/navarasu/onedark.nvim
+add 'rebelot/kanagawa.nvim'                     -- https://github.com/rebelot/kanagawa.nvim
+-- add 'navarasu/onedark.nvim'                        -- https://github.com/navarasu/onedark.nvim
 -- add 'olimorris/onedarkpro.nvim'                 -- https://github.com/olimorris/onedarkpro.nvim
-vim.cmd [[ silent! colorscheme onedark ]]
+vim.cmd [[ silent! colorscheme kanagawa ]]
 
 -- Let Paq manage itself
 add 'savq/paq-nvim'
