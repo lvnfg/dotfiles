@@ -91,16 +91,21 @@ map('n', 'ga', '<Plug>(EasyAlign)')
 -- add 'folke/tokyonight.nvim'                     -- https://github.com/folke/tokyonight.nvim
 -- add 'sainnhe/gruvbox-material'                  -- https://github.com/sainnhe/gruvbox-material
 -- add 'sainnhe/edge'                              -- https://github.com/sainnhe/edge
--- add 'sainnhe/sonokai'                           -- https://github.com/sainnhe/sonokai
+add 'sainnhe/sonokai'                              -- https://github.com/sainnhe/sonokai
 -- add 'bluz71/vim-nightfly-guicolors'             -- https://github.com/bluz71/vim-nightfly-guicolors
 -- add 'mhartington/oceanic-next'                  -- https://github.com/mhartington/oceanic-next
 -- add 'fenetikm/falcon'                           -- https://github.com/fenetikm/falcon
 -- add 'marko-cerovac/material.nvim'               -- https://github.com/marko-cerovac/material.nvim
 -- add 'shaunsingh/nord.nvim'                      -- https://github.com/shaunsingh/nord.nvim
-add 'rebelot/kanagawa.nvim'                     -- https://github.com/rebelot/kanagawa.nvim
--- add 'navarasu/onedark.nvim'                        -- https://github.com/navarasu/onedark.nvim
+-- add 'rebelot/kanagawa.nvim'                     --  https://github.com/rebelot/kanagawa.nvim
+-- add 'navarasu/onedark.nvim'                     -- https://github.com/navarasu/onedark.nvim
 -- add 'olimorris/onedarkpro.nvim'                 -- https://github.com/olimorris/onedarkpro.nvim
-vim.cmd [[ silent! colorscheme kanagawa ]]
+-- add 'mcchrish/zenbones.nvim'                    -- https://github.com/mcchrish/zenbones.nvim
+-- add 'pineapplegiant/spaceduck'                  -- https://pineapplegiant.github.io/spaceduck/
+-- add 'luisiacc/gruvbox-baby'                     -- https://github.com/luisiacc/gruvbox-baby
+vim.cmd [[ silent! colorscheme sonokai ]]
+vim.cmd [[ highlight Normal guibg=black ]]
+-- vim.cmd [[ highlight SignColumn guibg=black ]]
 
 -- Let Paq manage itself
 add 'savq/paq-nvim'
