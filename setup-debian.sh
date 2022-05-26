@@ -13,7 +13,7 @@ sudo apt install -y fzf
 sudo apt install -y rsync
 
 bash "$path/top/install-top.sh"
-bash "$path/top/install-bash.sh"
+bash "$path/bash/install-bash.sh"
 bash "$path/tmux/install-tmux.sh"
 bash "$path/setup/install-git.sh"
 bash "$path/setup/install-bat.sh"
