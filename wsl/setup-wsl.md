@@ -40,9 +40,8 @@
 # Enable ssh to wsl
 ## Install openssh-server
 - Install openssh-server
-    sudo apt update
-    sudo apt upgrade
-    sudo apt install openssh-server
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install openssh-server -y
 - Open sshd_config:
     sudo vi /etc/ssh/sshd_config
 - Edit / add the following lines:
