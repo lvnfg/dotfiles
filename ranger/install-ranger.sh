@@ -4,7 +4,7 @@ set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Symlink ranger config
-mkdir ~/.config/ranger
+mkdir -p ~/.config/ranger
 ln -s -f $path/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $path/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
