@@ -8,7 +8,7 @@ mkdir ~/.config/ranger
 ln -s -f $path/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $path/scope.sh	    ~/.config/ranger/scope.sh
 # Make scope.sh executable for ranger
-chmod +x $path/ranger/scope.sh
+chmod +x $path/scope.sh
 sudo apt install ranger -y
 
 # Install devicons
