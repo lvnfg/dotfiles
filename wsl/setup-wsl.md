@@ -2,14 +2,7 @@
 - For Azure VM: 
     https://docs.microsoft.com/en-us/azure/virtual-machines/acu
 
-# Install WSL
-- Run the command to install wsl:
-    wsl --install -d Debian
-- Check distro version with:
-    vi /etc/issue
-
-# Add custom distro if necessary
-## Remove existing distro
+# Remove existing distro
 - To remove an installed distro, first get the full name by running:
     wsl -l -v
 - Then unregister the distro with:
@@ -19,7 +12,8 @@
     Get-AppxPackage | Select Name, PackageFullName
 - Remove package
     Remove-AppxPackage <package full name>
-## Download and install a custom distro
+
+# Download and install a custom distro
 - Openn Microsoft Store in the browser and search fo Debian image:
     https://www.microsoft.com/en-us/p/debian/9msvkqc78pk6?activetab=pivot:overviewtab
 - Open the following url:
@@ -29,6 +23,12 @@
 - Note: the appx for Debian 10 Buster is named: TheDebianProject.DebianGNULinux_1.1.8.0_x64__76v4gfsz19hv4
 - Open powershell, navigate to the download location, and run the command to add the aspx to wsl:
     Add-AppxPackage [path-to-package]
+
+# Install a WSL distro
+- Run the command to install wsl:
+    wsl --install -d Debian
+- Check distro version with:
+    vi /etc/issue
 
 # Disable sudo password
 - Open visudo:
