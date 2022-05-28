@@ -5,7 +5,7 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # remove preinstalled neovim if any
 echo "removing neovim"
-sudo apt remove neovim
+sudo apt remove neovim -y
 sudo rm -f /usr/bin/nvim
 
 # Download package
