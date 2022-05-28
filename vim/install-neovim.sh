@@ -14,6 +14,7 @@ filename="nvim.deb"
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O $filename
 sudo apt install "./$filename"
 rm $filename
+# Note: package must be removed by name = neovim and not nvim
 
 # Create neovim symlink. Must use /usr/local/bin for macos compatibility
 echo "creating neovim symlink"
