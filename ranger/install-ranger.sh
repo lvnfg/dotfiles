@@ -7,6 +7,7 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 mkdir -p ~/.config/ranger
 ln -s -f $path/rc.conf	    ~/.config/ranger/rc.conf
 ln -s -f $path/scope.sh	    ~/.config/ranger/scope.sh
+ln -s -f $path/commands.py  ~/.config/ranger/commands.py
 # Make scope.sh executable for ranger
 chmod +x $path/scope.sh
 sudo apt install ranger -y
