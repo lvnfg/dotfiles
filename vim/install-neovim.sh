@@ -3,18 +3,19 @@ set -euo pipefail
 
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-cd ~
-wget --no-check-certificate --content-disposition https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-chmod u+x nvim.appimage && ./nvim.appimage --appimage-extract
-rm nvim.appimage && rm -rf ~/neovim-nightly
-mv squashfs-root ~/neovim-nightly
-
 # remove preinstalled neovim if any
 echo "removing neovim"
 sudo apt remove neovim
 sudo rm -f /usr/bin/nvim
 
-# Must use /usr/local/bin for macos compatibility
+# Download package
+cd ~
+filename="nvim.deb"
+wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O $filename
+sudo apt install "./$filename"
+rm $filename
+
+# Create neovim symlink. Must use /usr/local/bin for macos compatibility
 echo "creating neovim symlink"
 sudo ln -s -f ~/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 
