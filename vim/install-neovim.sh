@@ -12,7 +12,7 @@ sudo rm -f /usr/bin/nvim
 cd ~
 filename="nvim.deb"
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O $filename
-sudo apt install "./$filename"
+sudo apt install "./$filename" -y
 rm $filename
 # Note: package must be removed by name = neovim and not nvim
 
