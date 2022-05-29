@@ -77,7 +77,8 @@ g.gitgutter_eager = 1
 add 'junegunn/vim-easy-align'
 map('x', 'ga', '<Plug>(EasyAlign)')
 map('n', 'ga', '<Plug>(EasyAlign)')
--- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments. C-g to cycle through options interactively.
+-- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments.
+-- C-g to cycle through options interactively.
 
 -- Colorschemes
 -- add {"catppuccin/nvim", as = "catppuccin"}      -- https://github.com/catppuccin/nvim
