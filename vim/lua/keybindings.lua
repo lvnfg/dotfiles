@@ -22,8 +22,8 @@ map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
 map('n', '<M-f>', ':Files<cr>')             -- Invoke Fzf
 -- Git
 map('n', '<M-g>', ':GFiles?<cr>')           -- Fzf list git status for all files
-map('n', '<M-c>', ':BCommits<cr>')          -- Fzf list git commit for this buffer
-map('n', '<M-C>', ':Commits<cr>')           -- Fzf list git commit for entire repo
+map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current buffer; visual-select lines to track changes in the range
+map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
 -- Buffer management
 map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
 

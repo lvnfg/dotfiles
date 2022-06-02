@@ -61,28 +61,21 @@ alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull
 export FZF_DEFAULT_COMMAND="find ~ -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 function fzf-directory-change() {
-	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf)
+	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
 function fzf-file-open-in-vim() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}')
+	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}' --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 function fzf-execute-script() {
-    result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}')
+    result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}' --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
     if [[ -z "$result" ]]; then return ; fi
     extension="${result##*.}"
     if [[ "$extension" = "sh" ]]; then
         bash "$result"
     elif [[ "$extension" = "py" ]]; then
         python3 "$result"
-    fi
-}
-function fzf-paste-file-path-to-prompt() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
-	if [[ ! -z "$result" ]]; then
-	    tmux set-buffer "$result"
-	    tmux paste-buffer &
     fi
 }
 function fzf-difftool() {
@@ -110,7 +103,6 @@ bind -x '"\eD": "fzf-difftool"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
 bind -x '"\eg": "fzf-git-status"'
-bind -x '"\ep": "fzf-paste-file-path-to-prompt"'
 
 # --------------------------------------------------------------------------
 # Prompt
