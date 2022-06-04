@@ -3,6 +3,16 @@ local map = vim.keymap.set
 
 local plugins = {}
 
+-- ---------------------------------------------------------------------
+-- CONFIGURE PLUGINS OUTSIDE OF PAQ
+-- By default paq requires listing a list of plugins by calling:
+--      require('paq')([list of plugins here])
+-- which doesn't allow settings configs / kebind next to plugin url.
+-- The functions below add the passed plugin url into a waiting list,
+-- which can be passed to require('paq') at EOF. We can then configure
+-- any settings specific to each plugin right next to their url. This
+-- makes tracking and cleaning up plugins much more manageable.
+-- ---------------------------------------------------------------------
 local function add(p)
     -- Add plugins for paq to load
     table.insert(plugins, p)
@@ -24,14 +34,19 @@ function exists(name)
     end
 end
 
+-- ---------------------------------------------------------------------
+-- LSP
+-- ---------------------------------------------------------------------
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- add 'neovim/nvim-lspconfig'
 -- local lspconfig = require('lspconfig')
 -- lspconfig.pyright.setup{}
 
--- Treesitter
+-- ---------------------------------------------------------------------
+-- TREESITTER
 -- https://github.com/nvim-treesitter/nvim-treesitter
+-- ---------------------------------------------------------------------
 add 'nvim-treesitter/nvim-treesitter'
 -- TSInstall python bash lua
 -- Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
@@ -44,43 +59,68 @@ if exists('nvim-treesitter.configs') then
     }
 end
 
+-- ---------------------------------------------------------------------
+-- COC-NVIM
 -- https://github.com/neoclide/coc.nvim
+-- ---------------------------------------------------------------------
 table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
 -- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
 map('n', 'gR', '<Plug>(coc-rename)')
 map('n', 'gd', '<Plug>(coc-definition)')
+map('n', 'gD', ':CocDiagnostic<cr>')   -- Show errors
 map('n', 'gy', '<Plug>(coc-type-definition)')
 map('n', 'gi', '<Plug>(coc-implementation)')
 map('n', 'gr', '<Plug>(coc-references)')
 
+-- ---------------------------------------------------------------------
+-- FZF INTEGRATION
+-- ---------------------------------------------------------------------
+add 'junegunn/fzf'          -- https://github.com/junegunn/fzf
+add 'junegunn/fzf.vim'      -- https://github.com/junegunn/fzf.vim
+-- ---------------------------------------------------------------------
+-- FZF & COC-NVIM INTEGRATION
+-- ---------------------------------------------------------------------
+-- add 'antoinemadec/coc-fzf'  -- https://github.com/antoinemadec/coc-fzf
+-- add 'lvnfg/coc-fzf'         --  https://github.com/lvnfg/coc-fzf
+
+-- ---------------------------------------------------------------------
+-- BETTER-WHITESPACE
 -- https://github.com/ntpeters/vim-better-whitespace
+-- ---------------------------------------------------------------------
 add 'ntpeters/vim-better-whitespace'
 g.better_whitespace_enabled = 1
 g.strip_whitespace_on_save = 1
 g.strip_whitespace_confirm = 0
 
--- Fzf integration
-add 'junegunn/fzf'          -- https://github.com/junegunn/fzf
-add 'junegunn/fzf.vim'      -- https://github.com/junegunn/fzf.vim
-
+-- ---------------------------------------------------------------------
+-- TMUX KEYBIND COMPATIBILITY
 -- https://github.com/christoomey/vim-tmux-navigator
+-- ---------------------------------------------------------------------
 add 'christoomey/vim-tmux-navigator'
 g.tmux_navigator_no_mappings = 1
 
+-- ---------------------------------------------------------------------
+-- GIT GUTTER
 -- https://github.com/airblade/vim-gitgutter
+-- ---------------------------------------------------------------------
 add 'airblade/vim-gitgutter'
 g.gitgutter_map_keys = 0    -- Disable all key mappings
 g.gitgutter_realtime = 1
 g.gitgutter_eager = 1
 
+-- ---------------------------------------------------------------------
+-- EASY ALIGN
 -- https://github.com/junegunn/vim-easy-align
+-- ---------------------------------------------------------------------
 add 'junegunn/vim-easy-align'
 map('x', 'ga', '<Plug>(EasyAlign)')
 map('n', 'ga', '<Plug>(EasyAlign)')
 -- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments.
 -- C-g to cycle through options interactively.
 
--- Colorschemes
+-- ---------------------------------------------------------------------
+-- COLORSCHEMES
+-- ---------------------------------------------------------------------
 -- add {"catppuccin/nvim", as = "catppuccin"}      -- https://github.com/catppuccin/nvim
 -- add {'srcery-colors/srcery-vim', as = 'srcery'} -- https://github.com/srcery-colors/srcery-vim
 -- add 'Rigellute/rigel'                           -- https://rigel.netlify.app/#vim
@@ -108,8 +148,11 @@ vim.cmd [[ silent! colorscheme sonokai ]]
 vim.cmd [[ highlight Normal guibg=black ]]
 -- vim.cmd [[ highlight SignColumn guibg=black ]]
 
--- Let Paq manage itself
-add 'savq/paq-nvim'
+-- ---------------------------------------------------------------------
+-- PAQ-NVIM PLUGIN MANAGER
+-- https://github.com/savq/paq-nvim
+-- ---------------------------------------------------------------------
+add 'savq/paq-nvim'     -- Let paq manage itself
 
 -- Load plugins with Paq
 -- https://github.com/savq/paq-nvim
