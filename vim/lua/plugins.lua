@@ -67,7 +67,6 @@ table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
 -- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
 map('n', 'gR', '<Plug>(coc-rename)')
 map('n', 'gd', '<Plug>(coc-definition)')
-map('n', 'gD', ':CocDiagnostic<cr>')   -- Show errors
 map('n', 'gy', '<Plug>(coc-type-definition)')
 map('n', 'gi', '<Plug>(coc-implementation)')
 map('n', 'gr', '<Plug>(coc-references)')
@@ -81,7 +80,12 @@ add 'junegunn/fzf.vim'      -- https://github.com/junegunn/fzf.vim
 -- FZF & COC-NVIM INTEGRATION
 -- ---------------------------------------------------------------------
 -- add 'antoinemadec/coc-fzf'  -- https://github.com/antoinemadec/coc-fzf
--- add 'lvnfg/coc-fzf'         --  https://github.com/lvnfg/coc-fzf
+add 'lvnfg/coc-fzf'         -- https://github.com/lvnfg/coc-fzf
+vim.cmd [[
+    let g:coc_fzf_preview = 'right:50%'
+    let g:coc_fzf_opts = []
+]]
+map('n', 'gdi', ':CocFzfList diagnostics<cr>')   -- Show errors
 
 -- ---------------------------------------------------------------------
 -- BETTER-WHITESPACE
