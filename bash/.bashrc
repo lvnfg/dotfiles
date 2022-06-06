@@ -70,8 +70,8 @@ fzf-down() {
     fzf --height 50% --min-height 20 --border --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort' "$@"
 }
 
-function fzf-directory-change() {
-    result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf-dwn)
+function fzf-change-directory() {
+    result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf-down)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
 
@@ -156,7 +156,7 @@ function fzf-git-stash() {
 # Key bindings
 bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
 # File & directories
-bind -x '"\ed": "fzf-directory-change"'
+bind -x '"\ed": "fzf-change-directory"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
 # Diffing
