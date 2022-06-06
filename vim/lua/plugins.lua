@@ -65,11 +65,6 @@ end
 -- ---------------------------------------------------------------------
 table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
 -- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
-map('n', 'gR', '<Plug>(coc-rename)')
-map('n', 'gd', '<Plug>(coc-definition)')
-map('n', 'gy', '<Plug>(coc-type-definition)')
-map('n', 'gi', '<Plug>(coc-implementation)')
-map('n', 'gr', '<Plug>(coc-references)')
 
 -- ---------------------------------------------------------------------
 -- FZF INTEGRATION
@@ -85,7 +80,6 @@ vim.cmd [[
     let g:coc_fzf_preview = 'right:50%'
     let g:coc_fzf_opts = []
 ]]
-map('n', 'gdi', ':CocFzfList diagnostics<cr>')   -- Show errors
 
 -- ---------------------------------------------------------------------
 -- BETTER-WHITESPACE
@@ -117,8 +111,6 @@ g.gitgutter_eager = 1
 -- https://github.com/junegunn/vim-easy-align
 -- ---------------------------------------------------------------------
 add 'junegunn/vim-easy-align'
-map('x', 'ga', '<Plug>(EasyAlign)')
-map('n', 'ga', '<Plug>(EasyAlign)')
 -- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments.
 -- C-g to cycle through options interactively.
 

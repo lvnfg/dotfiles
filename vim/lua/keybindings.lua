@@ -11,6 +11,18 @@ map('i', '<S-Tab>', function()
     return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-h>'
 end, {expr = true})
 
+-- Text editing
+map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
+-- Autoclose character pairs
+map('i', '\'', '\'\'<left>')
+map('i', '"', '""<left>')
+map('i', '(', '()<left>')
+map('i', '[', '[]<left>')
+map('i', '{', '{}<left>')
+-- Text alignment
+map('x', 'ga', '<Plug>(EasyAlign)')
+map('n', 'ga', '<Plug>(EasyAlign)')
+
 -- Closing & saving buffers & windows
 map('n', '<M-q>', ':q<cr>')                 -- Close window
 map('n', '<M-w>', ':lua CloseBuffer()<cr>') -- Call function close buffer
@@ -46,13 +58,13 @@ map('n', '<M-Down>',  ':resize -5<cr>')
 map('n', '<M-Up>',    ':resize +5<cr>')
 map('n', '<M-Right>', ':vertical resize +5<cr>')
 
--- Autoclose character pairs
-map('i', '\'', '\'\'<left>')
-map('i', '"', '""<left>')
-map('i', '(', '()<left>')
-map('i', '[', '[]<left>')
-map('i', '{', '{}<left>')
-
--- Misc
-map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
-
+-- LSP
+map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
+map('n', '<M-E>', ":call CocAction('diagnosticPrevious')<CR>") -- Go to previous error
+map('n', '<M-e>', ":call CocAction('diagnosticNext')<CR>")     -- Go to next error
+-- Do not change the default coc keybindings below so fzf-coc can work
+map('n', 'gR', '<Plug>(coc-rename)')          -- Rename symbol
+map('n', 'gd', '<Plug>(coc-definition)')      -- Jump to definition
+map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
+map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
+map('n', 'gr', '<Plug>(coc-references)')      -- List references
