@@ -14,11 +14,11 @@ end, {expr = true})
 -- Text editing
 map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
 -- Autoclose character pairs
-map('i', '\'', '\'\'<left>')
-map('i', '"', '""<left>')
-map('i', '(', '()<left>')
-map('i', '[', '[]<left>')
-map('i', '{', '{}<left>')
+-- map('i', '\'', '\'\'<left>')
+-- map('i', '"', '""<left>')
+-- map('i', '(', '()<left>')
+-- map('i', '[', '[]<left>')
+-- map('i', '{', '{}<left>')
 -- Text alignment
 map('x', 'ga', '<Plug>(EasyAlign)')
 map('n', 'ga', '<Plug>(EasyAlign)')
