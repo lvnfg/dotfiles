@@ -55,21 +55,33 @@ alias gitStatusAll="echo && find -L $REPOS $gitFindParams $gitCDInto && git stat
 alias gitPushAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git push --all               && echo; fi)' \;"
 alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull                     && echo; fi)' \;"
 
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
 # --------------------------------------------------------------------------
 # FZF
 # --------------------------------------------------------------------------
 export FZF_DEFAULT_COMMAND="find ~ -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+fzf-down() {
+    # Default command for keybindings-invokded fzf
+    fzf --height 50% --min-height 20 --border --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort' "$@"
+}
+
 function fzf-directory-change() {
-	result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
+    result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf-dwn)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
+
 function fzf-file-open-in-vim() {
-	result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf --preview 'bat --color=always {}' --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
+    result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf-down --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
+
 function fzf-execute-script() {
-    result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf --preview 'bat --color=always {}' --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort')
+    result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf-down --preview 'bat --color=always {}')
     if [[ -z "$result" ]]; then return ; fi
     extension="${result##*.}"
     if [[ "$extension" = "sh" ]]; then
@@ -78,10 +90,12 @@ function fzf-execute-script() {
         python3 "$result"
     fi
 }
+
 function fzf-difftool() {
-	file1=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+# Compare any 2 files. To compare a single file with its most recent commit, cancel (press ESC) the 2nd file
+	file1=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf-down --preview 'bat --color=always {}')
 	if [[ ! -z "$file1" ]]; then
-	    file2=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf --preview 'bat --color=always {}')
+	    file2=$(find ~ -type f 2> /dev/null | grep -v -e ".git" | fzf-down --preview 'bat --color=always {}')
 	    if [[ ! -z "$file1" && ! -z "$file2" ]]; then
 	        nvim -d "$file1" "$file2"
 	    elif [[ ! -z "$file1" && -z "$file2" ]]; then
@@ -91,18 +105,67 @@ function fzf-difftool() {
         fi
 	fi
 }
-function fzf-git-status() {
-    git status -s | fzf --preview 'git diff --color=always {+2}'
+
+
+# Ffz git functions:
+# https://junegunn.kr/2016/07/fzf-git/
+# https://gist.github.com/junegunn/8b572b8d4b5eddd8b85e5f4d40f17236
+function fzf-git-file-status() {
+    # git status -s | fzf --preview 'git diff --color=always {+2}'
     # Note: since git status ouput [M {filename}], the {+2} option is needed to tell fzf
     # to split the filename into 2 parts, then use the 2nd part to use with git diff
+    is_in_git_repo || return
+    git -c color.status=always status --short |
+    fzf-down -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1})' |
+    cut -c4- | sed 's/.* -> //'
+}
+
+function fzf-git-branch() {
+  is_in_git_repo || return
+  git branch -a --color=always | grep -v '/HEAD\s' | sort |
+  fzf-down --ansi --multi --tac --preview-window right:70% \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##'
+}
+
+function fzf-git-commit() {
+    is_in_git_repo || return
+    git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+    fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    --header 'Press CTRL-S to toggle sort' \
+    --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
+    grep -o "[a-f0-9]\{7,\}"
+}
+
+function fzf-git-remote() {
+    is_in_git_repo || return
+    git remote -v | awk '{print $1 "\t" $2}' | uniq |
+    fzf-down --tac \
+    --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1}' |
+    cut -d$'\t' -f1
+}
+
+function fzf-git-stash() {
+    is_in_git_repo || return
+    git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
+    cut -d: -f1
 }
 
 # Key bindings
+bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
+# File & directories
 bind -x '"\ed": "fzf-directory-change"'
-bind -x '"\eD": "fzf-difftool"'
 bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
-bind -x '"\eg": "fzf-git-status"'
+# Diffing
+bind -x '"\eD": "fzf-difftool"'
+# Git specific
+bind -x '"\eg": "fzf-git-file-status"'
+bind -x '"\eb": "fzf-git-branch"'
+bind -x '"\ec": "fzf-git-commit"'
+
 
 # --------------------------------------------------------------------------
 # Prompt
