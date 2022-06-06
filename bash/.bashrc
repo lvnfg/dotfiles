@@ -165,6 +165,7 @@ bind -x '"\eD": "fzf-difftool"'
 bind -x '"\eg": "fzf-git-file-status"'
 bind -x '"\eb": "fzf-git-branch"'
 bind -x '"\ec": "fzf-git-commit"'
+bind -x '"\es": "fzf-git-stash"'
 
 
 # --------------------------------------------------------------------------
