@@ -46,5 +46,13 @@ map('n', '<M-Down>',  ':resize -5<cr>')
 map('n', '<M-Up>',    ':resize +5<cr>')
 map('n', '<M-Right>', ':vertical resize +5<cr>')
 
+-- Autoclose character pairs
+map('i', '\'', '\'\'<left>')
+map('i', '"', '""<left>')
+map('i', '(', '()<left>')
+map('i', '[', '[]<left>')
+map('i', '{', '{}<left>')
+
 -- Misc
 map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
+
