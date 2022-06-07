@@ -11,6 +11,7 @@ sudo apt install -y unzip
 sudo apt install -y curl
 sudo apt install -y fzf
 sudo apt install -y rsync
+sudo apt install -y ripgrep     # Required for fzf.vim search all files
 
 bash "$path/top/install-top.sh"
 bash "$path/bash/install-bash.sh"
