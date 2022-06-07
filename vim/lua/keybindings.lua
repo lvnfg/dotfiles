@@ -32,7 +32,7 @@ map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
 
 -- Fzf
 map('n', '<M-f>', ':Files<cr>')             -- Fzf: search for file
-map('n', '<M-R>', ':Rg<cr>')                -- Fzf: search within files
+map('n', '<M-F>', ':Rg<cr>')                -- Fzf: search within all files
 -- Git
 map('n', '<M-g>', ':GFiles?<cr>')           -- Fzf list git status for all files
 map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current buffer; visual-select lines to track changes in the range
