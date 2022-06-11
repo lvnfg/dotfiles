@@ -65,7 +65,7 @@ is_in_git_repo() {
 export FZF_DEFAULT_COMMAND="find ~ -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-fzf-down() {
+function fzf-down() {
     # Default command for keybindings-invokded fzf
     fzf --height 50% --min-height 20 --border --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer)+abort' "$@"
 }
