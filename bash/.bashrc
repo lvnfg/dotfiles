@@ -67,7 +67,7 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 fzf-down() {
     # Default command for keybindings-invokded fzf
-    fzf --height 50% --min-height 20 --border --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer &)+abort' "$@"
+    fzf --height 50% --min-height 20 --border --bind 'alt-f:execute-silent(tmux set-buffer "{}" && tmux paste-buffer)+abort' "$@"
 }
 
 function fzf-change-directory() {
