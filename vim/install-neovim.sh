@@ -30,7 +30,7 @@ ln -s -f $path/lua $wdir/lua
 ln -s -f $path/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Install Paq package manager
-git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
+git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim 2>/dev/null
 
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
