@@ -19,7 +19,11 @@ bash "$path/tmux/install-tmux.sh"
 bash "$path/setup/install-git.sh"
 bash "$path/setup/install-bat.sh"
 bash "$path/vim/install-neovim.sh"
+bash "$path/ranger/install-ranger.sh"
 
-echo "Setup successful"
+echo "-------------------------------------"
+echo "DEBIAN SETUP SUCCESFUL"
+echo "-------------------------------------"
+
 # Allow calling functions by name from command line
 "$@"
