@@ -57,6 +57,4 @@ nvim --headless +'TSInstall python bash lua' +qa
 # For mac
 # brew install neovim
 
-echo "---------------------------------------------"
-echo "NEOVIM INSTALL SUCCESSFUL"
-echo "---------------------------------------------"
+echo "neovim ✅"

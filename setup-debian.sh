@@ -22,9 +22,7 @@ sudo -E bash "$path/install-bat.sh"
 sudo -E bash "$path/ranger/install-ranger.sh"
 sudo -E bash "$path/vim/install-neovim.sh"
 
-echo "-------------------------------------"
-echo "DEBIAN SETUP SUCCESFUL"
-echo "-------------------------------------"
+echo "debian setup ✅"
 
 # Allow calling functions by name from command line
 "$@"

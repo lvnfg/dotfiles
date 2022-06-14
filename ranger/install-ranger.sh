@@ -26,6 +26,4 @@ fi
 cd $path
 
 
-echo "-------------------------------------"
-echo "RANGER INSTALL SUCCESFUL"
-echo "-------------------------------------"
+echo "range ✅"

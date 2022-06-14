@@ -20,6 +20,4 @@ bash "$path/install-bat.sh"
 bash "$path/vim/install-neovim.sh"
 bash "$path/ranger/install-ranger.sh"
 
-echo "-------------------------------------"
-echo "BASE IMAGE SETUP SUCCESFUL"
-echo "-------------------------------------"
+echo "base-dev image setup ✅"

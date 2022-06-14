@@ -21,3 +21,5 @@ pip3 install prompt_toolkit==3.0.29
 #    import jedi.api.helpers
 #    import jedi.api.classes
 #    JEDI_INSTALLED = True
+
+echo "ipython ✅"

@@ -28,6 +28,4 @@ sudo docker image build --tag $IMAGE_NAME .
 echo "Cleaning up"
 rm $TARBALL
 
-echo "-------------------------------------------"
-echo "BASE IMAGE BUILD SUCCESSFUL"
-echo "-------------------------------------------"
+echo "base-dev image build ✅"

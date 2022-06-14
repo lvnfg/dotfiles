@@ -53,6 +53,4 @@ sudo usermod -aG docker $USER   # Add current user to docker group
 newgrp docker                   # Activate changes to groups
 docker run hello-world          # Verify docker can run without sudo
 
-echo "-----------------------------------------------"
-echo "DOCKER INSTALLATION SUCCESSFUL"
-echo "-----------------------------------------------"
+echo "docker ✅"

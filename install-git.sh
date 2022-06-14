@@ -22,6 +22,4 @@ git config --global alias.d difftool
 # Pull
 git config --global pull.ff only
 
-echo "-------------------------------------"
-echo "GIT INSTALL SUCCESFUL"
-echo "-------------------------------------"
+echo "git ✅"
