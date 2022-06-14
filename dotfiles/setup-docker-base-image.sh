@@ -9,7 +9,8 @@ apt-get install -y unzip
 apt-get install -y tar
 apt-get install -y curl
 apt-get install -y fzf
-apt-get install -y ripgrep     # Required for fzf.vim search all files
+apt-get install -y ripgrep          # Required for fzf.vim search all files
+apt-get install -y build-essential  # Required for treesitter
 
 bash "$path/top/install-top.sh"
 bash "$path/bash/install-bash.sh"

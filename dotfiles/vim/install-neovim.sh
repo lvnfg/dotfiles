@@ -44,6 +44,13 @@ else
 fi
 cd $path
 
+# Install plugins with Paq-nvim
+nvim --headless +'PaqInstall' +qa   # +qa = send qa key to exit confirmation dialog
+
+# Install treesitter languages
+# https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+nvim --headless +'TSInstall python bash lua' +qa
+
 # Pynvim for nvim's python plugins
 # pip3 install pynvim
 

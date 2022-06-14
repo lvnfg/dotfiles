@@ -63,7 +63,7 @@ end
 -- COC-NVIM
 -- https://github.com/neoclide/coc.nvim
 -- ---------------------------------------------------------------------
-table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
+-- table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
 -- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
 
 -- ---------------------------------------------------------------------
