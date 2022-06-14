@@ -28,7 +28,7 @@ wdir="$HOME/.config/nvim" && mkdir -pv $wdir
 echo wdir: "$wdir"
 echo path: "$path"
 ln -s -f $path/init.lua $wdir/init.lua
-ln -s -f $path/lua $wdir/lua
+ln -s -f $path/lua $wdir
 ln -s -f $path/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
 # Install Paq package manage
