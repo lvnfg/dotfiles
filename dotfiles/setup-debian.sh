@@ -13,13 +13,14 @@ sudo apt install -y fzf
 sudo apt install -y rsync
 sudo apt install -y ripgrep     # Required for fzf.vim search all files
 
-bash "$path/top/install-top.sh"
-bash "$path/bash/install-bash.sh"
-bash "$path/tmux/install-tmux.sh"
-bash "$path/setup/install-git.sh"
-bash "$path/setup/install-bat.sh"
-bash "$path/vim/install-neovim.sh"
-bash "$path/ranger/install-ranger.sh"
+# Use -H option to keep $HOME as user
+sudo -H bash "$path/top/install-top.sh"
+sudo -H bash "$path/bash/install-bash.sh"
+sudo -H bash "$path/tmux/install-tmux.sh"
+sudo -H bash "$path/install-git.sh"
+sudo -H bash "$path/install-bat.sh"
+sudo -H bash "$path/vim/install-neovim.sh"
+sudo -H bash "$path/ranger/install-ranger.sh"
 
 echo "-------------------------------------"
 echo "DEBIAN SETUP SUCCESFUL"

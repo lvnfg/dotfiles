@@ -6,10 +6,14 @@ set -euo pipefail
 
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ln -s -f "$path/.tmux.conf" ~/.tmux.conf
+ln -s -f "$path/.tmux.conf" $HOME/.tmux.conf
 
 # Use this when the apt package is 3.2
 # sudo apt install tmux -y
 
 # Install script for tmux
-sudo apt install tmux/bullseye-backports -y
+apt install tmux/bullseye-backports -y
+
+echo "-------------------------------------"
+echo "TMUX INSTALL SUCCESFUL"
+echo "-------------------------------------"

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-sudo apt update && sudo apt upgrade -y
-sudo apt install git -y
+apt-get update && apt-get upgrade -y
+apt-get install git -y
 
 git config --global core.editor     "nvim"
 git config --global user.name       "van"
@@ -22,4 +22,6 @@ git config --global alias.d difftool
 # Pull
 git config --global pull.ff only
 
-echo "Git install successful"
+echo "-------------------------------------"
+echo "GIT INSTALL SUCCESFUL"
+echo "-------------------------------------"
