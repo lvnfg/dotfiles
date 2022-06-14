@@ -3,6 +3,8 @@ set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$path"
 
+IMAGE_NAME="base-dev:latest"
+
 # Create tarball
 echo "Creating dotfiles tarball"
 DIRNAME="dotfiles"
@@ -12,7 +14,6 @@ tar -cf $TARBALL $DIRNAME
 
 # Create image
 echo "Building container image"
-IMAGE_NAME="base-image:latest"
 # Remove previous version
 if [[ "$(sudo docker image instpect &IMAGE_NAME 2> /dev/null)" == "" ]]; then
     echo "$IMAGE_NAME doesn't exists"

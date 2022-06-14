@@ -4,8 +4,10 @@ FROM debian:bullseye-backports
 RUN    apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y tar \
+    && apt-get install -y git \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && cd ~ && ls -al
+    && mkdir -p ~/repos \\
+    && git clone https://github.com/lvnfg/dotfiles
 
 COPY dotfiles.tar.gz .
 
