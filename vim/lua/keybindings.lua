@@ -3,13 +3,16 @@ local map = vim.keymap.set
 -- Remap leader key
 vim.g.mapleader = ' '
 
--- Tab completion
-map('i', '<Tab>', function()
-    return vim.fn.pumvisible() == 1 and '<C-N>' or '<Tab>'
-end, {expr = true})
-map('i', '<S-Tab>', function()
-    return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-h>'
-end, {expr = true})
+-- ---------------------------------------------------------------------
+-- TAB COMPLETION - COC-NVIM
+-- Mappings for nvim-cmp is defined in init.lua
+-- ---------------------------------------------------------------------
+-- map('i', '<Tab>', function()
+--     return vim.fn.pumvisible() == 1 and '<C-N>' or '<Tab>'
+-- end, {expr = true})
+-- map('i', '<S-Tab>', function()
+--     return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-h>'
+-- end, {expr = true})
 
 -- Text editing
 map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
