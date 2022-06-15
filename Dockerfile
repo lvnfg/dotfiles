@@ -15,6 +15,7 @@ RUN    apt-get update && apt-get upgrade -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && mkdir -p ~/repos \
     && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles \
+    && git remote set-url origin git@github.com:lvnfg/dotfiles \
     && bash "install-python.sh" \
     && bash "install-bash.sh" \
     && bash "install-git.sh" \
