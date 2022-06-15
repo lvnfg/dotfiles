@@ -58,13 +58,31 @@ map('n', '<M-Down>',  ':resize -5<cr>')
 map('n', '<M-Up>',    ':resize +5<cr>')
 map('n', '<M-Right>', ':vertical resize +5<cr>')
 
--- LSP
-map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
-map('n', '<M-E>', ":call CocAction('diagnosticPrevious')<CR>") -- Go to previous error
-map('n', '<M-e>', ":call CocAction('diagnosticNext')<CR>")     -- Go to next error
--- Do not change the default coc keybindings below so fzf-coc can work
-map('n', 'gR', '<Plug>(coc-rename)')          -- Rename symbol
-map('n', 'gd', '<Plug>(coc-definition)')      -- Jump to definition
-map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
-map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
-map('n', 'gr', '<Plug>(coc-references)')      -- List references
+-- ---------------------------------------------------------------------
+-- NVIM-LSP
+-- ---------------------------------------------------------------------
+local opts = { noremap=true, silent=true }
+map('n', '<M-i>', vim.diagnostic.open_float)
+map('n', '<M-E>', vim.diagnostic.goto_prev)
+map('n', '<M-e>', vim.diagnostic.goto_next)
+map('n', '<M-o>', vim.diagnostic.setloclist)
+map('n', 'gR',    vim.lsp.buf.rename)
+map('n', 'gr',    vim.lsp.buf.references)
+map('n', 'gD',    vim.lsp.buf.type_definition)
+map('n', 'gd',    vim.lsp.buf.definition)
+map('n', 'gi',    vim.lsp.buf.implementation)
+map('n', 'gs',    vim.lsp.buf.signature_help)
+map('n', 'gh',    vim.lsp.buf.hover)
+
+-- ---------------------------------------------------------------------
+-- COC-NVIM
+-- ---------------------------------------------------------------------
+-- map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
+-- map('n', '<M-E>', ":call CocAction('diagnosticPrevious')<CR>") -- Go to previous error
+-- map('n', '<M-e>', ":call CocAction('diagnosticNext')<CR>")     -- Go to next error
+-- -- Do not change the default coc keybindings below so fzf-coc can work
+-- map('n', 'gR', '<Plug>(coc-rename)')          -- Rename symbol
+-- map('n', 'gd', '<Plug>(coc-definition)')      -- Jump to definition
+-- map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
+-- map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
+-- map('n', 'gr', '<Plug>(coc-references)')      -- List references

@@ -44,22 +44,40 @@ if exists('nvim-treesitter.configs') then
       }
     }
 end
---
+
+-- ---------------------------------------------------------------------
+-- LSP
+-- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- ---------------------------------------------------------------------
+if exists('lspconfig') then
+    local lspconfig = require('lspconfig')
+    lspconfig.pyright.setup{
+        cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
+        --root_dir = function(startpath)
+        --       return M.search_ancestors(startpath, matcher)
+        --  end,
+        settings = {
+          python = {
+            pythonPath = "/usr/local/bin/python3",
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "workspace",
+              useLibraryCodeForTypes = true
+            },
+          },
+        },
+        single_file_support = true
+    }
+end
+
 -- ---------------------------------------------------------------------
 -- COC-NVIM
 -- https://github.com/neoclide/coc.nvim
 -- ---------------------------------------------------------------------
 -- table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
 -- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
---
--- ---------------------------------------------------------------------
--- LSP
--- ---------------------------------------------------------------------
--- https://github.com/neovim/nvim-lspconfig
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--- add 'neovim/nvim-lspconfig'
--- local lspconfig = require('lspconfig')
--- lspconfig.pyright.setup{}
 
 -- ---------------------------------------------------------------------
 -- COC-FZF
