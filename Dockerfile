@@ -1,7 +1,9 @@
 FROM debian:bullseye-backports
 
 # https://docs.docker.com/engine/reference/builder/#run
+# procps is required to run ps in tmux's if_shell
 RUN    apt-get update && apt-get upgrade -y \
+    && apt-get install -y procps \
     && apt-get install -y wget \
     && apt-get install -y unzip \
     && apt-get install -y tar \
