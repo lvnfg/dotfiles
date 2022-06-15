@@ -1,4 +1,4 @@
-NAME="dev"
+NAME="dot"
 
 sudo docker start -i $NAME || sudo docker run \
     -it \

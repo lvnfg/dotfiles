@@ -3,8 +3,8 @@ echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$path"
 
-IMAGE_NAME="dev:latest"
-NAME="dev"
+IMAGE_NAME="dot:latest"
+NAME="dot"
 
 # Kill existing container
 sudo docker container kill $NAME || true
