@@ -85,7 +85,7 @@ function fzf-execute-script() {
     if [[ -z "$result" ]]; then return ; fi
     extension="${result##*.}"
     if [[ "$extension" = "sh" ]]; then
-        bash "$result"
+        time bash "$result"
     elif [[ "$extension" = "py" ]]; then
         python3 "$result"
     fi
