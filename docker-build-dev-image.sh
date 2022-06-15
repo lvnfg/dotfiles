@@ -5,6 +5,11 @@ cd "$path"
 
 IMAGE_NAME="dev:latest"
 
+# Kill existing container
+NAME="dev"
+sudo docker container kill $NAME
+sudo docker container rm $NAME
+
 # Create image
 echo "Building container image"
 # Remove previous version
