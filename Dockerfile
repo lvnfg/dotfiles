@@ -32,7 +32,7 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-nodejs-and-npm.sh" \
     && bash "install-nvim-lsp-plugins.sh" \
     && bash "install-nvim-lsp-pyright.sh" \
-    && echo "✅ dev dockerfile "
+    && echo "✅ dot dockerfile "
 
 # https://docs.docker.com/engine/reference/builder/#cmd
 CMD ["tmux", "new-session", "-A", "-s", "0"]
