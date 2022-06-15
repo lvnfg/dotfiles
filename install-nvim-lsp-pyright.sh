@@ -2,16 +2,16 @@
 set -euo pipefail
 echo 🚸 $0
 
+# Require nodejs and npm
+
 # ---------------------------------------
 # COC-NVIM
 # ---------------------------------------
-nvim --headless +'CocInstall coc-pyright' +qa
+nvim --headless +"CocInstall -sync coc-pyright | qa"
 
 # ---------------------------------------
 # NVIM LSP
 # ---------------------------------------
-# apt-get install nodejs -y
-# apt-get install npm -y
 # npm install -g pyright
 
 echo "✅ $0"

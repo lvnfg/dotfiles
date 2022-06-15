@@ -8,7 +8,7 @@ mkdir -p "$path/vim/plugins"    # in .gitignore so not guaranteed to exists
 cd "$path/vim/plugins"
 # Treesitter
 git clone https://github.com/nvim-treesitter/nvim-treesitter || true
-nvim --headless +'TSInstall python bash lua' +qa    # Require apt install build-essentials if not exists
+nvim --headless +"TSInstall python bash lua" +'sleep 20' +'qa'  # Require apt install build-essentials if not exists
 # FZF
 git clone https://github.com/junegunn/fzf || true
 git clone https://github.com/junegunn/fzf.vim || true
