@@ -5,11 +5,11 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Symlink ranger config
 mkdir -p $HOME/.config/ranger
-ln -s -f $path/rc.conf	    $HOME/.config/ranger/rc.conf
-ln -s -f $path/scope.sh	    $HOME/.config/ranger/scope.sh
-ln -s -f $path/commands.py  $HOME/.config/ranger/commands.py
+ln -s -f $path/ranger/rc.conf	    $HOME/.config/ranger/rc.conf
+ln -s -f $path/ranger/scope.sh	    $HOME/.config/ranger/scope.sh
+ln -s -f $path/ranger/commands.py  $HOME/.config/ranger/commands.py
 # Make scope.sh executable for ranger
-chmod +x $path/scope.sh
+chmod +x $path/ranger/scope.sh
 apt-get install ranger -y
 
 # Install devicons

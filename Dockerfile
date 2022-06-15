@@ -15,7 +15,6 @@ RUN    apt-get update && apt-get upgrade -y \
     && git clone https://github.com/lvnfg/dotfiles \
     && cd dotfiles \
     && bash "install-bash.sh" \
-    && bash "install-bat.sh" \
     && bash "install-git.sh" \
     && bash "install-ranger.sh" \
     && bash "install-tmux.sh" \
@@ -30,6 +29,8 @@ RUN    apt-get update && apt-get upgrade -y \
     && nvim --headless +'CocInstall coc-pyright' +qa \
     && cd ~/repos && rm -rf dotfiles \
     && echo "dev image setup ✅"
+
+# && bash "install-bat.sh" \
 
 # https://docs.docker.com/engine/reference/builder/#cmd
 CMD ["tmux", "new-session", "-A", "-s", "0"]

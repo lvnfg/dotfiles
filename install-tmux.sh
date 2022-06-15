@@ -6,7 +6,7 @@ set -euo pipefail
 
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ln -s -f "$path/.tmux.conf" $HOME/.tmux.conf
+ln -s -f "$path/tmux/.tmux.conf" $HOME/.tmux.conf
 
 # Use this when the apt package is 3.2
 # sudo apt install tmux -y

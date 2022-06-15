@@ -23,13 +23,11 @@ ln -s -f $HOME/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 # symlink nvim config
 echo "creating neovim config symlinks"
 wdir="$HOME/.config/nvim" && mkdir -pv $wdir
-# ln -s -f $path/init.vim $wdir/init.vim
-# ln -s -f $path/.vimrc $HOME/.vimrc
-echo wdir: "$wdir"
-echo path: "$path"
-ln -s -f $path/init.lua $wdir/init.lua
-ln -s -f $path/lua $wdir
-ln -s -f $path/coc-settings.json $HOME/.config/nvim/coc-settings.json
+# ln -s -f $path/vim/init.vim $wdir/init.vim
+# ln -s -f $path/vim/.vimrc $HOME/.vimrc
+ln -s -f $path/vim/init.lua $wdir/init.lua
+ln -s -f $path/vim/lua $wdir
+ln -s -f $path/vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
 # Install Paq package manage
 echo "Cloning paq-nvim"

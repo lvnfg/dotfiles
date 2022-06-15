@@ -5,7 +5,7 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 pip3 install ipython
 ipython profile create
-ln -s -f $path/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
+ln -s -f $path/ipython/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
 
 # Fix error with python 3.10.4
 pip3 install prompt_toolkit==3.0.29
