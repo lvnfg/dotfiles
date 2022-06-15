@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+NAME="nvim"
+echo $NAME 🚸
+
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # remove preinstalled neovim if any
@@ -29,30 +32,9 @@ ln -s -f $path/vim/init.lua $wdir/init.lua
 ln -s -f $path/vim/lua $wdir
 ln -s -f $path/vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
-# Install Paq package manage
-echo "Cloning paq-nvim"
-PAQDIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/pack/paqs/start/paq-nvim"
-if [ ! -d $PAQDIR ]; then
-    echo cloning to "$PAQDIR"
-    git clone --depth=1 https://github.com/savq/paq-nvim.git "$PAQDIR"
-else
-    echo "Paq-nvim already exists. Pulling update."
-    cd $PAQDIR
-    git pull
-fi
-cd $path
+# symlink nvim plugins directory
+PLUGDIR="$HOME/.local/share/nvim/site/pack/plugins"
+mkdir -p $PLUGDIR
+ln -s -f $path/vim/plugins $PLUGDIR/start
 
-# Install plugins with Paq-nvim
-nvim --headless +'PaqInstall' +qa   # +qa = send qa key to exit confirmation dialog
-
-# Install treesitter languages
-# https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-nvim --headless +'TSInstall python bash lua' +qa
-
-# Pynvim for nvim's python plugins
-# pip3 install pynvim
-
-# For mac
-# brew install neovim
-
-echo "neovim ✅"
+echo $NAME ✅

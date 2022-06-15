@@ -23,14 +23,12 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-pyodbc.sh" \
     && bash "install-mssql-cli.sh" \
     && bash "install-bat.sh" \
-    && bash "install-nodejs-and-npm.sh" \
     && bash "install-nvim.sh" \
     && bash "install-nvim-core-plugins.sh" \
-    && nvim --headless +'PaqInstall' +qa \
-    && nvim --headless +'TSInstall python bash lua' +qa \
-    && nvim --headless +'CocInstall coc-pyright' +qa \
+    && bash "install-nvim-lsp-plugins.sh" \
+    && bash "install-nvim-lsp-pyright.sh" \
     && rm -rf ~/repos/dotfiles \
-    && echo "dev image setup ✅"
+    && echo "dev dockerfile ✅"
 
 
 # https://docs.docker.com/engine/reference/builder/#cmd

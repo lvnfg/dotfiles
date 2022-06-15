@@ -9,11 +9,106 @@ local map = vim.keymap.set
 g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
-require('plugins')
 require('keybindings')
 require('colorscheme')
 
--- Editor settings
+-- ---------------------------------------------------------------------
+-- CHECK IF PACKAGE EXISTS
+-- ---------------------------------------------------------------------
+function exists(name)
+    if package.loaded[name] then
+        return true
+    else
+        for _, searcher in ipairs(package.searchers or package.loaders) do
+            local loader = searcher(name)
+            if type(loader) == 'function' then
+                package.preload[name] = loader
+                return true
+             end
+        end
+        return false
+    end
+end
+
+-- ---------------------------------------------------------------------
+-- TREESITTER
+-- https://github.com/nvim-treesitter/nvim-treesitter
+-- TSInstall python bash lua
+-- Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
+-- ---------------------------------------------------------------------
+if exists('nvim-treesitter.configs') then
+    local tsconfig = require('nvim-treesitter.configs')
+    tsconfig.setup {
+      highlight = {
+        enable = true,
+      }
+    }
+end
+--
+-- ---------------------------------------------------------------------
+-- COC-NVIM
+-- https://github.com/neoclide/coc.nvim
+-- ---------------------------------------------------------------------
+-- table.insert(plugins, {'neoclide/coc.nvim', branch='release'})
+-- CocInstall coc-pyright coc-lua coc-json coc-html coc-js
+--
+-- ---------------------------------------------------------------------
+-- LSP
+-- ---------------------------------------------------------------------
+-- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- add 'neovim/nvim-lspconfig'
+-- local lspconfig = require('lspconfig')
+-- lspconfig.pyright.setup{}
+
+-- ---------------------------------------------------------------------
+-- COC-FZF
+-- ---------------------------------------------------------------------
+-- add 'antoinemadec/coc-fzf'  -- https://github.com/antoinemadec/coc-fzf
+vim.cmd [[
+    let g:coc_fzf_preview = 'right:50%'
+    let g:coc_fzf_opts = []
+]]
+--
+-- ---------------------------------------------------------------------
+-- BETTER-WHITESPACE
+-- https://github.com/ntpeters/vim-better-whitespace
+-- ---------------------------------------------------------------------
+g.better_whitespace_enabled = 1
+g.strip_whitespace_on_save = 1
+g.strip_whitespace_confirm = 0
+
+-- ---------------------------------------------------------------------
+-- TMUX KEYBIND COMPATIBILITY
+-- https://github.com/christoomey/vim-tmux-navigator
+-- ---------------------------------------------------------------------
+g.tmux_navigator_no_mappings = 1
+--
+-- ---------------------------------------------------------------------
+-- GIT GUTTER
+-- https://github.com/airblade/vim-gitgutter
+-- ---------------------------------------------------------------------
+g.gitgutter_map_keys = 0    -- Disable all key mappings
+g.gitgutter_realtime = 1
+g.gitgutter_eager =
+
+-- ---------------------------------------------------------------------
+-- EASY ALIGN
+-- https://github.com/junegunn/vim-easy-align
+-- ---------------------------------------------------------------------
+-- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments.
+-- C-g to cycle through options interactively.
+
+-- ---------------------------------------------------------------------
+-- COLORSCHEMES
+-- ---------------------------------------------------------------------
+vim.cmd [[ silent! colorscheme sonokai ]]
+vim.cmd [[ highlight Normal guibg=black ]]
+-- vim.cmd [[ highlight SignColumn guibg=black ]]
+
+-- ---------------------------------------------------------------------
+-- EDITOR SETTINGS
+-- ---------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
 o.termguicolors = true
