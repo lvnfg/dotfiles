@@ -19,10 +19,10 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-ranger.sh" \
     && bash "install-tmux.sh" \
     && bash "install-top.sh" \
-    && base "install-python.sh" \
-    && base "install-msodbcsql.sh" \
-    && base "install-pyodbc.sh" \
-    && base "install-nodejs-and-npm.sh" \
+    && bash "install-python.sh" \
+    && bash "install-msodbcsql.sh" \
+    && bash "install-pyodbc.sh" \
+    && bash "install-nodejs-and-npm.sh" \
     && bash "install-neovim.sh" \
     && nvim --headless +'PaqInstall' +qa \
     && nvim --headless +'TSInstall python bash lua' +qa \

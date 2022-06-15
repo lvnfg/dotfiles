@@ -18,7 +18,7 @@ cd $dir
 # Required to fix error when importing pandas after building Python from source
 apt-get install -y lzma
 apt-get install -y liblzma-dev
-configure
+./configure
 
 # Build python
 make -j 4
