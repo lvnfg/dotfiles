@@ -3,14 +3,7 @@ set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$path"
 
-IMAGE_NAME="base-dev:latest"
-
-# Create tarball
-echo "Creating dotfiles tarball"
-DIRNAME="dotfiles"
-TARBALL="dotfiles.tar.gz"
-rm -f $TARBALL
-tar -cf $TARBALL $DIRNAME
+IMAGE_NAME="dev:latest"
 
 # Create image
 echo "Building container image"
@@ -24,8 +17,4 @@ fi
 # Build new image
 sudo docker image build --tag $IMAGE_NAME .
 
-# Cleanup
-echo "Cleaning up"
-rm $TARBALL
-
-echo "base-dev image build ✅"
+echo "dev image build ✅"

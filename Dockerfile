@@ -1,22 +1,35 @@
 FROM debian:bullseye-backports
 
 # https://docs.docker.com/engine/reference/builder/#run
-RUN    apt-get update \
-    && apt-get upgrade -y \
+RUN    apt-get update && apt-get upgrade -y \
+    && apt-get install -y wget \
+    && apt-get install -y unzip \
     && apt-get install -y tar \
+    && apt-get install -y curl \
+    && apt-get install -y fzf \
+    && apt-get install -y ripgrep \
+    && apt-get install -y build-essential \
     && apt-get install -y git \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p ~/repos \\
-    && git clone https://github.com/lvnfg/dotfiles
-
-COPY dotfiles.tar.gz .
-
-RUN    tar -xf dotfiles.tar.gz \
-    && rm dotfiles.tar.gz \
-    && mv dotfiles ~/ \
-    && cd ~/dotfiles \
-    && ls -al \
-    && bash setup-docker-base-image.sh
+    && mkdir -p ~/repos \
+    && git clone https://github.com/lvnfg/dotfiles \
+    && cd dotfiles \
+    && bash "install-bash.sh" \
+    && bash "install-bat.sh" \
+    && bash "install-git.sh" \
+    && bash "install-ranger.sh" \
+    && bash "install-tmux.sh" \
+    && bash "install-top.sh" \
+    && base "install-python.sh" \
+    && base "install-msodbcsql.sh" \
+    && base "install-pyodbc.sh" \
+    && base "install-nodejs-and-npm.sh" \
+    && bash "install-neovim.sh" \
+    && nvim --headless +'PaqInstall' +qa \
+    && nvim --headless +'TSInstall python bash lua' +qa \
+    && nvim --headless +'CocInstall coc-pyright' +qa \
+    && cd ~/repos && rm -rf dotfiles \
+    && echo "dev image setup ✅"
 
 # https://docs.docker.com/engine/reference/builder/#cmd
 CMD ["tmux", "new-session", "-A", "-s", "0"]

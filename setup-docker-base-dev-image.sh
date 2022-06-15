@@ -12,12 +12,12 @@ apt-get install -y fzf
 apt-get install -y ripgrep          # Required for fzf.vim search all files
 apt-get install -y build-essential  # Required for treesitter
 
-bash "$path/top/install-top.sh"
-bash "$path/bash/install-bash.sh"
-bash "$path/tmux/install-tmux.sh"
+bash "$path/install-top.sh"
+bash "$path/install-bash.sh"
+bash "$path/install-tmux.sh"
 bash "$path/install-git.sh"
 bash "$path/install-bat.sh"
-bash "$path/vim/install-neovim.sh"
-bash "$path/ranger/install-ranger.sh"
+bash "$path/install-neovim.sh"
+bash "$path/install-ranger.sh"
 
 echo "base-dev image setup ✅"
