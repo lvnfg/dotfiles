@@ -14,13 +14,13 @@ sudo apt install -y rsync
 sudo apt install -y ripgrep     # Required for fzf.vim search all files
 
 # Use -H option to keep $HOME as user
-sudo -E bash "$path/top/install-top.sh"
-sudo -E bash "$path/bash/install-bash.sh"
-sudo -E bash "$path/tmux/install-tmux.sh"
+sudo -E bash "$path/install-top.sh"
+sudo -E bash "$path/install-bash.sh"
+sudo -E bash "$path/install-tmux.sh"
 sudo -E bash "$path/install-git.sh"
 sudo -E bash "$path/install-bat.sh"
-sudo -E bash "$path/ranger/install-ranger.sh"
-sudo -E bash "$path/vim/install-neovim.sh"
+sudo -E bash "$path/install-ranger.sh"
+sudo -E bash "$path/install-neovim.sh"
 
 echo "debian setup ✅"
 
