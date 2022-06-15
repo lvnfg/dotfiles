@@ -13,6 +13,14 @@ git clone https://github.com/neovim/nvim-lspconfig || true
 # Use fzf to search & preview lsp actions
 git clone https://github.com/lvnfg/fzf-lsp.nvim || true
 # git clone https://github.com/lvnfg/nvim-lspfuzzy || true
+# Autocompletion plugins
+git clone https://github.com/hrsh7th/cmp-nvim-lsp || true
+git clone https://github.com/hrsh7th/cmp-buffer || true
+git clone https://github.com/hrsh7th/cmp-path || true
+git clone https://github.com/hrsh7th/cmp-cmdline || true
+git clone https://github.com/hrsh7th/nvim-cmp || true
+git clone https://github.com/hrsh7th/cmp-vsnip || true
+git clone https://github.com/hrsh7th/vim-vsnip || true
 
 # ---------------------------------------------
 # COC-NVIM
