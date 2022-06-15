@@ -12,8 +12,6 @@ nvim --headless +"TSInstall python bash lua" +'sleep 20' +'qa'  # Require apt in
 # FZF
 git clone https://github.com/junegunn/fzf || true
 git clone https://github.com/junegunn/fzf.vim || true
-# FZF-coc nvim integration
-# git clone https://github.com/lvnfg/coc-fzf || true
 # Better whitepsace
 git clone https://github.com/ntpeters/vim-better-whitespace || true
 # Tmux navigator

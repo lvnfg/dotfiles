@@ -71,6 +71,25 @@ if exists('lspconfig') then
         single_file_support = true
     }
 end
+if exists('fzf_lsp') then
+    -- Automatically replace all handlers
+    -- require'fzf_lsp'.setup()
+    -- Manually replace handlers
+    local fzf_lsp = require('fzf_lsp')
+    vim.lsp.handlers["textDocument/codeAction"]     = fzf_lsp.code_action_handler
+    vim.lsp.handlers["textDocument/definition"]     = fzf_lsp.definition_handler
+    vim.lsp.handlers["textDocument/declaration"]    = fzf_lsp.declaration_handler
+    vim.lsp.handlers["textDocument/typeDefinition"] = fzf_lsp.type_definition_handler
+    vim.lsp.handlers["textDocument/implementation"] = fzf_lsp.implementation_handler
+    vim.lsp.handlers["textDocument/references"]     = fzf_lsp.references_handler
+    vim.lsp.handlers["textDocument/documentSymbol"] = fzf_lsp.document_symbol_handler
+    vim.lsp.handlers["workspace/symbol"]            = fzf_lsp.workspace_symbol_handler
+    vim.lsp.handlers["callHierarchy/incomingCalls"] = fzf_lsp.incoming_calls_handler
+    vim.lsp.handlers["callHierarchy/outgoingCalls"] = fzf_lsp.outgoing_calls_handler
+end
+-- if exists('lspfuzzy') then
+--     require('lspfuzzy').setup {}
+-- end
 
 -- ---------------------------------------------------------------------
 -- COC-NVIM

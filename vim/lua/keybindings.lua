@@ -62,17 +62,19 @@ map('n', '<M-Right>', ':vertical resize +5<cr>')
 -- NVIM-LSP
 -- ---------------------------------------------------------------------
 local opts = { noremap=true, silent=true }
-map('n', '<M-i>', vim.diagnostic.open_float)
 map('n', '<M-E>', vim.diagnostic.goto_prev)
 map('n', '<M-e>', vim.diagnostic.goto_next)
-map('n', '<M-o>', vim.diagnostic.setloclist)
-map('n', 'gR',    vim.lsp.buf.rename)
-map('n', 'gr',    vim.lsp.buf.references)
-map('n', 'gD',    vim.lsp.buf.type_definition)
-map('n', 'gd',    vim.lsp.buf.definition)
-map('n', 'gi',    vim.lsp.buf.implementation)
-map('n', 'gs',    vim.lsp.buf.signature_help)
-map('n', 'gh',    vim.lsp.buf.hover)
+map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
+map('n', '<M-D>', ':DiagnosticsAll<cr>') -- List diagnostick for all buffers
+-- map('n', '<M-d>', ':LspDiagnostics 0<cr>')  -- List diagnostic for buffer 0 (current buffer)
+-- map('n', '<M-D>', ':LspDiagnosticsAll<cr>') -- List diagnostick for all buffers
+map('n', 'gR', vim.lsp.buf.rename)
+map('n', 'gr', vim.lsp.buf.references)
+map('n', 'gD', vim.lsp.buf.type_definition)
+map('n', 'gd', ':rightbelow<cr>:lua vim.lsp.buf.definition<cr>')
+map('n', 'gi', vim.lsp.buf.implementation)
+map('n', 'gs', vim.lsp.buf.signature_help)
+map('n', 'gh', vim.lsp.buf.hover)
 
 -- ---------------------------------------------------------------------
 -- COC-NVIM
