@@ -15,6 +15,6 @@ else
     sudo docker image rm $IMAGE_NAME
 fi
 # Build new image
-sudo docker image build --tag $IMAGE_NAME .
+sudo docker image build --no-cache --tag $IMAGE_NAME .
 
 echo "✅ $0"
