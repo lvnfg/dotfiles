@@ -7,6 +7,7 @@ echo $NAME 🚸
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Install core plugins
+mkdir -p "$path/vim/plugins"    # in .gitignore so not guaranteed to exists
 cd "$path/vim/plugins"
 # Treesitter
 git clone https://github.com/nvim-treesitter/nvim-treesitter || true
