@@ -29,8 +29,8 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-nvim.sh" \
     && bash "install-nvim-core-plugins.sh" \
     && bash "install-nodejs-and-npm.sh" \
-    && base "install-nvim-lsp-plugins.sh" \
-    && base "install-nvim-lsp-pyright.sh" \
+    && bash "install-nvim-lsp-plugins.sh" \
+    && bash "install-nvim-lsp-pyright.sh" \
     && echo "✅ dev dockerfile "
 
 # https://docs.docker.com/engine/reference/builder/#cmd

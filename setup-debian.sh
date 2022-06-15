@@ -19,6 +19,7 @@ sudo -E bash "$path/install-tmux.sh"
 sudo -E bash "$path/install-git.sh"
 sudo -E bash "$path/install-bat.sh"
 sudo -E bash "$path/install-ranger.sh"
-sudo -E bash "$path/install-neovim.sh"
+sudo -E bash "$path/install-nvim.sh"
+sudo -E bash "$path/install-nvim-core-plugins.sh"
 
 echo "✅ $0"

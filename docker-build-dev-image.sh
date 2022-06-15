@@ -7,8 +7,8 @@ IMAGE_NAME="dev:latest"
 
 # Kill existing container
 NAME="dev"
-sudo docker container kill $NAME
-sudo docker container rm $NAME
+sudo docker container kill $NAME || true
+sudo docker container rm $NAME || true
 
 # Create image
 echo "Building container image"
