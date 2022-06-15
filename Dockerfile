@@ -25,6 +25,7 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-msodbcsql.sh" \
     && bash "install-pyodbc.sh" \
     && bash "install-mssql-cli.sh" \
+    && bash "install-ipython.sh" \
     && bash "install-bat.sh" \
     && bash "install-nvim.sh" \
     && bash "install-nvim-core-plugins.sh" \
