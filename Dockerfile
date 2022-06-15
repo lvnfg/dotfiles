@@ -14,12 +14,13 @@ RUN    apt-get update && apt-get upgrade -y \
     && mkdir -p ~/repos \
     && git clone https://github.com/lvnfg/dotfiles \
     && cd dotfiles \
+    && bash "install-python.sh" \
     && bash "install-bash.sh" \
     && bash "install-git.sh" \
     && bash "install-ranger.sh" \
     && bash "install-tmux.sh" \
     && bash "install-top.sh" \
-    && bash "install-python.sh" \
+    && bash "install-mssqlcli.sh" \
     && bash "install-msodbcsql.sh" \
     && bash "install-pyodbc.sh" \
     && bash "install-nodejs-and-npm.sh" \
