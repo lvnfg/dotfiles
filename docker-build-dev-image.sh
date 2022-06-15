@@ -1,5 +1,5 @@
 set -euo pipefail
-
+echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$path"
 
@@ -17,4 +17,4 @@ fi
 # Build new image
 sudo docker image build --tag $IMAGE_NAME .
 
-echo "dev image build ✅"
+echo "✅ $0"

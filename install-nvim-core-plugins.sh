@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-
-NAME="neovim core plugins"
-echo $NAME 🚸
-
+echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Install core plugins
@@ -54,4 +51,4 @@ git clone https://github.com/lvnfg/vim-easy-align || true
 # git clone https://pineapplegiant.github.io/spaceduck       || true
 # git clone https://github.com/luisiacc/gruvbox-baby         || true
 
-echo $NAME ✅
+echo "✅ $0"

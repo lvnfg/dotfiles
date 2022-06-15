@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+echo 🚸 $0
 
 apt-get update && apt-get upgrade -y
 apt-get install git -y
@@ -22,4 +23,4 @@ git config --global alias.d difftool
 # Pull
 git config --global pull.ff only
 
-echo "git ✅"
+echo "✅ $0"

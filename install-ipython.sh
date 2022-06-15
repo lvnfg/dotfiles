@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-
+echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 pip3 install ipython
@@ -22,4 +22,4 @@ pip3 install prompt_toolkit==3.0.29
 #    import jedi.api.classes
 #    JEDI_INSTALLED = True
 
-echo "ipython ✅"
+echo "✅ $0"

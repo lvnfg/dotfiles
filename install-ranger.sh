@@ -1,6 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-
+echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Symlink ranger config
@@ -25,5 +25,4 @@ else
 fi
 cd $path
 
-
-echo "range ✅"
+echo "✅ $0"

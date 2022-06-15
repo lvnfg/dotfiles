@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-
-NAME="nvim lsp pyright"
-echo $NAME 🚸
+echo 🚸 $0
 
 # ---------------------------------------
 # COC-NVIM
@@ -16,4 +14,4 @@ nvim --headless +'CocInstall coc-pyright' +qa
 # apt-get install npm -y
 # npm install -g pyright
 
-echo $NAME ✅
+echo "✅ $0"

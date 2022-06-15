@@ -11,6 +11,7 @@
 # sudo rm -rf /var/lib/docker && sudo rm -rf /var/lib/containerd
 
 set -euo pipefail
+echo 🚸 $0
 
 # Stop the docker service if running
 sudo systemctl restart docker
@@ -53,4 +54,4 @@ sudo usermod -aG docker $USER   # Add current user to docker group
 newgrp docker                   # Activate changes to groups
 docker run hello-world          # Verify docker can run without sudo
 
-echo "docker ✅"
+echo "✅ $0"

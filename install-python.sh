@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+echo 🚸 $0
 
 version="3.10.4"
 
@@ -29,4 +30,4 @@ apt-get install -y python3-pip
 
 ln -s -f /usr/local/bin/python3 /usr/bin/python
 
-echo "PYTHON $version ✅"
+echo "✅ $0"

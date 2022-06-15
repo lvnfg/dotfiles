@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
-
-NAME="nvim"
-echo $NAME 🚸
-
+echo 🚸 $0
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # remove preinstalled neovim if any
@@ -37,4 +34,4 @@ PLUGDIR="$HOME/.local/share/nvim/site/pack/plugins"
 mkdir -p $PLUGDIR
 ln -s -f $path/vim/plugins $PLUGDIR/start
 
-echo $NAME ✅
+echo "✅ $0"
