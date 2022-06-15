@@ -21,5 +21,6 @@ sudo -E bash "$path/install-bat.sh"
 sudo -E bash "$path/install-ranger.sh"
 sudo -E bash "$path/install-nvim.sh"
 sudo -E bash "$path/install-nvim-core-plugins.sh"
+sudo -E bash "$path/install-docker.sh"
 
 echo "✅ $0"
