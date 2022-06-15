@@ -4,11 +4,11 @@ path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$path"
 
 IMAGE_NAME="dev:latest"
+NAME="dev"
 
 # Kill existing container
-NAME="dev"
-sudo docker container kill $NAME
-sudo docker container rm $NAME
+sudo docker container kill $NAME || true
+sudo docker container rm $NAME || true
 
 # Create image
 echo "Building container image"
