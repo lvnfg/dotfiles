@@ -1,6 +1,6 @@
 #!/bin/bash
-set -euo pipefail
 echo 🚸 $0
+set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sudo apt update && sudo apt upgrade -y
@@ -13,14 +13,14 @@ sudo apt install -y rsync
 sudo apt install -y ripgrep     # Required for fzf.vim search all files
 
 # Use -H option to keep $HOME as user
-sudo -E bash "$path/install-top.sh"
-sudo -E bash "$path/install-bash.sh"
-sudo -E bash "$path/install-tmux.sh"
-sudo -E bash "$path/install-git.sh"
-sudo -E bash "$path/install-bat.sh"
-sudo -E bash "$path/install-ranger.sh"
-sudo -E bash "$path/install-nvim.sh"
-sudo -E bash "$path/install-nvim-core-plugins.sh"
-sudo -E bash "$path/install-docker.sh"
+bash "$path/install-top.sh"
+bash "$path/install-bash.sh"
+bash "$path/install-tmux.sh"
+bash "$path/install-git.sh"
+bash "$path/install-bat.sh"
+bash "$path/install-ranger.sh"
+bash "$path/install-nvim.sh"
+bash "$path/install-nvim-core-plugins.sh"
+bash "$path/install-docker.sh"
 
 echo "✅ $0"

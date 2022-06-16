@@ -1,9 +1,10 @@
 #!/bin/bash
-set -euo pipefail
 echo 🚸 $0
+set -euo pipefail
+if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
-apt-get install -y bat
+$issudo apt-get install -y bat
 mkdir -p $HOME/.local/bin
-ln -s -f /usr/bin/batcat $HOME/.local/bin/bat
+$issudo ln -s -f /usr/bin/batcat $HOME/.local/bin/bat
 
 echo "✅ $0"

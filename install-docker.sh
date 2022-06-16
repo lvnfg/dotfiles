@@ -14,7 +14,7 @@ set -euo pipefail
 echo 🚸 $0
 
 # Stop the docker service if running
-sudo systemctl restart docker
+sudo systemctl restart docker || true
 
 # Remove previously installed docker verions
 sudo apt-get remove docker docker-engine docker.io containerd runc

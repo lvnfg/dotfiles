@@ -1,6 +1,6 @@
 #!/bin/bash
-set -euo pipefail
 echo 🚸 $0
+set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Install core plugins

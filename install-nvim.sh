@@ -1,24 +1,25 @@
 #!/bin/bash
-set -euo pipefail
 echo 🚸 $0
+set -euo pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
 # remove preinstalled neovim if any
 echo "removing neovim"
-apt remove neovim -y
+$issudo apt-get remove neovim -y
 rm -f /usr/bin/nvim
 
 # Download package
 cd $HOME
 filename="nvim.deb"
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O $filename
-apt install "./$filename" -y
+$issudo apt-get install "./$filename" -y
 rm $filename
 # Note: package must be removed by name = neovim and not nvim
 
 # Create neovim symlink. Must use /usr/local/bin for macos compatibility
 echo "creating neovim symlink"
-ln -s -f $HOME/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
+$issudo ln -s -f $HOME/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
 
 # symlink nvim config
 echo "creating neovim config symlinks"
