@@ -21,6 +21,5 @@ bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
 bash "$path/install-nvim.sh"
 bash "$path/install-nvim-core-plugins.sh"
-bash "$path/install-docker.sh"
 
 echo "✅ $0"
