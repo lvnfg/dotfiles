@@ -2,7 +2,8 @@ FROM debian:bullseye-backports
 
 # https://docs.docker.com/engine/reference/builder/#run
 # procps is required to run ps in tmux's if_shell
-RUN    apt-get update && apt-get upgrade -y \
+RUN \
+    apt-get update && apt-get upgrade -y \
     && apt-get install -y procps \
     && apt-get install -y wget \
     && apt-get install -y unzip \
@@ -12,7 +13,6 @@ RUN    apt-get update && apt-get upgrade -y \
     && apt-get install -y ripgrep \
     && apt-get install -y build-essential \
     && apt-get install -y git \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
     \
     && mkdir -p ~/repos \
     && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles \
@@ -34,6 +34,8 @@ RUN    apt-get update && apt-get upgrade -y \
     && bash "install-nodejs-and-npm.sh" \
     && bash "install-nvim-lsp-plugins.sh" \
     && bash "install-nvim-lsp-pyright.sh" \
+    \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
     \
     && echo "✅ dot dockerfile "
 
