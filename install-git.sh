@@ -3,7 +3,8 @@ echo 🚸 $0
 set -euo pipefail
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
-$issudo apt-get update && apt-get upgrade -y
+echo "issudo: $issudo"
+
 $issudo apt-get install git -y
 
 git config --global core.editor     "nvim"
