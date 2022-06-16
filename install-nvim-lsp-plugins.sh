@@ -7,6 +7,13 @@ mkdir -p "$path/vim/plugins"    # in .gitignore so not guaranteed to exists
 cd "$path/vim/plugins"
 
 # ---------------------------------------------
+# TREESITTER
+# Require apt install build-essentials if not exists
+# ---------------------------------------------
+git clone https://github.com/nvim-treesitter/nvim-treesitter || true
+nvim --headless +"TSInstall python bash lua" +'sleep 20' +'qa'
+
+# ---------------------------------------------
 # NVIM-LSP
 # ---------------------------------------------
 git clone https://github.com/neovim/nvim-lspconfig || true
