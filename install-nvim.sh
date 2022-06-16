@@ -33,5 +33,7 @@ ln -s -f $path/vim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 PLUGDIR="$HOME/.local/share/nvim/site/pack/plugins"
 mkdir -p $PLUGDIR
 ln -s -f $path/vim/plugins $PLUGDIR/start
+# Remove recursive symlink (don't know how it gets there)
+rm -f $path/vim/plugins/plugins
 
 echo "✅ $0"
