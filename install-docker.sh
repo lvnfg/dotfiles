@@ -49,9 +49,9 @@ sudo apt-get update && sudo apt-get install -y docker-ce docker-ce-cli container
 sudo docker run hello-world
 
 # Run docker without sudo
-sudo groupadd -f docker         # Create docker user group
-sudo usermod -aG docker $USER   # Add current user to docker group
-newgrp docker                   # Activate changes to groups
-docker run hello-world          # Verify docker can run without sudo
+# sudo groupadd -f docker         # Create docker user group
+# sudo usermod -aG docker $USER   # Add current user to docker group
+# newgrp docker                   # Activate changes to groups
+# docker run hello-world          # Verify docker can run without sudo
 
 echo "✅ $0"
