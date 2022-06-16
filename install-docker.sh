@@ -1,5 +1,7 @@
 # Install docker for Debian
 # https://docs.docker.com/engine/install/debian/
+echo 🚸 $0
+set -euo pipefail
 
 # Install docker in WSL 2 without Docker Desktop
 # https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9
@@ -10,11 +12,8 @@
 # Images, containers, volumes, or customized configuration files on your host are not automatically removed. To delete all images, containers, and volumes:
 # sudo rm -rf /var/lib/docker && sudo rm -rf /var/lib/containerd
 
-set -euo pipefail
-echo 🚸 $0
-
 # Stop the docker service if running
-sudo systemctl stop -f docker
+# sudo systemctl stop -f docker
 
 # Remove previously installed docker verions
 sudo dpkg --remove docker docker-engine docker.io containerd runc
@@ -24,7 +23,7 @@ sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg lsb-re
 
 # Add docker's official GPG key
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg -f --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 # Setup the repository
 echo \
