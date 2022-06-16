@@ -14,17 +14,17 @@ set -euo pipefail
 echo 🚸 $0
 
 # Stop the docker service if running
-sudo systemctl restart docker || true
+sudo systemctl stop -f docker
 
 # Remove previously installed docker verions
-sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo dpkg --remove docker docker-engine docker.io containerd runc
 
 # Setup docker repository dependencies
 sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg lsb-release
 
 # Add docker's official GPG key
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg -f --dearmor -o /etc/apt/keyrings/docker.gpg
 
 # Setup the repository
 echo \
