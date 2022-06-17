@@ -12,8 +12,8 @@ ln -s -f $path/ranger/rc.conf	   $HOME/.config/ranger/rc.conf
 ln -s -f $path/ranger/commands.py  $HOME/.config/ranger/commands.py
 
 # enable scope.sh to preview more file types such as images, xls, pdf, html etc
-# chmod +x $path/ranger/scope.sh    # Make scope.sh executable to enable preview
-# ln -s -f $path/ranger/scope.sh $HOME/.config/ranger/scope.sh
+chmod +x $path/ranger/scope.sh    # Make scope.sh executable to enable preview
+ln -s -f $path/ranger/scope.sh $HOME/.config/ranger/scope.sh
 
 # Install devicons
 # echo "Install ranger devicons"
