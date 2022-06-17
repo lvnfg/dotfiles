@@ -3,18 +3,26 @@ set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
-# Install ranger
 $issudo apt-get install ranger -y
-# Symlink ranger config
-rm -rf $HOME/.config/ranger
-mkdir -p $HOME/.config/ranger
-ln -s -f $path/ranger/rc.conf	   $HOME/.config/ranger/rc.conf
-ln -s -f $path/ranger/commands.py  $HOME/.config/ranger/commands.py
 
-# enable scope.sh to preview more file types such as images, xls, pdf, html etc
-chmod +x $path/ranger/scope.sh    # Make scope.sh executable to enable preview
-ln -s -f $path/ranger/scope.sh $HOME/.config/ranger/scope.sh
+# Remove ranger config directory. Everything is directly patched
+# to source code
+rm -rf "$HOME/.config/ranger"
 
+# Patch ranger source code to enable functionalities without relying on custom .config
+# which doesn't work inside docker container.
+SOURCE="/usr/lib/python3/dist-packages/ranger"
+$issudo ln -s -f $path/ranger/rc.conf $SOURCE/config/rc.conf
+$issudo ln -s -f $path/ranger/commands.py $SOURCE/config/commands.py
+if [ "$issudo" != "sudo" ]; then
+    # Patch ranger to enable file preview as root
+    ln -s -f $path/ranger/main.py $SOURCE/core/main.py
+fi
+
+# Threre is no need to enable scope.sh in docker or terminal only environemnt. No way
+# to preview images, files, pdf, xlsx, html render etc.
+
+# Devicons can't be displayed inside docker container.
 # Install devicons
 # echo "Install ranger devicons"
 # REPODIR="$HOME/.config/ranger/plugins/ranger_devicons"
