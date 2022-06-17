@@ -28,7 +28,7 @@ export LESS="RS"
 # --------------------------------------------------------------------------
 # Tmux
 # --------------------------------------------------------------------------
-export TERM=screen-256color             # Let vim & tmux terminals use colors
+export TERM=xterm-256color             # Let vim & tmux terminals use colors
 alias tmux="tmux -u"                    # Force UTF-8 output
 alias ta="tmux attach-session -t"
 
