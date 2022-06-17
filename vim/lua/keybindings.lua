@@ -74,7 +74,7 @@ map('n', '<M-D>', ':DiagnosticsAll<cr>') -- List diagnostick for all buffers
 map('n', 'gR', vim.lsp.buf.rename)
 map('n', 'gr', vim.lsp.buf.references)
 map('n', 'gD', vim.lsp.buf.type_definition)
-map('n', 'gd', ':rightbelow<cr>:lua vim.lsp.buf.definition<cr>')
+map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
 map('n', 'gs', vim.lsp.buf.signature_help)
 map('n', 'gh', vim.lsp.buf.hover)
