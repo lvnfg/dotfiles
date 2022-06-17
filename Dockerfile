@@ -40,4 +40,4 @@ RUN \
     && echo "✅ dot dockerfile "
 
 # https://docs.docker.com/engine/reference/builder/#cmd
-CMD ["tmux", "new-session", "-A", "-s", "0"]
+CMD ["/bin/bash"]
