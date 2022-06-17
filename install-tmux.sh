@@ -1,6 +1,5 @@
 #!/bin/bash
-echo 🚸 $0
-set -euo pipefail
+set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
@@ -11,5 +10,3 @@ ln -s -f "$path/tmux/.tmux.conf" $HOME/.tmux.conf
 $issudo apt-get install tmux/bullseye-backports -y
 # Use this when the apt package is 3.2
 # sudo apt install tmux -y
-
-echo "✅ $0"

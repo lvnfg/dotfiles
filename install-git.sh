@@ -1,6 +1,5 @@
 #!/bin/bash
-echo 🚸 $0
-set -euo pipefail
+set -euox pipefail
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
 echo "issudo: $issudo"
@@ -24,5 +23,3 @@ git config --global alias.d difftool
 
 # Pull
 git config --global pull.ff only
-
-echo "✅ $0"

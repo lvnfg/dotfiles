@@ -1,6 +1,5 @@
 #!/bin/bash
-echo 🚸 $0
-set -euo pipefail
+set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
@@ -25,5 +24,3 @@ $issudo apt-get install ranger -y
 #     git pull
 # fi
 # cd $path
-
-echo "✅ $0"

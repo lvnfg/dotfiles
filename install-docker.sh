@@ -1,7 +1,6 @@
 # Install docker for Debian
 # https://docs.docker.com/engine/install/debian/
-echo 🚸 $0
-set -euo pipefail
+set -euox pipefail
 
 # Install docker in WSL 2 without Docker Desktop
 # https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9
@@ -52,5 +51,3 @@ sudo docker run hello-world
 # sudo usermod -aG docker $USER   # Add current user to docker group
 # newgrp docker                   # Activate changes to groups
 # docker run hello-world          # Verify docker can run without sudo
-
-echo "✅ $0"

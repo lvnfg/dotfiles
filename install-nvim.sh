@@ -1,6 +1,5 @@
 #!/bin/bash
-echo 🚸 $0
-set -euo pipefail
+set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
@@ -90,5 +89,3 @@ git clone https://github.com/hrsh7th/cmp-cmdline  || true
 git clone https://github.com/hrsh7th/nvim-cmp     || true
 git clone https://github.com/hrsh7th/cmp-vsnip    || true
 git clone https://github.com/hrsh7th/vim-vsnip    || true
-
-echo "✅ $0"
