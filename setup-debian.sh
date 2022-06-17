@@ -20,6 +20,5 @@ bash "$path/install-git.sh"
 bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
 bash "$path/install-nvim.sh"
-bash "$path/install-nvim-core-plugins.sh"
 
 echo "✅ $0"
