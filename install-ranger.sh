@@ -3,14 +3,17 @@ set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
+# Install ranger
+$issudo apt-get install ranger -y
 # Symlink ranger config
+rm -rf $HOME/.config/ranger
 mkdir -p $HOME/.config/ranger
 ln -s -f $path/ranger/rc.conf	   $HOME/.config/ranger/rc.conf
-ln -s -f $path/ranger/scope.sh	   $HOME/.config/ranger/scope.sh
 ln -s -f $path/ranger/commands.py  $HOME/.config/ranger/commands.py
-# Make scope.sh executable for ranger
-chmod +x $path/ranger/scope.sh
-$issudo apt-get install ranger -y
+
+# enable scope.sh to preview more file types such as images, xls, pdf, html etc
+# chmod +x $path/ranger/scope.sh    # Make scope.sh executable to enable preview
+# ln -s -f $path/ranger/scope.sh $HOME/.config/ranger/scope.sh
 
 # Install devicons
 # echo "Install ranger devicons"
