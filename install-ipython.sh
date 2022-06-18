@@ -7,8 +7,10 @@ ipython profile create
 ln -s -f $path/ipython/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
 
 # ipython somehow doesn't work with python 3.10
-pyver="$(python3 --version | grep 3.10)"
-if [[ "$pyver" != "" ]]; then
+# pyver="$(python3 --version | grep 3.10)"
+pyver="{$(python3 --version)"
+pyver="${pyver:8:4}"
+if [[ "$pyver" == 3.10 ]]; then
     echo "Fixing prompt-toolkit"
     pip3 install prompt_toolkit==3.0.29     # Must be at this specific version
 fi
