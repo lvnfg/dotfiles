@@ -14,6 +14,16 @@ require('keybindings')
 require('colorscheme')
 
 -- ---------------------------------------------------------------------
+-- TERMINAL
+-- ---------------------------------------------------------------------
+-- Disable line numbers in terminal
+-- vim.cmd [[ autocmd TermOpen * setlocal nonumber norelativenumber ]]
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = { "*" },
+    command = "setlocal nonumber norelativenumber",
+})
+
+-- ---------------------------------------------------------------------
 -- EDITOR SETTINGS
 -- ---------------------------------------------------------------------
 o.mouse         = 'a'
