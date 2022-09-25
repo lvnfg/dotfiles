@@ -36,56 +36,56 @@ cd $PLUGDIR
 # ----------------------------------------------------------------------------
 # core plugins
 # ----------------------------------------------------------------------------
-git clone https://github.com/junegunn/fzf                || true
-git clone https://github.com/junegunn/fzf.vim            || true
-git clone https://github.com/lvnfg/vim-better-whitespace || true
-git clone https://github.com/lvnfg/vim-tmux-navigator    || true
-git clone https://github.com/lvnfg/vim-gitgutter         || true
-git clone https://github.com/lvnfg/vim-easy-align        || true
+git clone https://github.com/junegunn/fzf                --depth 1 || true
+git clone https://github.com/junegunn/fzf.vim            --depth 1 || true
+git clone https://github.com/lvnfg/vim-better-whitespace --depth 1 || true
+git clone https://github.com/lvnfg/vim-tmux-navigator    --depth 1 || true
+git clone https://github.com/lvnfg/vim-gitgutter         --depth 1 || true
+git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
 # ----------------------------------------------------------------------------
 # colorschemes
 # ----------------------------------------------------------------------------
-# git clone https://github.com/catppuccin/nvim               || true  # as 'catppucine'
-# git clone https://github.com/srcery-colors/srcery-vim      || true  # as = 'srcery'
-# git clone https://rigel.netlify.app/#vim                   || true
-# git clone https://github.com/andreypopp/vim-colors-plain   || true
-# git clone https://github.com/ful1e5/onedark.nvim           || true
-# git clone https://github.com/EdenEast/nightfox.nvim        || true
-# git clone https://github.com/Mofiqul/dracula.nvim          || true
-# git clone https://github.com/sainnhe/everforest            || true
-# git clone https://github.com/folke/tokyonight.nvim         || true
-# git clone https://github.com/sainnhe/gruvbox-material      || true
-# git clone https://github.com/sainnhe/edge                  || true
-  git clone https://github.com/lvnfg/sonokai                 || true
-# git clone https://github.com/bluz71/vim-nightfly-guicolors || true
-# git clone https://github.com/mhartington/oceanic-next      || true
-# git clone https://github.com/fenetikm/falcon               || true
-# git clone https://github.com/marko-cerovac/material.nvim   || true
-# git clone https://github.com/shaunsingh/nord.nvim          || true
-# git clone https://github.com/rebelot/kanagawa.nvim         || true
-# git clone https://github.com/navarasu/onedark.nvim         || true
-# git clone https://github.com/olimorris/onedarkpro.nvim     || true
-# git clone https://github.com/mcchrish/zenbones.nvim        || true
-# git clone https://pineapplegiant.github.io/spaceduck       || true
-# git clone https://github.com/luisiacc/gruvbox-baby         || true
+# git clone https://github.com/catppuccin/nvim               --depth 1 || true  # as 'catppucine'
+# git clone https://github.com/srcery-colors/srcery-vim      --depth 1 || true  # as = 'srcery'
+# git clone https://rigel.netlify.app/#vim                   --depth 1 || true
+# git clone https://github.com/andreypopp/vim-colors-plain   --depth 1 || true
+# git clone https://github.com/ful1e5/onedark.nvim           --depth 1 || true
+# git clone https://github.com/EdenEast/nightfox.nvim        --depth 1 || true
+# git clone https://github.com/Mofiqul/dracula.nvim          --depth 1 || true
+# git clone https://github.com/sainnhe/everforest            --depth 1 || true
+# git clone https://github.com/folke/tokyonight.nvim         --depth 1 || true
+# git clone https://github.com/sainnhe/gruvbox-material      --depth 1 || true
+# git clone https://github.com/sainnhe/edge                  --depth 1 || true
+  git clone https://github.com/lvnfg/sonokai                 --depth 1 || true
+# git clone https://github.com/bluz71/vim-nightfly-guicolors --depth 1 || true
+# git clone https://github.com/mhartington/oceanic-next      --depth 1 || true
+# git clone https://github.com/fenetikm/falcon               --depth 1 || true
+# git clone https://github.com/marko-cerovac/material.nvim   --depth 1 || true
+# git clone https://github.com/shaunsingh/nord.nvim          --depth 1 || true
+# git clone https://github.com/rebelot/kanagawa.nvim         --depth 1 || true
+# git clone https://github.com/navarasu/onedark.nvim         --depth 1 || true
+# git clone https://github.com/olimorris/onedarkpro.nvim     --depth 1 || true
+# git clone https://github.com/mcchrish/zenbones.nvim        --depth 1 || true
+# git clone https://pineapplegiant.github.io/spaceduck       --depth 1 || true
+# git clone https://github.com/luisiacc/gruvbox-baby         --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-treesitter
 # ----------------------------------------------------------------------------
-git clone https://github.com/nvim-treesitter/nvim-treesitter || true        # Require apt install build-essential
+git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true        # Require apt install build-essential
 # Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 nvim --headless +"TSInstall python bash lua" +'sleep 20' +'qa'
 # ----------------------------------------------------------------------------
 # nvim-lspconfig + fzf-lsp
 # ----------------------------------------------------------------------------
-git clone https://github.com/neovim/nvim-lspconfig || true
-git clone https://github.com/lvnfg/fzf-lsp.nvim    || true
+git clone https://github.com/neovim/nvim-lspconfig --depth 1 || true
+git clone https://github.com/lvnfg/fzf-lsp.nvim    --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-cmp & autocompletion plugins
 # ----------------------------------------------------------------------------
-git clone https://github.com/hrsh7th/cmp-nvim-lsp || true
-git clone https://github.com/hrsh7th/cmp-buffer   || true
-git clone https://github.com/hrsh7th/cmp-path     || true
-git clone https://github.com/hrsh7th/cmp-cmdline  || true
-git clone https://github.com/hrsh7th/nvim-cmp     || true
-git clone https://github.com/hrsh7th/cmp-vsnip    || true
-git clone https://github.com/hrsh7th/vim-vsnip    || true
+git clone https://github.com/hrsh7th/cmp-nvim-lsp --depth 1 || true
+git clone https://github.com/hrsh7th/cmp-buffer   --depth 1 || true
+git clone https://github.com/hrsh7th/cmp-path     --depth 1 || true
+git clone https://github.com/hrsh7th/cmp-cmdline  --depth 1 || true
+git clone https://github.com/hrsh7th/nvim-cmp     --depth 1 || true
+git clone https://github.com/hrsh7th/cmp-vsnip    --depth 1 || true
+git clone https://github.com/hrsh7th/vim-vsnip    --depth 1 || true
