@@ -10,6 +10,48 @@ g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
 -- ---------------------------------------------------------------------
+-- SEND TEXT TO BUILT-IN TERMINAL
+-- Similar to emacs SLIME plugins to send existing text in vim to external interface, such as REPL.
+-- Refactored and simplified code from source at: https://github.com/lvnfg/vim-slime
+-- ---------------------------------------------------------------------
+vim.cmd [[
+" Make slime_last_channel contain the channel id of the last opened terminal
+" to send text to
+" autocmd TermOpen * let g:slime_last_channel = &channel
+autocmd TermOpen * let g:last_terminal_channel_id = &channel
+
+" Send to neovim terminal
+function! s:NeovimSend(text)
+    call chansend(str2nr(g:last_terminal_channel_id), a:text)
+endfunction
+
+function! Slime_send_visual() abort
+    " Save cursor position
+    let s:cur = winsaveview()
+
+    silent exe "normal! `<V`>y"
+
+    call setreg('"', @", 'V')
+    call s:NeovimSend(@")
+
+    " Restore cursor
+    call winrestview(s:cur)
+    unlet s:cur
+endfunction
+
+function! Slime_send_normal() abort
+    let line=getline('.')
+    echo "test normal"
+    call setreg('"', line, 'V')
+    call s:NeovimSend(@")
+endfunction
+
+" KEYBINDINGS
+nmap <script> <silent> <M-e> :call Slime_send_normal()<cr>
+xmap <script> <silent> <M-e> :<c-u>call Slime_send_visual()<cr>
+]]
+
+-- ---------------------------------------------------------------------
 -- PLUGINS
 -- ---------------------------------------------------------------------
 -- Check if package exists before attempting to call setup to prevent errors
