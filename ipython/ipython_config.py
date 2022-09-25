@@ -359,7 +359,7 @@
 
 ## Autoindent IPython code entered interactively.
 #  Default: True
-# c.InteractiveShell.autoindent = True
+c.InteractiveShell.autoindent = False
 
 ## Enable magic commands to be called without the leading %.
 #  Default: True
