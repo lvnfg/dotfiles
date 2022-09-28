@@ -10,15 +10,41 @@ g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
 -- ---------------------------------------------------------------------
+-- TERMINAL
+-- ---------------------------------------------------------------------
+-- Disable line numbers in terminal
+-- Disable line numbers in terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = {"*"},
+    command = "setlocal nonumber norelativenumber",
+})
+-- Always start terminal in insert mode
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = {"*"},
+    command = "startinsert",
+})
+-- Always enter terminal in insert mode
+vim.api.nvim_create_autocmd("BufEnter,WinEnter", {
+    pattern = {"*"},
+    command = "if &buftype == 'terminal' | :startinsert | endif",
+})
+
 -- SEND TEXT TO BUILT-IN TERMINAL
 -- Similar to emacs SLIME plugins to send existing text in vim to external interface, such as REPL.
 -- Refactored and simplified code from source at: https://github.com/lvnfg/vim-slime
 -- ---------------------------------------------------------------------
+-- Set text channel id to last opened terminal
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = {"*"},
+    command = "let g:last_terminal_channel_id = &channel",
+})
+-- Set text channel id to last entered terminal
+vim.api.nvim_create_autocmd("BufEnter,WinEnter", {
+    pattern = {"*"},
+    command = "if &buftype == 'terminal' | exec 'let g:last_terminal_channel_id = b:terminal_job_id' | endif",
+})
+-- Core methods
 vim.cmd [[
-" Make slime_last_channel contain the channel id of the last opened terminal
-" to send text to
-autocmd TermOpen * let g:last_terminal_channel_id = &channel
-
 " Send to neovim terminal
 function! s:NeovimSend(text)
     call chansend(str2nr(g:last_terminal_channel_id), a:text)
@@ -320,16 +346,6 @@ local white        = "#e4e4e4"
 local light_blue   = "#66d9ef"
 local deep_blue    = "#070319"
 local deep_green   = "#020C05"
-
--- ---------------------------------------------------------------------
--- TERMINAL
--- ---------------------------------------------------------------------
--- Disable line numbers in terminal
--- vim.cmd [[ autocmd TermOpen * setlocal nonumber norelativenumber ]]
-vim.api.nvim_create_autocmd("TermOpen", {
-    pattern = { "*" },
-    command = "setlocal nonumber norelativenumber",
-})
 
 -- ---------------------------------------------------------------------
 -- EDITOR SETTINGS
