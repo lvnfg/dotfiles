@@ -17,7 +17,6 @@ g.loaded_netrwPlugin = 1
 vim.cmd [[
 " Make slime_last_channel contain the channel id of the last opened terminal
 " to send text to
-" autocmd TermOpen * let g:slime_last_channel = &channel
 autocmd TermOpen * let g:last_terminal_channel_id = &channel
 
 " Send to neovim terminal
