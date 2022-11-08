@@ -270,7 +270,7 @@ map('n', 'ga', '<Plug>(EasyAlign)')
 map('n', '<M-q>', ':q<cr>')                 -- Close window
 map('n', '<M-w>', ':lua CloseBuffer()<cr>') -- Call function close buffer
 map('n', '<M-s>', ':w<cr>')                 -- Save file
-map('n', '<M-S>', ':lua SaveAsAndKeepCurrentBuffer()<cr>')      -- Call SaveAs
+map('n', '<M-S>', ':lua SaveAsAndSwitchToNewBuffer)<cr>')      -- Call SaveAs
 map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
 
 -- Fzf
