@@ -270,7 +270,7 @@ map('n', 'ga', '<Plug>(EasyAlign)')
 map('n', '<M-q>', ':q<cr>')                 -- Close window
 map('n', '<M-w>', ':lua CloseBuffer()<cr>') -- Call function close buffer
 map('n', '<M-s>', ':w<cr>')                 -- Save file
-map('n', '<M-S>', ':lua SaveAs()<cr>')      -- Call SaveAs
+map('n', '<M-S>', ':lua SaveAsAndKeepCurrentBuffer()<cr>')      -- Call SaveAs
 map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
 
 -- Fzf
@@ -402,7 +402,13 @@ function CloseBuffer()
 end
 
 -- Quick functin to duplicate file
-function SaveAs()
+function SaveAsAndKeepCurrentBuffer()
+    local dir = vim.api.nvim_eval("expand('%:p:h')")
+    local cmd = ':!cp % ' .. dir .. '/'
+    vim.fn.feedkeys(cmd)
+end
+--
+function SaveAsAndSwitchToNewBuffer()
     local dir = vim.api.nvim_eval("expand('%:p:h')")
     local cmd = ':saveas ' .. dir .. '/'
     vim.fn.feedkeys(cmd)
