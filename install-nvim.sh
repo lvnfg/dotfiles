@@ -82,10 +82,10 @@ git clone https://github.com/lvnfg/fzf-lsp.nvim    --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-cmp & autocompletion plugins
 # ----------------------------------------------------------------------------
-git clone https://github.com/hrsh7th/cmp-nvim-lsp --depth 1 || true
-git clone https://github.com/hrsh7th/cmp-buffer   --depth 1 || true
-git clone https://github.com/hrsh7th/cmp-path     --depth 1 || true
-git clone https://github.com/hrsh7th/cmp-cmdline  --depth 1 || true
-git clone https://github.com/hrsh7th/nvim-cmp     --depth 1 || true
-git clone https://github.com/hrsh7th/cmp-vsnip    --depth 1 || true
-git clone https://github.com/hrsh7th/vim-vsnip    --depth 1 || true
+git clone https://github.com/lvnfg/cmp-nvim-lsp --depth 1 || true
+git clone https://github.com/lvnfg/cmp-buffer   --depth 1 || true
+git clone https://github.com/lvnfg/cmp-path     --depth 1 || true
+git clone https://github.com/lvnfg/cmp-cmdline  --depth 1 || true
+git clone https://github.com/lvnfg/nvim-cmp     --depth 1 || true
+git clone https://github.com/lvnfg/cmp-vsnip    --depth 1 || true
+git clone https://github.com/lvnfg/vim-vsnip    --depth 1 || true
