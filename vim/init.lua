@@ -352,7 +352,7 @@ local deep_green   = "#020C05"
 -- ---------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
-o.termguicolors = true
+o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
 o.wrap          = false
 o.hidden        = true	  -- Allow changing buffer before saving
 o.ignorecase    = true    -- Case insensitive search
