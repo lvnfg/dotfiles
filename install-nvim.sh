@@ -72,8 +72,6 @@ git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
 # nvim-treesitter
 # ----------------------------------------------------------------------------
 git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true        # Require apt install build-essential
-# Supported languages: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
-nvim --headless +"TSInstall python bash lua" +'sleep 20' +'qa'
 # ----------------------------------------------------------------------------
 # nvim-lspconfig + fzf-lsp
 # ----------------------------------------------------------------------------
