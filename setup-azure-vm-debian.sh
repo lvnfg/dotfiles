@@ -25,14 +25,14 @@ bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
 bash "$path/install-nvim.sh"
 
-# Install docker
-bash "$path/install-docker.sh"
-# Set docker data location to temporary drive
-sudo systemctl stop docker
-sudo systemctl stop docker.socket
-sudo systemctl stop containerd
-mkdir /mnt/docker
-sudo mv /var/lib/docker /mnt/docker
-sudo cp -f "$path/docker/daemon.json" /etc/docker
-sudo systemctl start docker
-sudo docker info -f '{{ .DockerRootDir}}'
+#-------- # Install docker
+#-------- bash "$path/install-docker.sh"
+#-------- # Set docker data location to temporary drive
+#-------- sudo systemctl stop docker
+#-------- sudo systemctl stop docker.socket
+#-------- sudo systemctl stop containerd
+#-------- mkdir /mnt/docker
+#-------- sudo mv /var/lib/docker /mnt/docker
+#-------- sudo cp -f "$path/docker/daemon.json" /etc/docker
+#-------- sudo systemctl start docker
+#-------- sudo docker info -f '{{ .DockerRootDir}}'
