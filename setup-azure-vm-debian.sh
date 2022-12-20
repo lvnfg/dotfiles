@@ -2,9 +2,6 @@
 set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Set ownership on Azure temporary disk mounted location
-chown -R $USER:$USER /mnt
-
 # Install utilities
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y jq
