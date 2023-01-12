@@ -18,3 +18,18 @@ bash "$path/install-git.sh"
 bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
 bash "$path/install-nvim.sh"
+
+# Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
+# Open sshd_config for edit:
+#   sudo vim /etc/ssh/sshd_config
+#
+# Set the following:
+#     PubkeyAuthentication yes            # Default commented out. Important, will not be able to log back in if not enabled
+#     UsePAM yes                          # Default. May disable pubkey authen if set to no, keep yes for the moment
+#     PasswordAuthentication no           # Default
+#     PermitEmptyPasswords no             # Default
+#     PermitRootLogin no                  # Not found in Azure Debian 10 Gen 1 image's sshd
+#     ChallengeResponseAuthentication no
+#
+# Restart ssh service
+#   sudo service sshd restart
