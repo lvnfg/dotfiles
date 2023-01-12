@@ -14,7 +14,7 @@
 # Define certificate file names:
     export CA_KEY_NAME="ca_key.pem"
     export CA_CERT_NAME="ca_cert.pem"
-    export CLIENT_USERNAME="van"
+    export CLIENT_USERNAME="vanipad"
     export CLIENT_KEY_NAME="${CLIENT_USERNAME}_key.pem"
     export CLIENT_CERT_NAME="${CLIENT_USERNAME}_cert.pem"
     export CLIENT_BUNDLE_NAME="${CLIENT_USERNAME}.p12"
@@ -44,12 +44,42 @@
     # ----------------------
     # openssl pkcs12 -in "${USERNAME}Cert.pem" -inkey "${USERNAME}Key.pem" -certfile caCert.pem -export -out "${USERNAME}.p12" -password "pass:${PASSWORD}"
 
-# Export generated certificate files out of iSH
+# Install the p12 bundle profiel on iOS
+#   - Export generated certificate files out of iSH using files provider
+#   - Double click on the p12 bundle to install
+#   - Delete all root and client files
 
-# Generate VPN client configuration file
+# Configure the gateway
+#   - In the Azure portal, go to the virtual network gateway
+#   - On the virtual network gateway page, select Point-to-site configuration to open the Point-to-site configuration page
+#   - The default advertised routes are 10.1.0.0/16, 192.168.0.0/24 for non-windows clients.
+#   -   https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing
+#   - Add any additional routes need to be advertised before continuing using the box "Additional routes to advertise" at the bottom
 
-# Delete all generated files for security
+# Generate VPN configuration file
+#   - At the top of the Point-to-site configuration page, select Download VPN client.
+#   - Once the configuration package has been generated, your browser indicates that
+#     a client configuration zip file is available. It's named the same name as your
+#     gateway.
+#   - Unzip the file to view the folders.
+#   - Open the Generic folder:
+#       - VpnServerRoot.cer: click on this file to import configuration profile to iOS
+#       - VpnSettings.xml: open the file and note the value between <VpnServer> tags
+#           - <VpnServer>azuregateway-11fc0062-1773-4d1c-9b60-72706ded574e-3ada87e0fd39.vpn.azure.com</VpnServer>
+#   - Delete all downloaded files
 
+# Configure VPN connection
+#   - Go to Settings > General > VPN & Device Management > VPN > Add VPN Configuration
+#   - Set the following:
+#       - Type: IKEv2
+#       - Description: <VPNServer>
+#       - Server: <VpnServer>
+#       - Remote ID: <VpnServer>
+#       - Local ID: [azure_vpn]
+#   - Set authentication method:
+#       - User Authentication: None
+#       - Use certificate: Yes
+#       - Certificate: select the imported p12 certificate bundle
 
 # -------------------------------------------------------------------------
 # SETUP AZURE VPN ON MACOS USING KEYCHAIN - IPSEC/IKE
