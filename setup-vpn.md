@@ -7,6 +7,7 @@
 - Extra steps may be needed for Alpine. Google install strongswan on alpine linux.
 - Remember to allow iSH to connect to local network to be able to connect to repo and install packages.
 - Install strongswan:
+
     sudo apt install strongswan
     sudo apt install strongswan-pki
     sudo apt install libstrongswan-extra-plugins
@@ -14,32 +15,44 @@
 ## Generate client certificate
 - Each user must have their own CA and client certificate. Do not save CA cert for reuse later since there is no protection on it.
 - Define key names:
+
     export CA_KEY_NAME="ca_key.pem"
     export CA_CERT_NAME="ca_cert.pem"
     export CLIENT_USERNAME="van"
     export CLIENT_KEY_NAME="${CLIENT_USERNAME}_key.pem"
     export CLIENT_CERT_NAME="${CLIENT_USERNAME}_cert.pem"
     export CLIENT_BUNDLE_NAME="${CLIENT_USERNAME}.p12"
+
 - Set client key password:
+
     export CLIENT_PASSWORD="" 
+
 - Generate CA certificate:
+
     ipsec pki --gen --outform pem > "${CA_KEY_NAME}"
     ipsec pki --self --in "${CA_KEY_NAME}" --dn "CN=VPN CA" --ca --outform pem > "${CA_CERT_NAME}"
     # ----------------------
     # ipsec pki --gen --outform pem > caKey.pem
     # ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
+
 - Print the CA certificate in base 64 format, which will need to be uploaded to Azure.
+
     openssl x509 -in "${CA_CERT_NAME}" -outform der | base64 -w0 ; echo
+
 - Generate user certificate:
+
     ipsec pki --gen --outform pem > "${CLIENT_KEY_NAME}"
     ipsec pki --pub --in "${CLIENT_KEY_NAME}" | ipsec pki --issue --cacert "${CA_CERT_NAME}" --cakey "${CA_KEY_NAME}" --dn "CN=${CLIENT_USERNAME}" --san "${CLIENT_USERNAME}" --flag clientAuth --outform pem > "${CLIENT_CERT_NAME}"
     # ----------------------
     # ipsec pki --gen --outform pem > "${USERNAME}Key.pem"
     # ipsec pki --pub --in "${USERNAME}Key.pem" | ipsec pki --issue --cacert caCert.pem --cakey caKey.pem --dn "CN=${USERNAME}" --san "${USERNAME}" --flag clientAuth --outform pem > "${USERNAME}Cert.pem"
+
 - Generate a p12 bundle containing the user certificate:
+
     openssl pkcs12 -in "${CLIENT_CERT_NAME}" -inkey "${CLIENT_KEY_NAME}" -certfile "${CA_CERT_NAME}" -export -out "${CLIENT_BUNDLE_NAME}" -password "pass:${CLIENT_PASSWORD}"
     # ----------------------
     # openssl pkcs12 -in "${USERNAME}Cert.pem" -inkey "${USERNAME}Key.pem" -certfile caCert.pem -export -out "${USERNAME}.p12" -password "pass:${PASSWORD}"
+
 - Export generated certificate files out of iSH
 
 ## Generate VPN client configuration file
