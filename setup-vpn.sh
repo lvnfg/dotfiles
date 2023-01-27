@@ -111,6 +111,7 @@
 #       - Open a terminal tab and run:
 #   	- openssl base64 -in <infile> -out <outfile>
 #   - Open the new cert in a text editor and replace all linebreaks to get 1 continous line:
+#       - Can open with vi ~/<filename> on macos
 #   	- In vim : %s/\n//g
 #   - Copy the edited text
 
@@ -129,7 +130,7 @@
 #   	- Create
 #   - Server address: <VpnServer>
 #   - Remote ID: <VpnServer>
-#   - Local ID: any
+#   - Local ID: <certificate_name>
 #   - Authentication Settings:
 #   	- Authentication settings: None
 #   	- Certificate > Select > Select the leaf certificate created earlier
