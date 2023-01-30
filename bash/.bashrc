@@ -156,7 +156,7 @@ function fzf-git-stash() {
 bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
 # File & directories
 bind -x '"\ed": "fzf-change-directory"'
-bind -x '"\es": "fzf-execute-script"'
+bind -x '"\ee": "fzf-execute-script"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
 # Diffing
 bind -x '"\eD": "fzf-difftool"'
