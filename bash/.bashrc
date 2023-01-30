@@ -79,7 +79,7 @@ function fzf-file-open-in-vim() {
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 
-function fzf-execute-script() {
+function fzf-script-run() {
     result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf-down --preview 'bat --color=always {}')
     if [[ -z "$result" ]]; then return ; fi
     extension="${result##*.}"
@@ -156,7 +156,7 @@ function fzf-git-stash() {
 bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
 # File & directories
 bind -x '"\ed": "fzf-change-directory"'
-bind -x '"\ee": "fzf-execute-script"'
+bind -x '"\es": "fzf-script-run"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
 # Diffing
 bind -x '"\eD": "fzf-difftool"'
