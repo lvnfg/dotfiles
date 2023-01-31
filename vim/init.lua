@@ -131,6 +131,9 @@ if exists('lspconfig') then
     local lspconfig = require('lspconfig')
     -- Setup language server settings
     -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    -- -------------------------------------
+    -- Python
+    -- -------------------------------------
     lspconfig.pyright.setup{
         capabilities = capabilities,    -- Autocompletion
         cmd = { "pyright-langserver", "--stdio" },
@@ -149,6 +152,14 @@ if exists('lspconfig') then
           },
         },
         single_file_support = true
+    }
+    -- -------------------------------------
+    -- Javascript & Typescript
+    -- -------------------------------------
+    lspconfig.tsserver.setup{
+        single_file_support = true,
+        cmd = { "typescript-language-server", "--stdio" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
     }
 end
 if exists('fzf_lsp') then

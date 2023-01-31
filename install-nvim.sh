@@ -70,8 +70,9 @@ git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
 # git clone https://github.com/luisiacc/gruvbox-baby         --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-treesitter
+# Require apt install build-essential to build language parsers (vim, lua, python...)
 # ----------------------------------------------------------------------------
-git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true        # Require apt install build-essential
+git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-lspconfig + fzf-lsp
 # ----------------------------------------------------------------------------
