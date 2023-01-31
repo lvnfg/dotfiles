@@ -7,7 +7,7 @@ ipython profile create
 ln -s -f $path/ipython/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
 
 # Fix prompt toolkit when mssql-cli is installed in same system
-pip3 install prompt_toolkit==3.0.29
+# pip3 install prompt_toolkit==3.0.29   # Removed 2023-01-31. Seems this step isn't needed anymore.
 
 # To enable vim mode
 # Then open $HOME/.ipython/profile_default/ipython_config.py and set
