@@ -9,6 +9,7 @@ sudo apt install -y unzip
 sudo apt install -y curl
 sudo apt install -y fzf
 sudo apt install -y ripgrep     # Required for fzf.vim search all files
+sudo apt install -y rsync       # Sync files with mac
 
 # Use -H option to keep $HOME as user
 bash "$path/install-top.sh"
