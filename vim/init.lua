@@ -151,7 +151,7 @@ if exists('lspconfig') then
             },
           },
         },
-        single_file_support = true
+        single_file_support = true,
     }
     -- -------------------------------------
     -- Javascript & Typescript
@@ -159,7 +159,49 @@ if exists('lspconfig') then
     lspconfig.tsserver.setup{
         single_file_support = true,
         cmd = { "typescript-language-server", "--stdio" },
-        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+        -- root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+    }
+    -- -------------------------------------
+    -- HTML, CSS, JSON, ESLINT
+    -- All share the same LSP: npm install -g vscode-langservers-extracted
+    -- https://github.com/hrsh7th/vscode-langservers-extracted
+    -- -------------------------------------
+    -- vscode-json-language-server only provides completions when snippet support is enabled.
+    -- To enable completion, install a snippet plugin and add the following override to your
+    -- language client capabilities during setup.
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    -- HTML
+    lspconfig.html.setup{
+        cmd = { "vscode-html-language-server", "--stdio" },
+        filetypes = { "html" },
+        -- root_dir = see source file,
+        init_options = {
+          configurationSection = { "html", "css", "javascript" },
+          embeddedLanguages = {css = true, javascript = true},
+          provideFormatter = true,
+        },
+        capabilities = capabilities,
+        single_file_support = true,
+    }
+    -- CSS
+    lspconfig.cssls.setup{
+        cmd = { "vscode-css-language-server", "--stdio" },
+        filetypes = { "css", "scss", "less" },
+        -- root_dir = root_pattern("package.json", ".git") or bufdir,
+        settings = { css = { validate = true }, less = { validate = true }, scss = { validate = true } },
+        capabilities = capabilities,
+        single_file_support = true,
+    }
+    -- JSON
+    lspconfig.jsonls.setup{
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        init_options = { provideFormatter = true },
+        -- root_dir = util.find_git_ancestor,
+        capabilities = capabilities,
+        single_file_support = true,
     }
 end
 if exists('fzf_lsp') then
