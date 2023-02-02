@@ -432,7 +432,8 @@ o.laststatus = 2            -- 0 = hide, 2 = show statusline
 o.showmode = false          -- Hide mode indicator
 function s_line()
     local sline = ''
-    sline = sline .. '%1*%<%F'   -- %F for full file path, set background color
+    sline = sline .. '%1*%<(%n)' -- %n for buffer number, set background colors
+    sline = sline .. ' %1*%<%F'  -- %F for full file path, set background color
     sline = sline .. '%1*'       -- Add a space to end of filename
     return sline
 end
