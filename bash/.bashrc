@@ -66,7 +66,7 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 function fzf-down() {
     # Default command for keybindings-invokded fzf
-    fzf --height 50% --min-height 20 --border --bind 'alt-p:execute-silent(tmux set-buffer "{}" && tmux paste-buffer)+abort' "$@"
+    fzf --height 50% --min-height 20 --border --bind 'ctrl-p:execute-silent(tmux set-buffer "{}" && tmux paste-buffer)+abort' "$@"
 }
 
 function fzf-change-directory() {
@@ -79,7 +79,7 @@ function fzf-file-open-in-vim() {
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 
-function fzf-run-script() {
+function fzf-script-run() {
     result=$(find ~ -type f 2> /dev/null | grep -E ".*\.(sh$|py$)" | fzf-down --preview 'bat --color=always {}')
     if [[ -z "$result" ]]; then return ; fi
     extension="${result##*.}"
@@ -156,7 +156,7 @@ function fzf-git-stash() {
 bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
 # File & directories
 bind -x '"\ed": "fzf-change-directory"'
-bind -x '"\er": "fzf-run-script"'
+bind -x '"\es": "fzf-script-run"'
 bind -x '"\ef": "fzf-file-open-in-vim"'
 # Diffing
 bind -x '"\eD": "fzf-difftool"'
