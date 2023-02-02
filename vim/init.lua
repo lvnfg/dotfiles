@@ -170,8 +170,8 @@ if exists('lspconfig') then
     -- vscode-json-language-server only provides completions when snippet support is enabled.
     -- To enable completion, install a snippet plugin and add the following override to your
     -- language client capabilities during setup.
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    local vscode_capabilities = vim.lsp.protocol.make_client_capabilities()
+    vscode_capabilities.textDocument.completion.completionItem.snippetSupport = true
     -- HTML
     lspconfig.html.setup{
         cmd = { "vscode-html-language-server", "--stdio" },
@@ -182,7 +182,7 @@ if exists('lspconfig') then
           embeddedLanguages = {css = true, javascript = true},
           provideFormatter = true,
         },
-        capabilities = capabilities,
+        capabilities = vscode_capabilities,
         single_file_support = true,
     }
     -- CSS
@@ -191,7 +191,7 @@ if exists('lspconfig') then
         filetypes = { "css", "scss", "less" },
         -- root_dir = root_pattern("package.json", ".git") or bufdir,
         settings = { css = { validate = true }, less = { validate = true }, scss = { validate = true } },
-        capabilities = capabilities,
+        capabilities = vscode_capabilities,
         single_file_support = true,
     }
     -- JSON
@@ -200,7 +200,7 @@ if exists('lspconfig') then
         filetypes = { "json", "jsonc" },
         init_options = { provideFormatter = true },
         -- root_dir = util.find_git_ancestor,
-        capabilities = capabilities,
+        capabilities = vscode_capabilities,
         single_file_support = true,
     }
 end
