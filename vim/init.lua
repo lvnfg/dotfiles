@@ -524,7 +524,6 @@ o.number        = true    -- Show line numbers
 o.updatetime    = 100     -- Reduce vim-gitgutter update time (affect nvim's swap update)
 o.signcolumn    = 'yes'   -- Always show the sign gutter
 o.encoding      = 'UTF-8' -- Always use UTF8 encoding
-o.cursorline    = true
 
 -- Indentation
 o.autoindent     = true -- Enable auto indent
@@ -587,9 +586,12 @@ end
 
 -- ---------------------------------------------------------------------
 -- COLORSCHEME
+-- :runtime syntax/colortest.vim
+-- https://www.ditig.com/256-colors-cheat-sheet
 -- ---------------------------------------------------------------------
--- Force vim to use 16 colors
-o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
+-- Disable true colors in terminal, since tmux doesn't support it anyway
+-- and will convert to 256 approximation, possibly affecting performance.
+o.termguicolors = false
 
 -- Helper function to check highlight group of word under cursor
 map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
@@ -602,6 +604,9 @@ vim.cmd [[
         echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
     endfunc
 ]]
+
+-- Disable cursor line. Don't turn on, easily confused with selected lines.
+o.cursorline = false
 
 -- Apply colorschemes
 vim.cmd [[
@@ -616,13 +621,13 @@ vim.cmd [[
     " -------------------------------------------------
     " GUTTER & SIGN COLUMN
     " -------------------------------------------------
-    highlight SignColumn ctermbg=00
-    highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
+    " highlight SignColumn ctermbg=00
+    " highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
 
-    " highlight CursorLine ctermbg=02 ctermfg=01
+    " highlight CursorLine ctermbg=238 cterm=none
 
-    highlight VertSplit  ctermfg=02
-    highlight StatusLine ctermbg=00
-    highlight User1      ctermbg=02 ctermfg=00 cterm=bold
+      highlight VertSplit  ctermfg=23
+      highlight StatusLine ctermbg=23
+      highlight User1      ctermbg=black ctermfg=23 cterm=bold,underline
 ]]
 

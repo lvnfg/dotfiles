@@ -16,59 +16,7 @@ alias ls="ls -al -h --color=auto --group-directories-first"
 # Add ~/.local/bin to path for mssql-cli, ptpython, and other pip executatbles.
 # Add at beginning since often local packages are meant to replace system defaults.
 PATH="$HOME/.local/bin":$PATH
-
-# --------------------------------------------------------------------------
-# COLORSCHEME
-# -------------------------------------------------------------------------
-# There are 3 options when working with colors in terminal.
-#
-#   - 16 colors. Named and numbered colors:
-#                  Normal  Bright
-#           Black	   00	   08
-#           Red	       01	   09
-#           Green	   02	   10
-#           Yellow     03	   11
-#           Blue	   04	   12
-#           Purple     05	   13
-#           Cyan       06	   14
-#           White	   07	   15
-#       Supported by most hardware terminal. $TERM = xterm-16color
-#       These are actually color labels, since programs only print color codes
-#       (i.e. [color=red]text[/endcolor] to stdout, and actually color output
-#       to monitor is handled by terminal. Palette can be freely overridden,
-#       there's nothing preventing the terminal to show [color=red] text in
-#       blue, for example.
-#
-#   - 256 colors. Also named and numbered. $TERM = xterm-256color
-#       Supported by most terminal eumlators. The 256 color palette is
-#       essentially fixed as it'll be impractical to manage overriding all 256
-#       colors. Each terminal decide how to display each named colors, so the
-#       same theme will not look the same in different terminals.
-#
-#   - True colors. Assign color using hex code, i.e. #00AFFF. No $TERM value.
-#       - Not yet widely supported by either apps for terminal. For terminals
-#       that support it, setting $TERM=xterm-256color is usually enough to
-#       enable true colors. Some terminal only partially support this, and
-#       work by approximating output color codes to the closest 256color values
-#       (i.e. tmux)
-#
-# To determine how to output colors, apps typically first look for the $TERM
-# environment varible. If the variable is not set, well designed apps will
-# the ask the terminal (hardware or simulator) for this information. Setting
-# the $TERM value here should force all apps to use the same color settings,
-# reglardless of what terminal is being used.
-#
-# Many modern (2023) apps consider 16color mode obsolete and only output color
-# codes for 256 or true colors, regardless of $TERM value. Terminals that only
-# support 256color but receives true color outputs typically work around the
-# limitations by approximating to closest lower values.
-#
-# Tmux don't support approximating to 16color, and will not refuse to run if
-# $TERM=xterm-16color is set.
-#
-# The best course of action seems to be $TERM settings everywhere to true colors,
-# but only use base16 color codes in colorscheme settings.
-#
+# Enable true colors for terminals that support it
 export TERM=xterm-256color
 
 # --------------------------------------------------------------------------
