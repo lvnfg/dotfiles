@@ -513,7 +513,6 @@ map('n', '<M-,>',':call Smooth_scroll_up(75, 5, 2)<CR>')
 -- ---------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
-o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
 o.wrap          = false
 o.hidden        = true	  -- Allow changing buffer before saving
 o.ignorecase    = true    -- Case insensitive search
@@ -589,6 +588,8 @@ end
 -- ---------------------------------------------------------------------
 -- COLORSCHEME
 -- ---------------------------------------------------------------------
+-- Force vim to use 16 colors
+o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
 
 -- Helper function to check highlight group of word under cursor
 map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
@@ -604,7 +605,7 @@ vim.cmd [[
 
 -- Apply colorschemes
 vim.cmd [[
-    silent! colorscheme sonokai
+    " silent! colorscheme sonokai
 
     " Force GUI vim to follow terminal colors
     highlight Normal guifg=none guibg=none gui=none

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --------------------------------------------------------------------------
-# Bash shell
+# BASH SHELL
 # --------------------------------------------------------------------------
 # Core directories
 export REPOS="$HOME/repos"
@@ -18,33 +18,145 @@ alias ls="ls -al -h --color=auto --group-directories-first"
 PATH="$HOME/.local/bin":$PATH
 
 # --------------------------------------------------------------------------
-# Colorscheme
-# --------------------------------------------------------------------------
-# Set terminal type: Available values are:
-#   xterm-color:      8 colors, very old, not recommended.
-#   xterm-16color:   16 colors, supported by most hardware terminal.
-#   xterm-256color: 256 colors, also enables true colors for terminal emulators.
+# COLORSCHEME
+# -------------------------------------------------------------------------
+# There are 3 options when working with colors in terminal.
+#
+#   - 16 colors. Named and numbered colors:
+#                  Normal  Bright
+#           Black	   00	   08
+#           Red	       01	   09
+#           Green	   02	   10
+#           Yellow     03	   11
+#           Blue	   04	   12
+#           Purple     05	   13
+#           Cyan       06	   14
+#           White	   07	   15
+#       Supported by most hardware terminal. $TERM = xterm-16color
+#       These are actually color labels, since programs only print color codes
+#       (i.e. [color=red]text[/endcolor] to stdout, and actually color output
+#       to monitor is handled by terminal. Palette can be freely overridden,
+#       there's nothing preventing the terminal to show [color=red] text in
+#       blue, for example.
+#
+#   - 256 colors. Also named and numbered. $TERM = xterm-256color
+#       Supported by most terminal eumlators. The 256 color palette is
+#       essentially fixed as it'll be impractical to manage overriding all 256
+#       colors. Each terminal decide how to display each named colors, so the
+#       same theme will not look the same in different terminals.
+#
+#   - True colors. Assign color using hex code, i.e. #00AFFF. No $TERM value.
+#       - Not yet widely supported by either apps for terminal. For terminals
+#       that support it, setting $TERM=xterm-256color is usually enough to
+#       enable true colors. Some terminal only partially support this, and
+#       work by approximating output color codes to the closest 256color values
+#       (i.e. tmux)
 #
 # To determine how to output colors, apps typically first look for the $TERM
 # environment varible. If the variable is not set, well designed apps will
 # the ask the terminal (hardware or simulator) for this information. Setting
 # the $TERM value here should force all apps to use the same color settings,
 # reglardless of what terminal is being used.
-export TERM=xterm-16color
+#
+# Many modern (2023) apps consider 16color mode obsolete and only output color
+# codes for 256 or true colors, regardless of $TERM value. Terminals that only
+# support 256color but receives true color outputs typically work around the
+# limitations by approximating to closest lower values.
+#
+# Tmux don't support approximating to 16color, and will not refuse to run if
+# $TERM=xterm-16color is set.
+#
+# The best course of action seems to be $TERM settings everywhere to true colors,
+# but only use base16 color codes in colorscheme settings.
+#
+export TERM=xterm-256color
 
-# The 16 named colors are
-#        Normal  Bright
-# Black	   00	   08
-# Red	   01	   09
-# Green	   02	   10
-# Yellow   03	   11
-# Blue	   04	   12
-# Purple   05	   13
-# Cyan     06	   14
-# White	   07	   15
+# ANSI escape codes for shell prompt and other apps that support (fzf...)
+
+# Reset
+Color_Off="\[\033[0m\]"       # Text Reset
+
+# Regular Colors
+Black="\[\033[0;30m\]"        # Black
+Red="\[\033[0;31m\]"          # Red
+Green="\[\033[0;32m\]"        # Green
+Yellow="\[\033[0;33m\]"       # Yellow
+Blue="\[\033[0;34m\]"         # Blue
+Purple="\[\033[0;35m\]"       # Purple
+Cyan="\[\033[0;36m\]"         # Cyan
+White="\[\033[0;37m\]"        # White
+
+# Bold
+BBlack="\[\033[1;30m\]"       # Black
+BRed="\[\033[1;31m\]"         # Red
+BGreen="\[\033[1;32m\]"       # Green
+BYellow="\[\033[1;33m\]"      # Yellow
+BBlue="\[\033[1;34m\]"        # Blue
+BPurple="\[\033[1;35m\]"      # Purple
+BCyan="\[\033[1;36m\]"        # Cyan
+BWhite="\[\033[1;37m\]"       # White
+
+# Underline
+UBlack="\[\033[4;30m\]"       # Black
+URed="\[\033[4;31m\]"         # Red
+UGreen="\[\033[4;32m\]"       # Green
+UYellow="\[\033[4;33m\]"      # Yellow
+UBlue="\[\033[4;34m\]"        # Blue
+UPurple="\[\033[4;35m\]"      # Purple
+UCyan="\[\033[4;36m\]"        # Cyan
+UWhite="\[\033[4;37m\]"       # White
+
+# Background
+On_Black="\[\033[40m\]"       # Black
+On_Red="\[\033[41m\]"         # Red
+On_Green="\[\033[42m\]"       # Green
+On_Yellow="\[\033[43m\]"      # Yellow
+On_Blue="\[\033[44m\]"        # Blue
+On_Purple="\[\033[45m\]"      # Purple
+On_Cyan="\[\033[46m\]"        # Cyan
+On_White="\[\033[47m\]"       # White
+
+# High Intensty
+IBlack="\[\033[0;90m\]"       # Black
+IRed="\[\033[0;91m\]"         # Red
+IGreen="\[\033[0;92m\]"       # Green
+IYellow="\[\033[0;93m\]"      # Yellow
+IBlue="\[\033[0;94m\]"        # Blue
+IPurple="\[\033[0;95m\]"      # Purple
+ICyan="\[\033[0;96m\]"        # Cyan
+IWhite="\[\033[0;97m\]"       # White
+
+# Bold High Intensty
+BIBlack="\[\033[1;90m\]"      # Black
+BIRed="\[\033[1;91m\]"        # Red
+BIGreen="\[\033[1;92m\]"      # Green
+BIYellow="\[\033[1;93m\]"     # Yellow
+BIBlue="\[\033[1;94m\]"       # Blue
+BIPurple="\[\033[1;95m\]"     # Purple
+BICyan="\[\033[1;96m\]"       # Cyan
+BIWhite="\[\033[1;97m\]"      # White
+
+# High Intensty backgrounds
+On_IBlack="\[\033[0;100m\]"   # Black
+On_IRed="\[\033[0;101m\]"     # Red
+On_IGreen="\[\033[0;102m\]"   # Green
+On_IYellow="\[\033[0;103m\]"  # Yellow
+On_IBlue="\[\033[0;104m\]"    # Blue
+On_IPurple="\[\033[10;95m\]"  # Purple
+On_ICyan="\[\033[0;106m\]"    # Cyan
+On_IWhite="\[\033[0;107m\]"   # White
+
+# Various variables you might want for your PS1 prompt instead
+Time12h="\T"
+Time12a="\@"
+PathShort="\w"
+PathFull="\W"
+NewLine="\n"
+Jobs="\j"
+
 
 # --------------------------------------------------------------------------
-# Less pager
+# LESS PAGER
 # --------------------------------------------------------------------------
 # litecli uses this
 # S = Disable line wrap
@@ -52,13 +164,13 @@ export TERM=xterm-16color
 export LESS="RS"
 
 # --------------------------------------------------------------------------
-# Tmux
+# TMUX
 # --------------------------------------------------------------------------
 alias tmux="tmux -u"                    # Force UTF-8 output
 alias ta="tmux attach-session -t"
 
 # --------------------------------------------------------------------------
-# Bat syntax highlighting
+# BAT (SYNTAX HIGHLIGHTING PREVIEW FOR FZF)
 # --------------------------------------------------------------------------
 # Turn off paging
 alias bat='bat --paging=never'
@@ -70,7 +182,7 @@ bat_fzf_preview="bat --style=numbers --colors=always --line-range :500 {}"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # --------------------------------------------------------------------------
-# Git
+# GIT
 # --------------------------------------------------------------------------
 # Convenience git alias
 gitFindParams="-maxdepth 1 -mindepth 1 -type d -regex '[^.]*$'"
@@ -79,7 +191,7 @@ alias gitStatusAll="echo && find -L $REPOS $gitFindParams $gitCDInto && git stat
 alias gitPushAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git push --all               && echo; fi)' \;"
 alias gitPullAll="  echo && find -L $REPOS $gitFindParams $gitCDInto && git pull                     && echo; fi)' \;"
 
-is_in_git_repo() {
+function is_in_git_repo() {
   git rev-parse HEAD > /dev/null 2>&1
 }
 
@@ -193,12 +305,12 @@ bind -x '"\ec": "fzf-git-commit"'
 
 
 # --------------------------------------------------------------------------
-# Prompt
+# BASH PROMPT
 # --------------------------------------------------------------------------
 getGitBranchStatus() { git status --short --branch 2> /dev/null | head -n 1 ; }
 getGitFileStatus() { git -c color.status=always status --short 2> /dev/null | tr '\n' " " ; }
 # Set variable identifying the chroot for use in promt
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then debian_chroot=$(cat /etc/debian_chroot) ; fi
 # Set default prompt info & colors
-PS1='${debian_chroot:+($debian_chroot)}\[\033[00;90m\]\u\[\033[00;90m\]@\[\033[00;31m\]\h\[\033[00m\] \[\033[00;32m\]\w\[\033[00m\] \[\033[00;90m\]`getGitBranchStatus`\[\033[00m\] `getGitFileStatus`
+PS1='${debian_chroot:+($debian_chroot)}\[\033[00;96m\]\u\[\033[00;90m\]@\[\033[00;31m\]\h\[\033[00m\] \[\033[00;32m\]\w\[\033[00m\] \[\033[00;90m\]`getGitBranchStatus`\[\033[00m\] `getGitFileStatus`
 \[\033[00;90m\]\$\[\033[00m\] '
