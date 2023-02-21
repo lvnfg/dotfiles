@@ -18,6 +18,32 @@ alias ls="ls -al -h --color=auto --group-directories-first"
 PATH="$HOME/.local/bin":$PATH
 
 # --------------------------------------------------------------------------
+# Colorscheme
+# --------------------------------------------------------------------------
+# Set terminal type: Available values are:
+#   xterm-color:      8 colors, very old, not recommended.
+#   xterm-16color:   16 colors, supported by most hardware terminal.
+#   xterm-256color: 256 colors, also enables true colors for terminal emulators.
+#
+# To determine how to output colors, apps typically first look for the $TERM
+# environment varible. If the variable is not set, well designed apps will
+# the ask the terminal (hardware or simulator) for this information. Setting
+# the $TERM value here should force all apps to use the same color settings,
+# reglardless of what terminal is being used.
+export TERM=xterm-16color
+
+# The 16 named colors are
+#        Normal  Bright
+# Black	   00	   08
+# Red	   01	   09
+# Green	   02	   10
+# Yellow   03	   11
+# Blue	   04	   12
+# Purple   05	   13
+# Cyan     06	   14
+# White	   07	   15
+
+# --------------------------------------------------------------------------
 # Less pager
 # --------------------------------------------------------------------------
 # litecli uses this
@@ -28,7 +54,6 @@ export LESS="RS"
 # --------------------------------------------------------------------------
 # Tmux
 # --------------------------------------------------------------------------
-export TERM=xterm-256color             # Let vim & tmux terminals use colors
 alias tmux="tmux -u"                    # Force UTF-8 output
 alias ta="tmux attach-session -t"
 

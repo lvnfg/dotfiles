@@ -551,44 +551,6 @@ end
 vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
 
 -- ---------------------------------------------------------------------
--- COLORSCHEMES
---
--- List all available named colors in vim:
---   :so $VIMRUNTIME/syntax/colortest.vim
---
--- 16 standard terminal colors:
---        Normal  Bright
--- Black	0	    8
--- Red	    1	    9
--- Green	2	   10
--- Yellow	3	   11
--- Blue	    4	   12
--- Purple	5	   13
--- Cyan  	6	   14
--- White	7	   15
--- ---------------------------------------------------------------------
-map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
-vim.cmd [[
-    " List all highlighting groups for word under cursor
-    function! ListHighlightGroupWordUnderCursor()
-        if !exists("*synstack")
-            return
-        endif
-        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-    endfunc
-]]
-
--- Apply colorschemes
-vim.cmd [[
-    silent! colorscheme sonokai
-    highlight Normal ctermbg=black
-    highlight SignColumn ctermbg=black
-    highlight VertSplit ctermfg=darkgreen
-    highlight StatusLine ctermbg=black
-    highlight User1 ctermbg=darkgreen ctermfg=black cterm=bold guibg=darkgreen guifg=black gui=bold
-]]
-
--- ---------------------------------------------------------------------
 -- MISC
 -- ---------------------------------------------------------------------
 -- Buffer & window management
@@ -623,3 +585,36 @@ end
 function RefreshAll()
     vim.cmd [[ GitGutterAll ]]
 end
+
+-- ---------------------------------------------------------------------
+-- COLORSCHEME
+-- ---------------------------------------------------------------------
+
+-- Helper function to check highlight group of word under cursor
+map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
+vim.cmd [[
+    " List all highlighting groups for word under cursor
+    function! ListHighlightGroupWordUnderCursor()
+        if !exists("*synstack")
+            return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endfunc
+]]
+
+-- Apply colorschemes
+vim.cmd [[
+    silent! colorscheme sonokai
+
+    " Force GUI vim to follow terminal colors
+    highlight Normal guifg=none guibg=none gui=none
+
+    " Always use same background
+    highlight Normal ctermbg=black
+
+    highlight SignColumn ctermbg=00
+    highlight VertSplit  ctermfg=02
+    highlight StatusLine ctermbg=00
+    highlight User1      ctermbg=02 ctermfg=00 cterm=bold
+]]
+
