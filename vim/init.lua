@@ -605,7 +605,7 @@ vim.cmd [[
 
 -- Apply colorschemes
 vim.cmd [[
-    " silent! colorscheme sonokai
+    silent! colorscheme sonokai
 
     " Force GUI vim to follow terminal colors
     highlight Normal guifg=none guibg=none gui=none
@@ -613,7 +613,14 @@ vim.cmd [[
     " Always use same background
     highlight Normal ctermbg=black
 
+    " -------------------------------------------------
+    " GUTTER & SIGN COLUMN
+    " -------------------------------------------------
     highlight SignColumn ctermbg=00
+    highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
+
+    " highlight CursorLine ctermbg=02 ctermfg=01
+
     highlight VertSplit  ctermfg=02
     highlight StatusLine ctermbg=00
     highlight User1      ctermbg=02 ctermfg=00 cterm=bold
