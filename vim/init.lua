@@ -557,7 +557,7 @@ map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
 
 vim.cmd [[
     " List all highlighting groups for word under cursor
-    function ListHighlightGroupWordUnderCursor()
+    function! ListHighlightGroupWordUnderCursor()
         if !exists("*synstack")
             return
         endif
@@ -565,9 +565,11 @@ vim.cmd [[
     endfunc
 
     silent! colorscheme sonokai
-    highlight Normal guibg=black
+    highlight Normal ctermbg=black
+    highlight SignColumn ctermbg=black
+    highlight VertSplit ctermfg=darkgreen
+    highlight StatusLine ctermbg=black
     highlight User1 ctermbg=darkgreen ctermfg=black cterm=bold guibg=darkgreen guifg=black gui=bold
-  " highlight SignColumn guibg=black
 ]]
 
 -- ---------------------------------------------------------------------
