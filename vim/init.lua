@@ -107,15 +107,10 @@ g.tmux_navigator_no_mappings = 1
 -- vim-gitgutter
 g.gitgutter_map_keys = 0    -- Disable all key mappings
 g.gitgutter_realtime = 1
-g.gitgutter_eager =
+g.gitgutter_eager = 0
 -- vim-easy-align
 -- g.easy_align_ignore_groups = '[]'  -- [] = Align everything, including strings and comments.
 -- C-g to cycle through options interactively.
-
--- colorschemes
-vim.cmd [[ silent! colorscheme sonokai ]]
-vim.cmd [[ highlight Normal guibg=black ]]
--- vim.cmd [[ highlight SignColumn guibg=black ]]
 
 -- nvim-treesitter
 if exists('nvim-treesitter.configs') then
@@ -536,7 +531,7 @@ local deep_green   = "#020C05"
 
 -- ---------------------------------------------------------------------
 -- EDITOR SETTINGS
--- ------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
 o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
@@ -562,19 +557,33 @@ o.tabstop        = 4    -- Press Tab = insert 4 spaces
 o.softtabstop    = 4    -- SoftTabStop should = TabStop
 o.shiftwidth     = 4    -- Insert 4 spaces when indenting with > and new line
 
--- Statusline
+-- ---------------------------------------------------------------------
+-- STATUSLINE
+-- ---------------------------------------------------------------------
 o.laststatus = 2            -- 0 = hide, 2 = show statusline
 o.showmode = false          -- Hide mode indicator
 function s_line()
     local sline = ''
-    sline = sline .. '%1*%<(%n)' -- %n for buffer number, set background colors
-    sline = sline .. ' %1*%<%F'  -- %F for full file path, set background color
+    sline = sline .. '%1*%<(%n)' -- %n for buffer number (highlight group = User1 for colorschem)
+    sline = sline .. ' %1*%<%F'  -- %F for full file path
     sline = sline .. '%1*'       -- Add a space to end of filename
     return sline
 end
-vim.cmd[[ set statusline=%!luaeval('s_line()') ]]
-vim.cmd[[ exe 'highlight User1 guifg=#00afff cterm=bold gui=bold']]
+vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
 
+-- ---------------------------------------------------------------------
+-- COLORSCHEMES
+-- ---------------------------------------------------------------------
+vim.cmd [[
+    silent! colorscheme sonokai
+    highlight Normal guibg=black
+    highlight User1 ctermbg=darkgreen ctermfg=black cterm=bold guibg=darkgreen guifg=black gui=bold
+  " highlight SignColumn guibg=black
+]]
+
+-- ---------------------------------------------------------------------
+-- MISC
+-- ---------------------------------------------------------------------
 -- Buffer & window management
 function CloseBuffer()
     local buffer_count = vim.api.nvim_eval("len(getbufinfo({'buflisted':1}))")
