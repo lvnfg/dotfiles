@@ -353,7 +353,6 @@ map('n', '<M-Left>',  ':vertical resize -5<cr>')
 map('n', '<M-Down>',  ':resize -5<cr>')
 map('n', '<M-Up>',    ':resize +5<cr>')
 map('n', '<M-Right>', ':vertical resize +5<cr>')
-
 -- NVIM-LSP
 local opts = { noremap=true, silent=true }
 map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
@@ -378,6 +377,46 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
 -- map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
 -- map('n', 'gr', '<Plug>(coc-references)')      -- List references
+
+-- ---------------------------------------------------------------------
+-- SCROLLING
+-- Original: https://github.com/terryma/vim-smooth-scroll
+-- ---------------------------------------------------------------------
+vim.cmd [[
+function! s:smooth_scroll(direction, row_count, duration, speed)
+  for i in range(a:row_count/a:speed)
+    let start = reltime()
+    if a:direction ==# 'down'
+      exec "normal! ".a:speed."\<C-e>".a:speed."j"
+    else
+      exec "normal! ".a:speed."\<C-y>".a:speed."k"
+    endif
+    redraw
+    let elapsed = s:smooth_scroll_get_ms_since(start)
+    let snooze = float2nr(a:duration-elapsed)
+    if snooze > 0
+      exec "sleep ".snooze."m"
+    endif
+  endfor
+endfunction
+
+function! s:smooth_scroll_get_ms_since(time)
+  let cost = split(reltimestr(reltime(a:time)), '\.')
+  return str2nr(cost[0])*1000 + str2nr(cost[1])/1000.0
+endfunction
+
+function! Smooth_scroll_up(row_count, duration, speed)
+  call s:smooth_scroll('up', a:row_count, a:duration, a:speed)
+endfunction
+
+function! Smooth_scroll_down(row_count, duration, speed)
+  call s:smooth_scroll('down', a:row_count, a:duration, a:speed)
+endfunction
+]]
+map('n', '<M-i>',':call Smooth_scroll_up(20, 20, 2)<CR>')
+map('n', '<M-u>',':call Smooth_scroll_down(20, 20, 2)<CR>')
+map('n', '<M-I>',':call Smooth_scroll_up(75, 5, 2)<CR>')
+map('n', '<M-U>',':call Smooth_scroll_down(75, 5, 2)<CR>')
 
 -- ---------------------------------------------------------------------
 -- COLORSCHEMES
