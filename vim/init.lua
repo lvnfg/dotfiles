@@ -384,6 +384,7 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- ---------------------------------------------------------------------
 vim.cmd [[
 function! s:smooth_scroll(direction, row_count, duration, speed)
+  " TODO: detect start / end of page to terminate early
   for i in range(a:row_count/a:speed)
     let start = reltime()
     if a:direction ==# 'down'
@@ -413,10 +414,10 @@ function! Smooth_scroll_down(row_count, duration, speed)
   call s:smooth_scroll('down', a:row_count, a:duration, a:speed)
 endfunction
 ]]
-map('n', '<M-i>',':call Smooth_scroll_up(20, 20, 2)<CR>')
-map('n', '<M-u>',':call Smooth_scroll_down(20, 20, 2)<CR>')
-map('n', '<M-I>',':call Smooth_scroll_up(75, 5, 2)<CR>')
-map('n', '<M-U>',':call Smooth_scroll_down(75, 5, 2)<CR>')
+map('n', 'm',':call Smooth_scroll_down(20, 20, 2)<CR>')
+map('n', ',',':call Smooth_scroll_up(20, 20, 2)<CR>')
+map('n', '<M-m>',':call Smooth_scroll_down(75, 5, 2)<CR>')
+map('n', '<M-,>',':call Smooth_scroll_up(75, 5, 2)<CR>')
 
 -- ---------------------------------------------------------------------
 -- COLORSCHEMES
@@ -441,7 +442,7 @@ local deep_green   = "#020C05"
 
 -- ---------------------------------------------------------------------
 -- EDITOR SETTINGS
--- ---------------------------------------------------------------------
+-- ------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
 o.termguicolors = false   -- true = enable true colors, false = only ansi 16 colors
