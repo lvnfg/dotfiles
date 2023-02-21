@@ -349,11 +349,6 @@ map('n', '<M-H>', ':aboveleft vsplit<cr>')
 map('n', '<M-J>', ':split<cr>')
 map('n', '<M-K>', ':leftabove split<cr>')
 map('n', '<M-L>', ':belowright vsplit<cr>')
--- Resize split
-map('n', '<C-h>', ':vertical resize -5<cr>')
-map('n', '<C-j>', ':resize -5<cr>')
-map('n', '<C-k>', ':resize +5<cr>')
-map('n', '<C-l>', ':vertical resize +5<cr>')
 -- NVIM-LSP
 local opts = { noremap=true, silent=true }
 map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
@@ -383,13 +378,79 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- SPLIT RESIZING
 -- Original: https://github.com/terryma/vim-smooth-scroll
 -- ---------------------------------------------------------------------
+map('n', '<C-h>', ':call ResizeSplit("left", 5)<cr>')
+map('n', '<C-j>', ':call ResizeSplit("down", 5)<cr>')
+map('n', '<C-k>', ':call ResizeSplit("up",   5)<cr>')
+map('n', '<C-l>', ':call ResizeSplit("right",5)<cr>')
+
 vim.cmd [[
-func! Resize(dir, count) abort
-    let l:dir = a:dir
-    if winnr('l') == winnr()
-        let l:dir = !l:dir
+func! ResizeSplit(direction, count) abort
+
+    " ---------------------------------------------------
+    " Get immediate neighbor to determine resize direction
+    " ---------------------------------------------------
+    let current_window = winnr()
+    let neighbor_left = winnr('h')
+    let neighbor_down = winnr('j')
+    let neighbor_up = winnr('k')
+    let neighbor_right = winnr('l')
+    let command = ''
+
+    " ---------------------------------------------------
+    " Resize left
+    " ---------------------------------------------------
+    if (a:direction ==# 'left')
+        if (neighbor_left == current_window)
+            let command = 'vertical resize -' . a:count
+        elseif (neighbor_right == current_window)
+            let command = 'vertical resize +' . a:count
+        else
+            let command = 'vertical resize -' . a:count
+        endif
+
+    " ---------------------------------------------------
+    " Resize down
+    " ---------------------------------------------------
+    elseif (a:direction ==# 'down')
+        if (neighbor_up == current_window)
+            let command = 'resize +' . a:count
+        elseif (neighbor_down == current_window)
+            let command = 'resize -' . a:count
+        else
+            let command = 'resize +' . a:count
+        endif
+
+    " ---------------------------------------------------
+    " Resize up
+    " ---------------------------------------------------
+    elseif (a:direction ==# 'up')
+        if (neighbor_up == current_window)
+            let command = 'resize -' . a:count
+        elseif (neighbor_down == current_window)
+            let command = 'resize +' . a:count
+        else
+            let command = 'resize -' . a:count
+        endif
+
+    " ---------------------------------------------------
+    " Resize right
+    " ---------------------------------------------------
+    elseif (a:direction ==# 'right')
+        if (neighbor_right == current_window)
+            let command = 'vertical resize -' . a:count
+        elseif (neighbor_right == current_window)
+            let command = 'vertical resize -' . a:count
+        else
+            let command = 'vertical resize +' . a:count
+        endif
+
     endif
-    execute 'vert resize' (l:dir ? '+' : '-') . a:count
+
+    " ---------------------------------------------------
+    " Execute command
+    " ---------------------------------------------------
+    " echo('Dir: ' . a:direction . '. Left: ' . neighbor_left . '. Down: ' . neighbor_down . '. Up: ' . neighbor_up . '. Right: ' . neighbor_right . '. Cur: ' . current_window . '. Cmd:' . command)
+    execute command
 endfunc
 ]]
 
