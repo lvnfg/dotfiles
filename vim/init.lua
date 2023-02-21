@@ -384,8 +384,22 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- ---------------------------------------------------------------------
 vim.cmd [[
 function! s:smooth_scroll(direction, row_count, duration, speed)
-  " TODO: detect start / end of page to terminate early
   for i in range(a:row_count/a:speed)
+    " -------------------------------------------------------------------
+    " Detect if cursor is already at end of scroll zone and
+    " terminate loop early to avoid screen freeze
+    " -------------------------------------------------------------------
+    let first_visible_line = line("w0")
+    let last_visible_line = line("w$")
+    let last_buffer_line = line("$")
+    let cursor_current_line = line(".")
+    echo(cursor_current_line > 1)
+    if (cursor_current_line == 1 || cursor_current_line == last_buffer_line)
+        break
+    endif
+    " -------------------------------------------------------------------
+    " Scroll logic
+    " -------------------------------------------------------------------
     let start = reltime()
     if a:direction ==# 'down'
       exec "normal! ".a:speed."\<C-e>".a:speed."j"
@@ -396,7 +410,7 @@ function! s:smooth_scroll(direction, row_count, duration, speed)
     let elapsed = s:smooth_scroll_get_ms_since(start)
     let snooze = float2nr(a:duration-elapsed)
     if snooze > 0
-      exec "sleep ".snooze."m"
+          exec "sleep ".snooze."m"
     endif
   endfor
 endfunction
