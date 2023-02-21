@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("BufEnter,WinEnter", {
     command = "if &buftype == 'terminal' | :startinsert | endif",
 })
 
+-- ---------------------------------------------------------------------
 -- SEND TEXT TO BUILT-IN TERMINAL
 -- Similar to emacs SLIME plugins to send existing text in vim to external interface, such as REPL.
 -- Refactored and simplified code from source at: https://github.com/lvnfg/vim-slime
@@ -336,8 +337,8 @@ map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
 map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
 
 -- Navigation
-map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
-map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
+-- map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
+-- map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
 -- Tmux integrated movement
 map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
 map('n', '<M-j>', ':TmuxNavigateDown<cr>')
@@ -349,10 +350,10 @@ map('n', '<M-J>', ':split<cr>')
 map('n', '<M-K>', ':leftabove split<cr>')
 map('n', '<M-L>', ':belowright vsplit<cr>')
 -- Resize split
-map('n', '<M-Left>',  ':vertical resize -5<cr>')
-map('n', '<M-Down>',  ':resize -5<cr>')
-map('n', '<M-Up>',    ':resize +5<cr>')
-map('n', '<M-Right>', ':vertical resize +5<cr>')
+map('n', '<C-h>', ':vertical resize -5<cr>')
+map('n', '<C-j>', ':resize -5<cr>')
+map('n', '<C-k>', ':resize +5<cr>')
+map('n', '<C-l>', ':vertical resize +5<cr>')
 -- NVIM-LSP
 local opts = { noremap=true, silent=true }
 map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
@@ -379,6 +380,20 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- map('n', 'gr', '<Plug>(coc-references)')      -- List references
 
 -- ---------------------------------------------------------------------
+-- SPLIT RESIZING
+-- Original: https://github.com/terryma/vim-smooth-scroll
+-- ---------------------------------------------------------------------
+vim.cmd [[
+func! Resize(dir, count) abort
+    let l:dir = a:dir
+    if winnr('l') == winnr()
+        let l:dir = !l:dir
+    endif
+    execute 'vert resize' (l:dir ? '+' : '-') . a:count
+endfunc
+]]
+
+-- ---------------------------------------------------------------------
 -- SCROLLING
 -- Original: https://github.com/terryma/vim-smooth-scroll
 -- ---------------------------------------------------------------------
@@ -393,18 +408,22 @@ function! s:smooth_scroll(direction, row_count, duration, speed)
     let last_visible_line = line("w$")
     let last_buffer_line = line("$")
     let cursor_current_line = line(".")
-    echo(cursor_current_line > 1)
-    if (cursor_current_line == 1 || cursor_current_line == last_buffer_line)
-        break
-    endif
     " -------------------------------------------------------------------
     " Scroll logic
     " -------------------------------------------------------------------
     let start = reltime()
     if a:direction ==# 'down'
-      exec "normal! ".a:speed."\<C-e>".a:speed."j"
+      if (cursor_current_line == last_buffer_line)
+          break
+      else
+        exec "normal! ".a:speed."\<C-e>".a:speed."j"
+      endif
     else
-      exec "normal! ".a:speed."\<C-y>".a:speed."k"
+      if (cursor_current_line == 1)
+          break
+      else
+        exec "normal! ".a:speed."\<C-y>".a:speed."k"
+      endif
     endif
     redraw
     let elapsed = s:smooth_scroll_get_ms_since(start)
@@ -471,6 +490,7 @@ o.number        = true    -- Show line numbers
 o.updatetime    = 100     -- Reduce vim-gitgutter update time (affect nvim's swap update)
 o.signcolumn    = 'yes'   -- Always show the sign gutter
 o.encoding      = 'UTF-8' -- Always use UTF8 encoding
+o.cursorline    = true
 
 -- Indentation
 o.autoindent     = true -- Enable auto indent
