@@ -509,27 +509,6 @@ map('n', '<M-m>',':call Smooth_scroll_down(75, 5, 2)<CR>')
 map('n', '<M-,>',':call Smooth_scroll_up(75, 5, 2)<CR>')
 
 -- ---------------------------------------------------------------------
--- COLORSCHEMES
--- ---------------------------------------------------------------------
--- Predefined colors
-local pure_black   = "#000000"
-local black        = "#101010"
-local gray         = "#303030"
-local blue         = "#00afff"
-local white        = "#e4e4e4"
-local yellow       = "#ffff00"
-local pink         = "#ff00af"
-local bright_green = "#5fff00"
-local light_gray   = "#8a8a8a"
-local white        = "#e4e4e4"
-local dark_gray    = "#080808"
-local red          = "#d70000"
-local white        = "#e4e4e4"
-local light_blue   = "#66d9ef"
-local deep_blue    = "#070319"
-local deep_green   = "#020C05"
-
--- ---------------------------------------------------------------------
 -- EDITOR SETTINGS
 -- ---------------------------------------------------------------------
 o.mouse         = 'a'
@@ -574,7 +553,17 @@ vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
 -- ---------------------------------------------------------------------
 -- COLORSCHEMES
 -- ---------------------------------------------------------------------
+map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
+
 vim.cmd [[
+    " List all highlighting groups for word under cursor
+    function ListHighlightGroupWordUnderCursor()
+        if !exists("*synstack")
+            return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endfunc
+
     silent! colorscheme sonokai
     highlight Normal guibg=black
     highlight User1 ctermbg=darkgreen ctermfg=black cterm=bold guibg=darkgreen guifg=black gui=bold
