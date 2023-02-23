@@ -660,10 +660,8 @@ map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
 
 -- Buffer management
 map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
-
--- Buffer navigation
--- map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
--- map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
+map('n', '<M-u>', ':bprevious<cr>')         -- Show previous buffer in current window
+map('n', '<M-i>', ':bnext<cr>')             -- Show next buffer in current window
 --
 -- Tmux integrated movement
 map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
