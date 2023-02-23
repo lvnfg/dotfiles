@@ -471,7 +471,6 @@ command! TmuxNavigateDown call s:VimNavigate('j')
 command! TmuxNavigateUp call s:VimNavigate('k')
 command! TmuxNavigateRight call s:VimNavigate('l')
 command! TmuxNavigatePrevious call s:VimNavigate('p')
-finish
 endif
 
 command! TmuxNavigateLeft call s:TmuxAwareNavigate('h')
