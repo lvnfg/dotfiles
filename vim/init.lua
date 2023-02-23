@@ -366,7 +366,6 @@ map('n', 'gh', vim.lsp.buf.hover)
 
 -- ---------------------------------------------------------------------
 -- SPLIT RESIZING
--- Original: https://github.com/terryma/vim-smooth-scroll
 -- ---------------------------------------------------------------------
 map('n', '<C-h>', ':call ResizeSplit("left", 5)<cr>')
 map('n', '<C-j>', ':call ResizeSplit("down", 5)<cr>')
@@ -630,7 +629,6 @@ vim.cmd [[
 
 -- ---------------------------------------------------------------------
 -- REMOVE TRAILING WHITESPACE
--- TODO: highlight extra whitespace
 -- ---------------------------------------------------------------------
 vim.cmd [[
     " On leaving insert mode, match trailing whitespace pattern and
@@ -659,6 +657,8 @@ vim.cmd [[
 
 -- ---------------------------------------------------------------------
 -- TMUX INTEGRATION
+-- https://github.com/christoomey/vim-tmux-navigator
+-- ---------------------------------------------------------------------
 --
 -- Maps <C-h/j/k/l> to switch vim splits in the given direction. If there are
 -- no more windows in that direction, forwards the operation to tmux.
@@ -678,7 +678,6 @@ vim.cmd [[
 --
 -- The following scripts must be added to .tmux.conf (mind the keybindings
 -- that must match with vim)
---
 --[[
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
 bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
@@ -697,7 +696,7 @@ bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
 --]]
--- ---------------------------------------------------------------------
+
 vim.cmd [[
 " ----------------------------------------------------------------------
 " /plugin/tmux_navigator.vim.vim   [41ea9d2 on Dec 9, 2022]
