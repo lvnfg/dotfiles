@@ -215,93 +215,10 @@ if exists('cmp') then
 end
 
 -- ---------------------------------------------------------------------
--- KEYBINDINGS
--- ---------------------------------------------------------------------
--- Remap leader key
-vim.g.mapleader = ' '
-
--- TAB COMPLETION - COC-NVIM
--- Mappings for nvim-cmp is defined in init.lua
--- map('i', '<Tab>', function()
---     return vim.fn.pumvisible() == 1 and '<C-N>' or '<Tab>'
--- end, {expr = true})
--- map('i', '<S-Tab>', function()
---     return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-h>'
--- end, {expr = true})
-
--- Text editing
-map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
--- Autoclose character pairs
--- map('i', '\'', '\'\'<left>')
--- map('i', '"', '""<left>')
--- map('i', '(', '()<left>')
--- map('i', '[', '[]<left>')
--- map('i', '{', '{}<left>')
--- Text alignment
-map('x', 'ga', '<Plug>(EasyAlign)')
-map('n', 'ga', '<Plug>(EasyAlign)')
-
--- Closing & saving buffers & windows
-map('n', '<M-q>', ':q<cr>')                 -- Close window
-map('n', '<M-w>', ':lua CloseBuffer()<cr>') -- Call function close buffer
-map('n', '<M-s>', ':w<cr>')                 -- Save file
-map('n', '<M-S>', ':lua SaveAsAndSwitchToNewBuffer()<cr>')      -- Call SaveAs
-map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
-
--- Fzf
-map('n', '<M-f>', ':Files<cr>')             -- Fzf: search for file
--- Git
-map('n', '<M-g>', ':GFiles?<cr>')           -- Fzf list git status for all files
-map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current buffer; visual-select lines to track changes in the range
-map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
--- Buffer management
-map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
--- Navigation
--- map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
--- map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
--- Tmux integrated movement
-map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
-map('n', '<M-j>', ':TmuxNavigateDown<cr>')
-map('n', '<M-k>', ':TmuxNavigateUp<cr>')
-map('n', '<M-l>', ':TmuxNavigateRight<cr>')
--- Split window
-map('n', '<M-H>', ':aboveleft vsplit<cr>')
-map('n', '<M-J>', ':split<cr>')
-map('n', '<M-K>', ':leftabove split<cr>')
-map('n', '<M-L>', ':belowright vsplit<cr>')
--- NVIM-LSP
-local opts = { noremap=true, silent=true }
-map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
-map('n', '<M-D>', ':DiagnosticsAll<cr>') -- List diagnostick for all buffers
--- map('n', '<M-d>', ':LspDiagnostics 0<cr>')  -- List diagnostic for buffer 0 (current buffer)
--- map('n', '<M-D>', ':LspDiagnosticsAll<cr>') -- List diagnostick for all buffers
-map('n', 'gR', vim.lsp.buf.rename)
-map('n', 'gr', vim.lsp.buf.references)
-map('n', 'gD', vim.lsp.buf.type_definition)
-map('n', 'gd', vim.lsp.buf.definition)
-map('n', 'gi', vim.lsp.buf.implementation)
-map('n', 'gs', vim.lsp.buf.signature_help)
-map('n', 'gh', vim.lsp.buf.hover)
-
--- COC-NVIM
--- map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
--- map('n', '<M-E>', ":call CocAction('diagnosticPrevious')<CR>") -- Go to previous error
--- map('n', '<M-e>', ":call CocAction('diagnosticNext')<CR>")     -- Go to next error
--- -- Do not change the default coc keybindings below so fzf-coc can work
--- map('n', 'gR', '<Plug>(coc-rename)')          -- Rename symbol
--- map('n', 'gd', '<Plug>(coc-definition)')      -- Jump to definition
--- map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
--- map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
--- map('n', 'gr', '<Plug>(coc-references)')      -- List references
-
--- ---------------------------------------------------------------------
 -- SPLIT RESIZING
+-- Use same resize direction even if the split is at right-most and/or
+-- bottom-most edge
 -- ---------------------------------------------------------------------
-map('n', '<C-h>', ':call ResizeSplit("left", 5)<cr>')
-map('n', '<C-j>', ':call ResizeSplit("down", 5)<cr>')
-map('n', '<C-k>', ':call ResizeSplit("up",   5)<cr>')
-map('n', '<C-l>', ':call ResizeSplit("right",5)<cr>')
-
 vim.cmd [[
 func! ResizeSplit(direction, count) abort
 
@@ -427,55 +344,12 @@ function! Smooth_scroll_down(row_count, duration, speed)
   call s:smooth_scroll('down', a:row_count, a:duration, a:speed)
 endfunction
 ]]
-map('n', 'm',':call Smooth_scroll_down(20, 20, 2)<CR>')
-map('n', ',',':call Smooth_scroll_up(20, 20, 2)<CR>')
-map('n', '<M-m>',':call Smooth_scroll_down(75, 5, 2)<CR>')
-map('n', '<M-,>',':call Smooth_scroll_up(75, 5, 2)<CR>')
 
 -- ---------------------------------------------------------------------
--- EDITOR SETTINGS
+-- BUFFER HANDLING
 -- ---------------------------------------------------------------------
-o.mouse         = 'a'
-o.syntax        = 'on'
-o.wrap          = false
-o.hidden        = true	  -- Allow changing buffer before saving
-o.ignorecase    = true    -- Case insensitive search
-o.foldenable    = false   -- Disable folding
-o.equalalways   = false   -- Close a split without resizing other split
-o.splitbelow    = true    -- Always split below
-o.splitright    = true    -- Always split to the right
-o.number        = true    -- Show line numbers
-o.updatetime    = 100     -- Reduce vim-gitgutter update time (affect nvim's swap update)
-o.signcolumn    = 'yes'   -- Always show the sign gutter
-o.encoding      = 'UTF-8' -- Always use UTF8 encoding
 
--- Indentation
-o.autoindent     = true -- Enable auto indent
-o.expandtab      = true -- Expand tab as spaces
-o.copyindent     = true
-o.preserveindent = true
-o.tabstop        = 4    -- Press Tab = insert 4 spaces
-o.softtabstop    = 4    -- SoftTabStop should = TabStop
-o.shiftwidth     = 4    -- Insert 4 spaces when indenting with > and new line
-
--- ---------------------------------------------------------------------
--- STATUSLINE
--- ---------------------------------------------------------------------
-o.laststatus = 2            -- 0 = hide, 2 = show statusline
-o.showmode = false          -- Hide mode indicator
-function s_line()
-    local sline = ''
-    sline = sline .. '%1*%<(%n)' -- %n for buffer number (highlight group = User1 for colorschem)
-    sline = sline .. ' %1*%<%F'  -- %F for full file path
-    sline = sline .. '%1*'       -- Add a space to end of filename
-    return sline
-end
-vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
-
--- ---------------------------------------------------------------------
--- MISC
--- ---------------------------------------------------------------------
--- Buffer & window management
+-- Close buffer without closing split.
 function CloseBuffer()
     local buffer_count = vim.api.nvim_eval("len(getbufinfo({'buflisted':1}))")
     local number_of_split_current_buffer_is_opened_in = vim.api.nvim_eval("len(win_findbuf(bufnr('%')))")
@@ -490,13 +364,14 @@ function CloseBuffer()
     end
 end
 
--- Quick functin to duplicate file
+-- Save current buffer as a new file, but keep current buffer in split
 function SaveAsAndKeepCurrentBuffer()
     local dir = vim.api.nvim_eval("expand('%:p:h')")
     local cmd = ':!cp % ' .. dir .. '/'
     vim.fn.feedkeys(cmd)
 end
---
+
+-- Save current buffer as a new file and switch to editing that buffer
 function SaveAsAndSwitchToNewBuffer()
     local dir = vim.api.nvim_eval("expand('%:p:h')")
     local cmd = ':saveas ' .. dir .. '/'
@@ -507,55 +382,6 @@ end
 function RefreshAll()
     vim.cmd [[ GitGutterAll ]]
 end
-
--- ---------------------------------------------------------------------
--- COLORSCHEME
--- :runtime syntax/colortest.vim
--- https://www.ditig.com/256-colors-cheat-sheet
--- ---------------------------------------------------------------------
--- Disable true colors in terminal, since tmux doesn't support it anyway
--- and will convert to 256 approximation, possibly affecting performance.
-o.termguicolors = false
-
--- Helper function to check highlight group of word under cursor
-map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
-vim.cmd [[
-    " List all highlighting groups for word under cursor
-    function! ListHighlightGroupWordUnderCursor()
-        if !exists("*synstack")
-            return
-        endif
-        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-    endfunc
-]]
-
--- Disable cursor line. Don't turn on, easily confused with selected lines.
-o.cursorline = false
-
--- Apply colorschemes
-vim.cmd [[
-    silent! colorscheme sonokai
-
-    " Force GUI vim to follow terminal colors
-    highlight Normal guifg=none guibg=none gui=none
-
-    " Always use same background
-    highlight Normal ctermbg=black
-
-    " -------------------------------------------------
-    " GUTTER & SIGN COLUMN
-    " -------------------------------------------------
-    " highlight SignColumn ctermbg=00
-    " highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
-
-    " highlight CursorLine ctermbg=238 cterm=none
-
-      highlight VertSplit  ctermfg=23
-      highlight StatusLine ctermbg=23
-      highlight User1      ctermbg=black ctermfg=23 cterm=bold,underline
-
-      highlight ExtraWhiteSpace ctermbg=red
-]]
 
 -- ---------------------------------------------------------------------
 -- REMOVE TRAILING WHITESPACE
@@ -755,3 +581,192 @@ else
 endif
 endfunction
 ]]
+
+-- ---------------------------------------------------------------------
+-- EDITOR SETTINGS
+-- ---------------------------------------------------------------------
+o.mouse         = 'a'
+o.syntax        = 'on'
+o.wrap          = false
+o.hidden        = true	  -- Allow changing buffer before saving
+o.ignorecase    = true    -- Case insensitive search
+o.foldenable    = false   -- Disable folding
+o.equalalways   = false   -- Close a split without resizing other split
+o.splitbelow    = true    -- Always split below
+o.splitright    = true    -- Always split to the right
+o.number        = true    -- Show line numbers
+o.updatetime    = 100     -- Reduce vim-gitgutter update time (affect nvim's swap update)
+o.signcolumn    = 'yes'   -- Always show the sign gutter
+o.encoding      = 'UTF-8' -- Always use UTF8 encoding
+o.cursorline = false      -- Don't turn on, easily confused with selected lines.
+
+-- Indentation
+o.autoindent     = true -- Enable auto indent
+o.expandtab      = true -- Expand tab as spaces
+o.copyindent     = true
+o.preserveindent = true
+o.tabstop        = 4    -- Press Tab = insert 4 spaces
+o.softtabstop    = 4    -- SoftTabStop should = TabStop
+o.shiftwidth     = 4    -- Insert 4 spaces when indenting with > and new line
+
+-- ---------------------------------------------------------------------
+-- STATUSLINE
+-- ---------------------------------------------------------------------
+o.laststatus = 2            -- 0 = hide, 2 = show statusline
+o.showmode = false          -- Hide mode indicator
+function s_line()
+    local sline = ''
+    sline = sline .. '%1*%<(%n)' -- %n for buffer number (highlight group = User1 for colorschem)
+    sline = sline .. ' %1*%<%F'  -- %F for full file path
+    sline = sline .. '%1*'       -- Add a space to end of filename
+    return sline
+end
+vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
+
+-- ---------------------------------------------------------------------
+-- KEYBINDINGS
+-- ---------------------------------------------------------------------
+-- Remap leader key
+vim.g.mapleader = ' '
+
+-- Text editing
+map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
+
+-- Autoclose character pairs
+-- map('i', '\'', '\'\'<left>')
+-- map('i', '"', '""<left>')
+-- map('i', '(', '()<left>')
+-- map('i', '[', '[]<left>')
+-- map('i', '{', '{}<left>')
+--
+-- Text alignment
+map('x', 'ga', '<Plug>(EasyAlign)')
+map('n', 'ga', '<Plug>(EasyAlign)')
+
+-- Closing & saving buffers & windows
+map('n', '<M-q>', ':q<cr>')                 -- Close window
+map('n', '<M-w>', ':lua CloseBuffer()<cr>') -- Call function close buffer
+map('n', '<M-s>', ':w<cr>')                 -- Save file
+map('n', '<M-S>', ':lua SaveAsAndSwitchToNewBuffer()<cr>')      -- Call SaveAs
+map('n', '<M-r>', ':lua RefreshAll()<cr>')  -- Call RefreshAll()
+
+-- Fzf
+map('n', '<M-f>', ':Files<cr>')             -- Fzf: search for file
+
+-- Git
+map('n', '<M-g>', ':GFiles?<cr>')           -- Fzf list git status for all files
+map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current buffer; visual-select lines to track changes in the range
+map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
+
+-- Buffer management
+map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
+
+-- Buffer navigation
+-- map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
+-- map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
+--
+-- Tmux integrated movement
+map('n', '<M-h>', ':TmuxNavigateLeft<cr>')
+map('n', '<M-j>', ':TmuxNavigateDown<cr>')
+map('n', '<M-k>', ':TmuxNavigateUp<cr>')
+map('n', '<M-l>', ':TmuxNavigateRight<cr>')
+
+-- Split window
+map('n', '<M-H>', ':aboveleft vsplit<cr>')
+map('n', '<M-J>', ':split<cr>')
+map('n', '<M-K>', ':leftabove split<cr>')
+map('n', '<M-L>', ':belowright vsplit<cr>')
+
+-- Split resize
+map('n', '<C-h>', ':call ResizeSplit("left", 5)<cr>')
+map('n', '<C-j>', ':call ResizeSplit("down", 5)<cr>')
+map('n', '<C-k>', ':call ResizeSplit("up",   5)<cr>')
+map('n', '<C-l>', ':call ResizeSplit("right",5)<cr>')
+
+-- Scrolling
+map('n', 'm',':call Smooth_scroll_down(20, 20, 2)<CR>')
+map('n', ',',':call Smooth_scroll_up(20, 20, 2)<CR>')
+map('n', '<M-m>',':call Smooth_scroll_down(75, 5, 2)<CR>')
+map('n', '<M-,>',':call Smooth_scroll_up(75, 5, 2)<CR>')
+
+
+-- NVIM-LSP
+local opts = { noremap=true, silent=true }
+map('n', '<M-d>', ':Diagnostics<cr>')  -- List diagnostic for buffer 0 (current buffer)
+map('n', '<M-D>', ':DiagnosticsAll<cr>') -- List diagnostick for all buffers
+-- map('n', '<M-d>', ':LspDiagnostics 0<cr>')  -- List diagnostic for buffer 0 (current buffer)
+-- map('n', '<M-D>', ':LspDiagnosticsAll<cr>') -- List diagnostick for all buffers
+map('n', 'gR', vim.lsp.buf.rename)
+map('n', 'gr', vim.lsp.buf.references)
+map('n', 'gD', vim.lsp.buf.type_definition)
+map('n', 'gd', vim.lsp.buf.definition)
+map('n', 'gi', vim.lsp.buf.implementation)
+map('n', 'gs', vim.lsp.buf.signature_help)
+map('n', 'gh', vim.lsp.buf.hover)
+
+-- COC-NVIM
+-- map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
+-- map('n', '<M-E>', ":call CocAction('diagnosticPrevious')<CR>") -- Go to previous error
+-- map('n', '<M-e>', ":call CocAction('diagnosticNext')<CR>")     -- Go to next error
+-- -- Do not change the default coc keybindings below so fzf-coc can work
+-- map('n', 'gR', '<Plug>(coc-rename)')          -- Rename symbol
+-- map('n', 'gd', '<Plug>(coc-definition)')      -- Jump to definition
+-- map('n', 'gy', '<Plug>(coc-type-definition)') -- Jump to type definition
+-- map('n', 'gi', '<Plug>(coc-implementation)')  -- Jump to implementation
+-- map('n', 'gr', '<Plug>(coc-references)')      -- List references
+
+-- TAB COMPLETION - COC-NVIM
+-- Mappings for nvim-cmp is defined in init.lua
+-- map('i', '<Tab>', function()
+--     return vim.fn.pumvisible() == 1 and '<C-N>' or '<Tab>'
+-- end, {expr = true})
+-- map('i', '<S-Tab>', function()
+--     return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-h>'
+-- end, {expr = true})
+
+-- ---------------------------------------------------------------------
+-- COLORSCHEME
+-- :runtime syntax/colortest.vim
+-- https://www.ditig.com/256-colors-cheat-sheet
+-- ---------------------------------------------------------------------
+-- Disable true colors in terminal, since tmux doesn't support it anyway
+-- and will convert to 256 approximation, possibly affecting performance.
+o.termguicolors = false
+
+-- Helper function to check highlight group of word under cursor
+map('n', '<M-v>', ':call ListHighlightGroupWordUnderCursor()<cr>')
+vim.cmd [[
+    " List all highlighting groups for word under cursor
+    function! ListHighlightGroupWordUnderCursor()
+        if !exists("*synstack")
+            return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endfunc
+]]
+
+-- Apply colorschemes
+vim.cmd [[
+    silent! colorscheme sonokai
+
+    " Force GUI vim to follow terminal colors
+    highlight Normal guifg=none guibg=none gui=none
+
+    " Always use same background
+    highlight Normal ctermbg=black
+
+    " -------------------------------------------------
+    " GUTTER & SIGN COLUMN
+    " -------------------------------------------------
+    " highlight SignColumn ctermbg=00
+    " highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
+
+    " highlight CursorLine ctermbg=238 cterm=none
+
+      highlight VertSplit  ctermfg=23
+      highlight StatusLine ctermbg=23
+      highlight User1      ctermbg=black ctermfg=23 cterm=bold,underline
+
+      highlight ExtraWhiteSpace ctermbg=red
+]]
+
