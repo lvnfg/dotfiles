@@ -41,32 +41,6 @@ git clone https://github.com/junegunn/fzf.vim            --depth 1 || true
 git clone https://github.com/lvnfg/vim-gitgutter         --depth 1 || true
 git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
 # ----------------------------------------------------------------------------
-# colorschemes
-# ----------------------------------------------------------------------------
-# git clone https://github.com/catppuccin/nvim               --depth 1 || true  # as 'catppucine'
-# git clone https://github.com/srcery-colors/srcery-vim      --depth 1 || true  # as = 'srcery'
-# git clone https://rigel.netlify.app/#vim                   --depth 1 || true
-# git clone https://github.com/andreypopp/vim-colors-plain   --depth 1 || true
-# git clone https://github.com/ful1e5/onedark.nvim           --depth 1 || true
-# git clone https://github.com/EdenEast/nightfox.nvim        --depth 1 || true
-# git clone https://github.com/Mofiqul/dracula.nvim          --depth 1 || true
-# git clone https://github.com/sainnhe/everforest            --depth 1 || true
-# git clone https://github.com/folke/tokyonight.nvim         --depth 1 || true
-# git clone https://github.com/sainnhe/gruvbox-material      --depth 1 || true
-# git clone https://github.com/sainnhe/edge                  --depth 1 || true
-  git clone https://github.com/lvnfg/sonokai                 --depth 1 || true
-# git clone https://github.com/bluz71/vim-nightfly-guicolors --depth 1 || true
-# git clone https://github.com/mhartington/oceanic-next      --depth 1 || true
-# git clone https://github.com/fenetikm/falcon               --depth 1 || true
-# git clone https://github.com/marko-cerovac/material.nvim   --depth 1 || true
-# git clone https://github.com/shaunsingh/nord.nvim          --depth 1 || true
-# git clone https://github.com/rebelot/kanagawa.nvim         --depth 1 || true
-# git clone https://github.com/navarasu/onedark.nvim         --depth 1 || true
-# git clone https://github.com/olimorris/onedarkpro.nvim     --depth 1 || true
-# git clone https://github.com/mcchrish/zenbones.nvim        --depth 1 || true
-# git clone https://pineapplegiant.github.io/spaceduck       --depth 1 || true
-# git clone https://github.com/luisiacc/gruvbox-baby         --depth 1 || true
-# ----------------------------------------------------------------------------
 # nvim-treesitter
 # Require apt install build-essential to build language parsers (vim, lua, python...)
 # ----------------------------------------------------------------------------

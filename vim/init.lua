@@ -588,17 +588,18 @@ endfunction
 o.mouse         = 'a'
 o.syntax        = 'on'
 o.wrap          = false
-o.hidden        = true	  -- Allow changing buffer before saving
-o.ignorecase    = true    -- Case insensitive search
-o.foldenable    = false   -- Disable folding
-o.equalalways   = false   -- Close a split without resizing other split
-o.splitbelow    = true    -- Always split below
-o.splitright    = true    -- Always split to the right
-o.number        = true    -- Show line numbers
-o.updatetime    = 100     -- Reduce vim-gitgutter update time (affect nvim's swap update)
-o.signcolumn    = 'yes'   -- Always show the sign gutter
-o.encoding      = 'UTF-8' -- Always use UTF8 encoding
-o.cursorline = false      -- Don't turn on, easily confused with selected lines.
+o.hidden        = true	   -- Allow changing buffer before saving
+o.ignorecase    = true     -- Case insensitive search
+o.foldenable    = false    -- Disable folding
+o.equalalways   = false    -- Close a split without resizing other split
+o.splitbelow    = true     -- Always split below
+o.splitright    = true     -- Always split to the right
+o.number        = true     -- Show line numbers
+o.updatetime    = 100      -- Reduce vim-gitgutter update time (affect nvim's swap update)
+o.signcolumn    = 'yes'    -- Always show the sign gutter
+o.encoding      = 'UTF-8'  -- Always use UTF8 encoding
+o.cursorline    = true     -- Needed to turn on CursorLineNr highlight
+o.cursorlineopt = 'number' -- Only highlight CursorLineNr, no CursorLine
 
 -- Indentation
 o.autoindent     = true -- Enable auto indent
@@ -616,7 +617,7 @@ o.laststatus = 2            -- 0 = hide, 2 = show statusline
 o.showmode = false          -- Hide mode indicator
 function s_line()
     local sline = ''
-    sline = sline .. '%1*%<(%n)' -- %n for buffer number (highlight group = User1 for colorschem)
+    sline = sline .. '%1*%<(%n)' -- %n for buffer number (highlight group = User1 for colorscheme)
     sline = sline .. ' %1*%<%F'  -- %F for full file path
     sline = sline .. '%1*'       -- Add a space to end of filename
     return sline
@@ -745,26 +746,392 @@ vim.cmd [[
 
 -- Apply colorschemes
 vim.cmd [[
-    silent! colorscheme sonokai
+" Force GUI vim to follow terminal colors
+highlight Normal guifg=none guibg=none gui=none
 
-    " Force GUI vim to follow terminal colors
-    highlight Normal guifg=none guibg=none gui=none
+" Always use same background
+highlight Normal ctermbg=black
 
-    " Always use same background
-    highlight Normal ctermbg=black
+" -------------------------------------------------
+" GUTTER & SIGN COLUMN
+" -------------------------------------------------
+" highlight SignColumn ctermbg=00
+" highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
 
-    " -------------------------------------------------
-    " GUTTER & SIGN COLUMN
-    " -------------------------------------------------
-    " highlight SignColumn ctermbg=00
-    " highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
+let xtest='red'
 
-    " highlight CursorLine ctermbg=238 cterm=none
+  highlight CursorLine ctermbg=None ctermfg=None cterm=none
+  highlight CursorLineNr ctermbg=None ctermfg=white cterm=None
 
-      highlight VertSplit  ctermfg=23
-      highlight StatusLine ctermbg=23
-      highlight User1      ctermbg=black ctermfg=23 cterm=bold,underline
+  highlight VertSplit  ctermfg=23
+  highlight StatusLine ctermbg=23
+  highlight User1      ctermbg=00 ctermfg=23 cterm=bold,underline
 
-      highlight ExtraWhiteSpace ctermbg=red
+  highlight ExtraWhiteSpace ctermbg=red
+
+function! ColorschemeHighlight(group, fg, bg, ...)
+  execute 'highlight' a:group
+        \ 'guifg=' . a:fg[0]
+        \ 'guibg=' . a:bg[0]
+        \ 'ctermfg=' . a:fg[1]
+        \ 'ctermbg=' . a:bg[1]
+        \ 'gui=' . (a:0 >= 1 ?
+          \ a:1 :
+          \ 'NONE')
+        \ 'cterm=' . (a:0 >= 1 ?
+          \ a:1 :
+          \ 'NONE')
+        \ 'guisp=' . (a:0 >= 2 ?
+          \ a:2[0] :
+          \ 'NONE')
+endfunction
+
+let xcc = {
+\ 'bgx':        ['#000000',   '00'],
+\ 'black':      ['#181819',   '237'],
+\ 'bg0':        ['#2c2e34',   '235'],
+\ 'bg1':        ['#33353f',   '236'],
+\ 'bg2':        ['#363944',   '236'],
+\ 'bg3':        ['#3b3e48',   '237'],
+\ 'bg4':        ['#414550',   '237'],
+\ 'bg_red':     ['#ff6077',   '203'],
+\ 'diff_red':   ['#55393d',   '52'],
+\ 'bg_green':   ['#a7df78',   '107'],
+\ 'diff_green': ['#394634',   '22'],
+\ 'bg_blue':    ['#85d3f2',   '110'],
+\ 'diff_blue':  ['#354157',   '17'],
+\ 'diff_yellow':['#4e432f',   '54'],
+\ 'fg':         ['#e2e2e3',   '250'],
+\ 'red':        ['#fc5d7c',   '203'],
+\ 'orange':     ['#f39660',   '215'],
+\ 'yellow':     ['#e7c664',   '179'],
+\ 'green':      ['#9ed072',   '107'],
+\ 'blue':       ['#76cce0',   '110'],
+\ 'purple':     ['#b39df3',   '176'],
+\ 'grey':       ['#7f8490',   '246'],
+\ 'grey_dim':   ['#595f6f',   '240'],
+\ 'none':       ['NONE',      'NONE']
+\ }
+
+call ColorschemeHighlight('EndOfBuffer', xcc.bg4, xcc.none)
+call ColorschemeHighlight('EndOfBuffer', xcc.bg4, xcc.bg0)
+call ColorschemeHighlight('Folded', xcc.grey, xcc.bg1)
+call ColorschemeHighlight('ToolbarLine', xcc.fg, xcc.bg2)
+call ColorschemeHighlight('FoldColumn', xcc.grey_dim, xcc.none)
+call ColorschemeHighlight('SignColumn', xcc.fg, xcc.none)
+call ColorschemeHighlight('IncSearch', xcc.bg0, xcc.bg_red)
+call ColorschemeHighlight('Search', xcc.bg0, xcc.bg_green)
+call ColorschemeHighlight('ColorColumn', xcc.none, xcc.bg1)
+call ColorschemeHighlight('Conceal', xcc.grey_dim, xcc.none)
+call ColorschemeHighlight('Cursor', xcc.none, xcc.none, 'reverse')
+highlight! link vCursor Cursor
+highlight! link iCursor Cursor
+highlight! link lCursor Cursor
+highlight! link CursorIM Cursor
+call ColorschemeHighlight('CursorLine', xcc.none, xcc.none, 'underline')
+call ColorschemeHighlight('CursorColumn', xcc.none, xcc.none, 'bold')
+call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
+" call ColorschemeHighlight('CursorLineNr', xcc.fg, xcc.none, 'underline')
+call ColorschemeHighlight('DiffAdd', xcc.none, xcc.diff_green)
+call ColorschemeHighlight('DiffChange', xcc.none, xcc.diff_blue)
+call ColorschemeHighlight('DiffDelete', xcc.none, xcc.diff_red)
+call ColorschemeHighlight('DiffText', xcc.bg0, xcc.blue)
+call ColorschemeHighlight('Directory', xcc.green, xcc.none)
+call ColorschemeHighlight('ErrorMsg', xcc.red, xcc.none, 'bold,underline')
+call ColorschemeHighlight('WarningMsg', xcc.yellow, xcc.none, 'bold')
+call ColorschemeHighlight('ModeMsg', xcc.fg, xcc.none, 'bold')
+call ColorschemeHighlight('MoreMsg', xcc.blue, xcc.none, 'bold')
+call ColorschemeHighlight('MatchParen', xcc.none, xcc.bg4)
+call ColorschemeHighlight('NonText', xcc.bg4, xcc.none)
+call ColorschemeHighlight('Whitespace', xcc.bg4, xcc.none)
+call ColorschemeHighlight('SpecialKey', xcc.bg4, xcc.none)
+call ColorschemeHighlight('Pmenu', xcc.fg, xcc.bg2)
+call ColorschemeHighlight('PmenuSbar', xcc.none, xcc.bg2)
+call ColorschemeHighlight('PmenuSel', xcc.bg0, xcc.bg_blue)
+highlight! link WildMenu PmenuSel
+call ColorschemeHighlight('PmenuThumb', xcc.none, xcc.grey)
+call ColorschemeHighlight('NormalFloat', xcc.fg, xcc.bg2)
+call ColorschemeHighlight('FloatBorder', xcc.grey, xcc.bg2)
+call ColorschemeHighlight('Question', xcc.yellow, xcc.none)
+call ColorschemeHighlight('SpellBad', xcc.none, xcc.none, 'undercurl', xcc.red)
+call ColorschemeHighlight('SpellCap', xcc.none, xcc.none, 'undercurl', xcc.yellow)
+call ColorschemeHighlight('SpellLocal', xcc.none, xcc.none, 'undercurl', xcc.blue)
+call ColorschemeHighlight('SpellRare', xcc.none, xcc.none, 'undercurl', xcc.purple)
+call ColorschemeHighlight('VertSplit', xcc.black, xcc.none)
+call ColorschemeHighlight('Visual', xcc.none, xcc.bg3)
+call ColorschemeHighlight('VisualNOS', xcc.none, xcc.bg3, 'underline')
+call ColorschemeHighlight('QuickFixLine', xcc.blue, xcc.none, 'bold')
+call ColorschemeHighlight('Debug', xcc.yellow, xcc.none)
+call ColorschemeHighlight('debugPC', xcc.bg0, xcc.green)
+call ColorschemeHighlight('debugBreakpoint', xcc.bg0, xcc.red)
+call ColorschemeHighlight('ToolbarButton', xcc.bg0, xcc.bg_blue)
+if has('nvim')
+  call ColorschemeHighlight('Substitute', xcc.bg0, xcc.yellow)
+  highlight! link DiagnosticFloatingError ErrorFloat
+  highlight! link DiagnosticFloatingWarn WarningFloat
+  highlight! link DiagnosticFloatingInfo InfoFloat
+  highlight! link DiagnosticFloatingHint HintFloat
+  highlight! link DiagnosticError ErrorText
+  highlight! link DiagnosticWarn WarningText
+  highlight! link DiagnosticInfo InfoText
+  highlight! link DiagnosticHint HintText
+  highlight! link DiagnosticVirtualTextError VirtualTextError
+  highlight! link DiagnosticVirtualTextWarn VirtualTextWarning
+  highlight! link DiagnosticVirtualTextInfo VirtualTextInfo
+  highlight! link DiagnosticVirtualTextHint VirtualTextHint
+  highlight! link DiagnosticUnderlineError ErrorText
+  highlight! link DiagnosticUnderlineWarn WarningText
+  highlight! link DiagnosticUnderlineInfo InfoText
+  highlight! link DiagnosticUnderlineHint HintText
+  highlight! link DiagnosticSignError RedSign
+  highlight! link DiagnosticSignWarn YellowSign
+  highlight! link DiagnosticSignInfo BlueSign
+  highlight! link DiagnosticSignHint GreenSign
+  highlight! link LspDiagnosticsFloatingError ErrorFloat
+  highlight! link LspDiagnosticsFloatingWarning WarningFloat
+  highlight! link LspDiagnosticsFloatingInformation InfoFloat
+  highlight! link LspDiagnosticsFloatingHint HintFloat
+  highlight! link LspDiagnosticsDefaultError ErrorText
+  highlight! link LspDiagnosticsDefaultWarning WarningText
+  highlight! link LspDiagnosticsDefaultInformation InfoText
+  highlight! link LspDiagnosticsDefaultHint HintText
+  highlight! link LspDiagnosticsVirtualTextError VirtualTextError
+  highlight! link LspDiagnosticsVirtualTextWarning VirtualTextWarning
+  highlight! link LspDiagnosticsVirtualTextInformation VirtualTextInfo
+  highlight! link LspDiagnosticsVirtualTextHint VirtualTextHint
+  highlight! link LspDiagnosticsUnderlineError ErrorText
+  highlight! link LspDiagnosticsUnderlineWarning WarningText
+  highlight! link LspDiagnosticsUnderlineInformation InfoText
+  highlight! link LspDiagnosticsUnderlineHint HintText
+  highlight! link LspDiagnosticsSignError RedSign
+  highlight! link LspDiagnosticsSignWarning YellowSign
+  highlight! link LspDiagnosticsSignInformation BlueSign
+  highlight! link LspDiagnosticsSignHint GreenSign
+  highlight! link LspReferenceText CurrentWord
+  highlight! link LspReferenceRead CurrentWord
+  highlight! link LspReferenceWrite CurrentWord
+  highlight! link LspCodeLens VirtualTextInfo
+  highlight! link LspCodeLensSeparator VirtualTextHint
+  highlight! link LspSignatureActiveParameter Search
+  highlight! link TermCursor Cursor
+  highlight! link healthError Red
+  highlight! link healthSuccess Green
+  highlight! link healthWarning Yellow
+endif
+
+
+" ------------------------------------------------------------------------------------------
+" SYNTAX
+" ------------------------------------------------------------------------------------------
+call ColorschemeHighlight('Type', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('Structure', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('StorageClass', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('Identifier', xcc.orange, xcc.none, 'italic')
+call ColorschemeHighlight('Constant', xcc.orange, xcc.none, 'italic')
+call ColorschemeHighlight('PreProc', xcc.red, xcc.none)
+call ColorschemeHighlight('PreCondit', xcc.red, xcc.none)
+call ColorschemeHighlight('Include', xcc.red, xcc.none)
+call ColorschemeHighlight('Keyword', xcc.red, xcc.none)
+call ColorschemeHighlight('Define', xcc.red, xcc.none)
+call ColorschemeHighlight('Typedef', xcc.red, xcc.none)
+call ColorschemeHighlight('Exception', xcc.red, xcc.none)
+call ColorschemeHighlight('Conditional', xcc.red, xcc.none)
+call ColorschemeHighlight('Repeat', xcc.red, xcc.none)
+call ColorschemeHighlight('Statement', xcc.red, xcc.none)
+call ColorschemeHighlight('Macro', xcc.purple, xcc.none)
+call ColorschemeHighlight('Error', xcc.red, xcc.none)
+call ColorschemeHighlight('Label', xcc.purple, xcc.none)
+call ColorschemeHighlight('Special', xcc.purple, xcc.none)
+call ColorschemeHighlight('SpecialChar', xcc.purple, xcc.none)
+call ColorschemeHighlight('Boolean', xcc.purple, xcc.none)
+call ColorschemeHighlight('String', xcc.yellow, xcc.none)
+call ColorschemeHighlight('Character', xcc.yellow, xcc.none)
+call ColorschemeHighlight('Number', xcc.purple, xcc.none)
+call ColorschemeHighlight('Float', xcc.purple, xcc.none)
+call ColorschemeHighlight('Function', xcc.green, xcc.none)
+call ColorschemeHighlight('Operator', xcc.red, xcc.none)
+call ColorschemeHighlight('Title', xcc.red, xcc.none, 'bold')
+call ColorschemeHighlight('Tag', xcc.orange, xcc.none)
+call ColorschemeHighlight('Delimiter', xcc.fg, xcc.none)
+call ColorschemeHighlight('Comment', xcc.grey, xcc.none, 'italic')
+call ColorschemeHighlight('SpecialComment', xcc.grey, xcc.none, 'italic')
+call ColorschemeHighlight('Todo', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('Ignore', xcc.grey, xcc.none)
+call ColorschemeHighlight('Underlined', xcc.none, xcc.none, 'underline')
+
+" ------------------------------------------------------------------------------------------
+" PREDEFINED HIGHLIGHT GROUPS
+" ------------------------------------------------------------------------------------------
+call ColorschemeHighlight('Fg', xcc.fg, xcc.none)
+call ColorschemeHighlight('Grey', xcc.grey, xcc.none)
+call ColorschemeHighlight('Red', xcc.red, xcc.none)
+call ColorschemeHighlight('Orange', xcc.orange, xcc.none)
+call ColorschemeHighlight('Yellow', xcc.yellow, xcc.none)
+call ColorschemeHighlight('Green', xcc.green, xcc.none)
+call ColorschemeHighlight('Blue', xcc.blue, xcc.none)
+call ColorschemeHighlight('Purple', xcc.purple, xcc.none)
+call ColorschemeHighlight('RedItalic', xcc.red, xcc.none, 'italic')
+call ColorschemeHighlight('OrangeItalic', xcc.orange, xcc.none, 'italic')
+call ColorschemeHighlight('YellowItalic', xcc.yellow, xcc.none, 'italic')
+call ColorschemeHighlight('GreenItalic', xcc.green, xcc.none, 'italic')
+call ColorschemeHighlight('BlueItalic', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('PurpleItalic', xcc.purple, xcc.none, 'italic')
+call ColorschemeHighlight('RedSign', xcc.red, xcc.none)
+call ColorschemeHighlight('OrangeSign', xcc.orange, xcc.none)
+call ColorschemeHighlight('YellowSign', xcc.yellow, xcc.none)
+call ColorschemeHighlight('GreenSign', xcc.green, xcc.none)
+call ColorschemeHighlight('BlueSign', xcc.blue, xcc.none)
+call ColorschemeHighlight('PurpleSign', xcc.purple, xcc.none)
+
+" ------------------------------------------------------------------------------------------
+" DIAGNOSTIC
+" ------------------------------------------------------------------------------------------
+call ColorschemeHighlight('ErrorText', xcc.none, xcc.diff_red, 'undercurl', xcc.red)
+call ColorschemeHighlight('WarningText', xcc.none, xcc.diff_yellow, 'undercurl', xcc.yellow)
+call ColorschemeHighlight('InfoText', xcc.none, xcc.diff_blue, 'undercurl', xcc.blue)
+call ColorschemeHighlight('HintText', xcc.none, xcc.diff_green, 'undercurl', xcc.green)
+call ColorschemeHighlight('ErrorLine', xcc.none, xcc.diff_red)
+call ColorschemeHighlight('WarningLine', xcc.none, xcc.diff_yellow)
+call ColorschemeHighlight('InfoLine', xcc.none, xcc.diff_blue)
+call ColorschemeHighlight('HintLine', xcc.none, xcc.diff_green)
+highlight! link VirtualTextWarning Yellow
+highlight! link VirtualTextError Red
+highlight! link VirtualTextInfo Blue
+highlight! link VirtualTextHint Green
+call ColorschemeHighlight('ErrorFloat', xcc.red, xcc.bg2)
+call ColorschemeHighlight('WarningFloat', xcc.yellow, xcc.bg2)
+call ColorschemeHighlight('InfoFloat', xcc.blue, xcc.bg2)
+call ColorschemeHighlight('HintFloat', xcc.green, xcc.bg2)
+call ColorschemeHighlight('CurrentWord', xcc.bg0, xcc.green)
+
+" ------------------------------------------------------------------------------------------
+" nvim-treesitter/nvim-treesitter
+" ------------------------------------------------------------------------------------------
+call ColorschemeHighlight('TSStrong', xcc.none, xcc.none, 'bold')
+call ColorschemeHighlight('TSEmphasis', xcc.none, xcc.none, 'italic')
+call ColorschemeHighlight('TSUnderline', xcc.none, xcc.none, 'underline')
+call ColorschemeHighlight('TSNote', xcc.bg0, xcc.blue, 'bold')
+call ColorschemeHighlight('TSWarning', xcc.bg0, xcc.yellow, 'bold')
+call ColorschemeHighlight('TSDanger', xcc.bg0, xcc.red, 'bold')
+highlight! link TSAnnotation BlueItalic
+highlight! link TSAttribute BlueItalic
+highlight! link TSBoolean Purple
+highlight! link TSCharacter Yellow
+highlight! link TSComment Comment
+highlight! link TSConditional Red
+highlight! link TSConstBuiltin OrangeItalic
+highlight! link TSConstMacro OrangeItalic
+highlight! link TSConstant OrangeItalic
+highlight! link TSConstructor Green
+highlight! link TSException Red
+highlight! link TSField Green
+highlight! link TSFloat Purple
+highlight! link TSFuncBuiltin Green
+highlight! link TSFuncMacro Green
+highlight! link TSFunction Green
+highlight! link TSInclude Red
+highlight! link TSKeyword Red
+highlight! link TSKeywordFunction Red
+highlight! link TSKeywordOperator Red
+highlight! link TSLabel Red
+highlight! link TSMethod Green
+highlight! link TSNamespace BlueItalic
+highlight! link TSNone Fg
+highlight! link TSNumber Purple
+highlight! link TSOperator Red
+highlight! link TSParameter Fg
+highlight! link TSParameterReference Fg
+highlight! link TSProperty Fg
+highlight! link TSPunctBracket Grey
+highlight! link TSPunctDelimiter Grey
+highlight! link TSPunctSpecial Yellow
+highlight! link TSRepeat Red
+highlight! link TSStorageClass Red
+highlight! link TSString Yellow
+highlight! link TSStringEscape Green
+highlight! link TSStringRegex Green
+highlight! link TSStructure OrangeItalic
+highlight! link TSSymbol Fg
+highlight! link TSTag BlueItalic
+highlight! link TSTagDelimiter Red
+highlight! link TSText Green
+highlight! link TSStrike Grey
+highlight! link TSMath Yellow
+highlight! link TSType BlueItalic
+highlight! link TSTypeBuiltin BlueItalic
+highlight! link TSURI markdownUrl
+highlight! link TSVariable Fg
+highlight! link TSVariableBuiltin OrangeItalic
+
+" ------------------------------------------------------------------------------------------
+" junegunn/fzf.vim {{{
+" ------------------------------------------------------------------------------------------
+let g:fzf_colors = {
+      \ 'fg': ['fg', 'Normal'],
+      \ 'bg': ['bg', 'Normal'],
+      \ 'hl': ['fg', 'Green'],
+      \ 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+      \ 'bg+': ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl+': ['fg', 'Green'],
+      \ 'info': ['fg', 'Yellow'],
+      \ 'border':  ['fg', 'Grey'],
+      \ 'prompt': ['fg', 'Red'],
+      \ 'pointer': ['fg', 'Blue'],
+      \ 'marker': ['fg', 'Blue'],
+      \ 'spinner': ['fg', 'Yellow'],
+      \ 'header': ['fg', 'Blue']
+      \ }
+
+" ------------------------------------------------------------------------------------------
+" airblade/vim-gitgutter {{{
+" ------------------------------------------------------------------------------------------
+highlight! link GitGutterAdd GreenSign
+highlight! link GitGutterChange BlueSign
+highlight! link GitGutterDelete RedSign
+highlight! link GitGutterChangeDelete PurpleSign
+highlight! link GitGutterAddLine DiffAdd
+highlight! link GitGutterChangeLine DiffChange
+highlight! link GitGutterDeleteLine DiffDelete
+highlight! link GitGutterChangeDeleteLine DiffChange
+highlight! link GitGutterAddLineNr Green
+highlight! link GitGutterChangeLineNr Blue
+highlight! link GitGutterDeleteLineNr Red
+highlight! link GitGutterChangeDeleteLineNr Purple
+
+" ------------------------------------------------------------------------------------------
+if has('nvim')
+    " hrsh7th/nvim-cmp
+" ------------------------------------------------------------------------------------------
+    call ColorschemeHighlight('CmpItemAbbrMatch', xcc.green, xcc.none, 'bold')
+    call ColorschemeHighlight('CmpItemAbbrMatchFuzzy', xcc.green, xcc.none, 'bold')
+    highlight! link CmpItemAbbr Fg
+    highlight! link CmpItemAbbrDeprecated Fg
+    highlight! link CmpItemMenu Fg
+    highlight! link CmpItemKind Blue
+    highlight! link CmpItemKindText Fg
+    highlight! link CmpItemKindMethod Green
+    highlight! link CmpItemKindFunction Green
+    highlight! link CmpItemKindConstructor Green
+    highlight! link CmpItemKindField Green
+    highlight! link CmpItemKindVariable Orange
+    highlight! link CmpItemKindClass Blue
+    highlight! link CmpItemKindInterface Blue
+    highlight! link CmpItemKindModule Blue
+    highlight! link CmpItemKindProperty Orange
+    highlight! link CmpItemKindUnit Purple
+    highlight! link CmpItemKindValue Purple
+    highlight! link CmpItemKindEnum Blue
+    highlight! link CmpItemKindKeyword Red
+    highlight! link CmpItemKindSnippet Yellow
+    highlight! link CmpItemKindColor Yellow
+    highlight! link CmpItemKindFile Yellow
+    highlight! link CmpItemKindReference Yellow
+    highlight! link CmpItemKindFolder Yellow
+    highlight! link CmpItemKindEnumMember Purple
+    highlight! link CmpItemKindConstant Orange
+    highlight! link CmpItemKindStruct Blue
+    highlight! link CmpItemKindEvent Red
+    highlight! link CmpItemKindOperator Red
+    highlight! link CmpItemKindTypeParameter Blue
+endif
 ]]
-
