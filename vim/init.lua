@@ -9,6 +9,8 @@ local map = vim.keymap.set
 g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
+
+
 -- ---------------------------------------------------------------------
 -- TERMINAL
 -- ---------------------------------------------------------------------
@@ -98,12 +100,6 @@ function exists(name)
 end
 
 -- Core plugins
--- vim-better-whitespace
-g.better_whitespace_enabled = 1
-g.strip_whitespace_on_save = 1
-g.strip_whitespace_confirm = 0
--- vim-tmux-navigator
-g.tmux_navigator_no_mappings = 1
 -- vim-gitgutter
 g.gitgutter_map_keys = 0    -- Disable all key mappings
 g.gitgutter_realtime = 1
@@ -330,7 +326,6 @@ map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current b
 map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
 -- Buffer management
 map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
-
 -- Navigation
 -- map('n', '<C-h>', ':bprevious<cr>')         -- Show previous buffer in current window
 -- map('n', '<C-l>', ':bnext<cr>')             -- Show next buffer in current window
@@ -629,5 +624,205 @@ vim.cmd [[
       highlight VertSplit  ctermfg=23
       highlight StatusLine ctermbg=23
       highlight User1      ctermbg=black ctermfg=23 cterm=bold,underline
+
+      highlight ExtraWhiteSpace ctermbg=red
 ]]
 
+-- ---------------------------------------------------------------------
+-- REMOVE TRAILING WHITESPACE
+-- TODO: highlight extra whitespace
+-- ---------------------------------------------------------------------
+vim.cmd [[
+    " On leaving insert mode, match trailing whitespace pattern and
+    " assign to highlight group ExtraWhitespace
+    autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
+
+    function! Remove_trailing_whitespace()
+
+        " Store cursor's current position
+        let l = line('.')
+        let c = col('.')
+
+        " /e = not raising errors if pattern not found
+        " |norm!`` = store cursor position and return after
+        " execute '%s/\s\+$//eg|norm!``'
+        execute '%s/\s\+$//e'
+
+        " Return cursor to original position
+        call cursor(l, c)
+
+    endfunction
+
+    " Remove trailling whitespace on save
+    autocmd BufWritePost * call Remove_trailing_whitespace()
+]]
+
+-- ---------------------------------------------------------------------
+-- TMUX INTEGRATION
+--
+-- Maps <C-h/j/k/l> to switch vim splits in the given direction. If there are
+-- no more windows in that direction, forwards the operation to tmux.
+-- Additionally, <C-\> toggles between last active vim splits/tmux panes.
+--
+-- The solution has 3 parts:
+--   1. In ~/.tmux.conf, I bind the keys I want to execute a custom
+--      tmux-vim-select-pane command;
+--   2. tmux-vim-select-pane checks if the foreground process in the current
+--      tmux pane is Vim, then forwards the original keystroke to the vim
+--      process. Otherwise it simply switches tmux panes.
+--   3. In Vim, I set bindings for the same keystrokes to a custom function.
+--      The function tries to switch windows in the given direction. If the
+--      window didn't change, that means there are no more windows in the
+--      given direction inside vim, and it forwards the pane switching command
+--      to tmux by shelling out to tmux select-pane.
+--
+-- The following scripts must be added to .tmux.conf (mind the keybindings
+-- that must match with vim)
+--
+--[[
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
+bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+
+bind-key -T copy-mode-vi 'C-h' select-pane -L
+bind-key -T copy-mode-vi 'C-j' select-pane -D
+bind-key -T copy-mode-vi 'C-k' select-pane -U
+bind-key -T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'C-\' select-pane -l
+--]]
+-- ---------------------------------------------------------------------
+vim.cmd [[
+" ----------------------------------------------------------------------
+" /plugin/tmux_navigator.vim.vim   [41ea9d2 on Dec 9, 2022]
+" ----------------------------------------------------------------------
+function! s:VimNavigate(direction)
+try
+    execute 'wincmd ' . a:direction
+catch
+    echohl ErrorMsg | echo 'E11: Invalid in command-line window; <CR> executes, CTRL-C quits: wincmd k' | echohl None
+endtry
+endfunction
+
+if empty($TMUX)
+command! TmuxNavigateLeft call s:VimNavigate('h')
+command! TmuxNavigateDown call s:VimNavigate('j')
+command! TmuxNavigateUp call s:VimNavigate('k')
+command! TmuxNavigateRight call s:VimNavigate('l')
+command! TmuxNavigatePrevious call s:VimNavigate('p')
+finish
+endif
+
+command! TmuxNavigateLeft call s:TmuxAwareNavigate('h')
+command! TmuxNavigateDown call s:TmuxAwareNavigate('j')
+command! TmuxNavigateUp call s:TmuxAwareNavigate('k')
+command! TmuxNavigateRight call s:TmuxAwareNavigate('l')
+command! TmuxNavigatePrevious call s:TmuxAwareNavigate('p')
+
+if !exists("g:tmux_navigator_save_on_switch")
+let g:tmux_navigator_save_on_switch = 0
+endif
+
+if !exists("g:tmux_navigator_disable_when_zoomed")
+let g:tmux_navigator_disable_when_zoomed = 0
+endif
+
+if !exists("g:tmux_navigator_preserve_zoom")
+let g:tmux_navigator_preserve_zoom = 0
+endif
+
+if !exists("g:tmux_navigator_no_wrap")
+let g:tmux_navigator_no_wrap = 0
+endif
+
+let s:pane_position_from_direction = {'h': 'left', 'j': 'bottom', 'k': 'top', 'l': 'right'}
+
+function! s:TmuxOrTmateExecutable()
+return (match($TMUX, 'tmate') != -1 ? 'tmate' : 'tmux')
+endfunction
+
+function! s:TmuxVimPaneIsZoomed()
+return s:TmuxCommand("display-message -p '#{window_zoomed_flag}'") == 1
+endfunction
+
+function! s:TmuxSocket()
+" The socket path is the first value in the comma-separated list of $TMUX.
+return split($TMUX, ',')[0]
+endfunction
+
+function! s:TmuxCommand(args)
+let cmd = s:TmuxOrTmateExecutable() . ' -S ' . s:TmuxSocket() . ' ' . a:args
+let l:x=&shellcmdflag
+let &shellcmdflag='-c'
+let retval=system(cmd)
+let &shellcmdflag=l:x
+return retval
+endfunction
+
+function! s:TmuxNavigatorProcessList()
+echo s:TmuxCommand("run-shell 'ps -o state= -o comm= -t ''''#{pane_tty}'''''")
+endfunction
+command! TmuxNavigatorProcessList call s:TmuxNavigatorProcessList()
+
+let s:tmux_is_last_pane = 0
+augroup tmux_navigator
+au!
+autocmd WinEnter * let s:tmux_is_last_pane = 0
+augroup END
+
+function! s:NeedsVitalityRedraw()
+return exists('g:loaded_vitality') && v:version < 704 && !has("patch481")
+endfunction
+
+function! s:ShouldForwardNavigationBackToTmux(tmux_last_pane, at_tab_page_edge)
+if g:tmux_navigator_disable_when_zoomed && s:TmuxVimPaneIsZoomed()
+    return 0
+endif
+return a:tmux_last_pane || a:at_tab_page_edge
+endfunction
+
+function! s:TmuxAwareNavigate(direction)
+let nr = winnr()
+let tmux_last_pane = (a:direction == 'p' && s:tmux_is_last_pane)
+if !tmux_last_pane
+    call s:VimNavigate(a:direction)
+endif
+let at_tab_page_edge = (nr == winnr())
+" Forward the switch panes command to tmux if:
+" a) we're toggling between the last tmux pane;
+" b) we tried switching windows in vim but it didn't have effect.
+if s:ShouldForwardNavigationBackToTmux(tmux_last_pane, at_tab_page_edge)
+    if g:tmux_navigator_save_on_switch == 1
+        try
+            update " save the active buffer. See :help update
+        catch /^Vim\%((\a\+)\)\=:E32/ " catches the no file name error
+        endtry
+    elseif g:tmux_navigator_save_on_switch == 2
+        try
+            wall " save all the buffers. See :help wall
+        catch /^Vim\%((\a\+)\)\=:E141/ " catches the no file name error
+        endtry
+    endif
+    let args = 'select-pane -t ' . shellescape($TMUX_PANE) . ' -' . tr(a:direction, 'phjkl', 'lLDUR')
+    if g:tmux_navigator_preserve_zoom == 1
+        let l:args .= ' -Z'
+    endif
+    if g:tmux_navigator_no_wrap == 1
+        let args = 'if -F "#{pane_at_' . s:pane_position_from_direction[a:direction] . '}" "" "' . args . '"'
+    endif
+    silent call s:TmuxCommand(args)
+    if s:NeedsVitalityRedraw()
+        redraw!
+    endif
+    let s:tmux_is_last_pane = 1
+else
+    let s:tmux_is_last_pane = 0
+endif
+endfunction
+]]

@@ -38,8 +38,6 @@ cd $PLUGDIR
 # ----------------------------------------------------------------------------
 git clone https://github.com/junegunn/fzf                --depth 1 || true
 git clone https://github.com/junegunn/fzf.vim            --depth 1 || true
-git clone https://github.com/lvnfg/vim-better-whitespace --depth 1 || true
-git clone https://github.com/lvnfg/vim-tmux-navigator    --depth 1 || true
 git clone https://github.com/lvnfg/vim-gitgutter         --depth 1 || true
 git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
 # ----------------------------------------------------------------------------
