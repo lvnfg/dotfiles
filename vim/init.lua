@@ -397,10 +397,7 @@ vim.cmd [[
         let l = line('.')
         let c = col('.')
 
-        " /e = not raising errors if pattern not found
-        " |norm!`` = store cursor position and return after
-        " execute '%s/\s\+$//eg|norm!``'
-        execute '%s/\s\+$//e'
+        silent! execute '%s/\s\+$//e'
 
         " Return cursor to original position
         call cursor(l, c)
@@ -749,7 +746,7 @@ vim.cmd [[
 highlight Normal guifg=none guibg=none gui=none
 
 " Always use same background
-highlight Normal ctermbg=black
+highlight Normal ctermbg=0
 
 " -------------------------------------------------
 " GUTTER & SIGN COLUMN
@@ -759,12 +756,14 @@ highlight Normal ctermbg=black
 
 let xtest='red'
 
-  highlight CursorLine ctermbg=None ctermfg=None cterm=none
-  highlight CursorLineNr ctermbg=None ctermfg=white cterm=None
 
-  highlight VertSplit  ctermfg=23
-  highlight StatusLine ctermbg=23
-  highlight User1      ctermbg=00 ctermfg=23 cterm=bold,underline
+  highlight CursorLine ctermbg=None ctermfg=None cterm=none
+  highlight CursorLineNr ctermbg=None ctermfg=lightgrey cterm=None
+  highlight LineNr ctermbg=black ctermfg=240 cterm=None
+  highlight VertSplit  ctermbg=black ctermfg=darkcyan
+  highlight StatusLine ctermbg=black ctermfg=black
+  highlight User1      ctermbg=black ctermfg=darkcyan cterm=bold,underline
+  " call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
 
   highlight ExtraWhiteSpace ctermbg=red
 
@@ -829,8 +828,6 @@ highlight! link lCursor Cursor
 highlight! link CursorIM Cursor
 call ColorschemeHighlight('CursorLine', xcc.none, xcc.none, 'underline')
 call ColorschemeHighlight('CursorColumn', xcc.none, xcc.none, 'bold')
-call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
-" call ColorschemeHighlight('CursorLineNr', xcc.fg, xcc.none, 'underline')
 call ColorschemeHighlight('DiffAdd', xcc.none, xcc.diff_green)
 call ColorschemeHighlight('DiffChange', xcc.none, xcc.diff_blue)
 call ColorschemeHighlight('DiffDelete', xcc.none, xcc.diff_red)
@@ -856,7 +853,6 @@ call ColorschemeHighlight('SpellBad', xcc.none, xcc.none, 'undercurl', xcc.red)
 call ColorschemeHighlight('SpellCap', xcc.none, xcc.none, 'undercurl', xcc.yellow)
 call ColorschemeHighlight('SpellLocal', xcc.none, xcc.none, 'undercurl', xcc.blue)
 call ColorschemeHighlight('SpellRare', xcc.none, xcc.none, 'undercurl', xcc.purple)
-call ColorschemeHighlight('VertSplit', xcc.black, xcc.none)
 call ColorschemeHighlight('Visual', xcc.none, xcc.bg3)
 call ColorschemeHighlight('VisualNOS', xcc.none, xcc.bg3, 'underline')
 call ColorschemeHighlight('QuickFixLine', xcc.blue, xcc.none, 'bold')
@@ -922,11 +918,11 @@ endif
 " ------------------------------------------------------------------------------------------
 " SYNTAX
 " ------------------------------------------------------------------------------------------
-call ColorschemeHighlight('Type', xcc.blue, xcc.none, 'italic')
-call ColorschemeHighlight('Structure', xcc.blue, xcc.none, 'italic')
-call ColorschemeHighlight('StorageClass', xcc.blue, xcc.none, 'italic')
-call ColorschemeHighlight('Identifier', xcc.orange, xcc.none, 'italic')
-call ColorschemeHighlight('Constant', xcc.orange, xcc.none, 'italic')
+call ColorschemeHighlight('Type', xcc.blue, xcc.none)
+call ColorschemeHighlight('Structure', xcc.blue, xcc.none)
+call ColorschemeHighlight('StorageClass', xcc.blue, xcc.none)
+call ColorschemeHighlight('Identifier', xcc.orange, xcc.none)
+call ColorschemeHighlight('Constant', xcc.orange, xcc.none)
 call ColorschemeHighlight('PreProc', xcc.red, xcc.none)
 call ColorschemeHighlight('PreCondit', xcc.red, xcc.none)
 call ColorschemeHighlight('Include', xcc.red, xcc.none)
@@ -954,7 +950,7 @@ call ColorschemeHighlight('Tag', xcc.orange, xcc.none)
 call ColorschemeHighlight('Delimiter', xcc.fg, xcc.none)
 call ColorschemeHighlight('Comment', xcc.grey, xcc.none, 'italic')
 call ColorschemeHighlight('SpecialComment', xcc.grey, xcc.none, 'italic')
-call ColorschemeHighlight('Todo', xcc.blue, xcc.none, 'italic')
+call ColorschemeHighlight('Todo', xcc.blue, xcc.none)
 call ColorschemeHighlight('Ignore', xcc.grey, xcc.none)
 call ColorschemeHighlight('Underlined', xcc.none, xcc.none, 'underline')
 
@@ -969,12 +965,12 @@ call ColorschemeHighlight('Yellow', xcc.yellow, xcc.none)
 call ColorschemeHighlight('Green', xcc.green, xcc.none)
 call ColorschemeHighlight('Blue', xcc.blue, xcc.none)
 call ColorschemeHighlight('Purple', xcc.purple, xcc.none)
-call ColorschemeHighlight('RedItalic', xcc.red, xcc.none, 'italic')
-call ColorschemeHighlight('OrangeItalic', xcc.orange, xcc.none, 'italic')
-call ColorschemeHighlight('YellowItalic', xcc.yellow, xcc.none, 'italic')
-call ColorschemeHighlight('GreenItalic', xcc.green, xcc.none, 'italic')
-call ColorschemeHighlight('BlueItalic', xcc.blue, xcc.none, 'italic')
-call ColorschemeHighlight('PurpleItalic', xcc.purple, xcc.none, 'italic')
+call ColorschemeHighlight('RedItalic', xcc.red, xcc.none) " , 'italic')
+call ColorschemeHighlight('OrangeItalic', xcc.orange, xcc.none) " , 'italic')
+call ColorschemeHighlight('YellowItalic', xcc.yellow, xcc.none) " , 'italic')
+call ColorschemeHighlight('GreenItalic', xcc.green, xcc.none) " , 'italic')
+call ColorschemeHighlight('BlueItalic', xcc.blue, xcc.none) " , 'italic')
+call ColorschemeHighlight('PurpleItalic', xcc.purple, xcc.none) " , 'italic')
 call ColorschemeHighlight('RedSign', xcc.red, xcc.none)
 call ColorschemeHighlight('OrangeSign', xcc.orange, xcc.none)
 call ColorschemeHighlight('YellowSign', xcc.yellow, xcc.none)
@@ -1134,3 +1130,47 @@ if has('nvim')
     highlight! link CmpItemKindTypeParameter Blue
 endif
 ]]
+
+-- Base 16 terminal colors
+local term_black         = 00
+local term_red           = 01
+local term_green         = 02
+local term_yellow        = 03
+local term_blue          = 04
+local term_purple        = 05
+local term_cyan          = 06
+local term_white         = 07
+local term_bright_black  = 08
+local term_bright_red    = 09
+local term_bright_green  = 10
+local term_bright_yellow = 11
+local term_bright_blue   = 12
+local term_bright_purple = 13
+local term_bright_cyan   = 14
+local term_bright_white  = 15
+-- 256 colors, with true color codes equivalent if applicable
+local black       = 237     -- '#000000'
+local bg0         = 235     -- '#2c2e34'
+local bg1         = 236     -- '#33353f'
+local bg2         = 236     -- '#363944'
+local bg3         = 237     -- '#3b3e48'
+local bg4         = 237     -- '#414550'
+local bg_red      = 203     -- '#ff6077'
+local diff_red    = 52      -- '#55393d'
+local bg_green    = 107     -- '#a7df78'
+local diff_green  = 22      -- '#394634'
+local bg_blue     = 110     -- '#85d3f2'
+local diff_blue   = 17      -- '#354157'
+local diff_yellow = 54      -- '#4e432f'
+local fg          = 250     -- '#e2e2e3'
+local red         = 203     -- '#fc5d7c'
+local orange      = 215     -- '#f39660'
+local yellow      = 179     -- '#e7c664'
+local green       = 107     -- '#9ed072'
+local blue        = 110     -- '#76cce0'
+local purple      = 176     -- '#b39df3'
+local grey        = 246     -- '#7f8490'
+local grey_dim    = 240     -- '#595f6f'
+local none        = 'NONE'  -- 'NONE'
+
+-- vim.api.nvim_set_hl(0, 'Normal', {bg="#000000",fg=none,italic=false,bold=false,underline=false,undercurl=false})
