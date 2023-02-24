@@ -10,7 +10,7 @@ g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
 -- ---------------------------------------------------------------------
--- PLUGINS
+-- # PLUGINS
 -- ---------------------------------------------------------------------
 -- Check if package exists before attempting to call setup to prevent errors
 -- on new nvim install with possible missing plugins
@@ -215,7 +215,7 @@ if exists('cmp') then
 end
 
 -- ---------------------------------------------------------------------
--- SPLIT RESIZING
+-- # SPLIT RESIZING
 -- Use same resize direction even if the split is at right-most and/or
 -- bottom-most edge
 -- ---------------------------------------------------------------------
@@ -291,7 +291,7 @@ endfunc
 ]]
 
 -- ---------------------------------------------------------------------
--- SCROLLING
+-- # SCROLLING
 -- Original: https://github.com/terryma/vim-smooth-scroll
 -- ---------------------------------------------------------------------
 vim.cmd [[
@@ -346,7 +346,7 @@ endfunction
 ]]
 
 -- ---------------------------------------------------------------------
--- BUFFER HANDLING
+-- # BUFFER HANDLING
 -- ---------------------------------------------------------------------
 
 -- Close buffer without closing split.
@@ -384,7 +384,7 @@ function RefreshAll()
 end
 
 -- ---------------------------------------------------------------------
--- REMOVE TRAILING WHITESPACE
+-- # REMOVE TRAILING WHITESPACE
 -- ---------------------------------------------------------------------
 vim.cmd [[
     " On leaving insert mode, match trailing whitespace pattern and
@@ -409,7 +409,7 @@ vim.cmd [[
 ]]
 
 -- ---------------------------------------------------------------------
--- TMUX INTEGRATION
+-- # TMUX INTEGRATION
 -- https://github.com/christoomey/vim-tmux-navigator
 -- ---------------------------------------------------------------------
 --
@@ -579,7 +579,29 @@ endfunction
 ]]
 
 -- ---------------------------------------------------------------------
--- EDITOR SETTINGS
+-- # PRETTIFY
+-- ---------------------------------------------------------------------
+function PrettifyJSON()
+    if vim.fn.executable('jq') == 1 then
+        -- Vimscript: execute '%!jq'
+        vim.cmd [[ %!jq ]]
+    else
+        vim.cmd [[ %!python3 -m json.tool --no-ensure-ascii ]]
+    end
+end
+
+function PrettifyGuessFiletype()
+    filetype = vim.bo.filetype
+    if filetype == 'json' then
+        PrettifyJSON()
+    else
+        print('Filetype not supprted: ' .. filetype)
+    end
+end
+
+
+-- ---------------------------------------------------------------------
+-- # EDITOR SETTINGS
 -- ---------------------------------------------------------------------
 o.mouse         = 'a'
 o.syntax        = 'on'
@@ -607,7 +629,7 @@ o.softtabstop    = 4    -- SoftTabStop should = TabStop
 o.shiftwidth     = 4    -- Insert 4 spaces when indenting with > and new line
 
 -- ---------------------------------------------------------------------
--- STATUSLINE
+-- # STATUSLINE
 -- ---------------------------------------------------------------------
 o.laststatus = 2            -- 0 = hide, 2 = show statusline
 o.showmode = false          -- Hide mode indicator
@@ -621,13 +643,17 @@ end
 vim.cmd [[ set statusline=%!luaeval('s_line()') ]]
 
 -- ---------------------------------------------------------------------
--- KEYBINDINGS
+-- # KEYBINDINGS
 -- ---------------------------------------------------------------------
 -- Remap leader key
 vim.g.mapleader = ' '
 
 -- Text editing
 map('n', '<Esc>', ':noh<cr>') 	-- Toggle no highlight with Esc
+
+-- Prettify
+map('n', '<Leader>pg', ':lua PrettifyGuessFiletype()<cr>')
+map('n', '<Leader>pj', ':lua PrettifyJSON()<cr>')
 
 -- Autoclose character pairs
 -- map('i', '\'', '\'\'<left>')
@@ -720,7 +746,7 @@ map('n', 'gh', vim.lsp.buf.hover)
 -- end, {expr = true})
 
 -- ---------------------------------------------------------------------
--- COLORSCHEME
+-- # COLORSCHEME
 -- :runtime syntax/colortest.vim
 -- https://www.ditig.com/256-colors-cheat-sheet
 -- ---------------------------------------------------------------------
