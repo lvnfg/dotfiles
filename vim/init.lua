@@ -1174,3 +1174,31 @@ local grey_dim    = 240     -- '#595f6f'
 local none        = 'NONE'  -- 'NONE'
 
 -- vim.api.nvim_set_hl(0, 'Normal', {bg="#000000",fg=none,italic=false,bold=false,underline=false,undercurl=false})
+vim.cmd [[
+
+let bgx         = ['00',   '#000000']
+let black       = ['237',  '#181819']
+let bg0         = ['235',  '#2c2e34']
+let bg1         = ['236',  '#33353f']
+let bg2         = ['236',  '#363944']
+let bg3         = ['237',  '#3b3e48']
+let bg4         = ['237',  '#414550']
+let bg_red      = ['203',  '#ff6077']
+let diff_red    = ['52',   '#55393d']
+let bg_green    = ['107',  '#a7df78']
+let diff_green  = ['22',   '#394634']
+let bg_blue     = ['110',  '#85d3f2']
+let diff_blue   = ['17',   '#354157']
+let diff_yellow = ['54',   '#4e432f']
+let fg          = ['250',  '#e2e2e3']
+let red         = ['203',  '#fc5d7c']
+let orange      = ['215',  '#f39660']
+let yellow      = ['179',  '#e7c664']
+let green       = ['107',  '#9ed072']
+let blue        = ['110',  '#76cce0']
+let purple      = ['176',  '#b39df3']
+let grey        = ['246',  '#7f8490']
+let grey_dim    = ['240',  '#595f6f']
+let none        = ['NONE', 'NONE']
+
+]]
