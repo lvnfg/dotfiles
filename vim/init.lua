@@ -771,15 +771,12 @@ vim.cmd [[
 " Force GUI vim to follow terminal colors
 
 " Always use same background
-  highlight Normal ctermbg=235
   highlight Normal guifg=none guibg=none gui=none
-
-  highlight SignColumn ctermbg=red
-" highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
-
+  highlight Normal ctermbg=none ctermfg=none cterm=none
+  highlight SignColumn ctermbg=red ctermfg=none cterm=none
+  highlight LineNr ctermbg=none ctermfg=240 cterm=None
   highlight CursorLine ctermbg=None ctermfg=None cterm=none
   highlight CursorLineNr ctermbg=None ctermfg=lightgrey cterm=None
-  highlight LineNr ctermbg=black ctermfg=240 cterm=None
   highlight VertSplit  ctermbg=black ctermfg=darkcyan
   highlight StatusLine ctermbg=black ctermfg=black
   highlight User1      ctermbg=black ctermfg=darkcyan cterm=bold,underline
