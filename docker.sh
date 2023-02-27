@@ -1,7 +1,5 @@
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd $path
-# repo_path=$(readlink -f "../../")
-repo_path=$path
 
 action="$1"
 
@@ -16,11 +14,12 @@ build() {
     sudo docker container rm $NAME   2> /dev/null
     sudo docker image rm $IMAGE_NAME 2> /dev/null
     set -euox pipefail
-    cd $repo_path
+    cd $path
     sudo docker image build --no-cache --tag $IMAGE_NAME .
 }
 
 run() {
+    repo_path=$path
     sudo docker run \
         -it -d \
         --rm \

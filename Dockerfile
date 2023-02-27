@@ -94,7 +94,7 @@ RUN    mkdir -p ~/repos                                                         
     && bash "install-bat.sh"                                                       \
     && bash "install-mssql-cli.sh"                                                 \
     && bash "install-ipython.sh"                                                   \
-    && bash "install-nvim-core.sh"                                                      \
+    && bash "install-nvim-core.sh"                                                 \
     && bash "install-nvim-lsp.sh"                                                  \
     && bash "install-nvim-treesitter.sh"                                           \
     && nvim --headless +"TSInstall bash vim lua python" +'sleep 20' +'qa'          \
