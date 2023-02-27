@@ -83,12 +83,9 @@ RUN    apt-get install -y nodejs  \
 # nvim treesitter: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 # Treesitter requires "sudo apt instlal -y build-essential" which is installed in python steps above.
 # --------------------------------------------------
-COPY .tmpbuild/dotfiles /root/repos/dotfiles
 SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
-RUN    cd /root/repos/dotfiles \
-    # && mkdir -p ~/repos                                                            \
-    # && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles    \
-    # && git remote set-url origin git@github.com:lvnfg/dotfiles                     \
+RUN    mkdir -p ~/repos                                                            \
+    && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles    \
     && bash "install-bash.sh"                                                      \
     && bash "install-git.sh"                                                       \
     && bash "install-ranger.sh"                                                    \

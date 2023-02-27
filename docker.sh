@@ -10,31 +10,15 @@ IMAGE_NAME="$NAME:latest"
 DETACH_KEYS="ctrl-x,x"
 TEMP_BUILD_DIR_PATH="$path/.tmpbuild"
 
-build () {
+build() {
+    # Quick build with cache reuse if possible
     # Removing running image and container
     sudo docker container kill $NAME 2> /dev/null
     sudo docker container rm $NAME   2> /dev/null
     sudo docker image rm $IMAGE_NAME 2> /dev/null
-    # ----------------------------------------------------------------
-    # Gather build resources. External and downladed files should
-    # first be downloaded and put here, then copy over to docker
-    # during build script to take advantage of caching.
-    # ----------------------------------------------------------------
     set -euox pipefail
-    cd $path
-    mkdir -p $TEMP_BUILD_DIR_PATH
-    cd $TEMP_BUILD_DIR_PATH
-    # Trap cleanup
-    trap "rm -rf $TEMP_BUILD_DIR_PATH" EXIT
-    # Dev tool scripts
-    rm -rf dotfiles
-    git clone https://github.com/lvnfg/dotfiles --depth 1
-    # ----------------------------------------------------------------
-    # Build image
-    # ----------------------------------------------------------------
-    cd $path
-    # sudo docker image build --no-cache --tag $IMAGE_NAME .
-    sudo docker image build --tag $IMAGE_NAME .
+    cd $repo_path
+    sudo docker image build --no-cache --tag $IMAGE_NAME .
 }
 
 run() {
@@ -44,6 +28,13 @@ run() {
 	    --detach-keys=$DETACH_KEYS \
         --name $NAME \
         --hostname $NAME \
+        --publish="3389:3389/tcp" \
+        --publish="7071:7071/tcp" \
+        --publish="8080:8080/tcp" \
+        --publish="8081:8081/tcp" \
+        --publish="8082:8082/tcp" \
+        --publish="8083:8083/tcp" \
+        --publish="8084:8084/tcp" \
         --mount type=bind,source="$repo_path",target=/root/repos/dotfiles \
         $NAME:latest
 }
