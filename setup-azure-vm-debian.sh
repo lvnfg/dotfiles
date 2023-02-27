@@ -16,7 +16,7 @@ bash "$path/install-top.sh"
 bash "$path/install-bash.sh"
 bash "$path/install-tmux.sh"
 bash "$path/install-git.sh"
-bash "$path/install-bat.sh"
+# bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
 bash "$path/install-nvim.sh"
 

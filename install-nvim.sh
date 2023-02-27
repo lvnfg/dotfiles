@@ -40,23 +40,3 @@ git clone https://github.com/junegunn/fzf                --depth 1 || true
 git clone https://github.com/junegunn/fzf.vim            --depth 1 || true
 git clone https://github.com/lvnfg/vim-gitgutter         --depth 1 || true
 git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
-# ----------------------------------------------------------------------------
-# nvim-treesitter
-# Require apt install build-essential to build language parsers (vim, lua, python...)
-# ----------------------------------------------------------------------------
-git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true
-# ----------------------------------------------------------------------------
-# nvim-lspconfig + fzf-lsp
-# ----------------------------------------------------------------------------
-git clone https://github.com/neovim/nvim-lspconfig --depth 1 || true
-git clone https://github.com/lvnfg/fzf-lsp.nvim    --depth 1 || true
-# ----------------------------------------------------------------------------
-# nvim-cmp & autocompletion plugins
-# ----------------------------------------------------------------------------
-git clone https://github.com/lvnfg/cmp-nvim-lsp --depth 1 || true
-git clone https://github.com/lvnfg/cmp-buffer   --depth 1 || true
-git clone https://github.com/lvnfg/cmp-path     --depth 1 || true
-git clone https://github.com/lvnfg/cmp-cmdline  --depth 1 || true
-git clone https://github.com/lvnfg/nvim-cmp     --depth 1 || true
-git clone https://github.com/lvnfg/cmp-vsnip    --depth 1 || true
-git clone https://github.com/lvnfg/vim-vsnip    --depth 1 || true
