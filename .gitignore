@@ -1,3 +1,4 @@
 vim/plugins/
 *.swp
 *.DS_Store
+*.tmpbuild

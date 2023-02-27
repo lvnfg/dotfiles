@@ -40,9 +40,9 @@ RUN    apt-get install -y git \
 
 # --------------------------------------------------
 # Install python
+# Doesn't need to be put into tmpbuild since download url should return same file for same link
 # lzma & liblzma-dev are required to fix importing pandas after buidling python from source
 # "make install" overwrite system's python3.
-# To install side by side: "make altinstall"
 # --------------------------------------------------
 SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
 RUN    PYTHON_VERSION="3.10.4"   \
@@ -68,15 +68,27 @@ RUN    PYTHON_VERSION="3.10.4"   \
     && ln -s -f /usr/local/bin/python3 /usr/bin/python
 
 # --------------------------------------------------
+# Languages & LSP servers
+# --------------------------------------------------
+SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
+RUN    apt-get install -y nodejs  \
+    && apt-get install -y npm     \
+    && npm install -g pyright
+
+# --------------------------------------------------
 # Dotfiles dev tools
+# Must be copied over instead of cloning directly in build script to detect script
+# content changes and take advantage of caching.
 # ipython must be installed after mssql-cli to override prompt-toolkit.
 # nvim treesitter: https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 # Treesitter requires "sudo apt instlal -y build-essential" which is installed in python steps above.
 # --------------------------------------------------
+COPY .tmpbuild/dotfiles /root/repos/dotfiles
 SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
-RUN    mkdir -p ~/repos                                                            \
-    && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles    \
-    && git remote set-url origin git@github.com:lvnfg/dotfiles                     \
+RUN    cd /root/repos/dotfiles \
+    # && mkdir -p ~/repos                                                            \
+    # && cd ~/repos && git clone https://github.com/lvnfg/dotfiles && cd dotfiles    \
+    # && git remote set-url origin git@github.com:lvnfg/dotfiles                     \
     && bash "install-bash.sh"                                                      \
     && bash "install-git.sh"                                                       \
     && bash "install-ranger.sh"                                                    \
@@ -85,19 +97,11 @@ RUN    mkdir -p ~/repos                                                         
     && bash "install-bat.sh"                                                       \
     && bash "install-mssql-cli.sh"                                                 \
     && bash "install-ipython.sh"                                                   \
-    && bash "install-nvim.sh"                                                      \
+    && bash "install-nvim-core.sh"                                                      \
     && bash "install-nvim-lsp.sh"                                                  \
     && bash "install-nvim-treesitter.sh"                                           \
     && nvim --headless +"TSInstall bash vim lua python" +'sleep 20' +'qa'          \
     && echo ""
-
-# --------------------------------------------------
-# Languages & LSP servers
-# --------------------------------------------------
-SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
-RUN    apt-get install -y nodejs  \
-    && apt-get install -y npm     \
-    && npm install -g pyright
 
 # --------------------------------------------------
 # FOR DOTFILES ONLY

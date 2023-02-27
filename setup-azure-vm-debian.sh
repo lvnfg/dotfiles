@@ -18,7 +18,8 @@ bash "$path/install-tmux.sh"
 bash "$path/install-git.sh"
 # bash "$path/install-bat.sh"
 bash "$path/install-ranger.sh"
-bash "$path/install-nvim.sh"
+bash "$path/install-nvim-core.sh"
+bash "$path/install-docker.sh"
 
 # Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
 # Open sshd_config for edit:

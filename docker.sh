@@ -8,6 +8,34 @@ action="$1"
 NAME="dotfiles"
 IMAGE_NAME="$NAME:latest"
 DETACH_KEYS="ctrl-x,x"
+TEMP_BUILD_DIR_PATH="$path/.tmpbuild"
+
+build () {
+    # Removing running image and container
+    sudo docker container kill $NAME 2> /dev/null
+    sudo docker container rm $NAME   2> /dev/null
+    sudo docker image rm $IMAGE_NAME 2> /dev/null
+    # ----------------------------------------------------------------
+    # Gather build resources. External and downladed files should
+    # first be downloaded and put here, then copy over to docker
+    # during build script to take advantage of caching.
+    # ----------------------------------------------------------------
+    set -euox pipefail
+    cd $path
+    mkdir -p $TEMP_BUILD_DIR_PATH
+    cd $TEMP_BUILD_DIR_PATH
+    # Trap cleanup
+    trap "rm -rf $TEMP_BUILD_DIR_PATH" EXIT
+    # Dev tool scripts
+    rm -rf dotfiles
+    git clone https://github.com/lvnfg/dotfiles --depth 1
+    # ----------------------------------------------------------------
+    # Build image
+    # ----------------------------------------------------------------
+    cd $path
+    # sudo docker image build --no-cache --tag $IMAGE_NAME .
+    sudo docker image build --tag $IMAGE_NAME .
+}
 
 run() {
     sudo docker run \
@@ -20,43 +48,10 @@ run() {
         $NAME:latest
 }
 
-killc () {
-    sudo docker container kill $NAME
-}
-
-remove () {
-    sudo docker container rm $NAME
-}
-
 attach () {
     sudo docker container attach --detach-keys=$DETACH_KEYS $NAME || run && sudo docker container attach $NAME
 }
 
-restart () {
-    killc
-    remove
-    attach
-}
-
-build () {
-    killc
-    remove
-    # Make atm executable if not already
-    chmod +x "./atm/atm.py"
-    # Create image
-    echo "Building container image"
-    # Remove previous version
-    if [[ "$(sudo docker image instpect &IMAGE_NAME 2> /dev/null)" == "" ]]; then
-        echo "$IMAGE_NAME doesn't exists"
-    else
-        echo "Removing $IMAGE_NAME"
-        sudo docker image rm $IMAGE_NAME
-    fi
-    cd "$path/build"
-    # Build new image
-    # sudo docker image build --no-cache --tag $IMAGE_NAME .
-    sudo docker image build --tag $IMAGE_NAME .
-}
 
 # Allow calling script with function name as argument
 "$@"
