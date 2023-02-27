@@ -8,7 +8,6 @@ action="$1"
 NAME="dotfiles"
 IMAGE_NAME="$NAME:latest"
 DETACH_KEYS="ctrl-x,x"
-TEMP_BUILD_DIR_PATH="$path/.tmpbuild"
 
 build() {
     # Quick build with cache reuse if possible
