@@ -5,7 +5,7 @@ action="$1"
 
 NAME="dotfiles"
 IMAGE_NAME="$NAME:latest"
-DETACH_KEYS="ctrl-x,x"
+DETACH_KEYS="ctrl-x,ctrl-x"
 
 build() {
     # Quick build with cache reuse if possible
