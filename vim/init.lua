@@ -769,19 +769,13 @@ vim.cmd [[
 -- Apply colorschemes
 vim.cmd [[
 " Force GUI vim to follow terminal colors
-highlight Normal guifg=none guibg=none gui=none
 
 " Always use same background
-highlight Normal ctermbg=0
+  highlight Normal ctermbg=235
+  highlight Normal guifg=none guibg=none gui=none
 
-" -------------------------------------------------
-" GUTTER & SIGN COLUMN
-" -------------------------------------------------
-" highlight SignColumn ctermbg=00
+  highlight SignColumn ctermbg=red
 " highlight LineNr     ctermbg=00 ctermfg=08 cterm=none
-
-let xtest='red'
-
 
   highlight CursorLine ctermbg=None ctermfg=None cterm=none
   highlight CursorLineNr ctermbg=None ctermfg=lightgrey cterm=None
