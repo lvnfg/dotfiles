@@ -49,7 +49,8 @@ run() {
 }
 
 attach () {
-    sudo docker container attach --detach-keys=$DETACH_KEYS $NAME || run && sudo docker container attach $NAME
+    acm="sudo docker container attach --detach-keys=$DETACH_KEYS $NAME"
+    $acm || run && $acm
 }
 
 
