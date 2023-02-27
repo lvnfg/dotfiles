@@ -108,4 +108,5 @@ SHELL ["/bin/bash", "-euox", "pipefail", "-c"]
 RUN rm -rf ~/repos/dotfiles
 
 # https://docs.docker.com/engine/reference/builder/#cmd
+WORKDIR /root/repos/dotfiles
 CMD ["/bin/bash"]

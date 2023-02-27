@@ -31,10 +31,6 @@ run() {
         --publish="3389:3389/tcp" \
         --publish="7071:7071/tcp" \
         --publish="8080:8080/tcp" \
-        --publish="8081:8081/tcp" \
-        --publish="8082:8082/tcp" \
-        --publish="8083:8083/tcp" \
-        --publish="8084:8084/tcp" \
         --mount type=bind,source="$repo_path",target=/root/repos/dotfiles \
         $NAME:latest
 }
