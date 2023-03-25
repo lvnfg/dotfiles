@@ -11,4 +11,4 @@ cd $PLUGDIR
 # nvim-treesitter
 # Require apt install build-essential to build language parsers (vim, lua, python...)
 # ----------------------------------------------------------------------------
-git clone https://github.com/nvim-treesitter/nvim-treesitter --depth 1 || true
+git clone https://github.com/lvnfg/nvim-treesitter --depth 1 || true

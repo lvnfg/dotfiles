@@ -10,8 +10,8 @@ cd $PLUGDIR
 # ----------------------------------------------------------------------------
 # nvim-lspconfig + fzf-lsp
 # ----------------------------------------------------------------------------
-git clone https://github.com/neovim/nvim-lspconfig --depth 1 || true
-git clone https://github.com/lvnfg/fzf-lsp.nvim    --depth 1 || true
+git clone https://github.com/lnvfg/nvim-lspconfig --depth 1 || true
+git clone https://github.com/lvnfg/fzf-lsp.nvim   --depth 1 || true
 # ----------------------------------------------------------------------------
 # nvim-cmp & autocompletion plugins
 # ----------------------------------------------------------------------------

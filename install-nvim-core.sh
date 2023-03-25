@@ -36,7 +36,7 @@ cd $PLUGDIR
 # ----------------------------------------------------------------------------
 # core plugins
 # ----------------------------------------------------------------------------
-git clone https://github.com/junegunn/fzf                --depth 1 || true
-git clone https://github.com/junegunn/fzf.vim            --depth 1 || true
-git clone https://github.com/lvnfg/vim-gitgutter         --depth 1 || true
-git clone https://github.com/lvnfg/vim-easy-align        --depth 1 || true
+git clone https://github.com/lvnfg/fzf            --depth 1 || true
+git clone https://github.com/lvnfg/fzf.vim        --depth 1 || true
+git clone https://github.com/lvnfg/vim-gitgutter  --depth 1 || true
+git clone https://github.com/lvnfg/vim-easy-align --depth 1 || true
