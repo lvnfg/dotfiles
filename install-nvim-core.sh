@@ -8,17 +8,21 @@ echo "removing neovim"
 $issudo apt-get remove neovim -y
 rm -f /usr/bin/nvim
 
-# Download package
-cd $HOME
-filename="nvim.deb"
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb -O $filename
-$issudo apt-get install "./$filename" -y
-rm $filename
-# Note: package must be removed by name = neovim and not nvim
+# Download nvim
+NVIMDIR="$HOME/nvim"
+mkdir -p $NVIMDIR
+cd $NVIMDIR
+filename="nvim.appimage"
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O $filename
+# Set to executable
+chmod u+x $filename
+# Extract the app image
+./$filename --appimage-extract
+rm -f $filename
 
 # Create neovim symlink. Must use /usr/local/bin for macos compatibility
 echo "creating neovim symlink"
-$issudo ln -s -f $HOME/neovim-nightly/usr/bin/nvim  /usr/local/bin/nvim
+$issudo ln -s -f "$NVIMDIR/squashfs-root/usr/bin/nvim"  /usr/local/bin/nvim
 
 # symlink nvim config
 echo "creating neovim config symlinks"
