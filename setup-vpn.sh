@@ -119,7 +119,6 @@
 #   - Download the Azure VPN P2S client config site:
 #   	- Gateway resource > Point-to-site configureation > Download VPN client
 #   - Extract the zip file and open the Generic folder (for macos)
-#   - Double click on the .cer file to add to keychain (probably doesn't matter)
 #   - Open the .xml file in preview and copy the url between <VpnServer> tags:
 #   	- Ex: azuregateway-11fc0062-1773-4d1c-9b60-72706ded574e-3ada87e0fd39.vpn.azure.com
 #   - Open System Preferences > Network
@@ -132,7 +131,7 @@
 #   - Remote ID: <VpnServer>
 #   - Local ID: <certificate_name>
 #   - Authentication Settings:
-#   	- Authentication settings: None
+#   	- Authentication settings: Certificate
 #   	- Certificate > Select > Select the leaf certificate created earlier
 #   	- Ok
 #   - Apply
