@@ -3,8 +3,6 @@ set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
-$issudo apt-get install ranger -y
-
 # Remove ranger config directory. Everything is directly patched
 # to source code
 rm -rf "$HOME/.config/ranger"
