@@ -2,10 +2,6 @@
 set -euox pipefail
 if [ "$EUID" -ne 0 ]; then issudo="sudo"; else issudo=""; fi
 
-echo "issudo: $issudo"
-
-$issudo apt-get install git -y
-
 git config --global core.editor     "nvim"
 git config --global user.name       "van"
 git config --global user.email      "-"
