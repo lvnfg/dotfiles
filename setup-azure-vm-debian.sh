@@ -12,13 +12,28 @@ sudo apt install -y ripgrep     # Required for fzf.vim search all files
 sudo apt install -y rsync       # Sync files with mac
 
 # Use -H option to keep $HOME as user
-bash "$path/install-top.sh"
-bash "$path/install-bash.sh"
-bash "$path/install-tmux.sh"
-bash "$path/install-git.sh"
-# bash "$path/install-bat.sh"
-bash "$path/install-ranger.sh"
-bash "$path/install-nvim-core.sh"
+bash "$path/install-top-config.sh"
+bash "$path/install-bash-config.sh"
+
+# Tmux
+sudo apt-get install tmux -y
+bash "$path/install-tmux-config.sh"
+
+# Git
+sudo apt-get install git -y
+bash "$path/install-git-config.sh"
+
+# Bat
+# sudo apt-get install bat -y
+# bash "$path/install-bat-config.sh"
+
+# Ranger
+sudo apt-get install ranger -y 
+bash "$path/install-ranger-config.sh"
+
+# Nvim
+sudo apt-get install neovim -y
+bash "$path/install-nvim-core-config-and-plugins.sh"
 
 # Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
 # Open sshd_config for edit:
