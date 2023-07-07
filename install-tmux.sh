@@ -9,7 +9,7 @@ ln -s -f "$path/tmux/.tmux.conf" $HOME/.tmux.conf
 # The needed version is 3.2 for floating window.
 
 # For Debian 12
-sudo apt install tmux -y
+$issudo apt install tmux -y
 
 # For Debian 11, needs backports kernel
 # $issudo apt-get install tmux/bullseye-backports -y
