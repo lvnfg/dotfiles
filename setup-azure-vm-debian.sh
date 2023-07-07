@@ -33,7 +33,7 @@ bash "$path/install-ranger-config.sh"
 
 # Nvim
 sudo apt-get install neovim -y
-bash "$path/install-nvim-core-config-and-plugins.sh"
+bash "$path/install-nvim-config-and-plugins.sh"
 
 # Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
 # Open sshd_config for edit:
