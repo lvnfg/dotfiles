@@ -2,7 +2,6 @@
 set -euox pipefail
 path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-pip3 install ipython
 ipython profile create
 ln -s -f $path/ipython/ipython_config.py $HOME/.ipython/profile_default/ipython_config.py
 
