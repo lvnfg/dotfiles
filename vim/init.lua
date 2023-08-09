@@ -69,7 +69,7 @@ if exists('lspconfig') then
             analysis = {
               autoSearchPaths = true,
               diagnosticMode = "workspace",
-              useLibraryCodeForTypes = true
+              useLibraryCodeForTypes = false -- Too slow when turned on
             },
           },
         },
