@@ -60,20 +60,20 @@ if exists('lspconfig') then
         capabilities = capabilities,    -- Autocompletion
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
+        single_file_support = true,
         --root_dir = function(startpath)
         --       return M.search_ancestors(startpath, matcher)
         --  end,
-        settings = {
-          python = {
-            pythonPath = "/usr/local/bin/python3",
-            analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "workspace",
-              useLibraryCodeForTypes = false -- Too slow when turned on
-            },
-          },
-        },
-        single_file_support = true,
+        -- settings = {
+        --   python = {
+        --     pythonPath = "/usr/local/bin/python3",
+        --     analysis = {
+        --       autoSearchPaths = true,
+        --       diagnosticMode = "workspace",
+        --       useLibraryCodeForTypes = false -- Too slow when turned on
+        --     },
+        --   },
+        -- },
     }
     -- -------------------------------------
     -- Javascript & Typescript
