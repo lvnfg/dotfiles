@@ -681,7 +681,9 @@ map('n', '<M-g>', ':GFiles?<cr>')           -- Fzf list git status for all files
 map('n', '<M-c>', ':BCommits<cr>')          -- Fzf Git commits for the current buffer; visual-select lines to track changes in the range
 map('n', '<M-C>', ':Commits<cr>')           -- Fzf Git commits
 
--- Buffer management
+-- Buffer & Tab management
+map('n', '<M-U>', ':tabprevious<cr>')       -- Show previous tab
+map('n', '<M-I>', ':tabnext<cr>')           -- Show next tab
 map('n', '<M-b>', ':Buffers<cr>')           -- Fzf list all buffers
 map('n', '<M-u>', ':bprevious<cr>')         -- Show previous buffer in current window
 map('n', '<M-i>', ':bnext<cr>')             -- Show next buffer in current window
