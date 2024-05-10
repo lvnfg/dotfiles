@@ -2,6 +2,18 @@
 # https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
 
 # -------------------------------------------------------------------------
+# NOTE
+# -------------------------------------------------------------------------
+# On iOS IKEv2 vpn will disconnect after ~22 minutes (used to be ~minutes).
+# Possible reasons discussed here:
+#  https://github.com/libreswan/libreswan/issues/222
+# Solutions:
+#  - See if can live with the bug > simplest
+#  - Configure the server to disable PFS > may not be possible with Azure VPN
+#  - Create custom .mobileconfig profile > most complicated but can potentially
+#    resolv4 all issues, plus enable always-on / on demand VPN. Done once, use always.
+
+# -------------------------------------------------------------------------
 # SETUP AZURE VPN ON IOS USING iSH ALPINE LINUX - IPSEC/IKE
 # -------------------------------------------------------------------------
 
