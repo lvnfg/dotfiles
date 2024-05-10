@@ -6,7 +6,12 @@
 # -------------------------------------------------------------------------
 # On iOS IKEv2 vpn will disconnect after ~22 minutes (used to be ~minutes).
 # Possible reasons discussed here:
-#  https://github.com/libreswan/libreswan/issues/222
+#    https://github.com/libreswan/libreswan/issues/222
+#    In short, seems to be VPN created by the GUI dones't support PFS, but
+#    Azure VPN server does, so on rekeying the VPN fails. Can work around by:
+#      - Disable PFS on Azure VPN > tried but VPN fails to connect when using
+#        any custom P2S settings, not just PFA
+#      - Enable PFS using .mobileconfig profile
 # Solutions:
 #  - See if can live with the bug > simplest
 #  - Configure the server to disable PFS > may not be possible with Azure VPN
