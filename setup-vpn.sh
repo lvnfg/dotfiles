@@ -107,6 +107,9 @@
 #       - Name: any
 #       - Identity Type: Self Signed Root CA
 #       - User Certificate: VPN Server
+#       - Check "Let me override defaults"
+#          - Set "Validity period (days)" as needed
+#          - Continue all other screens as needed
 #       - Create
 
 # Create the client certificate
