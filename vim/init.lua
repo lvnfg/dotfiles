@@ -97,7 +97,7 @@ if exists('lspconfig') then
     -- HTML
     lspconfig.html.setup{
         cmd = { "vscode-html-language-server", "--stdio" },
-        filetypes = { "html" },
+        filetypes = { "html", "htmldjango" },
         -- root_dir = see source file,
         init_options = {
           configurationSection = { "html", "css", "javascript" },
