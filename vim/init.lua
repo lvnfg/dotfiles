@@ -770,21 +770,6 @@ vim.cmd [[
 
 -- Apply colorschemes
 vim.cmd [[
-" Force GUI vim to follow terminal colors
-
-" Always use same background
-  highlight Normal guifg=none guibg=none gui=none
-  highlight Normal ctermbg=none ctermfg=none cterm=none
-  highlight SignColumn ctermbg=red ctermfg=none cterm=none
-  highlight LineNr ctermbg=none ctermfg=240 cterm=None
-  highlight CursorLine ctermbg=None ctermfg=None cterm=none
-  highlight CursorLineNr ctermbg=None ctermfg=lightgrey cterm=None
-  highlight VertSplit  ctermbg=black ctermfg=darkcyan
-  highlight StatusLine ctermbg=black ctermfg=black
-  highlight User1      ctermbg=black ctermfg=darkcyan cterm=bold,underline
-  " call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
-
-  highlight ExtraWhiteSpace ctermbg=red
 
 function! ColorschemeHighlight(group, bg, fg, ...)
   execute 'highlight' a:group
@@ -1219,5 +1204,20 @@ let purple      = ['176',  '#b39df3']
 let grey        = ['246',  '#7f8490']
 let grey_dim    = ['240',  '#595f6f']
 let none        = ['NONE', 'NONE']
+
+
+" Always use same background
+highlight Normal guifg=none guibg=none gui=none
+highlight Normal ctermbg=none ctermfg=none cterm=none
+highlight SignColumn ctermbg=none ctermfg=none cterm=none
+highlight LineNr ctermbg=none ctermfg=240 cterm=None
+highlight CursorLine ctermbg=None ctermfg=None cterm=none
+highlight CursorLineNr ctermbg=None ctermfg=lightgrey cterm=None
+highlight VertSplit  ctermbg=black ctermfg=darkcyan
+highlight StatusLine ctermbg=black ctermfg=black
+highlight User1      ctermbg=black ctermfg=darkcyan cterm=bold,underline
+highlight ExtraWhiteSpace ctermbg=red
+" call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
+" call ColorschemeHighlight('StatusLineNC', xcc.grey_dim, xcc.none)
 
 ]]
