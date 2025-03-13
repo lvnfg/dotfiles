@@ -78,7 +78,7 @@ if exists('lspconfig') then
     -- -------------------------------------
     -- Javascript & Typescript
     -- -------------------------------------
-    lspconfig.tsserver.setup{
+    lspconfig.ts_ls.setup{
         single_file_support = true,
         cmd = { "typescript-language-server", "--stdio" },
         -- root_dir = root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
