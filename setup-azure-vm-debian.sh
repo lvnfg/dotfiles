@@ -28,12 +28,20 @@ bash "$path/install-git-config.sh"
 # bash "$path/install-bat-config.sh"
 
 # Ranger
-sudo apt-get install ranger -y 
+sudo apt-get install ranger -y
 bash "$path/install-ranger-config.sh"
 
 # Nvim
 sudo apt-get install neovim -y
 bash "$path/install-nvim-config-and-plugins.sh"
+echo "Installing nvim plugins"
+PLUGDIR="$HOME/.local/share/nvim/site/pack/plugins/start"
+mkdir -p $PLUGDIR
+cd $PLUGDIR
+git clone --depth 1 https://github.com/lvnfg/fzf            || true && cd fzf            && git pull && git checkout d7daf5f
+git clone --depth 1 https://github.com/lvnfg/fzf.vim        || true && cd fzf.vim        && git pull && git checkout dc71692
+git clone --depth 1 https://github.com/lvnfg/vim-gitgutter  || true && cd vim-gitgutter  && git pull && git checkout ded1194
+git clone --depth 1 https://github.com/lvnfg/vim-easy-align || true && cd vim-easy-align && git pull && git checkout 9815a55
 
 # Disable password login. This should be default on Azure VM Debian 10 Gen 1 image.
 # Open sshd_config for edit:
