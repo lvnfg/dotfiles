@@ -923,7 +923,7 @@ endif
 " SYNTAX
 " ------------------------------------------------------------------------------------------
 call ColorschemeHighlight('Type', xcc.none, xcc.blue)
-call ColorschemeHighlight('Structure', xcc.none, xcc.blue)
+call ColorschemeHighlight('Structure', xcc.none, xcc.orange)
 call ColorschemeHighlight('StorageClass', xcc.none, xcc.blue)
 call ColorschemeHighlight('Identifier', xcc.none, xcc.orange)
 call ColorschemeHighlight('@variable', xcc.none, xcc.orange)
