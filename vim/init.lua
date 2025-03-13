@@ -1218,6 +1218,6 @@ highlight StatusLine ctermbg=black ctermfg=black
 highlight User1      ctermbg=black ctermfg=darkcyan cterm=bold,underline
 highlight ExtraWhiteSpace ctermbg=red
 " call ColorschemeHighlight('LineNr', xcc.grey_dim, xcc.none)
-" call ColorschemeHighlight('StatusLineNC', xcc.grey_dim, xcc.none)
+call ColorschemeHighlight('StatusLine', xcc.grey_dim, xcc.none)
 
 ]]
