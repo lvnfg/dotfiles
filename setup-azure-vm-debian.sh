@@ -12,16 +12,16 @@ sudo apt install -y ripgrep     # Required for fzf.vim search all files
 sudo apt install -y rsync       # Sync files with mac
 
 # Use -H option to keep $HOME as user
-bash "$path/install-top-config.sh"
-bash "$path/install-bash-config.sh"
+bash "$path/link-top-config.sh"
+bash "$path/link-bash-config.sh"
 
 # Tmux
 sudo apt-get install tmux -y
-bash "$path/install-tmux-config.sh"
+bash "$path/link-tmux-config.sh"
 
 # Git
 sudo apt-get install git -y
-bash "$path/install-git-config.sh"
+bash "$path/link-git-config.sh"
 
 # Bat
 # sudo apt-get install bat -y
@@ -29,11 +29,11 @@ bash "$path/install-git-config.sh"
 
 # Ranger
 sudo apt-get install ranger -y
-bash "$path/install-ranger-config.sh"
+bash "$path/link-ranger-config.sh"
 
 # Nvim
 sudo apt-get install neovim -y
-bash "$path/install-nvim-config-and-plugins.sh"
+bash "$path/link-nvim-config.sh"
 echo "Installing nvim plugins"
 PLUGDIR="$HOME/.local/share/nvim/site/pack/plugins/start"
 mkdir -p $PLUGDIR
