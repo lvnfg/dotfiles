@@ -1,1 +1,1 @@
-sudo chown -R $(whoami):$(whoami)
+sudo chown -R $(whoami):$(whoami) {directory-name}
