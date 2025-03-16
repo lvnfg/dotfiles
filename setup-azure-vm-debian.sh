@@ -1,35 +1,35 @@
-# #!/bin/bash
-# set -euox pipefail
-# path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-#
-# # Install utilities
-# sudo apt update && sudo apt upgrade -y
-# sudo apt install -y wget
-# sudo apt install -y unzip
-# sudo apt install -y curl
-# sudo apt install -y fzf
-# sudo apt install -y ripgrep     # Required for fzf.vim search all files
-# sudo apt install -y rsync       # Sync files with mac
-#
-# # Use -H option to keep $HOME as user
-# bash "$path/link-top-config.sh"
-# bash "$path/link-bash-config.sh"
-#
-# # Tmux
-# sudo apt-get install tmux -y
-# bash "$path/link-tmux-config.sh"
-#
-# # Git
-# sudo apt-get install git -y
-# bash "$path/link-git-config.sh"
-#
-# # Bat
-# # sudo apt-get install bat -y
-# # bash "$path/install-bat-config.sh"
-#
-# # Ranger
-# sudo apt-get install ranger -y
-# bash "$path/link-ranger-config.sh"
+#!/bin/bash
+set -euox pipefail
+path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Install utilities
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y wget
+sudo apt install -y unzip
+sudo apt install -y curl
+sudo apt install -y fzf
+sudo apt install -y ripgrep     # Required for fzf.vim search all files
+sudo apt install -y rsync       # Sync files with mac
+
+# Use -H option to keep $HOME as user
+bash "$path/link-top-config.sh"
+bash "$path/link-bash-config.sh"
+
+# Tmux
+sudo apt-get install tmux -y
+bash "$path/link-tmux-config.sh"
+
+# Git
+sudo apt-get install git -y
+bash "$path/link-git-config.sh"
+
+# Bat
+# sudo apt-get install bat -y
+# bash "$path/install-bat-config.sh"
+
+# Ranger
+sudo apt-get install ranger -y
+bash "$path/link-ranger-config.sh"
 
 # Install nvim
 # sudo apt-get install neovim -y
