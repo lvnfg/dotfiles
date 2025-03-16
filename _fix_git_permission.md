@@ -1,1 +1,1 @@
-chown $(whoami) -R
+sudo chown -R $(whoami):$(whoami)
