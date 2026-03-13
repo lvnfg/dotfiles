@@ -726,6 +726,7 @@ map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
 map('n', 'gs', vim.lsp.buf.signature_help)
 map('n', 'gh', vim.lsp.buf.hover)
+map('n', 'gl', vim.diagnostic.open_float)   -- Show long LSP errors in floating window
 
 -- COC-NVIM
 -- map('n', '<M-d>', ':CocFzfList diagnostics<cr>')               -- List diagnostics
