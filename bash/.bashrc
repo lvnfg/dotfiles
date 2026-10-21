@@ -62,7 +62,7 @@ function is_in_git_repo() {
 # --------------------------------------------------------------------------
 # FZF
 # --------------------------------------------------------------------------
-export FZF_DEFAULT_COMMAND="find ~ -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
+export FZF_DEFAULT_COMMAND="find '~/repos' -type f 2> /dev/null | grep -v -e '\.git' -e '\.swp'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 function fzf-down() {
@@ -79,13 +79,23 @@ function fzf-down() {
         "$@"
 }
 
-function fzf-change-directory() {
+function fzf-change-directory-all-dir() {
     result=$(find ~ -type d 2> /dev/null | grep -v -e "\.git" | fzf-down)
 	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
 }
 
-function fzf-file-open-in-vim() {
+function fzf-change-directory-repos-dir() {
+    result=$(find ~/repos -type d 2> /dev/null | grep -v -e "\.git" | fzf-down)
+	if [[ ! -z "$result" ]]; then cd "$result" && echo -e "pwd changed to: $result \c" && getGitFileStatus && echo ; fi
+}
+
+function fzf-open-file-in-vim-all-files() {
     result=$(find ~ -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf-down --preview 'bat --color=always {}')
+    if [[ ! -z "$result" ]]; then nvim "$result" ; fi
+}
+
+function fzf-open-file-in-vim-repos-files() {
+    result=$(find ~/repos -type f 2> /dev/null | grep -v -e "\.git" -e "\.swp" | fzf-down --preview 'bat --color=always {}')
     if [[ ! -z "$result" ]]; then nvim "$result" ; fi
 }
 
@@ -162,14 +172,14 @@ function fzf-git-stash() {
     cut -d: -f1
 }
 
-# Key bindings
+# Keybindings
 bind '"\er": redraw-current-line'           # required to clear up the prompt when not on tmux.
 # File & directories
-bind -x '"\ed": "fzf-change-directory"'
+bind -x '"\ed": "fzf-change-directory-repos-dir"'
+bind -x '"\eD": "fzf-change-directory-all-dir"'
 bind -x '"\es": "fzf-script-run"'
-bind -x '"\ef": "fzf-file-open-in-vim"'
-# Diffing
-bind -x '"\eD": "fzf-difftool"'
+bind -x '"\ef": "fzf-open-file-in-vim-repos-files"'
+bind -x '"\eF": "fzf-open-file-in-vim-all-files"'
 # Git specific
 bind -x '"\eg": "fzf-git-file-status"'
 bind -x '"\eb": "fzf-git-branch"'
